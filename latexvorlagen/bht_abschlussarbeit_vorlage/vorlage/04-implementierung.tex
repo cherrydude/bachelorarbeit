@@ -1,0 +1,81 @@
+% ---------------------------------------------------------
+\chapter{Implementierung}\label{chap:implementation}
+% ---------------------------------------------------------
+
+
+Abbildung \ref{umlcd:figure} zeigt ein Klassendiagramm welches mit dem
+\LaTeX-Paket
+\texttt{pgf-umlcd}\footnote{\url{https://ctan.org/pkg/pgf-umlcd},
+  Letzter Zugriff: 19.08.2022} erstellt wurde und Abbildung
+\ref{umlsd:example} zeigt ein Sequenzdiagramm welches mit dem
+\LaTeX-Paket
+\texttt{pgf-umlsd}\footnote{\url{https://ctan.org/pkg/pgf-umlsd},
+  Letzter Zugriff: 19.08.2022} generiert wurde.
+
+
+\begin{figure}[h]
+  \centering
+\begin{tikzpicture}
+  \begin{abstractclass}[text width=5.5cm]{Figure}{3,0}
+    \attribute{-name : String}
+    \attribute{-hitPoints : int}
+    \attribute{-strength : int}
+    \attribute{-dexterity : int}
+
+    \operation{+attack(Figure enemy): int}
+    \operation{+\textit{causeDamage(): int}}
+    \operation{+isDead(): boolean}
+  \end{abstractclass}
+  
+  \begin{class}[text width=3.5cm]{Hero}{0,-7}
+    \attribute{-w: Weapon}
+    \inherit{Figure}
+  \end{class}
+
+   
+  \begin{class}[text width=3.5cm]{Monster}{6,-7}
+    \inherit{Figure}
+  \end{class}
+\end{tikzpicture}
+\caption{UML-Klassendiagramm für Spielfiguren.}
+\label{umlcd:figure}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+\begin{sequencediagram}
+\newthread{t}{:Thread}
+\newinst[2]{foo}{:Foo}
+\newinst[2]{bar}{:Bar}
+\begin{call}{t}{gnarf()}{foo}{return}
+\begin{call}{foo}{fnord()}{bar}{ return }
+\end{call}
+\end{call}
+\begin{messcall}{t}{doAsynStuff()}{bar}
+\end{messcall}
+\end{sequencediagram}
+\caption{Beispiel für ein Sequenzdiagramm.}
+\label{umlsd:example}
+\end{figure}
+
+
+
+Der Client sendet Ping-Anfgragen, die vom Server mit einer
+Pong-Nachricht beantwortet werden (siehe Abbildung
+\ref{umlsd:clientrequest}).
+
+
+\begin{figure}[h]
+    \centering
+  \begin{sequencediagram}
+    \newinst[1]{c}{Client}
+    \newinst[3]{s}{Server}
+    \mess[1]{c}{ping}{s}
+    \mess[1]{s}{pong}{c}
+  \end{sequencediagram}
+  \caption{Clientanfrage}
+  \label{umlsd:clientrequest}
+\end{figure}
+
+
+

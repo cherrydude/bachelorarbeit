@@ -1,0 +1,30 @@
+% ---------------------------------------------------------
+\chapter{Konzept}\label{chap:concept}
+% ---------------------------------------------------------
+
+% Die Default-Sprache ist in settings.tex definiert.
+\lstset{language=C} 
+\begin{lstlisting}[caption=Hello World in C., label=lst:hello-world]
+  #include<stdio.h>
+  int main(){
+    puts("Hello World");
+  }
+\end{lstlisting}
+
+\lstset{language=python,mathescape=true} % mathscape enables the math mode
+\begin{lstlisting}[caption=Summenfunktion.,label=lst:sum]
+  # This function computes $\sum\limits_{i=1}^{n} i.$
+  def sum(n):
+    sum = 0
+    for i in range(1,n+1):
+        sum += i
+    return sum 
+\end{lstlisting}
+
+Listing \ref{lst:hello-world} enthält den Quelltext für einfache
+C-Programm und Listing \ref{lst:sum} zeigt eine Berechnung der
+Gaußsumme in Python. 
+
+
+Mehr zu Listings erfahren Sie unter 
+\url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}

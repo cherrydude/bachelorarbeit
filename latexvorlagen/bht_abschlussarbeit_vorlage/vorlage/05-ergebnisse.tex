@@ -1,0 +1,67 @@
+% ---------------------------------------------------------
+\chapter{Ergebnisse}\label{chap:results}
+% ---------------------------------------------------------
+
+In diesem Kapitel finden Sie drei Tabellen \ref{tab:twister:benchmarks64}
+--\ref{tab:foo:bar}.
+
+Mehr zu Tabellen in \LaTeX finden Sie unter
+\url{https://nasa.github.io/nasa-latex-docs/html/examples/table.html}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c @{\qquad} c  c @{\qquad} c  c}\toprule
+\textbf{Bytes} & \textbf{SHA-256} & \textbf{Twister-256} &
+\textbf{SHA-512} & \textbf{Twister-512} \\
+\midrule
+1024  & 11.5 & 15.3 & \phantom{0}7.5  & \phantom{0}16.9 \\
+1500  & 10.7 & 14.5 & \phantom{0}6.8  & \phantom{0}15.6 \\
+4096  & 10.6 & 14.0 & \phantom{0}6.8  & \phantom{0}14.4 \\
+\addlinespace
+10000 & 10.5 & 13.8 & \phantom{0}6.6  & \phantom{0}14.0 \\
+16384 & 10.3 & 13.7 & \phantom{0}6.6  & \phantom{0}13.9 \\
+32768 & 10.3 & 13.7 & \phantom{0}6.6  & \phantom{0}13.8 \\
+\bottomrule
+\end{tabular}
+\caption[Results of the performance benchmarks for Ttwister.]{The
+  benchmark results for \textbf{64-bit} platforms in \ac{cpb} on an
+  Intel Core i5-3210M CPU 2.50GHz; OS: Linux 3.9-1-amd64; Compiler:
+  \emph{gcc} 4.7.3.}
+\label{tab:twister:benchmarks64}
+\end{table}
+
+
+\begin{table}[hb!]
+  \centering
+  \begin{tabular}{cllc}
+    \textbf{Paramete } & \textbf{Description} & \textbf{Encoding} &
+    \textbf{Recommendation}\\\toprule
+    $g_p$ & garlic (password hashing)  & 1 byte      & 17\\
+    $g_k$ & garlic (key derivation)    & 1 byte      & 20\\
+    $\lambda$   & depth                      & 1 byte      & 3\\
+    $d$         & mode                       & 1 byte      & -\\
+    s           & salt                       & 1--255 bytes & 16 bytes\\
+    $|s|$       & salt length                & 1 byte      & - \\
+    \bottomrule
+  \end{tabular}
+  \vspace{1mm}
+  \caption{Parameter choices for Catena.}
+  \label{tab:catena:parameter}
+\end{table}
+
+
+
+\begin{table}[h]
+  \centering
+\begin{tabular}{l c c}
+    \textbf{Scheme} & \multicolumn{2}{c}{\textbf{Nonce Misuse}}\\
+    \cmidrule{2-3} &   privacy & integrity\\
+  \midrule
+  OCB3  & \textcolor{red}{\textbf{broken}} & \textcolor{red}{\textbf{broken}}\\
+  RPC   & \textcolor{red}{\textbf{broken}} & \textcolor{red}{\textbf{broken}}\\
+  TAE   & \textcolor{red}{\textbf{broken}} & \textcolor{red}{\textbf{broken}}\\
+  XCBC-XOR & \textbf{damaged}   & \textcolor{red}{\textbf{broken}}\\
+\end{tabular}
+\caption{Diese Tabelle zeigt die Sicherheit von AE-Verfahren gegen Nonce-Misuse-Angriffe}\label{tab:foo:bar}
+\end{table}
+  

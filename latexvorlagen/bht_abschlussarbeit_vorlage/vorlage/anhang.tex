@@ -1,0 +1,68 @@
+\begin{appendix}
+\appendix
+
+\chapter{\texttt{catena-measure} --help}
+\label{chap:app-measure}
+
+\begin{lstlisting}[]
+Usage: ./catena-scramble --algorithm ALG --graph GRAPH --fullhash FULLH --fasthash FASTH --random_layer RL [--version_id ID] --phi_layer PL --password PWD [--salt SALT] [--data DATA] [--lambda L] [--min_garlic MG] [--garlic G] [--hash_length HL]
+
+    -a, --algorithm ALG    algorithm to use(formal: Flap)
+    -g, --graph GRAPH    graph to use(formal: F)
+    -u, --fullhash FULLH    regular hash function(formal: H)
+    -f, --fasthash FASTH    hash function used for consecutive calls (formal: H`)
+    -r, --random_layer RL    first layer(formal: Gamma)
+    -h, --phi_layer PL    extra layer(formal: Phi)
+    -v, --version_id ID    Version identifier(formal: V). Default depends on graph
+    -p, --password PWD    the password(formal: pwd)
+    -s, --salt SALT        the salt(formal: s) in hex. 2 characters per byte. Empty by default
+    -d, --data DATA        Associated data(formal: d). Empty by default
+    -t, --structure L    Graph structure (r - random, g - graph). Default depends on graph
+    -m, --min_garlic MG    Lower memory cost(formal: g0). Default depends on graph
+    -c, --garlic G        memory cost(formal:g). Default depends on graph
+    -o, --hash_length HL    output length in byte(formal: m). Default:64
+
+Algorithms - possible values for ALG:
+    [ DA | DefaultAlgorithm ] : This is the flap function used in Catena
+
+Graphs - possible values for GRAPH:
+    [ BRG | Bit-Reversal-Graph ] : The Graph of Catena-Dragonfly
+    [ DBG | Double-Butterfly-Graph with Phi Layer ] : The graph of Catena-Butterfly
+    [ GR2 | Gray-Reverse 2 ] : As suggested by Ben Harris. Recommended for Lambda up to 4
+    [ GR3 | Gray-Reverse 3 ] : As suggested by Ben Harris. Recommended for Lambda up to 4
+
+FullHashes - possible values for FullH:
+    [ B2 | Blake2b ] : Blake2b hash function. Reference or SSE optimized
+    [ S512 | SHA512 ] : SHA512. Depends on OpenSSL
+
+FastHashes - possible values for FastH:
+    [ ACB | ArgonCFBla ] : Argon 2 compression function with Blamka
+    [ AC | ArgonCF ] : Argon 2 compression function
+    [ B2b1Bla | Blake2b-1-Bla ] : Single round of Blake2b (SSE or reference) with Blamka
+    [ B2b1 | Blake2b-1 ] : Single round of Blake2b(SSE or reference)
+    [ B2 | Blake2b ] : Blake2b hash function. Reference or SSE optimized
+    [ Cfaes | CFAES ] : CFAES Hash function
+    [ GF | GF-Multiplication ] : Multiplication in GF2^128 with the GCM-modulus(can use Intrinsics)
+    [ MH | Mult-Hash ] : Multiplication based hash function as implemented by Bill Cox
+    [ PCB | PCompressBla ] : P Compress with BlaMka
+    [ PCG | PCompressG ] : P Compress with G
+    [ S512 | SHA512 ] : SHA512. Depends on OpenSSL
+
+RandomLayers - possible values for RL:
+    [ D | Dummy ] : Dummy random layer that simply does nothing
+    [ G | Gamma ] : The Gamma function of Catena-DBG/BRG
+
+PhiLayers - possible values for PL:
+    [ PD | Phi-Dummy ] : Dummy for Phi-Layer
+    [ PL | Phi-Lsb ] : Phi layer with LSB as indexing function
+    [ PX | Phi-XS ] : Phi layer with XORSHIFT as indexing function
+\end{lstlisting}
+
+% 
+% 
+% \chapter{Source Code}
+% \label{chap:app-source-code}
+
+
+
+\end{appendix}
