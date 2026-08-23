@@ -372,6 +372,11 @@ OUTPUT 06-implementierung.aux
 INPUT ./06-implementierung.tex
 INPUT ./06-implementierung.tex
 INPUT 06-implementierung.tex
+INPUT ./images/scheduling-visualizer-placeholder.tex
+INPUT ./images/scheduling-visualizer-placeholder.tex
+INPUT ./images/scheduling-visualizer-placeholder.tex
+INPUT ./images/scheduling-visualizer-placeholder.tex
+INPUT images/scheduling-visualizer-placeholder.tex
 INPUT ./07-evaluation.tex
 INPUT ./07-evaluation.tex
 OUTPUT 07-evaluation.aux

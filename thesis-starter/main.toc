@@ -49,7 +49,7 @@
 \contentsline {section}{\numberline {6.4}Umsetzung der Simulation}{17}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Umsetzung der Visualisierung}{18}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{18}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{18}{section.6.7}%
+\contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{19}{section.6.7}%
 \contentsline {chapter}{\numberline {7}Evaluation}{20}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{20}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Evaluationsdesign}{20}{section.7.2}%

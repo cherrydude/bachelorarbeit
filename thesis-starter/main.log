@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  23 AUG 2026 13:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  23 AUG 2026 13:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -869,7 +869,8 @@ chapter 5.
 
 
 
-] [13] [14]) [15]
+] [13] [14] (./images/scheduling-visualizer-overview-placeholder.tex))
+[15]
 \openout2 = `06-implementierung.aux'.
 
  (./06-implementierung.tex
@@ -885,8 +886,8 @@ Underfull \hbox (badness 1354) in paragraph at lines 46--47
 n Prinzip-ien diskreter
  []
 
-[17]
-Underfull \hbox (badness 1048) in paragraph at lines 62--63
+[17] (./images/scheduling-visualizer-placeholder.tex)
+Underfull \hbox (badness 1048) in paragraph at lines 64--65
 []\T1/lmr/m/n/10.95 Ergänzend wurde auf ro-buste Be-di-en-barkeit geachtet: kla
 re Sta-tus-rück-mel-dun-gen,
  []
@@ -901,10 +902,11 @@ chapter 7.
 
 
 
-] [21]) [22]
+] (./images/scheduling-visualizer-metrics-placeholder.tex) [21]) [22]
 \openout2 = `08-fazit-ausblick.aux'.
 
- (./08-fazit-ausblick.tex
+
+(./08-fazit-ausblick.tex
 chapter 8.
 [23
 
@@ -940,10 +942,10 @@ L3 programming layer <2026-03-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17984 strings out of 467363
- 315544 string characters out of 5419001
- 873263 words of memory out of 6000000
- 46602 multiletter control sequences out of 15000+600000
+ 18022 strings out of 467363
+ 317129 string characters out of 5419001
+ 873533 words of memory out of 6000000
+ 46627 multiletter control sequences out of 15000+600000
  678628 words of font info for 73 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  108i,8n,107p,11203b,641s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -953,10 +955,10 @@ st/fonts/type1/public/lm/lmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/lm/lmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr17.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on main.pdf (34 pages, 253859 bytes).
+Output written on main.pdf (34 pages, 258891 bytes).
 PDF statistics:
- 600 PDF objects out of 1000 (max. 8388607)
- 543 compressed objects within 6 object streams
- 122 named destinations out of 1000 (max. 500000)
+ 606 PDF objects out of 1000 (max. 8388607)
+ 549 compressed objects within 6 object streams
+ 125 named destinations out of 1000 (max. 500000)
  441 words of extra memory for PDF output out of 10000 (max. 10000000)
 

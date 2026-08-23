@@ -13,9 +13,9 @@ Vue 3 wird für die komponentenorientierte UI-Schicht eingesetzt. TypeScript die
 Die Implementierung folgt einer klaren Schichtenlogik:
 
 \begin{itemize}
-    \item \textbf{Domänenkern:} deterministische Simulationslogik für Scheduling-Verfahren.
-    \item \textbf{Anwendungslogik:} Verwaltung von Szenarien, Runs und Vergleichsdaten.
-    \item \textbf{Darstellungsschicht:} Visualisierung der Ergebnisse und Interaktion mit Nutzenden.
+  \item \textbf{Domänenkern:} deterministische Simulationslogik für Scheduling-Verfahren.
+  \item \textbf{Anwendungslogik:} Verwaltung von Szenarien, Runs und Vergleichsdaten.
+  \item \textbf{Darstellungsschicht:} Visualisierung der Ergebnisse und Interaktion mit Nutzenden.
 \end{itemize}
 
 Zentral ist dabei die Einbahnbeziehung vom Kern zur Darstellung: Die UI berechnet keine Scheduling-Entscheidungen, sondern rendert die vom Kern gelieferten Segmente, Ereignisse, Snapshots und Metriken. Dadurch wird verhindert, dass Visualisierung und Berechnungslogik auseinanderlaufen.
@@ -37,10 +37,10 @@ Die Simulation ist als diskreter, deterministischer Ablauf umgesetzt. Zu jedem S
 Konkret erzeugt der Kern mehrere Ergebnisformen:
 
 \begin{itemize}
-    \item \textbf{Ereignislog:} chronologische Ereignisse wie Dispatch, Start, Präemption und Abschluss.
-    \item \textbf{Segmente:} Zeitabschnitte für die Gantt-Darstellung.
-    \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Playback und Zeitsprünge.
-    \item \textbf{Metriken:} aggregierte Kenngrössen pro Simulationslauf.
+  \item \textbf{Ereignislog:} chronologische Ereignisse wie Dispatch, Start, Präemption und Abschluss.
+  \item \textbf{Segmente:} Zeitabschnitte für die Gantt-Darstellung.
+  \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Playback und Zeitsprünge.
+  \item \textbf{Metriken:} aggregierte Kenngrössen pro Simulationslauf.
 \end{itemize}
 
 Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter Ereignissimulation und verbessert die Nachvollziehbarkeit der Laufzeitdynamik \cite{banks2010discrete}.
@@ -50,6 +50,8 @@ Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter E
 Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses.
 
 Die Darstellung nutzt die vom Simulationskern gelieferten Segment- und Snapshot-Daten direkt. Dadurch lassen sich sowohl statische Vergleiche als auch dynamische Wiedergabevarianten umsetzen. Interaktive Hilfen wie Tooltips und Hervorhebungen unterstützen die detaillierte Analyse einzelner Entscheidungen und Kontextwechsel.
+
+\input{images/scheduling-visualizer-placeholder}
 
 Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
 
