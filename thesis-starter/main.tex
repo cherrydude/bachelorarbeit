@@ -1,12 +1,17 @@
 \documentclass[11pt,a4paper,openany,oneside]{scrbook}
 
-\include{packages}
-\include{commands}
-\include{settings}
-\include{hyphenation}
+% Preamble
+\input{packages}
+\input{commands}
+\input{settings}
+\input{hyphenation}
 
-\hypersetup{allcolors=black}
-\bibliographystyle{plainnat}
+\hypersetup{
+    linkcolor = {black},
+    allcolors = {black},
+}
+
+\bibliographystyle{plain}
 \pagestyle{plain}
 \raggedbottom
 
@@ -15,8 +20,11 @@
 \include{deckblatt}
 \onehalfspacing
 \pagenumbering{roman}
+\include{vorwort}
+
 \singlespacing
 \include{verzeichnisse}
+\include{acronyms}
 
 \pagenumbering{arabic}
 \onehalfspacing
@@ -28,5 +36,6 @@
 \include{06-zusammenfassung}
 
 \bibliography{bib}
+\include{anhang}
 
 \end{document}

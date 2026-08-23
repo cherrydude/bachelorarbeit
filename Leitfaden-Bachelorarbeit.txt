@@ -1,0 +1,477 @@
+﻿Leitfaden zur Durchführung von Bachelor-
+Abschlussarbeiten 
+
+Dr.-Ing. Dietrich Boles 
+
+Version 5.0 (12.11.2021) 
+
+1. Einleitung 
+Dieser Leitfaden richtet sich sowohl an Lehrende als auch Studierende des 
+Departments für  Informatik der Fakultät II der Carl von Ossietzky Universität 
+Oldenburg. Ziele sind es, abteilungsübergreifend eine gewisse Homogenität in die 
+Durchführung von Bachelor-Abschlussarbeiten zu bringen und den Studierenden 
+bewusst zu machen, was auf sie zukommt. Der Leitfaden ist als Orientierungshilfe 
+gedacht und in einigen Punkten nicht unbedingt verpflichtend. Entscheidend ist 
+letztlich immer noch die jeweils gültige Prüfungsordnung. 
+
+Der Leitfaden gilt für die Studiengänge B.Sc. Informatik und B.Sc. 
+Wirtschaftsinformatik. Er basiert auf den jeweiligen Prüfungsordnungen in der 
+Fassung von 2021. 
+
+2. Ziele der Bachelorarbeit 
+Die Bachelorarbeit soll zeigen, dass die oder der Studierende in der Lage ist, 
+innerhalb einer vorgegebenen Frist ein Problem aus seinem gewählten Studienfach 
+selbstständig nach wissenschaftlichen Methoden zu bearbeiten. 
+
+3. Das Bachelorarbeitsmodul 
+Die Bachelorarbeit gehört zum Bachelorarbeitsmodul. Neben der Bachelorarbeit 
+beinhaltet dieses Modul noch eine begleitende Lehrveranstaltung. Die Bachelorarbeit 
+umfasst einen Arbeitsaufwand von 12 und die begleitende Lehrveranstaltung einen 
+Arbeitsaufwand von 3 Kreditpunkten. Bei der begleitenden Lehrveranstaltung handelt 
+es sich im Department für Informatik in der Regel um das so genannte Oberseminar 
+der Abteilung, in der die Bachelorarbeit durchgeführt wird. Das Oberseminar ist nicht 
+zu verwechseln mit einem zusätzlich zu besuchenden Forschungsseminar. Dieses 
+kann aber im Umfeld der Bachelorarbeit durchgeführt werden (siehe Abschnitt 10). 
+
+4. Organisation der Ausschreibung 
+Im StudIP-Hauptmenü gibt es einen Menüpunkt „Abschlussarbeitsthemen“. Hier 
+können Lehrende Ausschreibungen für Bachlorarbeiten erstellen und Studierende 
+können diese einsehen. Es ist auch möglich, dass Studierende in Absprache mit 
+einer Gutachterin bzw. einem Gutachter selbst ein Thema für eine Bachelorarbeit 
+wählen. 
+
+5. Gutachter und Betreuer 
+Das Thema der Bachelorarbeit kann von jeder und jedem Prüfenden festgelegt 
+werden, die bzw. der dann Erstgutachterin bzw. Erstgutachter ist. Die Erstgutachterin 
+bzw. der Erstgutachter sowie eine zu benennende Zweitgutachterin bzw. ein 
+
+
+
+Zweitgutachter bewerten die Arbeit nach ihrem Abschluss. Mindestens eine 
+Gutachterin oder ein Gutachter muss Mitglied der Hochschullehrergruppe oder 
+Privatdozentin oder Privatdozent des zuständigen Studienfachs sein. Auf Antrag 
+beim Prüfungsausschuss können auch zwei hauptamtliche beschäftigte Lehrende 
+Gutachterinnen bzw. Gutachter sein. 
+
+Die Erstgutachterin bzw. der Erstgutachter ist gleichzeitig auch Betreuerin bzw. 
+Betreuer der Arbeit, wobei häufig die Betreuung an eine wissenschaftliche 
+Mitarbeiterin bzw. einen wissenschaftlichen Mitarbeiter der entsprechenden Abteilung 
+delegiert wird. Vorgesehen sind regelmäßige, im Allgemeinen wöchentliche Treffen 
+der Betreuerin bzw. des Betreuers mit der oder dem Studierenden, in denen sowohl 
+inhaltliche als auch organisatorische Aspekte besprochen und diskutiert werden.  
+
+6. Anmeldung 
+Bachelorarbeiten müssen beim Prüfungsamt angemeldet werden. Entsprechende 
+Formulare sind online beim Prüfungsamt erhältlich. Die Zulassung zur Bachelorarbeit 
+setzt voraus, dass mindestens 120 Kreditpunkte erworben wurden. Die Anmeldung 
+kann jederzeit erfolgen, ist also auch in den Semesterferien möglich.  
+
+7. Dauer und Arbeitsaufwand 
+Die Dauer für die Bachelorarbeit umfasst vier Monate. Die Zeit startet mit dem 
+Zeitpunkt der Anmeldung beim Prüfungsamt. Die Bachelorarbeit ist vor Ablauf der 
+Bearbeitungsfrist fristgemäß im zuständigen Prüfungsamt abzuliefern. Es ist 
+durchaus möglich, die Arbeit früher abzugeben. 
+
+Gemäß der vorgesehenen Umrechnungsformel „1 Kreditpunkt = 30 Stunden 
+Arbeitsaufwand“ beläuft sich der vorgesehene wöchentliche Arbeitsaufwand für das 
+Bachelorarbeitsmodul auf ca. 28 Stunden (15 KP * 30 Stunden / 16 Wochen). Wird 
+auch noch das Forschungsseminar in die Bachelorarbeit integriert (siehe Abschnitt 
+10), erhöht sich der wöchentliche Aufwand auf ca. 33 Stunden. 
+
+8. Inhalte und Ergebnis 
+Thematisch ist die Bachelorarbeit nicht festgelegt. In der Prüfungsordnung wird nur 
+vorgegeben, dass „ein Problem aus dem gewählten Studienfach selbstständig nach 
+wissenschaftlichen Methoden zu bearbeiten“ ist. Gegenüber einer Masterarbeit 
+besteht bei einer Bachelorarbeit aber mehr Spielraum, die wissenschaftliche 
+Methodik in den Hintergrund zu rücken und die Arbeit stärker an der Praxis 
+auszurichten. In jedem Fall muss die Bachelorarbeit aber auch wissenschaftlich 
+„sauber“ sein, eklatante Verstöße gegen wissenschaftliche Grundsätze sind nicht 
+akzeptabel.  
+
+Beim Studium einer Vertiefungsrichtung kann es sein, dass für die Bachelorarbeit ein 
+Thema aus dem jeweiligen Bereich gewählt werden sollte oder muss. Entsprechende 
+Informationen sind bei den jeweiligen Ansprechpartnern zu erfragen. 
+
+Das Ergebnis der Bachelorarbeit ist eine schriftliche Ausarbeitung mit einem Umfang 
+von ca. 40-60 Seiten sowie unter Umständen eine CD-ROM mit Programmen, 
+Source-Code und multimedialen Supplementen. Die Ausarbeitung sollte in Deutsch 
+verfasst werden. Auf Antrag und mit Einverständnis der Gutachter sind aber auch 
+andere Sprachen möglich. 
+
+
+
+Einige Abteilungen bieten Vorlagen (Latex, Word) für die Anfertigung der schriftlichen 
+Ausarbeitung an. 
+
+9. Begleitende Lehrveranstaltung / Oberseminar 
+Neben der Bachelorarbeit (12 Kreditpunkte) umfasst das Bachelorarbeitsmodul in der 
+Informatik eine begleitende Lehrveranstaltung im Umfang von 3 Kreditpunkten. In 
+dieser werden die fachlichen Grundlagen der Arbeit diskutiert und es wird über 
+Fortschritte und Ergebnisse der Arbeit berichtet. Als begleitende Lehrveranstaltung 
+wird in der Regel das Oberseminar der Abteilung genutzt, in dessen Umfeld die 
+Arbeit durchgeführt wird. Während der Bearbeitung der Bachelorarbeit sollte das 
+Oberseminar regelmäßig besucht und im Rahmen des Oberseminars ein ca. 30-
+minütiger Abschlussvortrag zu der Arbeit mit anschließender Diskussion gehalten 
+werden. 
+
+10. Forschungsseminar 
+In der fachspezifischen Anlage der Prüfungsordnung in der Version bis 2019 wird 
+dringend empfohlen, im Professionalisierungsbereich u.a. das Modul „PB 216 
+Forschungsseminar Informatik (3 KP)“ zu belegen. In Prüfungsordnungen ab 2020 
+handelt es sich um das Modul „Inf801 Forschungsseminar Informatik (3 KP)“. Es 
+bietet sich an, dieses Forschungsseminar in dem Gebiet zu machen, in dem auch die 
+Abschlussarbeit geplant ist. Dies kann die Einarbeitung in das Themengebiet 
+erleichtern, so dass die oder der Studierende in die Bachelorarbeit mit einem 
+besseren Kenntnisstand einsteigen und somit ein besseres Ergebnis liefern kann. 
+
+Wenn die oder der Studierende dies vorhat und der Gutachter der Bachelorarbeit es 
+gutheißt, kann gleich zu Beginn der Themenfestlegung abgesprochen werden, 
+welcher Teil des vorgesehenen Themas sich als Forschungsseminar eignet. Oft ist 
+es der Review verwandter Arbeiten („State of The Art“). Die Ausarbeitung hierzu 
+kann dann als Teil der Bachelorarbeit erscheinen. Hierauf sollte die oder der 
+Studierende in der Bachelorarbeit deutlich hinweisen (z.B. durch „Der Überblick über 
+verwandte Arbeiten in Kapitel 2 wurde im Rahmen meines Forschungsseminars 
+erarbeitet und zur besseren Lesbarkeit in diese Abschlussarbeit integriert.“). 
+Weiterhin muss die oder der Studierende hierüber einen Vortrag halten, der auch im 
+Oberseminar der entsprechenden Abteilung stattfinden kann. Dieser Vortrag ist dann 
+ein zusätzlicher Vortrag zu dem ohnehin obligatorischen Abschlussvortrag der 
+Bachelorarbeit im Oberseminar. 
+
+Das Forschungsseminar ist also nicht identisch mit dem Oberseminar (begleitende 
+Lehrveranstaltung zur Bachelorarbeit) und ist daher kein Teil des 
+Bachelorarbeitsmoduls. Es gibt hierfür eine separate Note. 
+
+Die Kopplung von Forschungsseminar und Bachelorarbeit wird nicht in allen 
+Abteilungen des Department für Informatik gleich gehandhabt. Es gibt zwei Ansätze: 
+
+• Integration des Forschungsseminars: Hierbei gibt es keine klare Trennung. Mit 
+Beginn des Forschungsseminars wird auch schon die Bachelorarbeit 
+angemeldet. Der wöchentliche Arbeitsaufwand erhöht sich dadurch von ca. 28 
+auf ca. 33 Stunden. 
+
+• Voranstellung des Forschungsseminars: Hierbei wird zunächst das 
+Forschungsseminar durchgeführt, also die Ausarbeitung als Grundlage der 
+
+
+
+Bachelorarbeit erstellt und der Vortrag gehalten. Erst danach erfolgt die 
+Anmeldung der Bachelorarbeit. 
+
+11. Wiederholung 
+Die Bachelorarbeit kann, wenn sie mit „nicht bestanden“ bewertet wurde oder als 
+„nicht bestanden“ gilt, maximal einmal wiederholt werden. Als „nicht-bestanden“ gilt 
+eine Bachelorarbeit insbesondere, wenn sie erst nach der gesetzten Frist beim 
+Prüfungsamt eintrifft. Einen Freiversuch gibt es bei der Bachelorarbeit nicht. 
+
+Das Thema der zweiten Bachelorarbeit soll in der Regel innerhalb von drei Monaten 
+nach Bewertung der ersten Arbeit ausgegeben werden. 
+
+12. Themenrückgabe 
+Das Thema einer Bachelorarbeit kann innerhalb des ersten Monats der 
+Bearbeitungszeit zurückgegeben werden. Eine Rückgabe des Themas bei der 
+Wiederholung der Bachelorarbeit ist nur zulässig, wenn von dieser Möglichkeit bei 
+der ersten Arbeit kein Gebrauch gemacht worden ist. 
+
+13. Ablauf 
+Im Folgenden wird der übliche Ablauf einer Bachelorarbeit skizziert. In Einzelfällen 
+kann davon natürlich abgewichen werden. 
+
+Erstes Treffen 
+Die oder der Studierende hat von einem Thema für eine Bachelorarbeit erfahren und 
+nimmt Kontakt zu der Erstgutachterin bzw. dem Erstgutachter auf. Es wird ein erstes 
+Treffen vereinbart, in dem die Durchführung der Arbeit besprochen und inhaltliche 
+Feinheiten abgeklärt werden. 
+
+Anfertigung einer Vereinbarung 
+Die oder der Studierende arbeitet sich in die Thematik ein und fertigt eine so 
+genannte Vereinbarung an. Diese Vereinbarung enthält u.a. folgende Punkte: 
+Beschreibung der Arbeit, Ziele der Arbeit, Organisatorisches, Voraussetzungen, 
+vorläufige Gliederung der Ausarbeitung, Meilensteinplan, Literatur, rechtliche 
+Aspekte. Einige Abteilungen bieten Vorlagen für eine solche Vereinbarung an. Die 
+Vereinbarung wird von allen Beteiligten (Gutachter, Betreuer, Studierende) 
+unterschrieben. Für die Dauer dieser Phase sind ca. 3-4 Wochen vorgesehen. 
+
+Durchführung des Forschungsseminars 
+Wird die in Abschnitt 10 erläuterte Variante der Voranstellung des 
+Forschungsseminars gewählt, wird das Forschungsseminar durchgeführt, also die 
+Ausarbeitung als Grundlage der Bachelorarbeit erstellt und der Vortrag gehalten. 
+
+Anmeldung der Arbeit 
+Die Arbeit wird beim Prüfungsamt angemeldet. Hierfür gibt es Formulare im Internet. 
+Nach Eingang der Anmeldung beim Prüfungsamt verschickt dieses Unterlagen an 
+alle Beteiligten, aus denen u.a. der Abgabetermin hervorgeht. 
+
+Auch für die begleitende Lehrveranstaltung (Oberseminar) und das 
+Forschungsseminar ist eine Prüfungsanmeldung erforderlich. Hierzu muss sich die 
+
+
+
+oder der Studierende im StudIP in der Oberseminar- und der Forschungsseminar-
+Veranstaltung der entsprechenden Abteilung anmelden. Hierüber ist dann eine 
+Anmeldung für die Prüfung zum Oberseminar (begleitende Lehrveranstaltung) bzw. 
+zum Forschungsseminar möglich, die erst nach Ende der Bachelorarbeit erfolgen 
+sollte. Bei der Anmeldung bitte auf den korrekten Lehrenden (Prof. der Abteilung) 
+achten. 
+
+Anfertigung der Arbeit 
+Während der nächsten vier Monate fertigt die oder der Studierende die Arbeit an. 
+Während dieser Phase sollte sie oder er sich wöchentlich mit der Betreuerin oder 
+dem Betreuer treffen. Außerdem sollte das Oberseminar der jeweiligen Abteilung 
+regelmäßig besucht werden. Ist das Forschungsseminar in die Bachelorarbeit 
+integriert (siehe Abschnitt 10) sollte die oder der Studierende nach ca. einem Monat 
+den entsprechenden Vortrag im Oberseminar halten. 
+
+Abgabe der Arbeit 
+Die schriftliche Ausarbeitung muss fristgerecht beim Prüfungsamt eingehen. Das 
+Prüfungsamt informiert hierüber die Gutachter und schickt ihnen die schriftliche 
+Ausarbeitung zu. Sollte abzusehen sein, dass die oder der Studierende das 
+Bachelorarbeitsmodul auf jeden Fall besteht, verschicken die Gutachter in einigen 
+Abteilungen unaufgefordert ein Schreiben an das Prüfungsamt, dass die oder der 
+Studierende das Bachelorarbeitsmodul mindestens mit der Note „ausreichend“ 
+bestanden hat.  
+
+Abschlussvortrag 
+Ca. 2 – 3 Wochen nach Abgabe der Arbeit sollte die oder der Studierende einen 20-
+30-minütigen Abschlussvortrag plus anschließende Diskussion im Oberseminar der 
+jeweiligen Abteilung halten. 
+
+14. Gutachten / Bewertung 
+Die Arbeit ist in der Regel innerhalb von sechs Wochen nach ihrer Abgabe durch 
+beide Gutachterinnen oder Gutachter zu bewerten. Das Gutachten wird an das 
+Prüfungsamt versendet und geht nicht der oder dem Studierenden zu. Auf Antrag 
+beim Prüfungsausschuss, der innerhalb von 12 Monaten nach Bekanntgabe der Note 
+gestellt werden muss, kann das Gutachten auf Wunsch von ihr oder ihm eingesehen 
+werden. 
+
+Die Bescheinigung der Teilnahme der oder des Studierenden an der begleitenden 
+Lehrveranstaltung zur Bachelorarbeit und die Benotung des Forschungsseminars ist 
+seit Herbst 2021 nur noch elektronisch per StudIP möglich. Dazu sollten die 
+Professorinnen und Professoren am Anfang jedes Semesters für ihre Oberseminar- 
+und Forschungsseminar-Veranstaltung im StudIP einen Prüfungstermin eintragen mit 
+dem Prüfungsdatum 31.03. im WiSe bzw. 30.09. im SoSe und einem 
+Anmeldezeitraum bis 30.03. im WiSe bzw. 29.09. im SoSe. Als Prüfungsform ist beim 
+Oberseminar „Sonstiges“ auszuwählen und „erfolgreiche Teilnahme“ manuell 
+einzutragen. Beim Forschungsseminar ist die Prüfungsform „Referat“ zu wählen. 
+Nach Abschluss der Bachelorarbeit und entsprechender Anmeldung der oder des 
+Studierenden zu den Prüfungen kann dann im Prüfungssystem des StudIP das 
+individuelle Prüfungsdatum und beim Forschungsseminar die Note eingetragen 
+werden. Beim Oberseminar ist „+“ für bestanden und „-“ für nicht bestanden 
+einzutragen. Anschließend bitte „speichern“ und nicht „abschließend“ anklicken. 
+
+
+
+15. Bewertungskriterien 
+Generelle Kriterien bzw. Richtlinien zur Bewertung von Bachelorarbeiten existieren 
+nicht. Zur Bewertung können jedoch die im Folgenden aufgelisteten Kriterien und 
+Hinweise Berücksichtigung finden. 
+
+Schwierigkeitsgrad 
+Bei der Beurteilung des Schwierigkeitsgrads ist davon auszugehen, ob die 
+Problemstellung mit der durchschnittlichen Ausgangsqualifikation der oder des 
+Studierenden gelöst werden kann. Die Beurteilung des Schwierigkeitsgrads einer 
+Arbeit kann evtl. erst nach Abschluss erfolgen, da eine zwischenzeitliche 
+Veränderung des Schwierigkeitsgrades vorgenommen werden kann. Sie umfasst die 
+Prüfung, ob die vorgelegte Fassung die genannten Merkmale auch tatsächlich 
+enthält. Einzelhinweise: 
+
+++ Zielsetzung und Ablauf der Arbeit sind nicht eindeutig vorgezeichnet, die 
+Abgrenzung der Aufgabe gehört selbst zur Aufgabenstellung. 
+
++ Neben theoretisch-konzeptionellen Arbeiten ist Softwareentwicklung 
+erforderlich, der entweder einen erheblichen Umfang ausmacht oder der Art 
+nach deutlich außerhalb der üblichen Programmierungspraxis liegt. 
+
++ Die durchschnittliche Ausgangsqualifikation der oder des Studierenden genügt 
+nicht, weil zur Bearbeitung Kenntnisse erforderlich sind, die nicht oder nicht in 
+der erforderlichen Tiefe in Standard-Lehrveranstaltungen gebracht werden. 
+
++ Es steht nur wenig Literatur oder andere Information zur Verfügung, das 
+wissenschaftliche Umfeld fehlt. 
+
+- Die Lösung erfordert weder tiefgehende theoretische Methoden oder 
+konzeptionelle Arbeiten noch erheblichen oder der Art nach außerhalb der 
+üblichen Programmierpraxis liegenden Programmieraufwand. 
+
+Originalität / Kreativität 
+Bei der Beurteilung der Originalität bzw. Kreativität ist nicht nur davon auszugehen, 
+inwieweit die Bearbeiterin bzw. der Bearbeiter der Anleitung und Führung durch die 
+Betreuerin bzw. den Betreuer bedarf. Es ist vielmehr selbstverständlich, dass die 
+Bearbeiterin bzw. der Bearbeiter Initiative entwickelt, d. h. aus eigenem Antrieb 
+Schwierigkeiten aufgreift und mit der Betreuerin bzw. dem Betreuer diskutiert. Die 
+Initiative wird über den gesamten Betreuungszeitraum betrachtet. Einzelhinweise: 
+
+++ (Bei theoretisch-konzeptionellen Teilen der Arbeit) Ein bisher „ungelöstes“ 
+Problem wurde gelöst oder ein grundsätzlich neuer Lösungsweg für ein bereits 
+gelöstes Problem angegeben. 
+
+++ Während der Arbeit sich ergebende oder sich andeutende neue Probleme 
+wurden erkannt und verfolgt, auch wenn sie nicht unmittelbar zur 
+Aufgabenstellung gehörten. 
+
+- Die Bearbeiterin bzw. der Bearbeiter geht sich ergebenden Schwierigkeiten aus 
+dem Weg. 
+
+- Die Initiativen und Lösungsvorschläge der Bearbeiterin bzw. des Bearbeiters 
+sind bezüglich ihrer Durchführbarkeit nicht durchdacht. 
+
+-- Die Bearbeiterin bzw. der Bearbeiter lässt es an eigener Initiative mangeln und 
+bewegt sich ausschließlich in den durch die Betreuerin bzw. den Betreuer 
+vorgezeichneten Bahnen. 
+
+
+
+Wissenschaftliche Arbeitstechnik 
+Bei der Beurteilung der wissenschaftlichen Arbeitstechnik ist zunächst die 
+Charakteristik der Arbeit deutlich zu machen, d. h. gegebenenfalls theoretisch-
+konzeptionelle Teile werden von den ingenieurmäßigen Leistungen getrennt. 
+Einzelhinweise: 
+
+++ Die Arbeit zeigt, dass die Bearbeiterin bzw. der Bearbeiter sowohl in der Lage 
+ist, einzelne Gesichtspunkte nach der ihnen im Rahmen des Ganzen 
+zukommenden Wichtigkeit einzuordnen und mit dem jeweils angemessenen 
+Aufwand zu bearbeiten, als auch durch sorgfältiges Abwägen verschiedener 
+Argumente diejenigen Aspekte auswählen kann, die eine genaue Bearbeitung 
+verdienen. 
+
+++ Die erzielten Ergebnisse werden interpretiert. Hierzu gehört, dass die Relevanz 
+theoretisch-konzeptioneller Ergebnisse an Hand praktischer Beispiele dargelegt 
+wird. Weiterhin sind die Ergebnisse und die verwendeten Methoden mit denen 
+anderer Arbeiten in Beziehung gesetzt und eigene Ergebnisse kritisch diskutiert 
+(Einschränkungen ihrer Gültigkeit oder Anwendbarkeit, Hinweis auf 
+Möglichkeiten von Verallgemeinerungen oder Erweiterungen). 
+
++ Die Arbeit enthält eine übersichtliche und vergleichende Würdigung wichtiger 
+bekannter Ergebnisse oder Techniken, sowie sie für die vorliegende Arbeit von 
+Bedeutung sind. Dabei soll es sich nicht um weit schweifende Wiederholungen 
+ganzer Abschnitte des Standardwissens handeln, sondern um eine kurze 
+Darstellung der charakteristischen Gesichtspunkte unter gleichzeitiger 
+Klarlegung etwaiger Unterschiede in der Zielsetzung. Eigene Ergebnisse sind 
+von bekannten abgegrenzt. 
+
++ Zur Lösung der Aufgabenstellung wurden benachbarte oder fremde Gebiete 
+herangezogen. 
+
++ Vorhandene Literatur wurde gut gesichtet und aufgearbeitet. 
+- Die Arbeit ist (stellenweise) nicht logisch aufgebaut; die eingeschlagenen 
+
+Lösungswege sind nicht hinreichend begründet. 
+- Die Arbeit enthält keine Zusammenfassung, in der sich die Leserin bzw. der 
+
+Leser schnell und zuverlässig über Zielsetzung und wichtigste Ergebnisse der 
+Arbeit informieren kann. (Dies kann auch am Anfang als Einleitung auftreten). 
+
+- Im Literaturverzeichnis fehlen wichtige Literaturverweise oder es enthält 
+reihenweise irrelevante Literaturverweise. 
+
+-- Die Arbeit zeigt, dass das durch die Fragestellung abgegrenzte Stoffgebiet nicht 
+vollständig durchdrungen wurde oder bei der Bearbeiterin bzw. dem Bearbeiter 
+Lücken in den vorausgesetzten Kenntnissen vorliegen. 
+
+Organisation und Ausführung 
+In die Bewertung der Arbeit soll nicht nur das Endergebnis sondern auch die 
+gesamte Art und Weise der Ausführung der Arbeit einfließen. Ist die bzw. der 
+Studierende in der Lage, ordentlich zu planen und die Pläne auch einzuhalten. Zeigt 
+sie bzw. er Engagement und Selbstständigkeit. Einzelhinweise: 
+
+++ Die bzw. der Studierende hat sehr selbstständig und zielgerichtet gearbeitet. 
+++ Die bzw. der Studierende hat sehr viel Eigeninitiative und Engagement 
+
+bewiesen. 
++ Die bzw. der Studierende hat einen Meilensteinplan ausgearbeitet und diesen 
+
+auch konsequent verfolgt und eingehalten. 
+
+
+
+- Die bzw. der Studierende kam häufig unpünktlich zu Besprechungen; mit der 
+Betreuerin bzw. dem Betreuer abgesprochene Tätigkeiten oder Aufgaben 
+wurden oft verschoben, vergessen oder nicht erledigt.  
+
+- Bestimmte Aufgaben wurden ständig vor sich hergeschoben; unbequeme 
+Arbeiten wurden verschoben oder überhaupt nicht angegangen. 
+
+- Festgelegte Meilensteine wurden mehrfach nicht eingehalten. 
+- Besprechungstermine mit der Betreuerin bzw. dem Betreuer wurden mehrfach 
+
+nicht eingehalten. 
+- Die bzw. der Studierende hat oft deutlich weniger Zeit als die anvisierten 28 
+
+bzw. 33 Stunden pro Woche investiert. 
+-- Die bzw. der Studierende benötigte oft Hilfestellung seitens der Betreuerin bzw. 
+
+des Betreuers. 
+
+Ingenieurmäßige Vorgehensweise 
+Wesentliches Kriterium bei der Beurteilung der Vorgehensweise ist die 
+Berücksichtigung moderner ingenieurmäßiger Methoden bei der Entwicklung von 
+Informatik-Systemen und der Qualität einer Software- oder Hardware-
+Implementierung. Bei eher theoretischen Themen ist die Anwendung von Techniken 
+der theoretischen Informatik bei der Beurteilung zu berücksichtigen. Von der 
+Korrektheit der Aussagen bzw. Programme ist auszugehen. Daneben fällt sehr stark 
+das Ausmaß der Selbstkontrolle ins Gewicht, das sich bei formalen oder 
+konzeptionellen Aussagen in der Argumentationsgründlichkeit, bei Software im 
+Nachweis der „Richtigkeit“ zeigt (sinnvolle Menge von Tests). Einzelhinweise: 
+
+++ Beachtung moderner Konzepte und Prinzipien der ingenieurmäßigen 
+Entwicklung von Informatik-Systemen (Strukturiertheit, Erweiterbarkeit, 
+Wiederverwendbarkeit, ...). 
+
+++ Es ist ein ingenieurmäßiges Vorgehen im gesamten Entwicklungszyklus 
+erkennbar. 
+
+++ Software wurde systematisch getestet und ist relativ leicht zu handhaben. 
++ verständliche, gut strukturierte Beweisführung (bei theoretischen Themen). 
+-- Software ist nicht dokumentiert. 
+-- Implementieren ohne vorherige Konzeption. 
+-- Das entwickelte System stürzt oft ab. 
+-- Das entwickelte System liefert fehlerhafte Ergebnisse. 
+
+Stil 
+Bei der Beurteilung des Stils ist von der sprachlichen Ausdrucksfähigkeit 
+auszugehen, die sich der Leserin bzw. dem Leser in der vorgelegten Arbeit bietet. 
+Diese zeigt sich insbesondere in der Klarheit und Kürze des Ausdrucks, auch 
+schwierige Probleme müssen verständlich dargelegt, triviale Zusammenhänge nicht 
+hinter einem formalen Apparat verborgen sein. Die Gedankenführung muss eindeutig 
+sein. Die Länge der Arbeit ist kein Maß für deren Güte. Einzelhinweise: 
+
++ Die Länge der einzelnen Kapitel bzw. Abschnitte orientiert sich an der 
+Wichtigkeit des Inhalts. 
+
++ Komplizierte Zusammenhänge werden durch geschickt ausgewählte Beispiele 
+interpretiert. 
+
+- Unnötige Wiederholungen, Weitschweifigkeit, Gedankensprünge. 
+- Holprige Sprache, „Hackerjargon“, ungenaue Formulierungen. 
+
+
+
+- Unpräzise Definitionen, unübliche Notationen. 
+
+Form 
+Bei der Beurteilung der äußeren Form fällt neben der Sorgfalt der Ausführung, 
+insbesondere der Abbildungen, die Klarheit der Gliederung und des 
+Inhaltsverzeichnisses ins Gewicht. Einzelhinweise: 
+
++ Hilfreiche Glossare, Indexe, Verzeichnisse, .... 
++ Übersichtliches Layout, nützliche Abbildungen, gute Strukturierung. 
+- Fehlende Anhänge und Verzeichnisse, schlechtes Layout, wenig hilfreiche 
+
+Abbildungen. 
+- Mangelhafte Rechtschreibung, schlechter Ausdruck. 
+
+Vortrag 
+Zur Beurteilung des abschließenden Vortrags, in dem die Ergebnisse der Arbeit 
+präsentiert werden, werden die Struktur des Vortrags, die Foliengestaltung sowie die 
+Vortragstechnik hinzugezogen. Einzelhinweise: 
+
++ Die wesentlichen Ergebnisse der Arbeit werden deutlich herausgestellt. 
++ Komplexe Zusammenhänge werden mit multimedialen Elementen 
+
+(Animationen, Videos, Demonstrationen) verdeutlicht. 
+- Der rote Faden fehlt. 
+- Unübersichtliche Foliengestaltung. 
+- Der vorgegebene Zeitrahmen wird deutlich überschritten. 
+- Auf Nachfragen können keine Antworten gegeben werden. 
+-- Generelle Richtlinien von Präsentationstechniken („Softskills“) werden nicht 
+
+eingehalten.

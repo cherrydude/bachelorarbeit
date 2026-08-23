@@ -1,0 +1,313 @@
+﻿Fachbereich VI - Informatik und Medien
+Technische Informatik Bachelor
+Prof. Dr.-Ing. Sven-Hendrik Voß
+
+Wichtige Regeln und Tipps zum Verfassen einer
+Abschlussarbeit
+
+Stand: 10.10.2025
+
+Eine Abschlussarbeit (Bachelor- oder Masterarbeit) stellt einen wesentlichen Bestandteil der
+Prüfungsleistung im Studium dar und muss wissenschaftlichen Ansprüchen genügen. Insbeson-
+dere müssen darin Objektivität, Genauigkeit und Nachvollziehbarkeit gegeben sein. Im Folgen-
+den sind die wichtigsten inhaltlichen, formalen und organisatorischen Anforderungen zusam-
+mengefasst. Diese Übersicht soll zur Vermeidung der häufigsten Probleme und Fehler beitragen
+und eine Orientierung geben.
+
+Ziel und Inhalt
+
+Für jede wissenschaftliche Arbeit sollte zunächst ein grober Plan über das Thema und das Ziel
+der Arbeit angefertigt werden. Der Inhalt bzw. die Themenstellung muss klar abgegrenzt sein,
+was sich letztlich auch im zu definierenden Titel der Arbeit niederschlagen sollte. Hierzu ist in
+der Regel Rücksprache mit dem betreuenden Hochschulprofessor zu führen.
+
+Der formale Aufbau einer wissenschaftlichen Arbeit gliedert sich folgendermaßen:
+
+Titelseite Formvorgaben der Hochschule beachten
+Eidesstattliche Erklärung Vorgaben der Hochschule beachten
+Danksagung optional, nicht zu lang und nicht zu übertrieben
+Zusammenfassung (deutsch) max. 1/2 bis 1 Seite; Ziel der Arbeit eindeutig beschreiben
+Abstract (englisch) engl. Übersetzung der Zusammenfassung
+Inhaltsverzeichnis selbsterklärend
+Abbildungsverzeichnis selbsterklärend
+Tabellenverzeichnis selbsterklärend
+
+Berliner Hochschule für Technik 1 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+Einleitung Vorstellung der Aufgabenstellung, Einführung ins Themenge-
+biet, Motivation (warum und mit welchem Ziel wurde die Arbeit
+durchgeführt?), Stand der Technik (was gibt es schon auf dem
+Gebiet?), Identifikation von Forschungslücken, Darstellung des
+eigenen Beitrags, Vorstellung und Erläuterung der Gliederung
+
+Theoretischer Hinter- Erläuterung der theoretischen Konzepte, Vorstellung verwende-
+grund ter Technologien und Standards, Aufbereitung mathematischer
+
+bzw. technischer Grundlagen
+Konzeptionierung und Anforderungsanalyse, Vorstellung des Entwurfs bzw. der Sys-
+Entwurf temarchitektur, Skizzierung des gewählten Lösungsansatzes,
+
+Lösungsentwicklung (wichtig: Argumentation und Begründung
+für Design-Entscheidungen)
+
+Implementierung Beschreibung der technischen Realisierung, Vorstellung der Ei-
+genleistung, Darstellung der Implementierung (anhand von
+kurzen Quelltextauszügen, Tabellen, Schaubildern o.ä.), Be-
+schreibung wichtiger Algorithmen bzw. Komponenten, Aufzei-
+gen von besonderen Herausforderungen und deren Lösung
+
+Ergebnisse Beschreibung von Testaufbau und Methodik, Darstellung und
+Bewertung der Ergebnisse, evtl. auch Nennung von Misserfolgen
+und deren Gründen, Auflistung von Messergebnissen und Analy-
+sen (z.B. Performance-Messungen, Bewertung von Entwurfsqua-
+lität nach nachvollziehbaren Metriken), Diskussion der Ergebnis-
+se, Vergleich mit bestehenden Lösungen
+
+Zusammenfassung kurze aber präzise Zusammenfassung der Arbeit, kritische Refle-
+xion, Fazit und Ausblick auf sinnvolle weitere Arbeiten in dem
+Themengebiet
+
+Literaturverzeichnis Auflistung der verwendeten Quellen (Verwendung von qua-
+litativ hochwertigen Quellen wie Büchern, Zeitschriftenarti-
+keln und Konferenzbeiträgen wünschenswert; Onlinequellen sind
+zulässig (inkl. Datum des letzten Aufrufs), unwissenschaftliche
+Wikipedia-Artikel vermeiden
+
+Anhang längere Quelltexte, Tabellen, Messdaten, etc.
+
+Es ist zu beachten, dass die Gliederung zum einen die Inhaltsübersicht des bearbeiteten Themas
+darstellt, zum anderen aber auch die vom Verfasser gesetzten Schwerpunkte reflektiert. Insge-
+samt sollten die Hauptkapitel und deren Unterkapitel ein ausgewogenes Verhältnis aufweisen
+und einen roten Faden erkennen lassen.
+
+Umfang und Form
+
+Es existieren keine harten Vorgaben für den Umfang (Seitenanzahl) von Abschlussarbeiten, da
+dieser wesentlich vom jeweiligen Thema und Inhalt der Arbeit abhängt. Folgende Seitenzahlen
+haben sich empirisch als gute Richtwerte bewährt:
+
+Bachelorarbeit: 45 bis 65 Seiten
+Masterarbeit: 65 bis 85 Seiten
+
+Berliner Hochschule für Technik 2 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+Es gilt zu beachten, dass der Umfang allein kein Kriterium für die Qualität der Abschlussarbeit
+ist. Die schriftliche Ausarbeitung sollte so lang wie nötig und dabei so kurz wie möglich verfasst
+werden. Sachverhalte müssen dabei vollständig und verständlich abgebildet werden.
+
+Alle Kapitel, sowie die eidesstattliche Erklärung, die Danksagung, die Abbildungs-, Tabellen-
+und Literaturverzeichnisse und der Anhang sollten jeweils auf neuen Seiten beginnen. Unter jede
+Überschrift gehört ein Text. So sollte zum Beispiel nicht direkt unter einer Kapitelüberschrift
+die Überschrift des nächsten Unterkapitels bzw. Abschnitts folgen.
+
+Alle Abbildungen und Tabellen sind zu nummerieren und mit einer aussagekräftigen Beschrif-
+tung (vorzugsweise darunter) zu versehen. Alle Abbildungen und Tabellen, sowie jeglicher Quell-
+code muss im Text erwähnt und referenziert werden. Darstellungen, auf die im Text nicht ver-
+wiesen wird, sind nichts wert, da es nicht die Aufgabe des Lesers ist, sich selbst die etwaigen
+Zusammenhänge oder Referenzen zu erklären.
+
+Selbstgenerierte Diagramme und Blockschaltbilder, sowie alle übrigen Abbildungen sind - sofern
+möglich - als Vektorgraphiken einzubinden. Vektorgraphiken können im Gegensatz zu Raster-
+graphiken ohne Qualitätsverlust stufenlos und verlustfrei skaliert werden. Die Schriftgröße in
+Abbildungen ist in Anlehnung an die übrige Textgröße, in jedem Fall jedoch ausreichend groß
+und damit gut lesbar, zu wählen. Für das Erscheinungsbild der Arbeit empfiehlt es sich, eine
+Schrift mit Serifen zu verwenden (z.B. Times). Diese verbessern die Leserlichkeit längerer ge-
+druckter Texte. Für die Präsentationsfolien eignet sich dagegen eine serifenlose Schrift besser
+(z.B. Helvetica).
+
+Es wird empfohlen die Arbeit mit dem Textsatzsystem LATEX zu verfassen. LATEX liefert ein
+qualitativ sehr hochwertiges Schriftbild, zeichnet sich durch eine gute Integration von For-
+meldarstellungen, Einbindung von Grafiken, Tabellen und Quellenverweisen aus (daher beson-
+ders in den Naturwissenschaften beliebt) und kann Dokumente beliebiger Größe verarbeiten.
+Die Trennung von Text und Layout lässt eine Konzentration auf das Schreiben des Inhalts
+zu, während durch Angabe von Struktur- und Satzparametern das Layout bestimmt wird. Die
+Umgebung ist kostenlos und steht auf allen wichtigen Plattformen zur Verfügung. Ein Template
+für Abschlussarbeiten stelle ich gern zur Verfügung.
+
+Arbeitsweise
+
+Das Verfassen wissenschaftlicher Texte baut auf klaren, allgemeinen wissenschaftlichen Metho-
+den auf. Die Abhandlung des Themas muss sich folgerichtig aus der Problemstellung ergeben.
+Die Probemstellung muss klar definiert sein, auch muss eindeutig erörtert werden warum, wofür
+und für wen dies von Bedeutung ist.
+
+Die Auseinandersetzung mit dem Thema und die Erarbeitung der Lösung bedürfen der Be-
+weisführung und einer genauen Analyse und Auswertung des Materials. Es muss genau be-
+schrieben werden welche Wege eingeschlagen werden können bzw. eingeschlagen wurden, um
+das Problem zu lösen. Die Darstellung und Argumentation sollte logisch und plausibel sein und
+letztlich mit einer eigenen Stellungnahme unterfüttert werden, in der dargelegt wird inwieweit
+das Problem gelöst und der Stand der Technik erweitert wurde.
+
+Berliner Hochschule für Technik 3 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+Aussagen und Bewertungen, die nicht belegbar oder in Zahlen festzumachen sind, sollten ver-
+mieden werden. Formulierungen wie gute Leistung“, geringe Latenz“ oder hoher Daten-
+
+” ” ”
+durchsatz“ sind zu unspezifisch und haben keine Aussagekraft. Es sollte alles immer so konkret
+wie möglich beziffert werden. Alle Bewertungen müssen auf Basis von Quellen oder eigenen
+Messergebnissen geschehen.
+
+Alle Ideen, Thesen, Aussagen und Gedanken, die nicht die eigenen sind, müssen als Zitat
+oder wiedergegebene Quelle kenntlich gemacht werden. Diese Passagen müssen entsprechend
+markiert werden und die Quelle als Literaturquelle bzw. Referenz genau angegeben werden.
+Dies gilt auch für alle übernommenen Bilder oder Tabellen1. Quellenangaben können dort direkt
+in der Tabellen- bzw. Bildunterschrift platziert werden. Fehlende Quellenangaben werden als
+Plagiat bzw. Täuschungsversuch mit allen prüfungs- und zivilrechtlichen Folgen gewertet.
+
+Bei der Auswahl der zu verwertenden Literatur geht Qualität vor Quantität. Es sollten in erster
+Linie Fachbücher, wissenschatliche Paper und sonstige Artikel (möglichst aktuellen Datums)
+verwendet werden. Auch Standardwerke können - falls angebracht - zitiert werden, ebenso
+fremdsprachige Literatur (z.B. englische Fachartikel). Informationen aus dem Internet sollten
+stets sehr kritisch hinterfragt werden. Wikipedia-Zitate sind aufgrund der fehlenden wissen-
+schaftlichen Verlässlichkeit nicht zulässig.
+
+Es gilt zu bedenken, dass in der Regel der Entwurf und die anschließende Implementierung
+einer Lösung der Kern der Abschlussarbeit in der Technischen Informatik ist. Entsprechend
+sollten Auswahl und Umfang der Literatur ausfallen.
+
+Ausdruck und Sprache
+
+Dass es sich bei der Abschlussarbeit um einen wissenschaftlichen Text handelt, muss sich nicht
+zuletzt auch im verwendeten Ausdruck und in der Sprache widerspiegeln. Das bedeutet, dass die
+Arbeit in einer wissenschaftlichen Sprache abgefasst sein sollte und einen spezifischen, neutralen
+Stil aufweisen und fachspezifische Terminologie beinhalten muss. Es sollte beachtet werden,
+dass die Zielgruppe nicht die breite Öffentlichkeit, sondern Fachleute sind, so dass ein gewisser
+Anspruch durchaus angebracht ist.
+
+Der Text sollte flüssig lesbar sein und auf aufwendige Schachtelsätze verzichten. Tagebuch-
+Stil sollte ebenso vermieden werden wie unnötige Erläuterungen zu Selbstverständlichkeiten
+oder übermäßige Lobpreisung der eigenen Leistung. Die Distanz zum Leser wird am ehesten
+durch unpersönliche Formulierungen gewahrt. (z.B. Die Messung ergab...“ anstatt Ich habe
+
+” ”
+gemessen...“). Bei erstmaliger Verwendung von Abkürzungen müssen diese in ihrer Bedeutung
+erläutert werden, anschließend können sie einfach weiterverwendet werden. Steigt die Anzahl
+verwendeter Abkürzungen über ca. 10, empfiehlt sich ein Glossar am Ende des Dokuments.
+
+Die Verwendung von Anglizismen sollte auf ein Minimum beschränkt werden. Insbesondere
+sollte auf Anglizismen für jene Begriffe verzichtet werden, für die etablierte deutsche Begriffe
+existieren. Im Folgenden sind einige Beispiele gegeben:
+
+1Die Kennzeichnungspflicht gilt sowohl für die schriftliche Arbeit selbst, als auch für die in den Präsentations-
+folien für die mündliche Abschlussprüfung gezeigten Inhalte und Darstellungen.
+
+Berliner Hochschule für Technik 4 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+Anglizismus deutscher Begriff
+
+Application oder Applikation Anwendung
+Device Komponente
+Disk oder Harddisk Festplatte
+Exception Ausnahme oder Ausnahmesituation
+File Datei
+Library Bibliothek
+Memory Speicher
+Open Source Quelloffene Software oder freie Software
+Overhead Leistungsverlust
+Performance Geschwindigkeit
+Queue Warteschlange
+Request Anfrage
+Screen Bildschirm
+Shell Kommandozeile
+Source Code Quelltext
+State Machine Zustandsautomat
+
+Von einer Einreichung der Abschlussarbeit ohne zuvor erfolgtes Korrekturlesen ist dringend
+abzuraten. Die Arbeit sollte im Hinblick auf die Rechtschreibung, Zeichensetzung, Grammatik
+und den Ausdruck den Anforderungen des Duden genügen.
+
+Zeitplanung
+
+Zeitmanagement ist ein wesentlicher Bestandteil des wissenschaftlichen Arbeitens. Daher soll-
+te schon zu Beginn der Abschlussarbeit für alle umfassenden Arbeiten ein konkreter Zeitplan
+aufgestellt werden. Während der Bearbeitung empfehlen sich regelmäßige Treffen mit dem be-
+treuenden Hochschulprofessor zur Überprüng bzw. Sicherstellung der Einhaltung des Zeitplans.
+
+Zur Zeitplanung gehören insbesondere die folgenden Punkte:
+
+• Einarbeitung und Überblick über das Gesamtthema (mind. 2 Wochen)
+• Literaturrecherche (mind. 2 Wochen)
+• Organisation der zu verwendenden Quellen (evtl. begleitend zur Recherche)
+• Entwurf und Implementierung (in der Regel mind. 5 Wochen)
+• Test und Inbetriebnahme (1 Woche)
+• Debugging und Fehlersuche (beliebig lang, also Vorsicht!)
+• Anfertigung der schriftlichen Ausarbeitung (begleitend, mind. aber 3 Wochen)
+• Korrekturlesen und Nacharbeitung (1 Woche)
+• Einreichung zum Stichtag
+
+Je genauer und detaillierter der Plan vorab erstellt wird, umso leichter fällt die Abarbeitung
+der Punkte und die Zeiteinteilung. Es gilt jedoch zu bedenken, dass Probleme bei der Imple-
+mentierung und eine stockende Fehlersuche jeden Zeitplan obsolet machen können. Das Gleiche
+gilt für unvorhergesehene Ereignisse im persönlichen Umfeld. Daher sollte möglichst frühzeitig
+
+Berliner Hochschule für Technik 5 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+mit der Arbeit begonnen werden und ein Sicherheitszeitfenster von mind. 1 Woche eingerechnet
+werden.
+
+Mündliche Abschlussprüfung
+
+Nach Abgabe der Abschlussarbeit werden die Ergebnisse im Rahmen eines maximal 15-minüti-
+gen Vortrags (in der Regel mit Präsentationsfolien) zu einem zu vereinbarenden Termin präsen-
+tiert und zur Diskussion gestellt. Anschließend folgt die mündliche Rücksprache zwischen
+Prüfling, Gutachter und Betreuer (zwischen 25 - 45 Minuten, je nach Studienabschluss).
+
+Aufgrund der limitierten Zeitvorgabe für den Vortrag sollte dieser als Schwerpunkt die Eigen-
+leistung in der Aufgabenbearbeitung in den Vordergrund stellen. Im Vortrag die komplette
+Arbeit zusammenzufassen ist ebenso unsinnig wie unmöglich.
+
+Eine sinnvolle Gliederung kann beispielsweise folgendermaßen aussehen:
+
+• Deckfolie mit dem Titel der Arbeit, Name, Matrikelnummer, etc. (1 Folie)
+• Vortragsgliederung (1 Folie)
+• Aufgabenstellung bzw. Problembeschreibung (1 Folie)
+• Untersuchte Lösungsvarianten / Herausforderungen (1-2 Folien)
+• Bewertung der gewählten Lösungsvariante (1-2 Folien)
+• Vorstellung der Implementierung (2-4 Folien)
+• Ergebnis / Fazit (1-2 Folien)
+
+Für einen 15-minütigen Vortrag sollte die Anzahl der Folien insgesamt nicht größer als +/-12
+sein. Viel Text, die Darstellung ganzer Sätze und große Mengen an Quellcode oder UML-
+Diagramme sind zu vermeiden. Sie können in der Kürze der Präsentationszeit nicht erfasst
+werden und lenken zu sehr vom Vortrag ab. Die Folien sollen den Vortrag unterstützen und
+nicht ersetzen. Dazu eignen sich vor allem viele Graphiken, Blockschaltbilder und einfache
+Diagramme. Auch hier ist der Einsatz von Vektorgrafiken dem der Rastergraphiken vorzuziehen,
+damit die Abbildungen nicht pixelig aussehen. Die Schrift ist ausreichend groß zu wählen,
+Text auf max. 5 Anstriche zu reduzieren. Die Präsentationsfolien können mit LATEX Beamer,
+OpenOffice oder Microsoft PowerPoint erstellt werden.
+
+Ein frühzeitiges Erscheinen des Prüflings (ca. 10-15 Minuten vor dem Termin) ist anzuraten,
+um etwaige Verzögerungen durch Probleme mit der Technik (Projektor, Leinwand, Beamer,
+etc.) zu vermeiden und pünktlich mit der Rücksprache beginnen zu können. Im Anschluss an
+die Präsentation werden dem Prüfling im Rahmen der mündlichen Rücksprache Fragen zum
+Inhalt der Arbeit gestellt. Darüber hinaus können auch Fragen zu behandelten Randgebieten
+oder passenden Themen aus dem Studium gestellt werden. Direkt nach der mündlichen Prüfung
+beraten sich Gutachter und Betreuer über die Note und teilen dem Prüfling diese mit.
+
+Sollte eine praktische Realisierung Inhalt oder Teil der Aufgabenstellung sein, ist eine Live-
+Demonstration des funktionierenden Aufbaus ratsam. Diese Demonstration sollte möglichst
+kurzfristig nach Abgabe der Abschlussarbeit und in jedem Fall vor dem Termin der eigentlichen
+Abschlussprüfung stattfinden.
+
+Berliner Hochschule für Technik 6 Prof. Dr.-Ing. Sven-Hendrik Voß
+
+
+
+Offene Fragen
+
+Sollten Fragen zur Form, zur Strukturierung oder zu anderen Details der Abschlussarbeit offen
+geblieben sein, sollte Rat und Unterstützung beim betreuenden Hochschulprofessor gesucht
+werden.
+
+Berliner Hochschule für Technik 7 Prof. Dr.-Ing. Sven-Hendrik Voß
