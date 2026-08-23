@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{banks2010discrete}
 Jerry Banks, John S.~Carson II, Barry~L. Nelson, and David~M. Nicol.
@@ -14,12 +14,26 @@ John Brooke.
 \newblock Originalquelle zur System Usability Scale; oft zitiert fuer
   Usability-Evaluierungen.
 
+\bibitem{gsap}
+{GreenSock}.
+\newblock Gsap documentation.
+\newblock Library fuer zeitbasierte Animationen; verwendet in diesem Projekt
+  fuer Timeline-Animationen.
+
 \bibitem{hundhausen2002meta}
 Christopher~D. Hundhausen, Sarah~A. Douglas, and John~T. Stasko.
 \newblock A meta-study of algorithm visualization effectiveness.
 \newblock {\em Journal of Visual Languages \& Computing}, 13(3):259--290, 2002.
 \newblock Definitive meta-study: Wichtig fuer Argumente zur Lehrwirksamkeit von
   Visualisierungen.
+
+\bibitem{meing2025mlfq}
+L.~W.~C. Meing and D.~R. Tandingan.
+\newblock Exploring multilevel feedback queue combinations and regression-based
+  time quanta in scheduling algorithms.
+\newblock {\em Journal of Information Systems Engineering and Management
+  (JISEM)}, 2025.
+\newblock Studie zu MLFQ-Kombinationen und dynamischer Zeitscheibenwahl.
 
 \bibitem{naps2002engagement}
 T.~L. Naps and Others.
@@ -55,6 +69,21 @@ Andrew~S. Tanenbaum and Herbert Bos.
 \newblock Pearson, 4 edition, 2014.
 \newblock Konzeptuelle Tiefe zu Praeemption, Kontextwechseln und
   Scheduler-Design.
+
+\bibitem{vite}
+{Vite}.
+\newblock Vite - build tool.
+\newblock Dev/Build Tool im Projekt.
+
+\bibitem{vitest}
+{Vitest Team}.
+\newblock Vitest - unit testing for vite.
+\newblock Test-Runner im Projekt.
+
+\bibitem{vue3}
+{Vue.js Core Team}.
+\newblock Vue 3 documentation (composition api).
+\newblock Framework des Projekts (SFCs, Composition API).
 
 \bibitem{wcag2018}
 {W3C}.

@@ -1,5 +1,6 @@
 {
-    "chat.tools.terminal.autoApprove": {
-        "make": true
-    }
+  "chat.tools.terminal.autoApprove": {
+    "make": true
+  },
+  "latex-workshop.formatting.latex": "latexindent"
 }

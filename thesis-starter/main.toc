@@ -1,8 +1,8 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{Vorwort}{i}{chapter*.1}%
-\contentsline {chapter}{List of Figures}{iii}{chapter*.3}%
-\contentsline {chapter}{List of Tables}{iv}{chapter*.4}%
-\contentsline {chapter}{Abkuerzungsverzeichnis}{v}{chapter*.5}%
+\contentsline {chapter}{List of Figures}{iv}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{v}{chapter*.4}%
+\contentsline {chapter}{Abkuerzungsverzeichnis}{vi}{chapter*.5}%
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Grundlagen}{2}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Didaktische Grundlagen interaktiver Visualisierungen}{3}{chapter.3}%
@@ -27,7 +27,22 @@
 \contentsline {section}{\numberline {5.7}Konzeption der Visualisierung}{11}{section.5.7}%
 \contentsline {section}{\numberline {5.8}Konzeption der Benutzungsoberflaeche}{12}{section.5.8}%
 \contentsline {chapter}{\numberline {6}Implementierung}{13}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Evaluation}{14}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{15}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Anhang}{17}{chapter.9}%
+\contentsline {section}{\numberline {6.1}Technische Grundlagen und verwendete Technologien}{13}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Architektur der Anwendung}{13}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Modellierung der Scheduling-Verfahren}{14}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Umsetzung der Simulation}{14}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Umsetzung der Visualisierung}{15}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{15}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{15}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Evaluation}{17}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{17}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Evaluationsdesign}{17}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Durchfuehrung der Evaluation}{18}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{18}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{19}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{20}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{20}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Beantwortung der Forschungsfrage}{20}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Ausblick auf Weiterentwicklungen}{21}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Anhang}{24}{chapter.9}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
