@@ -2,7 +2,11 @@
   "chat.tools.terminal.autoApprove": {
     "make": true,
     "pdflatex": true,
-    "true": true
+    "npm test": true
   },
-  "latex-workshop.formatting.latex": "latexindent"
+  "latex-workshop.formatting.latex": "latexindent",
+  "editor.formatOnSave": true,
+  "[latex]": {
+    "editor.formatOnSave": false
+  }
 }

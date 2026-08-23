@@ -22,11 +22,12 @@
 \contentsline {subsection}{\numberline {2.5.2}Durchlaufzeit}{5}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Reaktionszeit}{5}{subsection.2.5.3}%
 \contentsline {chapter}{\numberline {3}Didaktische Grundlagen interaktiver Visualisierungen}{6}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Lernen mit digitalen Medien}{6}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Multimediales und visuelles Lernen}{6}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Didaktischer Nutzen von Simulationen}{6}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Visualisierung komplexer Abläufe im Lernkontext}{7}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Anforderungen an die didaktische Aufbereitung von Scheduling-Prozessen}{7}{section.3.5}%
+\contentsline {section}{\numberline {3.1}Stand der Forschung zu Scheduling-Visualisierungen}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Lernen mit digitalen Medien}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Multimediales und visuelles Lernen}{7}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Didaktischer Nutzen von Simulationen}{7}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Visualisierung komplexer Abläufe im Lernkontext}{8}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Anforderungen an die didaktische Aufbereitung von Scheduling-Prozessen}{8}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Grundlagen der Mensch-Computer-Interaktion}{9}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ziele der Mensch-Computer-Interaktion}{9}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Usability und Nutzerfreundlichkeit}{9}{section.4.2}%
@@ -42,23 +43,24 @@
 \contentsline {section}{\numberline {5.6}Konzeption der Simulationslogik}{14}{section.5.6}%
 \contentsline {section}{\numberline {5.7}Konzeption der Visualisierung}{14}{section.5.7}%
 \contentsline {section}{\numberline {5.8}Konzeption der Benutzungsoberfläche}{15}{section.5.8}%
-\contentsline {chapter}{\numberline {6}Implementierung}{16}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Technische Grundlagen und verwendete Technologien}{16}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Architektur der Anwendung}{16}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Modellierung der Scheduling-Verfahren}{17}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Umsetzung der Simulation}{17}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Umsetzung der Visualisierung}{18}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{18}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{19}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Evaluation}{20}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{20}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Evaluationsdesign}{20}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Durchführung der Evaluation}{21}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{21}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{22}{section.7.5}%
-\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{23}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{23}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Beantwortung der Forschungsfrage}{23}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Ausblick auf Weiterentwicklungen}{24}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Anhang}{27}{chapter.9}%
+\contentsline {chapter}{\numberline {6}Implementierung}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Technische Grundlagen und verwendete Technologien}{17}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Architektur der Anwendung}{17}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Modellierung der Scheduling-Verfahren}{18}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Umsetzung der Simulation}{18}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Umsetzung der Visualisierung}{19}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{19}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{20}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Evaluation}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{21}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Evaluationsdesign}{21}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Evaluationsszenarien im Detail}{22}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Durchführung der Evaluation}{22}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{23}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{25}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{27}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{27}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Beantwortung der Forschungsfrage}{27}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Ausblick auf Weiterentwicklungen}{28}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Anhang}{31}{chapter.9}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

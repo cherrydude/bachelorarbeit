@@ -1,5 +1,15 @@
 \chapter{Didaktische Grundlagen interaktiver Visualisierungen}
 
+\section{Stand der Forschung zu Scheduling-Visualisierungen}
+
+Algorithmusvisualisierungen werden seit mehreren Jahrzehnten eingesetzt, um abstrakte Abläufe durch sichtbare Zustandsänderungen und zeitliche Beziehungen verständlicher zu machen. Das AlgoViz-Portal dokumentiert eine Vielzahl unterschiedlicher Visualisierungsansätze und verdeutlicht damit die Breite des Forschungs- und Anwendungsfeldes \cite{algoviz}. Für die vorliegende Arbeit sind insbesondere Werkzeuge relevant, die Scheduling-Entscheidungen in Form von Zeitachsen, Prozesszuständen oder Gantt-Diagrammen darstellen.
+
+Neben allgemeinen Portalen existieren einzelne offene Implementierungen von Scheduling-Simulatoren. Beispiele für MLFQ-orientierte Ansätze zeigen, dass Prozesswarteschlangen, Zeitscheiben und Ausführungsabschnitte grundsätzlich interaktiv oder zumindest programmatisch visualisiert werden können \cite{sibtain2023mlfq,mlfqvisualizer_repo}. Diese Ansätze sind jedoch häufig auf ein einzelnes Verfahren, eine einfache Demonstration oder eine konkrete Implementierung beschränkt. Eine einheitliche Gegenüberstellung mehrerer Verfahren unter identischen Eingaben und mit gemeinsam berechneten Kennzahlen steht dabei nicht im Mittelpunkt.
+
+Die Forschung zur Algorithmusvisualisierung liefert ergänzend Hinweise zur Gestaltung solcher Lernwerkzeuge. Meta-Studien zeigen, dass Visualisierungen allein nicht automatisch zu besseren Lernergebnissen führen. Entscheidend ist, wie aktiv Lernende einbezogen werden und ob sie Abläufe untersuchen, verändern und mit ihren eigenen Erwartungen vergleichen können \cite{hundhausen2002meta,naps2002engagement}. Gestaltungsprinzipien der Softwarevisualisierung betonen deshalb die Verbindung von sichtbarem Ablauf, Interaktion und verständlicher Rückmeldung \cite{stasko1998software}.
+
+Aus diesem Forschungsstand ergibt sich die Positionierung der vorliegenden Arbeit: Der Scheduling-Visualizer verbindet mehrere präemptive Verfahren mit einer gemeinsamen, deterministischen Simulationsgrundlage, einer schrittweise steuerbaren Zeitachsenvisualisierung und vergleichbaren Metriken. Der Schwerpunkt liegt damit nicht auf der Entwicklung eines weiteren isolierten Simulators, sondern auf der didaktisch begründeten Verbindung von fachlicher Simulation, interaktiver Exploration und vergleichender Analyse.
+
 \section{Lernen mit digitalen Medien}
 
 Digitale Lernmedien ermöglichen es, fachliche Inhalte nicht nur rezeptiv aufzunehmen, sondern aktiv zu erkunden. Gerade in der Informatiklehre ist dieser Unterschied relevant, weil viele Konzepte erst durch das Zusammenspiel mehrerer Faktoren verständlich werden. Dazu gehören im Kontext von Scheduling insbesondere Zeitverlauf, Zustandswechsel und konkurrierende Prozesse. Die Wirksamkeit interaktiver Visualisierungsansätze wurde in der Forschung wiederholt untersucht und als lernförderlich eingeordnet \cite{hundhausen2002meta,naps2002engagement,stasko1998software}.

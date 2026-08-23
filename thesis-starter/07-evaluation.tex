@@ -10,7 +10,7 @@ Im Zentrum steht daher nicht die Suche nach einem universell besten Verfahren, s
 
 \section{Evaluationsdesign}
 
-Das Evaluationsdesign ist quantitiv und szenariobasiert. Alle Algorithmen werden auf denselben Prozessmengen ausgeführt, um Ergebnisunterschiede ausschliesslich auf das Scheduling-Verhalten zurückzuführen. Für jeden Lauf werden identische Eingangsdaten und identische Simulationsparameter verwendet.
+Das Evaluationsdesign ist quantitativ und szenariobasiert. Alle Algorithmen werden auf denselben Prozessmengen ausgeführt, um Ergebnisunterschiede ausschliesslich auf das Scheduling-Verhalten zurückzuführen. Für jeden Lauf werden identische Eingangsdaten und identische Simulationsparameter verwendet.
 
 Die Untersuchung orientiert sich an drei Szenarioklassen:
 
@@ -21,6 +21,30 @@ Die Untersuchung orientiert sich an drei Szenarioklassen:
 \end{itemize}
 
 Jede Szenarioklasse wird mehrfach mit variierenden Parametern durchgeführt, um die Robustheit der Beobachtungen zu erhöhen. Die Wiederholbarkeit wird durch deterministische Laufbedingungen abgesichert, wie sie für diskrete Ereignissimulationen empfohlen werden \cite{banks2010discrete}.
+
+\subsection{Evaluationsszenarien im Detail}
+
+Für die Vergleichbarkeit werden zunächst drei feste Basisszenarien definiert. Die Prozessmengen enthalten jeweils die Ankunftszeit, die benötigte CPU-Zeit und die Priorität. Alle Szenarien werden mit denselben Prozesseingaben auf die vier implementierten Verfahren angewendet. Für Round Robin wird zunächst ein Zeitquantum von zwei Zeiteinheiten verwendet; für MLFQ werden drei Warteschlangenebenen mit einem Basisquantum von zwei Zeiteinheiten angesetzt.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption{Basisszenarien für die Evaluation}
+    \label{tab:evaluationsszenarien}
+    \begin{tabular}{p{0.16\textwidth}p{0.25\textwidth}p{0.16\textwidth}p{0.27\textwidth}}
+        \toprule
+        Szenario             & Prozessdaten \newline (Ankunft, Burst, Priorität) & Parameter                 & Erwarteter Schwerpunkt                               \\
+        \midrule
+        Interaktiv           & P1 (0, 2, 1), P2 (1, 1, 2), P3 (2, 2, 1)          & Quantum 2                 & Reaktionszeit und häufige Zustandswechsel            \\
+        Batch                & P1 (0, 8, 2), P2 (0, 5, 1), P3 (1, 3, 3)          & Quantum 2                 & Durchlaufzeit und Wartezeit bei längeren Bursts      \\
+        Prioritäts\-sensitiv & P1 (0, 6, 3), P2 (1, 2, 1), P3 (2, 3, 2)          & Präemptive Prioritätswahl & Präemption höher priorisierter Prozesse und Fairness \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Die Szenarien sind bewusst klein gehalten, damit einzelne Scheduling-Entscheidungen in der Visualisierung und im Ereignislog nachvollziehbar bleiben. Das interaktive Lastprofil legt den Schwerpunkt auf frühe erste CPU-Zuteilungen. Das Batch-Szenario macht den Einfluss längerer CPU-Bursts auf Warte- und Durchlaufzeit sichtbar. Im prioritätssensitiven Szenario wird geprüft, ob ein neu eintreffender Prozess mit höherer Priorität eine Präemption auslöst und wie sich diese Entscheidung auf nachrangige Prozesse auswirkt.
+
+Für die Parametersensitivität werden beim Round-Robin-Verfahren die im aktuellen Simulationskern unterstützten Zeitquanten eins und zwei verglichen. Beim MLFQ-Verfahren werden zusätzlich zwei und drei Warteschlangenebenen betrachtet. Ein Quantum von vier wird in dieser Untersuchung nicht verwendet, da die aktuelle Implementierung das Zeitquantum auf maximal zwei Zeiteinheiten begrenzt. Die jeweiligen Messwerte werden pro Kombination aus Szenario, Verfahren und Parameterkonfiguration protokolliert.
 
 \section{Durchführung der Evaluation}
 
@@ -33,9 +57,38 @@ Die Durchführung erfolgt in vier Schritten:
     \item Vergleich und Interpretation der Ergebnisse innerhalb und zwischen den Szenarioklassen.
 \end{enumerate}
 
-Für Round Robin und MLFQ werden zusatzlich Parametersensitivitäten betrachtet (insbesondere Zeitquantum und Queue-Settings), da diese die Balance zwischen Reaktionszeit und Kontextwechselhäufigkeit wesentlich beeinflussen \cite{meing2025mlfq,pinedo2016scheduling}.
+Für Round Robin und MLFQ werden zusätzlich Parametersensitivitäten betrachtet (insbesondere Zeitquantum und Queue-Settings), da diese die Balance zwischen Reaktionszeit und Kontextwechselhäufigkeit wesentlich beeinflussen \cite{meing2025mlfq,pinedo2016scheduling}.
 
 Die Durchführung wird protokolliert, indem pro Lauf Konfiguration und Resultate dokumentiert werden. Dadurch lassen sich die Beobachtungen auch zu einem späteren Zeitpunkt exakt nachvollziehen.
+
+Die Ergebnisse der Parametersensitivität sind in Tabelle~\ref{tab:parametermessung} zusammengefasst. Zur besseren Vergleichbarkeit werden die durchschnittliche Wartezeit, die durchschnittliche Reaktionszeit und die Anzahl der Präemptionen ausgewiesen.
+
+\begin{table}[htbp]
+    \centering
+    \scriptsize
+    \caption{Messwerte der Parametersensitivität}
+    \label{tab:parametermessung}
+    \begin{tabular}{llrrr}
+        \toprule
+        Szenario & Konfiguration & Wartezeit & Reaktionszeit & Präemptionen \\
+        \midrule
+        Interaktiv & RR, Quantum 1 & 0,67 & 0,33 & 1 \\
+        Interaktiv & RR, Quantum 2 & 0,67 & 0,67 & 0 \\
+        Interaktiv & MLFQ, 2 Ebenen & 0,67 & 0,67 & 0 \\
+        Interaktiv & MLFQ, 3 Ebenen & 0,67 & 0,67 & 0 \\
+        Batch & RR, Quantum 1 & 7,00 & 0,67 & 11 \\
+        Batch & RR, Quantum 2 & 8,00 & 1,67 & 6 \\
+        Batch & MLFQ, 2 Ebenen & 8,67 & 1,67 & 4 \\
+        Batch & MLFQ, 3 Ebenen & 8,67 & 1,67 & 4 \\
+        Prioritätssensitiv & RR, Quantum 1 & 3,67 & 0,33 & 7 \\
+        Prioritätssensitiv & RR, Quantum 2 & 3,33 & 1,00 & 3 \\
+        Prioritätssensitiv & MLFQ, 2 Ebenen & 3,67 & 1,00 & 2 \\
+        Prioritätssensitiv & MLFQ, 3 Ebenen & 3,67 & 1,00 & 2 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Bei Round Robin führt das kleinere Quantum in allen drei Szenarien zu mehr Präemptionen. Im Batch-Szenario sinkt dadurch die durchschnittliche Reaktionszeit von 1,67 auf 0,67 Zeiteinheiten, während die durchschnittliche Wartezeit von 8,00 auf 7,00 Zeiteinheiten sinkt. Im prioritätssensitiven Szenario steigt die Präemptionszahl von 3 auf 7, die durchschnittliche Reaktionszeit sinkt jedoch von 1,00 auf 0,33 Zeiteinheiten. Die beiden getesteten MLFQ-Konfigurationen liefern in den verwendeten Basisszenarien identische Werte; daraus lässt sich für diese kleinen Prozessmengen kein Einfluss der Ebenenzahl ableiten.
 
 \section{Auswertung der Ergebnisse}
 
@@ -52,7 +105,13 @@ Die Auswertung basiert auf einem einheitlichen Metrikset:
 
 Die Metriken werden je Szenarioklasse tabellarisch und vergleichend dargestellt. Die Interpretation erfolgt entlang zweier Leitfragen:
 
-\input{images/scheduling-visualizer-metrics-placeholder}
+Die praktische Vergleichsfunktion ist in Abbildung~\ref{fig:vergleichsuebersicht} dargestellt. Zwei Läufe desselben Szenarios können dort anhand ihrer Zeitachsen und der ausgewiesenen Präemptionen gegenübergestellt werden.
+
+\input{images/screenshot-vergleichsmatrix}
+
+Die Gewichtung der Kennzahlen für unterschiedliche Anwendungskontexte erfolgt über die Bewertungsmatrix in Abbildung~\ref{fig:bewertungsmatrix}. Für die vorliegende Evaluation ist sie insbesondere relevant, weil nicht jede Lastsituation dieselbe Zielgröße priorisiert.
+
+\input{images/screenshot-bewertungsmatrix}
 
 \begin{itemize}
     \item Welche Verfahren sind in welcher Lastsituation erwartungsgemäss vorteilhaft?
@@ -60,6 +119,35 @@ Die Metriken werden je Szenarioklasse tabellarisch und vergleichend dargestellt.
 \end{itemize}
 
 Damit wird eine differenzierte Bewertung möglich, die sich an etablierten Bewertungskriterien für Scheduling orientiert \cite{silberschatz2018operating,pinedo2016scheduling}.
+
+Die erste Ausführung der Basisszenarien liefert die in Tabelle~\ref{tab:erste-messergebnisse} zusammengefassten Kennzahlen. Angegeben sind die durchschnittliche Wartezeit, die durchschnittliche Durchlaufzeit, die durchschnittliche Reaktionszeit und die Anzahl der Präemptionen. Die Werte wurden mit dem aktuellen Implementierungsstand und den in Tabelle~\ref{tab:evaluationsszenarien} beschriebenen Parametern erzeugt. Die vollständigen Messwerte einschließlich Kontextwechseln und Fairness-Index sind ergänzend in der Datei \texttt{evaluation-results.csv} abgelegt.
+
+\begin{table}[htbp]
+    \centering
+    \scriptsize
+    \caption{Erste Messwerte der Basisszenarien}
+    \label{tab:erste-messergebnisse}
+    \begin{tabular}{llrrrr}
+        \toprule
+        Szenario & Verfahren & Wartezeit & Durchlaufzeit & Reaktionszeit & Präemptionen \\
+        \midrule
+        Interaktiv & Round Robin & 0,67 & 2,33 & 0,67 & 0 \\
+        Interaktiv & LCFS & 1,00 & 2,67 & 0,00 & 1 \\
+        Interaktiv & Strict Priority & 1,00 & 2,67 & 1,00 & 0 \\
+        Interaktiv & MLFQ & 0,67 & 2,33 & 0,67 & 0 \\
+        Batch & Round Robin & 8,00 & 13,33 & 1,67 & 6 \\
+        Batch & LCFS & 5,00 & 10,33 & 1,33 & 1 \\
+        Batch & Strict Priority & 5,67 & 11,00 & 5,67 & 0 \\
+        Batch & MLFQ & 8,67 & 14,00 & 1,67 & 4 \\
+        Prioritätssensitiv & Round Robin & 3,33 & 7,00 & 1,00 & 3 \\
+        Prioritätssensitiv & LCFS & 4,00 & 7,67 & 0,00 & 2 \\
+        Prioritätssensitiv & Strict Priority & 2,00 & 5,67 & 0,33 & 1 \\
+        Prioritätssensitiv & MLFQ & 3,67 & 7,33 & 1,00 & 2 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Die Messwerte zeigen zunächst, dass alle Verfahren in den drei Basisszenarien eine vollständige Ausführung aller drei Prozesse erreichen. Im interaktiven Szenario liegen Round Robin und MLFQ bei den gewählten Parametern gleichauf. Im Batch-Szenario erreicht LCFS die niedrigste durchschnittliche Warte- und Durchlaufzeit, während Round Robin die höchste Präemptionszahl aufweist. Im prioritätssensitiven Szenario erzielt Strict Priority die niedrigsten Durchschnittswerte, wobei die Interpretation auf die konkrete Prioritätsverteilung und den verwendeten Tie-Break zurückzuführen ist. Diese Beobachtungen sind zunächst deskriptiv und werden durch weitere Parameterläufe abgesichert.
 
 \section{Diskussion der Ergebnisse}
 
