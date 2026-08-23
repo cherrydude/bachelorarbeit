@@ -39,7 +39,7 @@ Konkret erzeugt der Kern mehrere Ergebnisformen:
 \begin{itemize}
   \item \textbf{Ereignislog:} chronologische Ereignisse wie Dispatch, Start, Präemption und Abschluss.
   \item \textbf{Segmente:} Zeitabschnitte für die Gantt-Darstellung.
-  \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Playback und Zeitsprünge.
+  \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Wiedergabe und Zeitsprünge.
   \item \textbf{Metriken:} aggregierte Kenngrössen pro Simulationslauf.
 \end{itemize}
 
@@ -47,7 +47,7 @@ Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter E
 
 \section{Umsetzung der Visualisierung}
 
-Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses. Die Anwendung stellt die Simulation in zwei Hauptfenstern dar: der Fokusansicht und der Vergleichsübersicht.
+Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses. Die Anwendung stellt die Simulation in zwei Hauptansichten dar: der Fokusansicht und der Vergleichsübersicht.
 
 Die Oberfläche reagiert abhängig vom aktuellen Anwendungszustand. Beim initialen Aufruf stehen noch keine Simulationsdaten zur Verfügung, weshalb die Fokusansicht und die Kennzahlen mit einem erklärenden Leerzustand dargestellt werden (Abbildung~\ref{fig:ausgangslage}). Nach dem Laden eines Szenarios werden die Prozessdaten bereits in der Zeitachse sichtbar, während die Ausführungs- und Kennzahlenbereiche bis zur Anwendung eines Algorithmus deaktiviert bleiben (Abbildung~\ref{fig:szenario-geladen}). Erst nach diesem Schritt wird die eigentliche Simulation erzeugt und kann abgespielt werden.
 
@@ -67,13 +67,15 @@ Die Gantt-Zeitachse bildet den zeitlichen Ablauf des ausgewählten Laufs ab. Die
 
 \input{images/screenshot-gantt-detail}
 
-Die Fokusansicht verfügt über einen Play-Modus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Prozess sowie die wartenden Prozesse mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
+Die Fokusansicht verfügt über einen Wiedergabemodus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Prozess sowie die wartenden Prozesse mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
 
 \input{images/screenshot-stack-detail}
 
-Die Kennzahlen orientieren sich ebenfalls am aktuellen Simulationslauf und werden aus dessen Berechnungsergebnis abgeleitet. Neben Warte-, Durchlauf- und Reaktionszeit werden maximale Wartezeit, Starvation-Fälle, Präemptionen, Kontextwechsel und der Fairness-Index ausgewiesen (Abbildung~\ref{fig:kennzahlen-detail}). Während des Play-Modus ändern sich die laufbezogenen Zustandsinformationen synchron zur Wiedergabe; die abschließenden Kennzahlen fassen den vollständig berechneten Lauf zusammen.
+Die Kennzahlen orientieren sich ebenfalls am aktuellen Simulationslauf und werden aus dessen Berechnungsergebnis abgeleitet. Neben Warte-, Durchlauf- und Reaktionszeit werden maximale Wartezeit, Starvation-Fälle, Präemptionen, Kontextwechsel und der Fairness-Index ausgewiesen (Abbildung~\ref{fig:kennzahlen-detail}). Während des Wiedergabemodus ändern sich die laufbezogenen Zustandsinformationen synchron zur Wiedergabe; die abschließenden Kennzahlen fassen den vollständig berechneten Lauf zusammen.
 
 \input{images/screenshot-kennzahlen-detail}
+
+\FloatBarrier
 
 \subsection{Vergleichsübersicht}
 
@@ -83,11 +85,17 @@ Die Vergleichsübersicht dient der kompakten Gegenüberstellung aller bisher ers
 
 Jeder Run wird als Mini-Gantt dargestellt und eindeutig mit seinem verwendeten Algorithmus und seinen relevanten Parametern gekennzeichnet. Die Runs werden nebeneinander angeordnet, damit Unterschiede in Ausführungsreihenfolge, Durchlauf und Unterbrechungen schnell erfasst werden können (Abbildung~\ref{fig:vergleichsuebersicht}).
 
-Im Gegensatz zur Fokusansicht besitzt die Vergleichsübersicht keinen Play-Modus. Sie zeigt die berechneten Verläufe statisch und konzentriert sich auf den direkten Vergleich mehrerer Runs. Präemptionen werden durch einen orangefarbenen Strich am Ende des betroffenen Ausführungssegments markiert. Dadurch sind Unterbrechungen auch in der verkleinerten Mini-Gantt-Darstellung sichtbar, ohne dass die einzelnen Runs schrittweise abgespielt werden müssen.
+Im Gegensatz zur Fokusansicht besitzt die Vergleichsübersicht keinen Wiedergabemodus. Sie zeigt die berechneten Verläufe statisch und konzentriert sich auf den direkten Vergleich mehrerer Runs. Präemptionen werden durch einen orangefarbenen Strich am Ende des betroffenen Ausführungssegments markiert. Dadurch sind Unterbrechungen auch in der verkleinerten Mini-Gantt-Darstellung sichtbar, ohne dass die einzelnen Runs schrittweise abgespielt werden müssen.
 
 Die Vergleichsübersicht wird durch die Bewertungsmatrix ergänzt. Diese ordnet die vorhandenen Runs anhand ausgewählter Kennzahlen und eines Anwendungskontexts ein. Die Matrix ist damit nicht selbst Teil der Simulationsberechnung, sondern eine zusätzliche Vergleichsschicht für die strukturierte Interpretation der bereits berechneten Ergebnisse.
 
 \input{images/screenshot-vergleichsmatrix}
+
+Die Bewertungsmatrix wählt abhängig vom Anwendungskontext unterschiedliche Gewichtungen für die vorhandenen Kennzahlen. Im dargestellten Beispiel wird ein Batch-/HPC-Kontext ausgewählt. Die Tabelle ordnet die Runs anschließend anhand von Durchlaufzeit, Durchsatz, Kontextwechseln, Präemptionen und Starvation und kennzeichnet den jeweils besser bewerteten Lauf.
+
+\input{images/screenshot-bewertungsmatrix}
+
+\FloatBarrier
 
 Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
 
@@ -95,7 +103,7 @@ Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animation
 
 Die Interaktionsmechanismen orientieren sich am Lernworkflow: Szenario definieren, Algorithmus auswählen, Ablauf steuern, Ergebnis interpretieren. Daraus ergeben sich konkrete Steuerfunktionen für Start, Pause, Schrittbetrieb, Geschwindigkeitsanpassung und Zeitsprung.
 
-Die Playback-Logik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszuführen.
+Die Wiedergabelogik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszuführen.
 
 Ergänzend wurde auf robuste Bedienbarkeit geachtet: klare Statusrückmeldungen, nachvollziehbares Fokusverhalten und semantisch benannte UI-Elemente. Damit werden die in Kapitel 4 formulierten HCI-Anforderungen in konkrete Implementierungsmechanismen übersetzt \cite{wcag2018,brooke1996sus}.
 
@@ -105,4 +113,14 @@ Eine zentrale Herausforderung bestand in der Synchronisation von Simulationsgena
 
 Ein zweiter Schwerpunkt war die Sicherung von Reproduzierbarkeit. Dazu wurden deterministische Ausführungspfade und testbare Schnittstellen priorisiert. Automatisierte Tests prüfen sowohl Kernlogik als auch zentrale Integrationsfälle, wodurch Regressionen früh sichtbar werden \cite{vitest}.
 
-Schliesslich ergab sich ein Trade-off zwischen Detailtiefe und Ressourcenverbrauch: Dichte Snapshot-Folgen verbessern Analyse und Playback, erhöhen jedoch Speicherbedarf. Diese Spannung wurde durch parametrisierbare Snapshot-Intervalle adressiert, sodass zwischen Genauigkeit und Laufzeitverhalten situationsgerecht balanciert werden kann.
+Schliesslich ergab sich ein Trade-off zwischen Detailtiefe und Ressourcenverbrauch: Dichte Snapshot-Folgen verbessern Analyse und Wiedergabe, erhöhen jedoch Speicherbedarf. Diese Spannung wurde durch parametrisierbare Snapshot-Intervalle adressiert, sodass zwischen Genauigkeit und Laufzeitverhalten situationsgerecht balanciert werden kann.
+
+\section{Teststrategie und Qualitätssicherung}
+
+Die Qualitätssicherung konzentriert sich auf den Simulationskern und die Anwendungslogik. Die Tests werden mit Vitest ausgeführt und prüfen sowohl isolierte Simulationseigenschaften als auch zentrale Integrationspfade der Szenarioverwaltung \cite{vitest}. Ein Schwerpunkt liegt auf der Deterministik: Wird ein identisches Szenario zweimal ausgeführt, müssen Gesamtdauer, Prozessabschluss, Ereignisfolge und Ausführungssegmente übereinstimmen.
+
+Darüber hinaus werden die fachlich relevanten Verhaltensweisen der Verfahren mit kleinen, gezielt konstruierten Prozessmengen geprüft. Dazu gehören der Quantum-Ablauf und die Präemption bei Round Robin, die Präemption bei einer neuen Ankunft im präemptiven LCFS-Verfahren sowie die Herabstufung eines Prozesses nach Ablauf seines Quantums in der MLFQ. Ergänzend prüft die Eingabevalidierung, ob ungültige oder unvollständige Szenariodaten normalisiert werden und ob die erzeugten Zeitsegmente gültige Grenzen besitzen.
+
+Die Tests der Anwendungslogik ergänzen diese Kernprüfungen um die Verwaltung von Szenarien und Runs. Dabei wird unter anderem kontrolliert, ob aus einem Szenario und einem ausgewählten Run ein vollständiges Simulationsszenario erzeugt wird, ob Prozessdaten dabei kopiert werden und ob Änderungen an Szenario, Parametern oder aktivem Run zu einer veränderten Darstellung führen.
+
+Zum Zeitpunkt der Erstellung dieser Arbeit umfasst die automatisierte Testsuite elf Testdateien mit insgesamt 34 erfolgreichen Tests. Die Tests sichern die technische Konsistenz der Implementierung ab, ersetzen jedoch keine fachliche Prüfung aller denkbaren Prozesskombinationen und keine empirische Untersuchung der Nutzung oder Lernwirkung. Die in Kapitel 7 verwendeten Evaluationsszenarien dienen daher zusätzlich als nachvollziehbare Prüf- und Vergleichsfälle.

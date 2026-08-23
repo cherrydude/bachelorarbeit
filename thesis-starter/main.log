@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  23 AUG 2026 15:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  23 AUG 2026 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -295,6 +295,9 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen160
 \Gin@req@width=\dimen161
+)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
 )
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -837,7 +840,13 @@ chapter 3.
 
 
 
-] [7]
+]
+Underfull \hbox (badness 1122) in paragraph at lines 23--24
+\T1/lmr/m/n/10.95 Laufzeitver-hal-ten und entspricht etablierten Darstel-lungs-
+for-men der Soft-ware-vi-su-al-
+ []
+
+[7]
 Underfull \hbox (badness 2253) in paragraph at lines 42--43
 []\T1/lmr/m/n/10.95 Damit wird aus einer isolierten The-o-rieerk-lärung ein nac
 hvol-lziehbarer Entschei-
@@ -870,7 +879,7 @@ chapter 5.
 
 
 ] [13] [14] (./images/screenshot-szenario-generator.tex
-<images/screenshot-szenario-generator.png, id=323, 1229.59375pt x 1289.81876pt>
+<images/screenshot-szenario-generator.png, id=331, 1229.59375pt x 1289.81876pt>
 
 File: images/screenshot-szenario-generator.png Graphic file (type png)
 <use images/screenshot-szenario-generator.png>
@@ -894,7 +903,7 @@ n Prinzip-ien diskreter
  []
 
 [18] (./images/screenshot-ausgangslage.tex
-<images/screenshot-ausgangslage.png, id=358, 2818.53pt x 1469.49pt>
+<images/screenshot-ausgangslage.png, id=366, 2818.53pt x 1469.49pt>
 File: images/screenshot-ausgangslage.png Graphic file (type png)
 <use images/screenshot-ausgangslage.png>
 Package pdftex.def Info: images/screenshot-ausgangslage.png  used on input line
@@ -902,7 +911,7 @@ Package pdftex.def Info: images/screenshot-ausgangslage.png  used on input line
 (pdftex.def)             Requested size: 426.79135pt x 222.49928pt.
 )
 (./images/screenshot-szenario-geladen.tex
-<images/screenshot-szenario-geladen.png, id=359, 2818.53pt x 1468.48625pt>
+<images/screenshot-szenario-geladen.png, id=367, 2818.53pt x 1468.48625pt>
 File: images/screenshot-szenario-geladen.png Graphic file (type png)
 <use images/screenshot-szenario-geladen.png>
 Package pdftex.def Info: images/screenshot-szenario-geladen.png  used on input 
@@ -910,7 +919,7 @@ line 3.
 (pdftex.def)             Requested size: 426.79135pt x 222.3473pt.
 )
 (./images/screenshot-fokusansicht.tex
-<images/screenshot-fokusansicht.png, id=361, 2818.53pt x 1468.48625pt>
+<images/screenshot-fokusansicht.png, id=369, 2818.53pt x 1468.48625pt>
 File: images/screenshot-fokusansicht.png Graphic file (type png)
 <use images/screenshot-fokusansicht.png>
 Package pdftex.def Info: images/screenshot-fokusansicht.png  used on input line
@@ -918,7 +927,7 @@ Package pdftex.def Info: images/screenshot-fokusansicht.png  used on input line
 (pdftex.def)             Requested size: 426.79135pt x 222.3473pt.
  [19 <./images/screenshot-ausgangslage.png>]) (./images/screenshot-gantt-detail
 .tex
-<images/screenshot-gantt-detail.png, id=369, 1920.17375pt x 843.15pt>
+<images/screenshot-gantt-detail.png, id=377, 1920.17375pt x 843.15pt>
 File: images/screenshot-gantt-detail.png Graphic file (type png)
 <use images/screenshot-gantt-detail.png>
 Package pdftex.def Info: images/screenshot-gantt-detail.png  used on input line
@@ -927,23 +936,24 @@ Package pdftex.def Info: images/screenshot-gantt-detail.png  used on input line
 ) [20 <./images/screenshot-szenario-geladen.png> <./images/screenshot-fokusansi
 cht.png>]
 (./images/screenshot-stack-detail.tex
-<images/screenshot-stack-detail.png, id=377, 833.1125pt x 1371.1225pt>
+<images/screenshot-stack-detail.png, id=385, 829.0975pt x 517.935pt>
 File: images/screenshot-stack-detail.png Graphic file (type png)
 <use images/screenshot-stack-detail.png>
 Package pdftex.def Info: images/screenshot-stack-detail.png  used on input line
  3.
-(pdftex.def)             Requested size: 247.53976pt x 407.38574pt.
+(pdftex.def)             Requested size: 247.53976pt x 154.6309pt.
 )
 (./images/screenshot-kennzahlen-detail.tex
-<images/screenshot-kennzahlen-detail.png, id=379, 1907.125pt x 525.965pt>
+<images/screenshot-kennzahlen-detail.png, id=387, 1907.125pt x 525.965pt>
 File: images/screenshot-kennzahlen-detail.png Graphic file (type png)
 <use images/screenshot-kennzahlen-detail.png>
 Package pdftex.def Info: images/screenshot-kennzahlen-detail.png  used on input
  line 3.
 (pdftex.def)             Requested size: 426.79135pt x 117.70299pt.
-)
+) [21 <./images/screenshot-gantt-detail.png> <./images/screenshot-stack-detail.
+png>]
 (./images/screenshot-vergleichsuebersicht-gesamt.tex
-<images/screenshot-vergleichsuebersicht-gesamt.png, id=381, 2795.44376pt x 1217
+<images/screenshot-vergleichsuebersicht-gesamt.png, id=395, 2795.44376pt x 1217
 .54875pt>
 File: images/screenshot-vergleichsuebersicht-gesamt.png Graphic file (type png)
 
@@ -951,68 +961,20 @@ File: images/screenshot-vergleichsuebersicht-gesamt.png Graphic file (type png)
 Package pdftex.def Info: images/screenshot-vergleichsuebersicht-gesamt.png  use
 d on input line 3.
 (pdftex.def)             Requested size: 426.79135pt x 185.87563pt.
-) [21 <./images/screenshot-gantt-detail.png>] [22 <./images/screenshot-stack-de
-tail.png> <./images/screenshot-kennzahlen-detail.png>] (./images/screenshot-ver
-gleichsmatrix.tex
-<images/screenshot-vergleichsuebersicht-mini-gantts.png, id=395, 2767.33875pt x
- 696.6025pt>
+) [22 <./images/screenshot-kennzahlen-detail.png> <./images/screenshot-vergleic
+hsuebersicht-gesamt.png>]
+(./images/screenshot-vergleichsmatrix.tex
+<images/screenshot-vergleichsuebersicht-mini-gantts.png, id=405, 2754.29pt x 67
+0.505pt>
 File: images/screenshot-vergleichsuebersicht-mini-gantts.png Graphic file (type
  png)
 <use images/screenshot-vergleichsuebersicht-mini-gantts.png>
 Package pdftex.def Info: images/screenshot-vergleichsuebersicht-mini-gantts.png
   used on input line 3.
-(pdftex.def)             Requested size: 426.79135pt x 107.43018pt.
-) [23 <./images/screenshot-vergleichsuebersicht-gesamt.png> <./images/screensho
-t-vergleichsuebersicht-mini-gantts.png>]
-Underfull \hbox (badness 1048) in paragraph at lines 100--101
-[]\T1/lmr/m/n/10.95 Ergänzend wurde auf ro-buste Be-di-en-barkeit geachtet: kla
-re Sta-tus-rück-mel-dun-gen,
- []
-
-) [24]
-\openout2 = `07-evaluation.aux'.
-
- (./07-evaluation.tex
-chapter 7.
-[25
-
-
-
-
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 34.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 34.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 34.
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-[]\T1/lmr/m/n/10 Durchlaufzeit und
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-\T1/lmr/m/n/10 Wartezeit bei län-geren
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
-[]\T1/lmr/m/n/10 Prioritäts-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
-[]\T1/lmr/m/n/10 Präemptive
- []
-
-
-Underfull \hbox (badness 1552) in paragraph at lines 40--41
-[]\T1/lmr/m/n/10 Präemption höher pri-or-
- []
-
-[26] [27] (./images/screenshot-bewertungsmatrix.tex
-<images/screenshot-bewertungsmatrix-detail.png, id=438, 2791.42876pt x 527.9725
+(pdftex.def)             Requested size: 426.79135pt x 103.8965pt.
+)
+(./images/screenshot-bewertungsmatrix.tex
+<images/screenshot-bewertungsmatrix-detail.png, id=406, 2791.42876pt x 527.9725
 pt>
 File: images/screenshot-bewertungsmatrix-detail.png Graphic file (type png)
 <use images/screenshot-bewertungsmatrix-detail.png>
@@ -1020,17 +982,83 @@ Package pdftex.def Info: images/screenshot-bewertungsmatrix-detail.png  used on
  input line 3.
 (pdftex.def)             Requested size: 426.79135pt x 80.72313pt.
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-19.
+Underfull \hbox (badness 1048) in paragraph at lines 108--109
+[]\T1/lmr/m/n/10.95 Ergänzend wurde auf ro-buste Be-di-en-barkeit geachtet: kla
+re Sta-tus-rück-mel-dun-gen,
+ []
 
-(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
+[23 <./images/screenshot-vergleichsuebersicht-mini-gantts.png> <./images/screen
+shot-bewertungsmatrix-detail.png>]
+Underfull \hbox (badness 1052) in paragraph at lines 120--121
+\T1/lmr/m/n/10.95 Die Qual-itätssicherung konzen-tri-ert sich auf den Sim-u-la-
+tionskern und die An-wen-
+ []
+
+[24]) [25]
+\openout2 = `07-evaluation.aux'.
+
+ (./07-evaluation.tex
+chapter 7.
+[26
+
+
+
+
+]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 40.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 40.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 40.
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+[]\T1/lmr/m/n/10 Durchlaufzeit und
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+\T1/lmr/m/n/10 Wartezeit bei län-geren
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]\T1/lmr/m/n/10 Prioritäts-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]\T1/lmr/m/n/10 Präemptive
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 46--47
+[]\T1/lmr/m/n/10 Präemption höher pri-or-
+ []
+
+[27]
+Underfull \hbox (badness 1571) in paragraph at lines 63--64
+[]\T1/lmr/bx/n/10.95 H4: \T1/lmr/m/n/10.95 Un-ter-schiede zwis-chen MLFQ-Konfig
+urationen wer-den ins-beson-dere bei
+ []
+
+[28] [29]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+32.
+ (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [28 <./images/screenshot-bewertungsmatrix-detail.png>]) [29]
+) [30]
+Underfull \hbox (badness 5203) in paragraph at lines 173--174
+\T1/lmr/m/n/10.95 Reale Be-trieb-ssys-te-m-ef-fekte wie Hardware-Nebenwirkungen
+, Interrupt-Last, I/O-
+ []
+
+) [31]
 \openout2 = `08-fazit-ausblick.aux'.
 
  (./08-fazit-ausblick.tex
 chapter 8.
-[30
+[32
 
 
 
@@ -1041,16 +1069,16 @@ Underfull \hbox (badness 1052) in paragraph at lines 29--30
 erbesserun-gen bei Tas-taturbe-di-enung,
  []
 
-) [31] (./main.bbl [32
+) [33] (./main.bbl [34
 
 
 
-]) [33]
+]) [35]
 \openout2 = `anhang.aux'.
 
  (./anhang.tex
 chapter 9.
-) [34
+) [36
 
 
 ] (./main.aux (./deckblatt.aux) (./vorwort.aux) (./verzeichnisse.aux)
@@ -1064,10 +1092,10 @@ L3 programming layer <2026-03-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 18269 strings out of 467363
- 324263 string characters out of 5419001
- 874436 words of memory out of 6000000
- 46816 multiletter control sequences out of 15000+600000
+ 18305 strings out of 467363
+ 325008 string characters out of 5419001
+ 874580 words of memory out of 6000000
+ 46842 multiletter control sequences out of 15000+600000
  696960 words of font info for 91 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  108i,11n,107p,11203b,641s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1079,10 +1107,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt10.pfb>
-Output written on main.pdf (41 pages, 1305379 bytes).
+Output written on main.pdf (43 pages, 1302873 bytes).
 PDF statistics:
- 727 PDF objects out of 1000 (max. 8388607)
- 638 compressed objects within 7 object streams
- 149 named destinations out of 1000 (max. 500000)
- 499 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 753 PDF objects out of 1000 (max. 8388607)
+ 662 compressed objects within 7 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 515 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,9 +8,15 @@ Die Evaluation verfolgt zwei miteinander verbundene Ziele. Erstens soll geprüft
 
 Im Zentrum steht daher nicht die Suche nach einem universell besten Verfahren, sondern die kontextabhängige Analyse von Trade-offs zwischen Reaktionsfähigkeit, Fairness, Durchsatznähe und Warteverhalten \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}.
 
+\subsection{Methodisches Vorgehen und Abgrenzung}
+
+Die Evaluation ist als technische, quantitative Untersuchung des implementierten Simulationskerns angelegt. Bewertet werden die Reproduzierbarkeit der Läufe, die fachlich erwartbaren Unterschiede zwischen den Scheduling-Verfahren sowie der Einfluss ausgewählter Parameter. Eine empirische Untersuchung der Lernwirkung mit Studierenden ist nicht Bestandteil dieser Arbeit. Die Ergebnisse erlauben daher Aussagen über die technische Eignung der Anwendung als Analyse- und Vergleichswerkzeug, nicht jedoch über einen kausalen Lernzuwachs.
+
+Für jeden Lauf werden dieselben Prozessdaten innerhalb eines Szenarios verwendet. Variiert werden ausschließlich das Scheduling-Verfahren oder die ausdrücklich untersuchte Parameterkonfiguration. Die Kennzahlen werden aus dem Ergebnisobjekt des Simulationskerns übernommen. Dadurch wird vermieden, dass die Ergebnisse für die Evaluation unabhängig von der in der Anwendung dargestellten Berechnung rekonstruiert werden.
+
 \section{Evaluationsdesign}
 
-Das Evaluationsdesign ist quantitativ und szenariobasiert. Alle Algorithmen werden auf denselben Prozessmengen ausgeführt, um Ergebnisunterschiede ausschliesslich auf das Scheduling-Verhalten zurückzuführen. Für jeden Lauf werden identische Eingangsdaten und identische Simulationsparameter verwendet.
+Das Evaluationsdesign ist quantitativ und szenariobasiert. Alle Algorithmen werden auf denselben Prozessmengen ausgeführt, um Ergebnisunterschiede möglichst auf das Scheduling-Verhalten zurückzuführen. Innerhalb eines Szenarios werden identische Eingangsdaten verwendet; algorithmusspezifische Parameter werden entsprechend der jeweiligen Konfiguration festgelegt.
 
 Die Untersuchung orientiert sich an drei Szenarioklassen:
 
@@ -20,11 +26,11 @@ Die Untersuchung orientiert sich an drei Szenarioklassen:
     \item \textbf{Prioritätssensitives Lastprofil:} konkurrierende Prozesse mit unterschiedlichen Prioritäten und möglichen Starvation-Effekten.
 \end{itemize}
 
-Jede Szenarioklasse wird mehrfach mit variierenden Parametern durchgeführt, um die Robustheit der Beobachtungen zu erhöhen. Die Wiederholbarkeit wird durch deterministische Laufbedingungen abgesichert, wie sie für diskrete Ereignissimulationen empfohlen werden \cite{banks2010discrete}.
+Die Basisszenarien werden zunächst mit einer festen Parameterkonfiguration durchgeführt. Ergänzend werden für Round Robin und MLFQ gezielte Sensitivitätsläufe ausgeführt. Die Wiederholbarkeit wird durch deterministische Laufbedingungen abgesichert, wie sie für diskrete Ereignissimulationen empfohlen werden \cite{banks2010discrete}.
 
 \subsection{Evaluationsszenarien im Detail}
 
-Für die Vergleichbarkeit werden zunächst drei feste Basisszenarien definiert. Die Prozessmengen enthalten jeweils die Ankunftszeit, die benötigte CPU-Zeit und die Priorität. Alle Szenarien werden mit denselben Prozesseingaben auf die vier implementierten Verfahren angewendet. Für Round Robin wird zunächst ein Zeitquantum von zwei Zeiteinheiten verwendet; für MLFQ werden drei Warteschlangenebenen mit einem Basisquantum von zwei Zeiteinheiten angesetzt.
+Für die Vergleichbarkeit werden zunächst drei feste Basisszenarien definiert. Die Prozessmengen enthalten jeweils die Ankunftszeit, die benötigte CPU-Zeit und die Priorität. Alle Szenarien werden mit denselben Prozesseingaben auf die vier in dieser Arbeit untersuchten Verfahren angewendet. Für Round Robin wird zunächst ein Zeitquantum von zwei Zeiteinheiten verwendet; für MLFQ werden drei Warteschlangenebenen mit einem Basisquantum von zwei Zeiteinheiten angesetzt.
 
 \begin{table}[htbp]
     \centering
@@ -44,7 +50,18 @@ Für die Vergleichbarkeit werden zunächst drei feste Basisszenarien definiert. 
 
 Die Szenarien sind bewusst klein gehalten, damit einzelne Scheduling-Entscheidungen in der Visualisierung und im Ereignislog nachvollziehbar bleiben. Das interaktive Lastprofil legt den Schwerpunkt auf frühe erste CPU-Zuteilungen. Das Batch-Szenario macht den Einfluss längerer CPU-Bursts auf Warte- und Durchlaufzeit sichtbar. Im prioritätssensitiven Szenario wird geprüft, ob ein neu eintreffender Prozess mit höherer Priorität eine Präemption auslöst und wie sich diese Entscheidung auf nachrangige Prozesse auswirkt.
 
-Für die Parametersensitivität werden beim Round-Robin-Verfahren die im aktuellen Simulationskern unterstützten Zeitquanten eins und zwei verglichen. Beim MLFQ-Verfahren werden zusätzlich zwei und drei Warteschlangenebenen betrachtet. Ein Quantum von vier wird in dieser Untersuchung nicht verwendet, da die aktuelle Implementierung das Zeitquantum auf maximal zwei Zeiteinheiten begrenzt. Die jeweiligen Messwerte werden pro Kombination aus Szenario, Verfahren und Parameterkonfiguration protokolliert.
+Für die Parametersensitivität werden beim Round-Robin-Verfahren die Zeitquanten eins und zwei verglichen. Beim MLFQ-Verfahren werden zusätzlich zwei und drei Warteschlangenebenen betrachtet. Ein Quantum von vier ist nicht Bestandteil dieser Untersuchung. Die jeweiligen Messwerte werden pro Kombination aus Szenario, Verfahren und Parameterkonfiguration protokolliert.
+
+\subsection{Hypothesen}
+
+Aus dem Evaluationsdesign werden folgende Arbeitshypothesen abgeleitet:
+
+\begin{itemize}
+    \item \textbf{H1:} Ein kleineres Zeitquantum reduziert tendenziell die durchschnittliche Reaktionszeit bei interaktiven und prioritätssensitiven Prozessmengen.
+    \item \textbf{H2:} Ein kleineres Zeitquantum erhöht die Anzahl der Präemptionen und Kontextwechsel.
+    \item \textbf{H3:} Strict Priority bevorzugt Prozesse mit höherer Priorität, kann dadurch aber Wartezeiten nachrangiger Prozesse vergrößern.
+    \item \textbf{H4:} Unterschiede zwischen MLFQ-Konfigurationen werden insbesondere bei größeren oder heterogeneren Prozessmengen sichtbar.
+\end{itemize}
 
 \section{Durchführung der Evaluation}
 
@@ -105,10 +122,6 @@ Die Auswertung basiert auf einem einheitlichen Metrikset:
 
 Die Metriken werden je Szenarioklasse tabellarisch und vergleichend dargestellt. Die Interpretation erfolgt entlang zweier Leitfragen:
 
-Die Gewichtung der Kennzahlen für unterschiedliche Anwendungskontexte erfolgt über die Bewertungsmatrix in Abbildung~\ref{fig:bewertungsmatrix}. Für die vorliegende Evaluation ist sie insbesondere relevant, weil nicht jede Lastsituation dieselbe Zielgröße priorisiert.
-
-\input{images/screenshot-bewertungsmatrix}
-
 \begin{itemize}
     \item Welche Verfahren sind in welcher Lastsituation erwartungsgemäss vorteilhaft?
     \item Wo entstehen Zielkonflikte zwischen kurzer Reaktionszeit, geringer Wartezeit und hoher Fairness?
@@ -151,6 +164,14 @@ Die Diskussion ordnet die quantitativen Befunde in den didaktischen und technisc
 
 Ebenso ist zu erwarten, dass prioritätsbasierte Strategien unter bestimmten Lastprofilen das Risiko unausgewogener Bedienung erhöhen, wenn keine zusätzlichen Alterungs- oder Fairnessmechanismen eingesetzt werden \cite{tanenbaum2014modern,silberschatz2018operating}.
 
-Als Limitation ist zu berücksichtigen, dass die Evaluation auf einem abstrahierten Simulationsmodell basiert und reale Betriebssystemeffekte (z. B. Hardware-Nebenwirkungen, Interrupt-Last, komplexe I/O-Wechselwirkungen) nur eingeschränkt abbildet. Für den didaktischen Zweck der Arbeit ist diese Abstraktion jedoch gewollt, da sie den Kern der Scheduling-Entscheidungen isoliert sichtbar macht.
+Insgesamt liefert die Evaluation eine nachvollziehbare Grundlage, um die technische Eignung der Anwendung als interaktives Analyse- und Vergleichswerkzeug einzuschätzen. Eine Aussage über die tatsächliche Verbesserung des Lernerfolgs würde eine gesonderte Nutzerstudie voraussetzen.
 
-Insgesamt liefert die Evaluation eine nachvollziehbare Grundlage, um die Forschungsfrage evidenzbasiert zu beantworten und den Beitrag der Anwendung als interaktives Lern- und Vergleichswerkzeug zu belegen.
+\section{Validität und Limitationen der Evaluation}
+
+Die interne Validität der technischen Untersuchung wird dadurch gestützt, dass innerhalb eines Szenarios identische Prozessdaten und feste Simulationsparameter verwendet werden. Unterschiede zwischen den Läufen lassen sich dadurch weitgehend auf das jeweilige Scheduling-Verfahren oder die gezielt veränderte Konfiguration zurückführen. Zusätzlich reduziert die deterministische Ausführung den Einfluss zufälliger Schwankungen.
+
+Die Aussagekraft bleibt jedoch auf das implementierte Simulationsmodell begrenzt. Reale Betriebssystemeffekte wie Hardware-Nebenwirkungen, Interrupt-Last, I/O-Wechselwirkungen oder Kosten von Kontextwechseln werden nur abstrahiert berücksichtigt. Die Ergebnisse sind daher als Vergleich innerhalb der definierten Modellannahmen zu verstehen und nicht als direkte Prognose für konkrete Betriebssysteme.
+
+Auch die externe Validität ist eingeschränkt, da die Evaluation nur drei kleine Basisszenarien umfasst. Die identischen Ergebnisse von MLFQ mit zwei und drei Ebenen zeigen beispielsweise, dass die gewählten Prozessmengen für diesen Vergleich nicht komplex genug sind, um Unterschiede zwischen den Konfigurationen sichtbar zu machen. Größere und heterogenere Szenarien könnten zu anderen Ergebnissen führen.
+
+Schließlich wurde keine Nutzerstudie durchgeführt. Die Evaluation kann daher die technische Nachvollziehbarkeit und Vergleichbarkeit der Visualisierung belegen, nicht aber eine Verbesserung des Lernerfolgs oder der Verständlichkeit bei Studierenden. Dafür wäre eine eigenständige Untersuchung mit definierten Lernzielen, Vergleichsgruppe und geeigneten Erhebungsinstrumenten erforderlich.

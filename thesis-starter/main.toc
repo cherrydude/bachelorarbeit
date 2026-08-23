@@ -50,19 +50,23 @@
 \contentsline {section}{\numberline {6.4}Umsetzung der Simulation}{18}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Umsetzung der Visualisierung}{19}{section.6.5}%
 \contentsline {subsection}{\numberline {6.5.1}Fokusansicht}{19}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Vergleichsübersicht}{21}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.2}Vergleichsübersicht}{22}{subsection.6.5.2}%
 \contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{23}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{24}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Evaluation}{25}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{25}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Evaluationsdesign}{25}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Evaluationsszenarien im Detail}{26}{subsection.7.2.1}%
-\contentsline {section}{\numberline {7.3}Durchführung der Evaluation}{26}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{27}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{29}{section.7.5}%
-\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{30}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{30}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Beantwortung der Forschungsfrage}{30}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Ausblick auf Weiterentwicklungen}{31}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Anhang}{34}{chapter.9}%
+\contentsline {section}{\numberline {6.8}Teststrategie und Qualitätssicherung}{24}{section.6.8}%
+\contentsline {chapter}{\numberline {7}Evaluation}{26}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{26}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Methodisches Vorgehen und Abgrenzung}{26}{subsection.7.1.1}%
+\contentsline {section}{\numberline {7.2}Evaluationsdesign}{27}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Evaluationsszenarien im Detail}{27}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Hypothesen}{28}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Durchführung der Evaluation}{28}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{29}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{30}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Validität und Limitationen der Evaluation}{31}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{32}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{32}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Beantwortung der Forschungsfrage}{32}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Ausblick auf Weiterentwicklungen}{33}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Anhang}{36}{chapter.9}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
