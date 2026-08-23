@@ -1,0 +1,46 @@
+\chapter{Didaktische Grundlagen interaktiver Visualisierungen}
+
+\section{Lernen mit digitalen Medien}
+
+Digitale Lernmedien ermoeglichen es, fachliche Inhalte nicht nur rezeptiv aufzunehmen, sondern aktiv zu erkunden. Gerade in der Informatiklehre ist dieser Unterschied relevant, weil viele Konzepte erst durch das Zusammenspiel mehrerer Faktoren verstaendlich werden. Dazu gehoeren im Kontext von Scheduling insbesondere Zeitverlauf, Zustandswechsel und konkurrierende Prozesse. Die Wirksamkeit interaktiver Visualisierungsansaetze wurde in der Forschung wiederholt untersucht und als lernfoerderlich eingeordnet \cite{hundhausen2002meta,naps2002engagement,stasko1998software}.
+
+Interaktive Anwendungen unterstuetzen diesen Lernprozess, indem sie unmittelbare Rueckmeldungen liefern. Lernende koennen Parameter variieren, Effekte beobachten und ihre Annahmen direkt ueberpruefen. Damit verschiebt sich die Lernaktivitaet von einer reinen Wissensaufnahme hin zu einem iterativen Verstaendnisaufbau.
+
+\section{Multimediales und visuelles Lernen}
+
+Scheduling-Verfahren sind abstrakt, weil ihre Logik nicht unmittelbar sichtbar ist. Ob ein Verfahren als fair, effizient oder reaktionsschnell wahrgenommen wird, zeigt sich erst im Verlauf vieler Zeitschritte. Eine visuelle Darstellung auf einer Zeitachse reduziert diese Abstraktion, indem sie zeitliche Relationen explizit macht.
+
+Insbesondere Gantt-Diagramme sind geeignet, da sie Prozessausfuehrung, Wartephasen und Unterbrechungen in einem gemeinsamen Koordinatensystem zeigen. Das erleichtert die mentale Verknuepfung zwischen formaler Algorithmusbeschreibung und beobachtbarem Laufzeitverhalten.
+
+\section{Didaktischer Nutzen von Simulationen}
+
+Simulationen haben im Lernkontext den Vorteil, dass sie komplexe Systemdynamiken kontrollierbar machen. Lernende muessen kein reales Betriebssystem modifizieren, um Scheduling-Effekte zu verstehen. Stattdessen koennen sie reproduzierbare Szenarien durchspielen und unterschiedliche Algorithmen unter identischen Voraussetzungen vergleichen. Diese Vorgehensweise entspricht dem methodischen Nutzen diskreter Ereignissimulation fuer Analyse- und Lernzwecke \cite{banks2010discrete}.
+
+Fuer die vorliegende Arbeit ist besonders relevant, dass die Simulation deterministisch arbeitet. Dadurch bleiben Ergebnisse bei gleichen Eingaben stabil. Diese Reproduzierbarkeit ist didaktisch hilfreich, weil Diskussionen in Uebungen auf dieselben Beobachtungen Bezug nehmen koennen.
+
+\section{Visualisierung komplexer Ablaeufe im Lernkontext}
+
+Praemptive Verfahren erzeugen haeufige Kontextwechsel und damit diskontinuierliche Ablaufmuster. In statischen Darstellungen gehen diese Uebergaenge oft verloren oder sind nur schwer nachzuvollziehen. Eine interaktive Visualisierung kann hingegen Schritt fuer Schritt zeigen,
+
+\begin{itemize}
+  \item wann ein Prozess startet,
+  \item wann und warum er unterbrochen wird,
+  \item wann er erneut eingeplant wird,
+  \item und wie sich diese Entscheidungen auf Kennzahlen auswirken.
+\end{itemize}
+
+Damit wird aus einer isolierten Theorieerklaerung ein nachvollziehbarer Entscheidungsprozess. Genau dieser Aspekt ist fuer die Lehre zentral, weil Lernende nicht nur Ergebnisse sehen, sondern den Weg dorthin verstehen sollen.
+
+\section{Anforderungen an die didaktische Aufbereitung von Scheduling-Prozessen}
+
+Aus den genannten Grundlagen lassen sich fuer den Scheduling-Visualizer konkrete didaktische Anforderungen ableiten:
+
+\begin{itemize}
+  \item \textbf{Transparenz:} Alle relevanten Zustandsaenderungen muessen sichtbar und erklaerbar sein.
+  \item \textbf{Vergleichbarkeit:} Verschiedene Algorithmen sollen auf identischen Szenarien gegenuebergestellt werden.
+  \item \textbf{Kontrollierbarkeit:} Nutzende brauchen eine Steuerung fuer Start, Pause, Schrittbetrieb und Zeitspruenge.
+  \item \textbf{Reduktion kognitiver Last:} Die Darstellung muss auf wesentliche Signale fokussieren und visuelle Ueberfrachtung vermeiden.
+  \item \textbf{Anschlussfaehigkeit:} Fachbegriffe und Messgroessen muessen konsistent mit den theoretischen Grundlagen verwendet werden.
+\end{itemize}
+
+Diese Anforderungen bilden die Bruecke zwischen didaktischer Zielsetzung und technischer Umsetzung. Sie werden in den folgenden Kapiteln bei Konzeption, Implementierung und Evaluation wieder aufgegriffen. Zugleich verknuepfen sie fachliche Kriterien aus der Scheduling-Literatur mit den Anforderungen didaktischer Aufbereitung \cite{tanenbaum2014modern,silberschatz2018operating}.
