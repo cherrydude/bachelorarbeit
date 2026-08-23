@@ -15,9 +15,9 @@ Das Evaluationsdesign ist quantitiv und szenariobasiert. Alle Algorithmen werden
 Die Untersuchung orientiert sich an drei Szenarioklassen:
 
 \begin{itemize}
-	\item \textbf{Interaktives Lastprofil:} viele kurze Prozesse mit fruehen Antworten als Ziel.
-	\item \textbf{Batch-orientiertes Lastprofil:} gemischte bis lange CPU-Bursts mit Fokus auf Durchlaufzeit.
-	\item \textbf{Prioritaetssensitives Lastprofil:} konkurrierende Prozesse mit unterschiedlichen Prioritaeten und moeglichen Starvation-Effekten.
+    \item \textbf{Interaktives Lastprofil:} viele kurze Prozesse mit fruehen Antworten als Ziel.
+    \item \textbf{Batch-orientiertes Lastprofil:} gemischte bis lange CPU-Bursts mit Fokus auf Durchlaufzeit.
+    \item \textbf{Prioritaetssensitives Lastprofil:} konkurrierende Prozesse mit unterschiedlichen Prioritaeten und moeglichen Starvation-Effekten.
 \end{itemize}
 
 Jede Szenarioklasse wird mehrfach mit variierenden Parametern durchgefuehrt, um die Robustheit der Beobachtungen zu erhoehen. Die Wiederholbarkeit wird durch deterministische Laufbedingungen abgesichert, wie sie fuer diskrete Ereignissimulationen empfohlen werden \cite{banks2010discrete}.
@@ -27,10 +27,10 @@ Jede Szenarioklasse wird mehrfach mit variierenden Parametern durchgefuehrt, um 
 Die Durchfuehrung erfolgt in vier Schritten:
 
 \begin{enumerate}
-	\item Definition der Prozessmengen pro Szenarioklasse (Ankunftszeiten, Burst-Zeiten, Prioritaeten).
-	\item Ausfuehrung aller Algorithmen pro Szenario mit festen Parametern.
-	\item Erfassung der vom Simulationskern erzeugten Metriken pro Lauf.
-	\item Vergleich und Interpretation der Ergebnisse innerhalb und zwischen den Szenarioklassen.
+    \item Definition der Prozessmengen pro Szenarioklasse (Ankunftszeiten, Burst-Zeiten, Prioritaeten).
+    \item Ausfuehrung aller Algorithmen pro Szenario mit festen Parametern.
+    \item Erfassung der vom Simulationskern erzeugten Metriken pro Lauf.
+    \item Vergleich und Interpretation der Ergebnisse innerhalb und zwischen den Szenarioklassen.
 \end{enumerate}
 
 Fuer Round Robin und MLFQ werden zusatzlich Parametersensitivitaeten betrachtet (insbesondere Zeitquantum und Queue-Settings), da diese die Balance zwischen Reaktionszeit und Kontextwechselhaeufigkeit wesentlich beeinflussen \cite{meing2025mlfq,pinedo2016scheduling}.
@@ -42,26 +42,26 @@ Die Durchfuehrung wird protokolliert, indem pro Lauf Konfiguration und Resultate
 Die Auswertung basiert auf einem einheitlichen Metrikset:
 
 \begin{itemize}
-	\item durchschnittliche Wartezeit,
-	\item durchschnittliche Durchlaufzeit,
-	\item durchschnittliche Reaktionszeit,
-	\item Anzahl der Praeemptionen und Kontextwechsel,
-	\item Fairness-bezogene Kennzahlen,
-	\item Anteil inaktiver CPU-Zeit.
+    \item durchschnittliche Wartezeit,
+    \item durchschnittliche Durchlaufzeit,
+    \item durchschnittliche Reaktionszeit,
+    \item Anzahl der Präemptionen und Kontextwechsel,
+    \item Fairness-bezogene Kennzahlen,
+    \item Anteil inaktiver CPU-Zeit.
 \end{itemize}
 
 Die Metriken werden je Szenarioklasse tabellarisch und vergleichend dargestellt. Die Interpretation erfolgt entlang zweier Leitfragen:
 
 \begin{itemize}
-	\item Welche Verfahren sind in welcher Lastsituation erwartungsgemaess vorteilhaft?
-	\item Wo entstehen Zielkonflikte zwischen kurzer Reaktionszeit, geringer Wartezeit und hoher Fairness?
+    \item Welche Verfahren sind in welcher Lastsituation erwartungsgemaess vorteilhaft?
+    \item Wo entstehen Zielkonflikte zwischen kurzer Reaktionszeit, geringer Wartezeit und hoher Fairness?
 \end{itemize}
 
 Damit wird eine differenzierte Bewertung moeglich, die sich an etablierten Bewertungskriterien fuer Scheduling orientiert \cite{silberschatz2018operating,pinedo2016scheduling}.
 
 \section{Diskussion der Ergebnisse}
 
-Die Diskussion ordnet die quantitativen Befunde in den didaktischen und technischen Kontext der Arbeit ein. Erwartbar ist beispielsweise, dass Verfahren mit haeufigeren Praeemptionen in interaktiven Szenarien bei der Reaktionszeit profitieren, gleichzeitig jedoch mehr Kontextwechsel verursachen.
+Die Diskussion ordnet die quantitativen Befunde in den didaktischen und technischen Kontext der Arbeit ein. Erwartbar ist beispielsweise, dass Verfahren mit haeufigeren Präemptionen in interaktiven Szenarien bei der Reaktionszeit profitieren, gleichzeitig jedoch mehr Kontextwechsel verursachen.
 
 Ebenso ist zu erwarten, dass prioritaetsbasierte Strategien unter bestimmten Lastprofilen das Risiko unausgewogener Bedienung erhoehen, wenn keine zusaetzlichen Alterungs- oder Fairnessmechanismen eingesetzt werden \cite{tanenbaum2014modern,silberschatz2018operating}.
 

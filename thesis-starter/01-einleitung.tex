@@ -1,3 +1,49 @@
 \chapter{Einleitung}
 
-Dieses Kapitel führt in das Thema ein, beschreibt Motivation und Problemstellung und formuliert die Ziele dieser Arbeit.
+\section{Motivation und Problemstellung}
+
+CPU-Scheduling ist ein zentrales Konzept moderner Betriebssysteme, da es bestimmt, welcher Prozess zu welchem Zeitpunkt Rechenzeit erhaelt. Obwohl die theoretischen Regeln einzelner Verfahren in Lehrbuechern klar beschrieben sind, ist das dynamische Verhalten in realistischen Lastsituationen fuer Studierende haeufig schwer nachzuvollziehen \cite{silberschatz2018operating,tanenbaum2014modern}.
+
+Insbesondere präemptive Verfahren erzeugen viele zeitkritische Zustandswechsel. Dazu gehoeren Unterbrechungen laufender Prozesse, erneute Einplanung sowie wechselnde Prioritaetslagen. Diese Dynamik laesst sich in statischen Tabellen oder rein textlichen Beschreibungen nur eingeschraenkt vermitteln. Das fuehrt dazu, dass Lernende zwar Definitionswissen erwerben, aber Schwierigkeiten bei der Interpretation konkreter Ablaufmuster haben.
+
+Vor diesem Hintergrund besteht die Problemstellung dieser Arbeit darin, ein didaktisch geeignetes und technisch belastbares Werkzeug bereitzustellen, das algorithmische Entscheidungen sichtbar macht und Verfahren unter identischen Bedingungen vergleichbar darstellt.
+
+\section{Zielsetzung der Arbeit}
+
+Ziel der Arbeit ist die Konzeption und Implementierung einer interaktiven Webanwendung zur Veranschaulichung präemptiver Scheduling-Verfahren. Die Anwendung soll:
+
+\begin{itemize}
+    \item ausgewaehlte Verfahren fachlich korrekt simulieren,
+    \item deren zeitlichen Ablauf transparent visualisieren,
+    \item und den systematischen Vergleich zwischen Verfahren anhand einheitlicher Kennzahlen ermoeglichen.
+\end{itemize}
+
+Darueber hinaus verfolgt die Arbeit eine didaktische Zielsetzung: Die Anwendung soll den Uebergang von theoretischer Regelbeschreibung zu beobachtbarer Verhaltensanalyse erleichtern. Dies wird durch interaktive Steuerung, reproduzierbare Szenarien und konsistente Metrikdarstellung unterstuetzt \cite{hundhausen2002meta,naps2002engagement}.
+
+\section{Forschungsfrage und Vorgehensweise}
+
+Die zentrale Forschungsfrage lautet:
+
+\begin{quote}
+    Wie kann eine interaktive Visualisierung präemptiver Scheduling-Verfahren so konzipiert und implementiert werden, dass sie fachliche Korrektheit, didaktische Nachvollziehbarkeit und vergleichende Analyse vereint?
+\end{quote}
+
+Zur Beantwortung dieser Frage wird ein mehrstufiges Vorgehen gewaehlt:
+
+\begin{enumerate}
+    \item Aufarbeitung theoretischer Grundlagen zu Betriebssystemen, Scheduling und Bewertungsmetriken.
+    \item Ableitung didaktischer und HCI-bezogener Anforderungen an die Anwendung.
+    \item Konzeption der Simulations- und Visualisierungsarchitektur.
+    \item Implementierung als Webanwendung mit typsicherem Simulationskern.
+    \item Quantitative Evaluation ueber reproduzierbare Szenarien und Metrikvergleiche.
+\end{enumerate}
+
+Das methodische Grundprinzip besteht darin, alle Auswertungen auf einem deterministischen Simulationsmodell aufzubauen, um Reproduzierbarkeit und wissenschaftliche Nachvollziehbarkeit sicherzustellen \cite{banks2010discrete}.
+
+\section{Aufbau der Arbeit}
+
+Die Arbeit ist in acht Kapitel gegliedert. Kapitel 2 stellt die theoretischen Grundlagen zu Scheduling und Bewertungsmetriken dar. Kapitel 3 und Kapitel 4 behandeln didaktische Grundlagen sowie Prinzipien der Mensch-Computer-Interaktion als Anforderungsbasis.
+
+Kapitel 5 konkretisiert darauf aufbauend die fachlichen, didaktischen, funktionalen und nicht-funktionalen Anforderungen und beschreibt die Konzeption der Anwendung. Kapitel 6 dokumentiert die Implementierung mit Fokus auf Architektur, Simulationslogik, Visualisierung und Interaktionsmechanismen.
+
+Kapitel 7 praesentiert das quantitative Evaluationsdesign und diskutiert die Ergebnisse. Kapitel 8 fasst die wesentlichen Erkenntnisse zusammen, beantwortet die Forschungsfrage und skizziert Weiterentwicklungsmoeglichkeiten.

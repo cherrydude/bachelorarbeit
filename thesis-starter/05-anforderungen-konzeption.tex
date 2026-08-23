@@ -1,16 +1,16 @@
 \chapter{Anforderungen und Konzeption des Scheduling-Visualizers}
 
-Dieses Kapitel definiert die fachlichen, didaktischen und technischen Anforderungen der Anwendung und leitet daraus das konzeptionelle Loesungsdesign ab. Im Mittelpunkt steht die Frage, wie praeemptive Scheduling-Verfahren fachlich korrekt, didaktisch nachvollziehbar und mit hoher Interaktionsqualitaet visualisiert werden koennen. Die konzeptionellen Entscheidungen orientieren sich dabei an etablierten Scheduling-Grundlagen \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}, an Erkenntnissen aus der Algorithmusvisualisierung \cite{hundhausen2002meta,naps2002engagement} sowie an Anforderungen der Usability und Accessibility \cite{brooke1996sus,wcag2018}.
+Dieses Kapitel definiert die fachlichen, didaktischen und technischen Anforderungen der Anwendung und leitet daraus das konzeptionelle Loesungsdesign ab. Im Mittelpunkt steht die Frage, wie präemptive Scheduling-Verfahren fachlich korrekt, didaktisch nachvollziehbar und mit hoher Interaktionsqualitaet visualisiert werden koennen. Die konzeptionellen Entscheidungen orientieren sich dabei an etablierten Scheduling-Grundlagen \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}, an Erkenntnissen aus der Algorithmusvisualisierung \cite{hundhausen2002meta,naps2002engagement} sowie an Anforderungen der Usability und Accessibility \cite{brooke1996sus,wcag2018}.
 
 \section{Zielgruppe und Einsatzkontext}
 
-Primaere Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll insbesondere in Situationen unterstuetzen, in denen formale Algorithmusbeschreibungen allein nicht ausreichen, um den zeitlichen Ablauf praeemptiver Entscheidungen zu verstehen.
+Primaere Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll insbesondere in Situationen unterstuetzen, in denen formale Algorithmusbeschreibungen allein nicht ausreichen, um den zeitlichen Ablauf präemptiver Entscheidungen zu verstehen.
 
 Der Einsatzkontext umfasst sowohl Lehrveranstaltungen mit gefuehrter Demonstration als auch das selbststaendige Lernen. Daraus folgen zwei zentrale Rahmenbedingungen: Erstens muss die Anwendung reproduzierbare Ergebnisse liefern, damit Beobachtungen zwischen verschiedenen Nutzenden vergleichbar bleiben. Zweitens braucht sie eine flexible Interaktion, damit sowohl exploratives Ausprobieren als auch gezieltes Nachstellen vorgegebener Szenarien moeglich ist.
 
 \section{Fachliche Anforderungen}
 
-Aus fachlicher Sicht muss der Visualizer die betrachteten Verfahren konsistent und korrekt modellieren. Dazu gehoeren insbesondere LCFS, Round Robin, Strict Priority und MLFQ. Relevante Kernaspekte sind Ankunftszeit, Burst-Zeit, Prioritaet, Zeitquantum, Praeemption und Kontextwechsel \cite{silberschatz2018operating,tanenbaum2014modern}.
+Aus fachlicher Sicht muss der Visualizer die betrachteten Verfahren konsistent und korrekt modellieren. Dazu gehoeren insbesondere LCFS, Round Robin, Strict Priority und MLFQ. Relevante Kernaspekte sind Ankunftszeit, Burst-Zeit, Prioritaet, Zeitquantum, Präemption und Kontextwechsel \cite{silberschatz2018operating,tanenbaum2014modern}.
 
 Zusatzlich muessen die wichtigsten Vergleichsmetriken nachvollziehbar berechnet werden. Dazu zaehlen Wartezeit, Durchlaufzeit, Reaktionszeit, Kontextwechselhaeufigkeit und weitere Kenngroessen zur Bewertung von Fairness und Ressourcennutzung \cite{pinedo2016scheduling}. Die konzeptionelle Anforderung lautet daher, dass Simulationslogik und Metrikberechnung auf derselben Zustandsbasis arbeiten und keine voneinander getrennten Berechnungspfade verwenden.
 
@@ -21,9 +21,9 @@ Didaktisch soll die Anwendung nicht nur Ergebnisse anzeigen, sondern den Entsche
 Die Konzeption priorisiert deshalb drei didaktische Leitprinzipien:
 
 \begin{itemize}
-	\item \textbf{Transparenz der Zustandsuebergaenge:} Ereignisse wie Start, Praeemption und Abschluss muessen nachvollziehbar dargestellt werden.
-	\item \textbf{Vergleichbarkeit:} Mehrere Algorithmen sollen unter identischen Eingabedaten gegenuebergestellt werden koennen.
-	\item \textbf{Kontrollierbares Lerntempo:} Schrittweises und automatisches Abspielen sollen gleichwertig unterstuetzt werden.
+    \item \textbf{Transparenz der Zustandsuebergaenge:} Ereignisse wie Start, Präemption und Abschluss muessen nachvollziehbar dargestellt werden.
+    \item \textbf{Vergleichbarkeit:} Mehrere Algorithmen sollen unter identischen Eingabedaten gegenuebergestellt werden koennen.
+    \item \textbf{Kontrollierbares Lerntempo:} Schrittweises und automatisches Abspielen sollen gleichwertig unterstuetzt werden.
 \end{itemize}
 
 \section{Funktionale Anforderungen}
@@ -31,12 +31,12 @@ Die Konzeption priorisiert deshalb drei didaktische Leitprinzipien:
 Funktional muss die Anwendung den gesamten Ablauf von der Szenariodefinition bis zur Ergebnisinterpretation abdecken. Daraus ergeben sich folgende Kernfunktionen:
 
 \begin{itemize}
-	\item Erfassung und Bearbeitung von Prozessmengen mit relevanten Attributen.
-	\item Auswahl eines Scheduling-Verfahrens und seiner Parameter.
-	\item Start, Pause, Schrittmodus und Zeitsprung innerhalb der Simulation.
-	\item Visualisierung der Ausfuehrungssegmente auf einer Zeitachse.
-	\item Ausgabe vergleichbarer Metriken pro Lauf.
-	\item Gegenueberstellung mehrerer Laeufe auf identischem Szenario.
+    \item Erfassung und Bearbeitung von Prozessmengen mit relevanten Attributen.
+    \item Auswahl eines Scheduling-Verfahrens und seiner Parameter.
+    \item Start, Pause, Schrittmodus und Zeitsprung innerhalb der Simulation.
+    \item Visualisierung der Ausfuehrungssegmente auf einer Zeitachse.
+    \item Ausgabe vergleichbarer Metriken pro Lauf.
+    \item Gegenueberstellung mehrerer Laeufe auf identischem Szenario.
 \end{itemize}
 
 Konzeptionell wird damit ein durchgaengiger Workflow vom Eingabemodell zur Auswertung abgebildet. Jede Funktion muss auf denselben Simulationsdaten aufbauen, um Inkonsistenzen zwischen Anzeige und Metrikberechnung zu vermeiden.
@@ -51,7 +51,7 @@ Darueber hinaus gelten Anforderungen an Performance und Bedienqualitaet: Interak
 
 Die Simulationslogik wird als deterministischer Kern konzipiert, der diskrete Zeitschritte verarbeitet und Ereignisse in wohldefinierter Reihenfolge erzeugt. Die zentrale Entscheidung besteht darin, Simulationszustand, Ereignisprotokoll, Zeitachsen-Segmente und Metriken gemeinsam aus einem einheitlichen Zustandsmodell abzuleiten. Dadurch bleiben alle Ausgaben konsistent.
 
-Konzeptionell werden dabei zwei Anforderungen verbunden: erstens fachliche Korrektheit der Scheduling-Regeln, zweitens auswertbare Verlaufsdaten fuer Visualisierung und Evaluation. Das Ereignismodell muss daher nicht nur Endergebnisse liefern, sondern auch Zwischenschritte explizit protokollieren, damit Praeemptionen und Kontextwechsel analytisch nachvollzogen werden koennen \cite{silberschatz2018operating,pinedo2016scheduling}.
+Konzeptionell werden dabei zwei Anforderungen verbunden: erstens fachliche Korrektheit der Scheduling-Regeln, zweitens auswertbare Verlaufsdaten fuer Visualisierung und Evaluation. Das Ereignismodell muss daher nicht nur Endergebnisse liefern, sondern auch Zwischenschritte explizit protokollieren, damit Präemptionen und Kontextwechsel analytisch nachvollzogen werden koennen \cite{silberschatz2018operating,pinedo2016scheduling}.
 
 \section{Konzeption der Visualisierung}
 

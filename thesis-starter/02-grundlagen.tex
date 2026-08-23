@@ -1,3 +1,57 @@
 \chapter{Grundlagen}
 
-Dieses Kapitel beschreibt die theoretischen und technischen Grundlagen, auf denen die Arbeit aufbaut.
+Dieses Kapitel beschreibt die theoretischen Grundlagen, auf denen Konzeption, Implementierung und Evaluation der Anwendung aufbauen.
+
+\section{Betriebssysteme und Prozessverwaltung}
+
+Betriebssysteme koordinieren den Zugriff auf Hardware-Ressourcen und stellen Ausfuehrungsumgebungen fuer Programme bereit. Eine Kernaufgabe ist dabei die Verwaltung konkurrierender Prozesse, die um CPU-Zeit, Speicher und weitere Ressourcen konkurrieren \cite{silberschatz2018operating,tanenbaum2014modern}.
+
+Prozesse durchlaufen typischerweise mehrere Zustaende, etwa bereit, laufend und blockiert. Das Betriebssystem steuert Uebergaenge zwischen diesen Zustaenden und bestimmt durch Scheduling-Entscheidungen, welcher bereite Prozess als naechstes ausgefuehrt wird. Diese Entscheidungen wirken sich direkt auf wahrgenommene Systemreaktion und Gesamtdurchlauf aus.
+
+\section{CPU-Scheduling in Betriebssystemen}
+
+CPU-Scheduling beschreibt die Auswahlstrategie fuer die Vergabe von Prozessorzeit an bereite Prozesse. Ziel ist ein sinnvoller Ausgleich zwischen konkurrierenden Kriterien wie kurzer Reaktionszeit, niedriger Wartezeit, hoher Auslastung und fairer Behandlung \cite{pinedo2016scheduling,silberschatz2018operating}.
+
+In Mehrprogrammsystemen ist Scheduling eine kontinuierliche Entscheidung unter Unsicherheit, da Ankunftszeitpunkte und Prozessverhalten variieren. Deshalb sind Scheduling-Verfahren typischerweise als Heuristiken formuliert, deren Eignung vom Lastprofil und vom Systemziel abhaengt.
+
+\section{Präemptive Scheduling-Verfahren}
+
+Präemptive Verfahren erlauben es dem Betriebssystem, einen laufenden Prozess aktiv zu unterbrechen und einen anderen Prozess einzuplanen. Dies verbessert in vielen Kontexten die Reaktionsfaehigkeit, verursacht jedoch zusaetzlichen Verwaltungsaufwand durch Kontextwechsel \cite{tanenbaum2014modern,silberschatz2018operating}.
+
+Der zentrale Unterschied zu nicht-präemptiven Strategien besteht darin, dass Entscheidungen nicht nur bei Abschluss oder Blockierung eines Prozesses getroffen werden, sondern auch waehrend seiner Ausfuehrung. Dadurch steigt die Steuerbarkeit, gleichzeitig aber auch die Komplexitaet von Analyse und Visualisierung.
+
+\section{Ueberblick ueber die betrachteten Algorithmen}
+
+\subsection{Last Come First Served}
+
+Last Come First Served (LCFS) priorisiert neu eingetroffene Prozesse. In der präemptiven Variante kann ein neu ankommender Prozess den aktuell laufenden Prozess sofort verdraengen. Das Verfahren ist anschaulich, kann aber unter unguenstigen Lastprofilen zu langen Wartezeiten frueher eingetroffener Prozesse fuehren.
+
+\subsection{Round Robin}
+
+Round Robin (RR) weist jedem Prozess ein Zeitquantum zu. Nach Ablauf des Quantums wird der Prozess, falls noch nicht abgeschlossen, wieder in die Bereitwarteschlange eingeordnet. RR gilt als faires Grundverfahren fuer zeitscheibenbasierte Systeme, da alle Prozesse regelmaessig CPU-Zeit erhalten \cite{silberschatz2018operating}.
+
+\subsection{Strict Priority}
+
+Strict Priority waehlt stets den Prozess mit der hoechsten Prioritaet aus. Trifft ein noch hoeher priorisierter Prozess ein, kann eine sofortige Präemption stattfinden. Vorteilhaft ist die gezielte Bevorzugung wichtiger Aufgaben; problematisch ist jedoch das Risiko von Starvation fuer niedrig priorisierte Prozesse \cite{tanenbaum2014modern}.
+
+\subsection{Multilevel Feedback Queue}
+
+Multilevel Feedback Queue (MLFQ) kombiniert mehrere Warteschlangenebenen mit unterschiedlichen Prioritaeten und Zeitquanten. Prozesse koennen in niedrigere Ebenen verschoben werden, wenn sie CPU-intensiv sind, waehrend kurz laufende oder interaktive Prozesse in hoeheren Ebenen profitieren. Dadurch entsteht ein adaptives Verhalten, das auf heterogene Lastprofile reagieren kann \cite{silberschatz2018operating,meing2025mlfq}.
+
+\section{Kriterien zur Bewertung von Scheduling-Verfahren}
+
+Die Bewertung von Scheduling-Verfahren erfolgt ueber klar definierte Kennzahlen. Diese sind entscheidend, um Algorithmen nicht nur qualitativ, sondern auch quantitativ zu vergleichen \cite{pinedo2016scheduling}.
+
+\subsection{Wartezeit}
+
+Die Wartezeit beschreibt die Zeitspanne, die ein Prozess im Zustand \glqq bereit\grqq{} verbringt, ohne ausgefuehrt zu werden. Niedrige durchschnittliche Wartezeiten sind insbesondere in Systemen mit vielen kurzen Aufgaben wuenschenswert.
+
+\subsection{Durchlaufzeit}
+
+Die Durchlaufzeit (Turnaround Time) ist die Zeit vom Eintreffen eines Prozesses bis zu dessen Abschluss. Sie bildet den Gesamtablauf aus Sicht eines Auftrags ab und ist eine zentrale Effizienzmetrik fuer batch-orientierte Lastprofile.
+
+\subsection{Reaktionszeit}
+
+Die Reaktionszeit beschreibt die Zeit vom Eintreffen eines Prozesses bis zu seiner ersten CPU-Zuteilung. Diese Kennzahl ist besonders relevant fuer interaktive Systeme, in denen fruehes Feedback wichtiger sein kann als minimale Gesamtdurchlaufzeit \cite{silberschatz2018operating,tanenbaum2014modern}.
+
+Ergaenzend koennen Kontextwechselhaeufigkeit, Präemptionsanzahl, Fairnessmasse und CPU-Leerlaufanteile betrachtet werden, um Zielkonflikte zwischen Responsivitaet, Stabilitaet und Ressourceneffizienz sichtbar zu machen.
