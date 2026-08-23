@@ -47,13 +47,47 @@ Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter E
 
 \section{Umsetzung der Visualisierung}
 
-Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses.
+Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses. Die Anwendung stellt die Simulation in zwei Hauptfenstern dar: der Fokusansicht und der Vergleichsübersicht.
+
+Die Oberfläche reagiert abhängig vom aktuellen Anwendungszustand. Beim initialen Aufruf stehen noch keine Simulationsdaten zur Verfügung, weshalb die Fokusansicht und die Kennzahlen mit einem erklärenden Leerzustand dargestellt werden (Abbildung~\ref{fig:ausgangslage}). Nach dem Laden eines Szenarios werden die Prozessdaten bereits in der Zeitachse sichtbar, während die Ausführungs- und Kennzahlenbereiche bis zur Anwendung eines Algorithmus deaktiviert bleiben (Abbildung~\ref{fig:szenario-geladen}). Erst nach diesem Schritt wird die eigentliche Simulation erzeugt und kann abgespielt werden.
+
+\input{images/screenshot-ausgangslage}
+
+\input{images/screenshot-szenario-geladen}
 
 Die Darstellung nutzt die vom Simulationskern gelieferten Segment- und Snapshot-Daten direkt. Dadurch lassen sich sowohl statische Vergleiche als auch dynamische Wiedergabevarianten umsetzen. Interaktive Hilfen wie Tooltips und Hervorhebungen unterstützen die detaillierte Analyse einzelner Entscheidungen und Kontextwechsel.
 
-Abbildung~\ref{fig:fokusansicht} zeigt die daraus entstehende Laufzeitsicht. Neben der Zeitachse werden der aktuelle Queue-Zustand und die berechneten Kennzahlen gemeinsam dargestellt.
+\subsection{Fokusansicht}
+
+Die Fokusansicht zeigt einen einzelnen, ausgewählten Lauf. Dieser Lauf entsteht aus einem ausgewählten Algorithmus, der auf ein konkretes Szenario angewendet wurde. Die Ansicht verbindet drei Bestandteile: das Gantt-Modell, die Stack-Visualisierung und die Kennzahlen. Abbildung~\ref{fig:fokusansicht} zeigt diese Bestandteile in ihrer gemeinsamen Anordnung.
 
 \input{images/screenshot-fokusansicht}
+
+Die Gantt-Zeitachse bildet den zeitlichen Ablauf des ausgewählten Laufs ab. Die Segmente zeigen, welcher Prozess in welchem Zeitintervall ausgeführt wird. An den Segmentgrenzen lassen sich insbesondere Präemptionen, abgelaufene Zeitquanten und Wechsel zwischen Prozessen nachvollziehen (Abbildung~\ref{fig:gantt-detail}).
+
+\input{images/screenshot-gantt-detail}
+
+Die Fokusansicht verfügt über einen Play-Modus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Prozess sowie die wartenden Prozesse mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
+
+\input{images/screenshot-stack-detail}
+
+Die Kennzahlen orientieren sich ebenfalls am aktuellen Simulationslauf und werden aus dessen Berechnungsergebnis abgeleitet. Neben Warte-, Durchlauf- und Reaktionszeit werden maximale Wartezeit, Starvation-Fälle, Präemptionen, Kontextwechsel und der Fairness-Index ausgewiesen (Abbildung~\ref{fig:kennzahlen-detail}). Während des Play-Modus ändern sich die laufbezogenen Zustandsinformationen synchron zur Wiedergabe; die abschließenden Kennzahlen fassen den vollständig berechneten Lauf zusammen.
+
+\input{images/screenshot-kennzahlen-detail}
+
+\subsection{Vergleichsübersicht}
+
+Die Vergleichsübersicht dient der kompakten Gegenüberstellung aller bisher erstellten Runs des ausgewählten Szenarios. Die Gesamtansicht verbindet die nebeneinander angeordneten Läufe mit der darunterliegenden Bewertungsmatrix (Abbildung~\ref{fig:vergleichsuebersicht-gesamt}).
+
+\input{images/screenshot-vergleichsuebersicht-gesamt}
+
+Jeder Run wird als Mini-Gantt dargestellt und eindeutig mit seinem verwendeten Algorithmus und seinen relevanten Parametern gekennzeichnet. Die Runs werden nebeneinander angeordnet, damit Unterschiede in Ausführungsreihenfolge, Durchlauf und Unterbrechungen schnell erfasst werden können (Abbildung~\ref{fig:vergleichsuebersicht}).
+
+Im Gegensatz zur Fokusansicht besitzt die Vergleichsübersicht keinen Play-Modus. Sie zeigt die berechneten Verläufe statisch und konzentriert sich auf den direkten Vergleich mehrerer Runs. Präemptionen werden durch einen orangefarbenen Strich am Ende des betroffenen Ausführungssegments markiert. Dadurch sind Unterbrechungen auch in der verkleinerten Mini-Gantt-Darstellung sichtbar, ohne dass die einzelnen Runs schrittweise abgespielt werden müssen.
+
+Die Vergleichsübersicht wird durch die Bewertungsmatrix ergänzt. Diese ordnet die vorhandenen Runs anhand ausgewählter Kennzahlen und eines Anwendungskontexts ein. Die Matrix ist damit nicht selbst Teil der Simulationsberechnung, sondern eine zusätzliche Vergleichsschicht für die strukturierte Interpretation der bereits berechneten Ergebnisse.
+
+\input{images/screenshot-vergleichsmatrix}
 
 Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
 
