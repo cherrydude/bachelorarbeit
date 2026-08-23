@@ -1,7 +1,8 @@
 {
   "chat.tools.terminal.autoApprove": {
     "make": true,
-    "pdflatex": true
+    "pdflatex": true,
+    "true": true
   },
   "latex-workshop.formatting.latex": "latexindent"
 }

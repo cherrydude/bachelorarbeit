@@ -2,7 +2,7 @@
 \contentsline {chapter}{Vorwort}{ii}{chapter*.1}%
 \contentsline {chapter}{List of Figures}{v}{chapter*.3}%
 \contentsline {chapter}{List of Tables}{vi}{chapter*.4}%
-\contentsline {chapter}{Abkuerzungsverzeichnis}{vii}{chapter*.5}%
+\contentsline {chapter}{Abkürzungsverzeichnis}{vii}{chapter*.5}%
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation und Problemstellung}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Zielsetzung der Arbeit}{1}{section.1.2}%
@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {2.1}Betriebssysteme und Prozessverwaltung}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}CPU-Scheduling in Betriebssystemen}{3}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Präemptive Scheduling-Verfahren}{3}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Ueberblick ueber die betrachteten Algorithmen}{4}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Überblick über die betrachteten Algorithmen}{4}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Last Come First Served}{4}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Round Robin}{4}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Strict Priority}{4}{subsection.2.4.3}%
@@ -25,14 +25,14 @@
 \contentsline {section}{\numberline {3.1}Lernen mit digitalen Medien}{6}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Multimediales und visuelles Lernen}{6}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Didaktischer Nutzen von Simulationen}{6}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Visualisierung komplexer Ablaeufe im Lernkontext}{7}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Visualisierung komplexer Abläufe im Lernkontext}{7}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Anforderungen an die didaktische Aufbereitung von Scheduling-Prozessen}{7}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Grundlagen der Mensch-Computer-Interaktion}{9}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ziele der Mensch-Computer-Interaktion}{9}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Usability und Nutzerfreundlichkeit}{9}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Interaktionsgestaltung fuer Lernanwendungen}{9}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Rueckmeldung, Transparenz und Verstaendlichkeit}{10}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Anforderungen an die Benutzungsoberflaeche des Visualizers}{10}{section.4.5}%
+\contentsline {section}{\numberline {4.3}Interaktionsgestaltung für Lernanwendungen}{9}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Rückmeldung, Transparenz und Verständlichkeit}{10}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Anforderungen an die Benutzungsoberfläche des Visualizers}{10}{section.4.5}%
 \contentsline {chapter}{\numberline {5}Anforderungen und Konzeption des Scheduling-Visualizers}{12}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Zielgruppe und Einsatzkontext}{12}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Fachliche Anforderungen}{12}{section.5.2}%
@@ -41,7 +41,7 @@
 \contentsline {section}{\numberline {5.5}Nicht-funktionale Anforderungen}{14}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Konzeption der Simulationslogik}{14}{section.5.6}%
 \contentsline {section}{\numberline {5.7}Konzeption der Visualisierung}{14}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Konzeption der Benutzungsoberflaeche}{15}{section.5.8}%
+\contentsline {section}{\numberline {5.8}Konzeption der Benutzungsoberfläche}{15}{section.5.8}%
 \contentsline {chapter}{\numberline {6}Implementierung}{16}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Technische Grundlagen und verwendete Technologien}{16}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Architektur der Anwendung}{16}{section.6.2}%
@@ -53,7 +53,7 @@
 \contentsline {chapter}{\numberline {7}Evaluation}{20}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Zielsetzung der Evaluation}{20}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Evaluationsdesign}{20}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Durchfuehrung der Evaluation}{21}{section.7.3}%
+\contentsline {section}{\numberline {7.3}Durchführung der Evaluation}{21}{section.7.3}%
 \contentsline {section}{\numberline {7.4}Auswertung der Ergebnisse}{21}{section.7.4}%
 \contentsline {section}{\numberline {7.5}Diskussion der Ergebnisse}{22}{section.7.5}%
 \contentsline {chapter}{\numberline {8}Fazit und Ausblick}{23}{chapter.8}%

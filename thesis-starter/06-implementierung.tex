@@ -1,19 +1,19 @@
 \chapter{Implementierung}
 
-Dieses Kapitel beschreibt die konkrete technische Umsetzung auf Basis der zuvor definierten Anforderungen und der konzeptionellen Architektur. Im Fokus stehen die Trennung zwischen Simulationskern und Darstellung, die typsichere Modellierung der Scheduling-Domaene sowie die Umsetzung interaktiver Analysefunktionen.
+Dieses Kapitel beschreibt die konkrete technische Umsetzung auf Basis der zuvor definierten Anforderungen und der konzeptionellen Architektur. Im Fokus stehen die Trennung zwischen Simulationskern und Darstellung, die typsichere Modellierung der Scheduling-Domäne sowie die Umsetzung interaktiver Analysefunktionen.
 
 \section{Technische Grundlagen und verwendete Technologien}
 
-Die Anwendung wurde als rein clientseitige Webanwendung umgesetzt. Der gewaehlte Technologie-Stack besteht aus Vue 3, TypeScript und Vite \cite{vue3,vite}. Diese Kombination unterstuetzt eine schnelle Entwicklungsiteration und bietet zugleich eine klare Struktur fuer komponentenbasierte Oberflaechen und typsichere Fachlogik.
+Die Anwendung wurde als rein clientseitige Webanwendung umgesetzt. Der gewählte Technologie-Stack besteht aus Vue 3, TypeScript und Vite \cite{vue3,vite}. Diese Kombination unterstützt eine schnelle Entwicklungsiteration und bietet zugleich eine klare Struktur für komponentenbasierte Oberflächen und typsichere Fachlogik.
 
-Vue 3 wird fuer die komponentenorientierte UI-Schicht eingesetzt. TypeScript dient der expliziten Modellierung von Prozessen, Ereignissen, Simulationsergebnissen und Metriken. Vite uebernimmt Build- und Entwicklungsworkflow inklusive schneller Aktualisierung waehrend der Entwicklung. Fuer automatisierte Tests wird Vitest verwendet \cite{vitest}. Animationsbezogene UI-Effekte werden mit GSAP realisiert, ohne in die Simulationslogik einzugreifen \cite{gsap}.
+Vue 3 wird für die komponentenorientierte UI-Schicht eingesetzt. TypeScript dient der expliziten Modellierung von Prozessen, Ereignissen, Simulationsergebnissen und Metriken. Vite übernimmt Build- und Entwicklungsworkflow inklusive schneller Aktualisierung während der Entwicklung. Für automatisierte Tests wird Vitest verwendet \cite{vitest}. Animationsbezogene UI-Effekte werden mit GSAP realisiert, ohne in die Simulationslogik einzugreifen \cite{gsap}.
 
 \section{Architektur der Anwendung}
 
 Die Implementierung folgt einer klaren Schichtenlogik:
 
 \begin{itemize}
-    \item \textbf{Domänenkern:} deterministische Simulationslogik fuer Scheduling-Verfahren.
+    \item \textbf{Domänenkern:} deterministische Simulationslogik für Scheduling-Verfahren.
     \item \textbf{Anwendungslogik:} Verwaltung von Szenarien, Runs und Vergleichsdaten.
     \item \textbf{Darstellungsschicht:} Visualisierung der Ergebnisse und Interaktion mit Nutzenden.
 \end{itemize}
@@ -24,47 +24,47 @@ Ein weiterer Architekturpunkt ist die bewusste Entkopplung von Simulationszustan
 
 \section{Modellierung der Scheduling-Verfahren}
 
-Die fachliche Modellierung basiert auf einem gemeinsamen Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Prioritaet und dynamischem Ausfuehrungszustand. Darauf aufbauend werden die einzelnen Scheduling-Verfahren als Strategien innerhalb desselben Simulationsrahmens umgesetzt.
+Die fachliche Modellierung basiert auf einem gemeinsamen Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität und dynamischem Ausführungszustand. Darauf aufbauend werden die einzelnen Scheduling-Verfahren als Strategien innerhalb desselben Simulationsrahmens umgesetzt.
 
-Round Robin wird ueber ein Zeitquantum modelliert, Strict Priority ueber prioritaetsbasierte Auswahl inklusive Präemption bei hoeherrangigen Ankuenften, LCFS ueber last-in-first-out-Mechanik und MLFQ ueber mehrere Warteschlangenebenen mit regelbasierter Herabstufung. Damit wird die in der Literatur beschriebene algorithmische Charakteristik im Kern einheitlich und vergleichbar operationalisiert \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}.
+Round Robin wird über ein Zeitquantum modelliert, Strict Priority über prioritätsbasierte Auswahl inklusive Präemption bei höherrangigen Ankünften, LCFS über last-in-first-out-Mechanik und MLFQ über mehrere Warteschlangenebenen mit regelbasierter Herabstufung. Damit wird die in der Literatur beschriebene algorithmische Charakteristik im Kern einheitlich und vergleichbar operationalisiert \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}.
 
-Wichtig fuer die Vergleichbarkeit ist, dass alle Verfahren ueber dieselbe Tick- und Ereignislogik laufen. Unterschiede im Ergebnis ergeben sich damit aus dem jeweiligen Scheduling-Verhalten und nicht aus abweichenden Ausfuehrungsmodellen.
+Wichtig für die Vergleichbarkeit ist, dass alle Verfahren über dieselbe Tick- und Ereignislogik laufen. Unterschiede im Ergebnis ergeben sich damit aus dem jeweiligen Scheduling-Verhalten und nicht aus abweichenden Ausführungsmodellen.
 
 \section{Umsetzung der Simulation}
 
-Die Simulation ist als diskreter, deterministischer Ablauf umgesetzt. Zu jedem Simulationsschritt werden neue Ankuenfte verarbeitet, Auswahlregeln angewendet und gegebenenfalls Präemptionen oder Kontextwechsel protokolliert. Dadurch entsteht ein vollstaendiger Verlauf, der sowohl fuer die visuelle Darstellung als auch fuer die Metrikberechnung genutzt wird.
+Die Simulation ist als diskreter, deterministischer Ablauf umgesetzt. Zu jedem Simulationsschritt werden neue Ankünfte verarbeitet, Auswahlregeln angewendet und gegebenenfalls Präemptionen oder Kontextwechsel protokolliert. Dadurch entsteht ein vollständiger Verlauf, der sowohl für die visuelle Darstellung als auch für die Metrikberechnung genutzt wird.
 
 Konkret erzeugt der Kern mehrere Ergebnisformen:
 
 \begin{itemize}
     \item \textbf{Ereignislog:} chronologische Ereignisse wie Dispatch, Start, Präemption und Abschluss.
-    \item \textbf{Segmente:} Zeitabschnitte fuer die Gantt-Darstellung.
-    \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder fuer Playback und Zeitspruenge.
-    \item \textbf{Metriken:} aggregierte Kenngroessen pro Simulationslauf.
+    \item \textbf{Segmente:} Zeitabschnitte für die Gantt-Darstellung.
+    \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Playback und Zeitsprünge.
+    \item \textbf{Metriken:} aggregierte Kenngrössen pro Simulationslauf.
 \end{itemize}
 
 Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter Ereignissimulation und verbessert die Nachvollziehbarkeit der Laufzeitdynamik \cite{banks2010discrete}.
 
 \section{Umsetzung der Visualisierung}
 
-Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermoeglicht praezise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repraesentiert einen konkreten Ausfuehrungsabschnitt eines Prozesses.
+Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses.
 
-Die Darstellung nutzt die vom Simulationskern gelieferten Segment- und Snapshot-Daten direkt. Dadurch lassen sich sowohl statische Vergleiche als auch dynamische Wiedergabevarianten umsetzen. Interaktive Hilfen wie Tooltips und Hervorhebungen unterstuetzen die detaillierte Analyse einzelner Entscheidungen und Kontextwechsel.
+Die Darstellung nutzt die vom Simulationskern gelieferten Segment- und Snapshot-Daten direkt. Dadurch lassen sich sowohl statische Vergleiche als auch dynamische Wiedergabevarianten umsetzen. Interaktive Hilfen wie Tooltips und Hervorhebungen unterstützen die detaillierte Analyse einzelner Entscheidungen und Kontextwechsel.
 
-Fuer visuelle Uebergaenge und Aufmerksamkeitsteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
+Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
 
 \section{Umsetzung der Interaktionsmechanismen}
 
-Die Interaktionsmechanismen orientieren sich am Lernworkflow: Szenario definieren, Algorithmus auswaehlen, Ablauf steuern, Ergebnis interpretieren. Daraus ergeben sich konkrete Steuerfunktionen fuer Start, Pause, Schrittbetrieb, Geschwindigkeitsanpassung und Zeitsprung.
+Die Interaktionsmechanismen orientieren sich am Lernworkflow: Szenario definieren, Algorithmus auswählen, Ablauf steuern, Ergebnis interpretieren. Daraus ergeben sich konkrete Steuerfunktionen für Start, Pause, Schrittbetrieb, Geschwindigkeitsanpassung und Zeitsprung.
 
-Die Playback-Logik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszufuehren.
+Die Playback-Logik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszuführen.
 
-Ergaenzend wurde auf robuste Bedienbarkeit geachtet: klare Statusrueckmeldungen, nachvollziehbares Fokusverhalten und semantisch benannte UI-Elemente. Damit werden die in Kapitel 4 formulierten HCI-Anforderungen in konkrete Implementierungsmechanismen uebersetzt \cite{wcag2018,brooke1996sus}.
+Ergänzend wurde auf robuste Bedienbarkeit geachtet: klare Statusrückmeldungen, nachvollziehbares Fokusverhalten und semantisch benannte UI-Elemente. Damit werden die in Kapitel 4 formulierten HCI-Anforderungen in konkrete Implementierungsmechanismen übersetzt \cite{wcag2018,brooke1996sus}.
 
 \section{Besondere technische Herausforderungen}
 
 Eine zentrale Herausforderung bestand in der Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Einerseits musste die fachliche Korrektheit bei Präemption, Kontextwechsel und MLFQ-Regelwerk sichergestellt werden, andererseits sollte die Anwendung unmittelbar auf Eingaben reagieren.
 
-Ein zweiter Schwerpunkt war die Sicherung von Reproduzierbarkeit. Dazu wurden deterministische Ausfuehrungspfade und testbare Schnittstellen priorisiert. Automatisierte Tests pruefen sowohl Kernlogik als auch zentrale Integrationsfaelle, wodurch Regressionen frueh sichtbar werden \cite{vitest}.
+Ein zweiter Schwerpunkt war die Sicherung von Reproduzierbarkeit. Dazu wurden deterministische Ausführungspfade und testbare Schnittstellen priorisiert. Automatisierte Tests prüfen sowohl Kernlogik als auch zentrale Integrationsfälle, wodurch Regressionen früh sichtbar werden \cite{vitest}.
 
-Schliesslich ergab sich ein Trade-off zwischen Detailtiefe und Ressourcenverbrauch: Dichte Snapshot-Folgen verbessern Analyse und Playback, erhoehen jedoch Speicherbedarf. Diese Spannung wurde durch parametrisierbare Snapshot-Intervalle adressiert, sodass zwischen Genauigkeit und Laufzeitverhalten situationsgerecht balanciert werden kann.
+Schliesslich ergab sich ein Trade-off zwischen Detailtiefe und Ressourcenverbrauch: Dichte Snapshot-Folgen verbessern Analyse und Playback, erhöhen jedoch Speicherbedarf. Diese Spannung wurde durch parametrisierbare Snapshot-Intervalle adressiert, sodass zwischen Genauigkeit und Laufzeitverhalten situationsgerecht balanciert werden kann.

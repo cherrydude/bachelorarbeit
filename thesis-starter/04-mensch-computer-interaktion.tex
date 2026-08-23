@@ -2,52 +2,52 @@
 
 \section{Ziele der Mensch-Computer-Interaktion}
 
-Mensch-Computer-Interaktion beschreibt die Gestaltung digitaler Systeme so, dass sie fuer Menschen verstaendlich, effizient und verlaesslich nutzbar sind. Bei einer Lernanwendung wie dem Scheduling-Visualizer steht nicht allein die funktionale Korrektheit im Vordergrund, sondern auch die Qualitaet der Interaktion.
+Mensch-Computer-Interaktion beschreibt die Gestaltung digitaler Systeme so, dass sie für Menschen verständlich, effizient und verlässlich nutzbar sind. Bei einer Lernanwendung wie dem Scheduling-Visualizer steht nicht allein die funktionale Korrektheit im Vordergrund, sondern auch die Qualität der Interaktion.
 
-Ziel ist eine Oberflaeche, die Nutzerinnen und Nutzer sicher durch den Lernprozess fuehrt: Eingaben sollen nachvollziehbar sein, Zustandsaenderungen klar rueckgemeldet werden, und Bedienhandlungen muessen ohne unnoetige Huerden ausfuehrbar bleiben.
+Ziel ist eine Oberfläche, die Nutzerinnen und Nutzer sicher durch den Lernprozess führt: Eingaben sollen nachvollziehbar sein, Zustandsänderungen klar rückgemeldet werden, und Bedienhandlungen müssen ohne unnötige Hürden ausführbar bleiben.
 
 \section{Usability und Nutzerfreundlichkeit}
 
-Usability umfasst die Frage, wie wirksam, effizient und zufriedenstellend ein System in einem konkreten Nutzungskontext bedient werden kann. Fuer den Scheduling-Visualizer bedeutet das unter anderem. Fuer die spaetere Bewertung kann dabei unter anderem auf etablierte Verfahren wie die System Usability Scale zurueckgegriffen werden \cite{brooke1996sus}:
+Usability umfasst die Frage, wie wirksam, effizient und zufriedenstellend ein System in einem konkreten Nutzungskontext bedient werden kann. Für den Scheduling-Visualizer bedeutet das unter anderem. Für die spätere Bewertung kann dabei unter anderem auf etablierte Verfahren wie die System Usability Scale zurückgegriffen werden \cite{brooke1996sus}:
 
 \begin{itemize}
-    \item Prozesse und Parameter sollen mit moeglichst wenigen Schritten erfasst werden koennen,
-    \item Simulationszustaende muessen eindeutig erkennbar sein,
+    \item Prozesse und Parameter sollen mit möglichst wenigen Schritten erfasst werden können,
+    \item Simulationszustände müssen eindeutig erkennbar sein,
     \item und Fehlbedienungen sollen durch klares Feedback schnell korrigierbar bleiben.
 \end{itemize}
 
-Eine hohe Nutzerfreundlichkeit wirkt hier direkt auf den Lernerfolg, weil kognitive Ressourcen nicht in Bedienproblemen gebunden werden, sondern fuer das fachliche Verstaendnis verfuegbar bleiben.
+Eine hohe Nutzerfreundlichkeit wirkt hier direkt auf den Lernerfolg, weil kognitive Ressourcen nicht in Bedienproblemen gebunden werden, sondern für das fachliche Verständnis verfügbar bleiben.
 
-\section{Interaktionsgestaltung fuer Lernanwendungen}
+\section{Interaktionsgestaltung für Lernanwendungen}
 
-Interaktionsgestaltung im Lernkontext folgt dem Prinzip der didaktischen Unterstuetzung: Das Interface soll Lernziele erleichtern, nicht verdecken. Im vorliegenden Fall betrifft das insbesondere die Steuerung des Zeitverlaufs und den Vergleich verschiedener Scheduling-Strategien.
+Interaktionsgestaltung im Lernkontext folgt dem Prinzip der didaktischen Unterstützung: Das Interface soll Lernziele erleichtern, nicht verdecken. Im vorliegenden Fall betrifft das insbesondere die Steuerung des Zeitverlaufs und den Vergleich verschiedener Scheduling-Strategien.
 
-Sinnvolle Interaktion entsteht dabei durch eine klare Aufgabenteilung zwischen Eingabe, Steuerung und Ergebnisdarstellung. Wenn diese Bereiche konsistent strukturiert sind, koennen Nutzende schneller zwischen Experimentieren und Interpretieren wechseln.
+Sinnvolle Interaktion entsteht dabei durch eine klare Aufgabenteilung zwischen Eingabe, Steuerung und Ergebnisdarstellung. Wenn diese Bereiche konsistent strukturiert sind, können Nutzende schneller zwischen Experimentieren und Interpretieren wechseln.
 
-\section{Rueckmeldung, Transparenz und Verstaendlichkeit}
+\section{Rückmeldung, Transparenz und Verständlichkeit}
 
-Ein zentrales HCI-Prinzip ist die Sichtbarkeit des Systemzustands. Im Scheduling-Visualizer muessen daher wesentliche Informationen permanent oder mit minimalem Aufwand abrufbar sein. Gleichzeitig sind Anforderungen an Barrierefreiheit frueh in die Interaktionsgestaltung zu integrieren, damit zentrale Funktionen fuer moeglichst viele Nutzende zugaenglich bleiben \cite{wcag2018}:
+Ein zentrales HCI-Prinzip ist die Sichtbarkeit des Systemzustands. Im Scheduling-Visualizer müssen daher wesentliche Informationen permanent oder mit minimalem Aufwand abrufbar sein. Gleichzeitig sind Anforderungen an Barrierefreiheit früh in die Interaktionsgestaltung zu integrieren, damit zentrale Funktionen für möglichst viele Nutzende zugänglich bleiben \cite{wcag2018}:
 
 \begin{itemize}
     \item aktueller Simulationszeitpunkt,
     \item gerade laufender Prozess,
-    \item Warteschlangen- und Prioritaetszustaende,
+    \item Warteschlangen- und Prioritätszustände,
     \item wichtige Ereignisse wie Präemptionen und Kontextwechsel.
 \end{itemize}
 
-Rueckmeldungen sollen nicht nur korrekt, sondern auch semantisch klar formuliert sein. Das reduziert Interpretationsfehler und erhoeht die Nachvollziehbarkeit von Algorithmusentscheidungen.
+Rückmeldungen sollen nicht nur korrekt, sondern auch semantisch klar formuliert sein. Das reduziert Interpretationsfehler und erhöht die Nachvollziehbarkeit von Algorithmusentscheidungen.
 
-\section{Anforderungen an die Benutzungsoberflaeche des Visualizers}
+\section{Anforderungen an die Benutzungsoberfläche des Visualizers}
 
-Auf Basis der HCI-Analyse ergeben sich konkrete Anforderungen an die Benutzungsoberflaeche.
+Auf Basis der HCI-Analyse ergeben sich konkrete Anforderungen an die Benutzungsoberfläche.
 Die folgenden Punkte konkretisieren diese Anforderungen:
 
 \begin{itemize}
-    \item \textbf{Konsistente Navigations- und Fokusfuehrung:} Interaktive Elemente muessen in logischer Reihenfolge erreichbar sein.
+    \item \textbf{Konsistente Navigations- und Fokusführung:} Interaktive Elemente müssen in logischer Reihenfolge erreichbar sein.
     \item \textbf{Barrierearme Interaktion:} Tastaturbedienung, semantische Beschriftungen und ausreichende Kontraste sind notwendig.
     \item \textbf{Robuste Dialoginteraktion:} Modale Dialoge brauchen klares Fokusmanagement sowie nachvollziehbares Schliessen.
     \item \textbf{Eindeutige Statuskommunikation:} Der Unterschied zwischen laufender, pausierter und abgeschlossener Simulation muss sofort erkennbar sein.
-    \item \textbf{Fehlertoleranz:} Nutzende sollen Eingaben korrigieren koennen, ohne den gesamten Arbeitskontext zu verlieren.
+    \item \textbf{Fehlertoleranz:} Nutzende sollen Eingaben korrigieren können, ohne den gesamten Arbeitskontext zu verlieren.
 \end{itemize}
 
-Diese Anforderungen greifen die vorhandenen Erkenntnisse zur Interaktionsqualitaet auf und bilden die Grundlage fuer die anschliessende Konzeption und Implementierung der Anwendung. Damit werden didaktische Zielsetzung und HCI-Qualitaetskriterien systematisch zusammengefuehrt \cite{hundhausen2002meta,wcag2018}.
+Diese Anforderungen greifen die vorhandenen Erkenntnisse zur Interaktionsqualität auf und bilden die Grundlage für die anschliessende Konzeption und Implementierung der Anwendung. Damit werden didaktische Zielsetzung und HCI-Qualitätskriterien systematisch zusammengeführt \cite{hundhausen2002meta,wcag2018}.
