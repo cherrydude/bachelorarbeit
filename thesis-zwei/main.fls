@@ -2,7 +2,7 @@ PWD /home/cherrydude/Projekte/bht-ba-root/bachlorarbeit/thesis-zwei
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
+INPUT /home/cherrydude/Projekte/bht-ba-root/bachlorarbeit/thesis-zwei/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbook.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbook.cls

@@ -4,7 +4,7 @@ Dieses Kapitel stellt das entwickelte Endprodukt vor und dokumentiert die zentra
 
 \section{Entwickeltes Endprodukt}
 
-Die entwickelte Webanwendung stellt einen interaktiven Scheduling-Visualizer dar, der verschiedene präemptive CPU-Scheduling-Verfahren in einem gemeinsamen Lern- und Analysekontext verknüpft. Die Anwendung erlaubt es, Prozessen mit Ankunftszeit, Burst-Zeit, Priorität und weiteren Attributen ein Szenario zu definieren, einen Algorithmus auszuwählen und den Ablauf zeitlich sichtbar zu machen.
+Die entwickelte Webanwendung stellt einen interaktiven Scheduling-Visualizer dar, der verschiedene präemptive CPU-Scheduling-Verfahren in einem gemeinsamen Lern- und Analysekontext verknüpft. Die Anwendung erlaubt es, Tasks mit Ankunftszeit, Burst-Zeit, Priorität und weiteren Attributen ein Szenario zu definieren, einen Algorithmus auszuwählen und den Ablauf zeitlich sichtbar zu machen.
 
 Das fertige Produkt verbindet damit drei zentrale Aspekte:
 
@@ -18,7 +18,7 @@ Damit erfüllt die Anwendung nicht nur die fachlichen Vorgaben eines Betriebssys
 
 \section{Produktüberblick und Nutzerfluss}
 
-Der typische Nutzerfluss beginnt mit dem Definieren eines Szenarios. Auf der Startseite sind die Systemgrundlagen, die Eingabeform und die Auswahl relevanter Prozessparameter direkt sichtbar. Nach dem Laden eines Szenarios kann der Nutzer den gewünschten Algorithmus auswählen und den Ablauf in verschiedenen Modi starten. Anschließend stehen eine Fokusansicht und eine Vergleichsübersicht zur Verfügung.
+Der typische Nutzerfluss beginnt mit dem Definieren eines Szenarios. Auf der Startseite sind die Systemgrundlagen, die Eingabeform und die Auswahl relevanter Task-Parameter direkt sichtbar. Nach dem Laden eines Szenarios kann der Nutzer den gewünschten Algorithmus auswählen und den Ablauf in verschiedenen Modi starten. Anschließend stehen eine Fokusansicht und eine Vergleichsübersicht zur Verfügung.
 
 Die Anwendung wurde bewusst so aufgebaut, dass die Interaktion in logischer Reihenfolge abläuft: Eingabe, Auswahl, Ablaufsteuerung, Analyse und Vergleich. Dadurch bleibt der Nutzer bei jedem Schritt im Kontext des jeweiligen Lernziels und muss keine unnötigen Bedienhürden überwinden.
 
@@ -34,28 +34,28 @@ Die Anwendung wurde bewusst so aufgebaut, dass die Interaktion in logischer Reih
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{images/screenshot-szenario-geladen.png}
-    \caption{Ladezustand eines konfigurierten Szenarios. Die Prozessdaten sind sichtbar, und die Simulation kann mit einer klaren Ablaufsteuerung initialisiert werden.}
+    \caption{Ladezustand eines konfigurierten Szenarios. Die Task-Daten sind sichtbar, und die Simulation kann mit einer klaren Ablaufsteuerung initialisiert werden.}
     \label{fig:produkt-szenario}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{images/screenshot-fokusansicht.png}
-    \caption{Fokusansicht der Simulation mit Gantt-Zeitachse, aktiver Prozessdarstellung und Kennzahlbereich. Diese Ansicht zeigt den Ablauf des gewählten Scheduling-Verfahrens in einer verständlichen, zeitlich strukturierten Form.}
+    \caption{Fokusansicht der Simulation mit Gantt-Zeitachse, aktiver Task-Darstellung und Kennzahlbereich. Diese Ansicht zeigt den Ablauf des gewählten Scheduling-Verfahrens in einer verständlichen, zeitlich strukturierten Form.}
     \label{fig:produkt-fokus}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{images/screenshot-gantt-detail.png}
-    \caption{Detailansicht der Gantt-Darstellung. Einzelne Ausführungssegmente, Präemptionen und Prozesswechsel werden als konkrete Zeitabschnitte sichtbar gemacht.}
+    \caption{Detailansicht der Gantt-Darstellung. Einzelne Ausführungssegmente, Präemptionen und Task-Wechsel werden als konkrete Zeitabschnitte sichtbar gemacht.}
     \label{fig:produkt-gantt}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{images/screenshot-stack-detail.png}
-    \caption{Darstellung des Prozessstatus in der Warteschlangenansicht. Der aktuelle Zustand und die Warteliste werden gleichzeitig präsentiert, wodurch die Auswahlentscheidung des Algorithmus nachvollziehbar wird.}
+    \caption{Darstellung des Task-Status in der Warteschlangenansicht. Der aktuelle Zustand und die Warteliste werden gleichzeitig präsentiert, wodurch die Auswahlentscheidung des Algorithmus nachvollziehbar wird.}
     \label{fig:produkt-stack}
 \end{figure}
 
@@ -78,7 +78,7 @@ Die Anwendung wurde bewusst so aufgebaut, dass die Interaktion in logischer Reih
 Die fertige Anwendung erfüllt die wesentlichen Anforderungen, die im Verlauf der Arbeit aus fachlicher, didaktischer und HCI-orientierter Sicht definiert wurden. Zu den wichtigsten Funktionen gehören:
 
 \begin{itemize}
-    \item Erstellung und Bearbeitung von Prozessdaten mit Ankunftszeit, Burst-Zeit und Priorität,
+    \item Erstellung und Bearbeitung von Task-Daten mit Ankunftszeit, Burst-Zeit und Priorität,
     \item interaktive Szenariogenerierung mit vordefinierten Basis-Szenarien und direkter Vorschau,
     \item Auswahl und Vergleich verschiedener Scheduling-Verfahren über einen klaren Algorithmusdialog,
     \item kontrollierte Wiedergabe mit Start, Pause, Schrittmodus und Zeitsprung,

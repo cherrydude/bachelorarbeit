@@ -6,7 +6,7 @@ Dieses Kapitel beschreibt die konkrete technische Umsetzung auf Basis der zuvor 
 
 Die Anwendung wurde als rein clientseitige Webanwendung umgesetzt. Der gewählte Technologie-Stack besteht aus Vue 3, TypeScript und Vite \cite{vue3,vite}. Diese Kombination unterstützt eine schnelle Entwicklungsiteration und bietet zugleich eine klare Struktur für komponentenbasierte Oberflächen und typsichere Fachlogik.
 
-Vue 3 wird für die komponentenorientierte UI-Schicht eingesetzt. TypeScript dient der expliziten Modellierung von Prozessen, Ereignissen, Simulationsergebnissen und Metriken. Vite übernimmt Build- und Entwicklungsworkflow inklusive schneller Aktualisierung während der Entwicklung. Für automatisierte Tests wird Vitest verwendet \cite{vitest}. Animationsbezogene UI-Effekte werden mit GSAP realisiert, ohne in die Simulationslogik einzugreifen \cite{gsap}. Zusätzlich ist die Oberfläche mit einem Willkommensdialog, einem Szenario-Generator und einer strukturierten Algorithmusauswahl erweitert, die den Nutzungsfluss für Lehr- und Vergleichszwecke deutlich verbessern.
+Vue 3 wird für die komponentenorientierte UI-Schicht eingesetzt. TypeScript dient der expliziten Modellierung von Tasks, Ereignissen, Simulationsergebnissen und Metriken. Vite übernimmt Build- und Entwicklungsworkflow inklusive schneller Aktualisierung während der Entwicklung. Für automatisierte Tests wird Vitest verwendet \cite{vitest}. Animationsbezogene UI-Effekte werden mit GSAP realisiert, ohne in die Simulationslogik einzugreifen \cite{gsap}. Zusätzlich ist die Oberfläche mit einem Willkommensdialog, einem Szenario-Generator und einer strukturierten Algorithmusauswahl erweitert, die den Nutzungsfluss für Lehr- und Vergleichszwecke deutlich verbessern.
 
 \section{Architektur der Anwendung}
 
@@ -24,7 +24,7 @@ Ein weiterer Architekturpunkt ist die bewusste Entkopplung von Simulationszustan
 
 \section{Modellierung der Scheduling-Verfahren}
 
-Die fachliche Modellierung basiert auf einem gemeinsamen Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität und dynamischem Ausführungszustand. Darauf aufbauend werden die einzelnen Scheduling-Verfahren als Strategien innerhalb desselben Simulationsrahmens umgesetzt.
+Die fachliche Modellierung basiert auf einem gemeinsamen Task-Modell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität und dynamischem Ausführungszustand. Darauf aufbauend werden die einzelnen Scheduling-Verfahren als Strategien innerhalb desselben Simulationsrahmens umgesetzt.
 
 Round Robin wird über ein Zeitquantum modelliert, Strict Priority über prioritätsbasierte Auswahl inklusive Präemption bei höherrangigen Ankünften, LCFS über last-in-first-out-Mechanik und MLFQ über mehrere Warteschlangenebenen mit regelbasierter Herabstufung. Damit wird die in der Literatur beschriebene algorithmische Charakteristik im Kern einheitlich und vergleichbar operationalisiert \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}.
 
@@ -47,9 +47,9 @@ Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter E
 
 \section{Umsetzung der Visualisierung}
 
-Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses. Die Anwendung stellt die Simulation in zwei Hauptansichten dar: der Fokusansicht und der Vergleichsübersicht.
+Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Tasks. Die Anwendung stellt die Simulation in zwei Hauptansichten dar: der Fokusansicht und der Vergleichsübersicht.
 
-Die Oberfläche reagiert abhängig vom aktuellen Anwendungszustand. Beim initialen Aufruf stehen noch keine Simulationsdaten zur Verfügung, weshalb die Fokusansicht und die Kennzahlen mit einem erklärenden Leerzustand dargestellt werden (Abbildung~\ref{fig:ausgangslage}). Nach dem Laden eines Szenarios werden die Prozessdaten bereits in der Zeitachse sichtbar, während die Ausführungs- und Kennzahlenbereiche bis zur Anwendung eines Algorithmus deaktiviert bleiben (Abbildung~\ref{fig:szenario-geladen}). Erst nach diesem Schritt wird die eigentliche Simulation erzeugt und kann abgespielt werden.
+Die Oberfläche reagiert abhängig vom aktuellen Anwendungszustand. Beim initialen Aufruf stehen noch keine Simulationsdaten zur Verfügung, weshalb die Fokusansicht und die Kennzahlen mit einem erklärenden Leerzustand dargestellt werden (Abbildung~\ref{fig:ausgangslage}). Nach dem Laden eines Szenarios werden die Task-Daten bereits in der Zeitachse sichtbar, während die Ausführungs- und Kennzahlenbereiche bis zur Anwendung eines Algorithmus deaktiviert bleiben (Abbildung~\ref{fig:szenario-geladen}). Erst nach diesem Schritt wird die eigentliche Simulation erzeugt und kann abgespielt werden.
 
 \input{images/screenshot-ausgangslage}
 
@@ -63,11 +63,11 @@ Die Fokusansicht zeigt einen einzelnen, ausgewählten Lauf. Dieser Lauf entsteht
 
 \input{images/screenshot-fokusansicht}
 
-Die Gantt-Zeitachse bildet den zeitlichen Ablauf des ausgewählten Laufs ab. Die Segmente zeigen, welcher Prozess in welchem Zeitintervall ausgeführt wird. An den Segmentgrenzen lassen sich insbesondere Präemptionen, abgelaufene Zeitquanten und Wechsel zwischen Prozessen nachvollziehen (Abbildung~\ref{fig:gantt-detail}).
+Die Gantt-Zeitachse bildet den zeitlichen Ablauf des ausgewählten Laufs ab. Die Segmente zeigen, welcher Task in welchem Zeitintervall ausgeführt wird. An den Segmentgrenzen lassen sich insbesondere Präemptionen, abgelaufene Zeitquanten und Wechsel zwischen Tasks nachvollziehen (Abbildung~\ref{fig:gantt-detail}).
 
 \input{images/screenshot-gantt-detail}
 
-Die Fokusansicht verfügt über einen Wiedergabemodus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Prozess sowie die wartenden Prozesse mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
+Die Fokusansicht verfügt über einen Wiedergabemodus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Task sowie die wartenden Tasks mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
 
 \input{images/screenshot-stack-detail}
 
@@ -106,7 +106,13 @@ Die Interaktionsmechanismen orientieren sich am Lernworkflow: Szenario definiere
 Die Wiedergabelogik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszuführen.
 
 Ergänzend wurde auf robuste Bedienbarkeit geachtet: klare Statusrückmeldungen, nachvollziehbares Fokusverhalten und semantisch benannte UI-Elemente. Damit werden die in Kapitel 4 formulierten HCI-Anforderungen in konkrete Implementierungsmechanismen übersetzt \cite{wcag2018,brooke1996sus}.
+	extbf{Szenario-Management und Import/Export}
 
+Ein weiteres wesentliches Element der Umsetzung ist das Szenario-Management, das die Verwaltung, Wiederverwendung und Weitergabe von Simulationseingaben ermöglicht. Die Anwendung erlaubt es, neue Szenarien zu erzeugen, gespeicherte Konfigurationen zu verwalten und bereits bestehende Fälle als JSON-Datei zu exportieren. Der Export umfasst dabei nicht nur die Prozessdaten, sondern ebenfalls die zugehörigen Simulationseinstellungen, die angelegten Runs, die Parameter der verwendeten Scheduling-Strategien sowie den aktuell aktiven Lauf. Dadurch bleibt der vollständige Zustand des Szenarios nach einem Import konsistent und wiederherstellbar, ohne dass relevante Informationen verloren gehen oder manuell rekonstruiert werden müssen.
+
+Dieser Mechanismus ist nicht nur als technischer Komfort zu verstehen, sondern leistet auch einen Beitrag zur fachlichen Wiederverwendbarkeit und didaktischen Praktikabilität der Anwendung. Lehrende können Standard-Szenarien erstellen und weitergeben, Nutzerinnen und Nutzer können eigene Konfigurationen speichern und zwischen verschiedenen Analysephasen weiterverwenden, und Vergleichsexperimente können auf identischem Ausgangszustand reproduziert werden. Die Speicherung in einem offenen, textbasierten Format wie JSON erhöht zudem die Austauschbarkeit der Daten und reduziert die Abhängigkeit von einer spezifischen Laufzeitumgebung.
+
+In der Architektur des Systems ist das Szenario-Management als Teil der Anwendungslogik umgesetzt und greift auf dieselben Normalisierungs- und Validierungsmechanismen zurück wie die Erstellung neuer Szenarien. Dadurch wird sichergestellt, dass importierte Daten denselben strukturellen Regeln unterliegen wie direkt im Generator erzeugte Daten. Die so realisierte Zustandsintegrität ist für die fachliche Nachvollziehbarkeit und die Vergleichbarkeit von Läufen von zentraler Bedeutung, da sie verhindert, dass visuelle Darstellung und Simulationskontext auseinanderlaufen.
 \section{Besondere technische Herausforderungen}
 
 Eine zentrale Herausforderung bestand in der Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Einerseits musste die fachliche Korrektheit bei Präemption, Kontextwechsel und MLFQ-Regelwerk sichergestellt werden, andererseits sollte die Anwendung unmittelbar auf Eingaben reagieren.

@@ -16,7 +16,7 @@ Zusätzlich müssen die wichtigsten Vergleichsmetriken nachvollziehbar berechnet
 
 \section{Didaktische Anforderungen}
 
-Didaktisch soll die Anwendung nicht nur Ergebnisse anzeigen, sondern den Entscheidungsprozess der Algorithmen sichtbar machen. Lernende sollen erkennen können, warum ein Prozess zu einem bestimmten Zeitpunkt ausgewählt, unterbrochen oder erneut eingeplant wird. Dieser Anspruch folgt aus Forschung zur Algorithmusvisualisierung, die aktive Interaktion und vergleichende Betrachtung als potenziell lernunterstützende Gestaltungsmerkmale beschreibt \cite{hundhausen2002meta,naps2002engagement,stasko1998software}.
+Didaktisch soll die Anwendung nicht nur Ergebnisse anzeigen, sondern den Entscheidungsprozess der Algorithmen sichtbar machen. Lernende sollen erkennen können, warum ein Task zu einem bestimmten Zeitpunkt ausgewählt, unterbrochen oder erneut eingeplant wird. Dieser Anspruch folgt aus Forschung zur Algorithmusvisualisierung, die aktive Interaktion und vergleichende Betrachtung als potenziell lernunterstützende Gestaltungsmerkmale beschreibt \cite{hundhausen2002meta,naps2002engagement,stasko1998software}.
 
 Die Konzeption priorisiert deshalb drei didaktische Leitprinzipien:
 
@@ -31,7 +31,7 @@ Die Konzeption priorisiert deshalb drei didaktische Leitprinzipien:
 Funktional muss die Anwendung den gesamten Ablauf von der Szenariodefinition bis zur Ergebnisinterpretation abdecken. Daraus ergeben sich folgende Kernfunktionen:
 
 \begin{itemize}
-    \item Erfassung und Bearbeitung von Prozessmengen mit relevanten Attributen.
+    \item Erfassung und Bearbeitung von Task-Mengen mit relevanten Attributen.
     \item Unterstützung bei der Szenariogenerierung durch vordefinierte Basis-Szenarien und eine interaktive Eingabemaske.
     \item Auswahl eines Scheduling-Verfahrens und seiner Parameter über einen klar strukturierten Dialog.
     \item Start, Pause, Schrittmodus und Zeitsprung innerhalb der Simulation.
@@ -66,7 +66,7 @@ Konzeptionell werden dabei zwei Anforderungen verbunden: erstens fachliche Korre
 
 \section{Konzeption der Visualisierung}
 
-Als primäres Visualisierungsmedium wird ein Gantt-artiger Zeitverlauf eingesetzt. Diese Form ist geeignet, da sie parallel Informationen über Prozessdauer, Unterbrechungen und Wartephasen abbildet und damit den Vergleich unterschiedlicher Strategien erleichtert.
+Als primäres Visualisierungsmedium wird ein Gantt-artiger Zeitverlauf eingesetzt. Diese Form ist geeignet, da sie parallel Informationen über Task-Dauer, Unterbrechungen und Wartephasen abbildet und damit den Vergleich unterschiedlicher Strategien erleichtert.
 
 Die Visualisierung wird konzeptionell als Ableitung des Simulationskerns verstanden, nicht als eigene Logikinstanz. Das bedeutet: Die Darstellung interpretiert vorhandene Zustands- und Segmentdaten, trifft aber keine eigenständigen Scheduling-Entscheidungen. Diese Trennung reduziert Fehlerquellen und erhöht die Validierbarkeit. Für die Interaktion werden ergänzend Tooltips, Hervorhebungen und Zeitsteuerung vorgesehen, um sowohl globale als auch detailorientierte Analyse zu ermöglichen \cite{hundhausen2002meta,stasko1998software}.
 
@@ -74,7 +74,7 @@ Die Visualisierung wird konzeptionell als Ableitung des Simulationskerns verstan
 
 Die Benutzungsoberfläche wird in drei logisch getrennte Bereiche gegliedert: Eingabe und Konfiguration, Simulationssteuerung sowie Ergebnisdarstellung. Diese Struktur soll die mentale Last reduzieren und den Wechsel zwischen Experimentieren und Interpretieren erleichtern.
 
-Die Umsetzung dieser Aufteilung ist in Abbildung~\ref{fig:szenario-generator} exemplarisch zu sehen. Der Generator verbindet die Eingabe der Prozessdaten mit einer Vorschau und vordefinierten Szenarien.
+Die Umsetzung dieser Aufteilung ist in Abbildung~\ref{fig:szenario-generator} exemplarisch zu sehen. Der Generator verbindet die Eingabe der Task-Daten mit einer Vorschau und vordefinierten Szenarien.
 
 \input{images/screenshot-szenario-generator}
 

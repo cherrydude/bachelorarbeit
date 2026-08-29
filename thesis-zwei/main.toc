@@ -61,7 +61,7 @@
 \contentsline {subsection}{\numberline {6.5.2}Vergleichsübersicht}{25}{subsection.6.5.2}%
 \contentsline {section}{\numberline {6.6}Umsetzung der Interaktionsmechanismen}{26}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Besondere technische Herausforderungen}{27}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Teststrategie und Qualitätssicherung}{27}{section.6.8}%
+\contentsline {section}{\numberline {6.8}Teststrategie und Qualitätssicherung}{28}{section.6.8}%
 \contentsline {chapter}{\numberline {7}Ergebnis und Produktpräsentation}{29}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Entwickeltes Endprodukt}{29}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Produktüberblick und Nutzerfluss}{29}{section.7.2}%
