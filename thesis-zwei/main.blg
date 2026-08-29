@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+A level-1 auxiliary file: deckblatt.aux
+A level-1 auxiliary file: vorwort.aux
+A level-1 auxiliary file: verzeichnisse.aux
+A level-1 auxiliary file: acronyms.aux
+A level-1 auxiliary file: 01-einleitung.aux
+A level-1 auxiliary file: 02-grundlagen.aux
+A level-1 auxiliary file: 03-didaktische-grundlagen.aux
+A level-1 auxiliary file: 04-mensch-computer-interaktion.aux
+A level-1 auxiliary file: 05-anforderungen-konzeption.aux
+A level-1 auxiliary file: 06-implementierung.aux
+A level-1 auxiliary file: 07-evaluation.aux
+A level-1 auxiliary file: 08-fazit-ausblick.aux
+A level-1 auxiliary file: anhang.aux
+Database file #1: bib.bib
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            589 strings with 6741 characters,
+and the built_in function-call counts, 3904 in all, are:
+= -- 367
+> -- 185
+< -- 1
++ -- 73
+- -- 58
+* -- 203
+:= -- 670
+add.period$ -- 52
+call.type$ -- 14
+change.case$ -- 68
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 155
+empty$ -- 336
+format.name$ -- 58
+if$ -- 827
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 13
+newline$ -- 82
+num.names$ -- 31
+pop$ -- 113
+preamble$ -- 1
+purify$ -- 55
+quote$ -- 0
+skip$ -- 102
+stack$ -- 0
+substring$ -- 128
+swap$ -- 24
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 0
+while$ -- 34
+width$ -- 16
+write$ -- 163

@@ -1,0 +1,84 @@
+\chapter{Systemarchitektur und Komponentenmodell}
+
+\section{Ziel und Bedeutung der Architektur}
+
+Die Architektur der Anwendung ist ein zentraler Bestandteil des Projekts, weil sie den fachlichen Kern von der visuellen Darstellung und der Interaktion sauber trennt. Eine gut strukturierte Architektur ist für ein Lehrwerkzeug besonders wichtig, da sie nicht nur Wartbarkeit und Erweiterbarkeit sichert, sondern auch die Nachvollziehbarkeit der Scheduling-Entscheidungen erhöht.
+
+Das System wurde deshalb so konzipiert, dass die fachliche Logik der Scheduling-Algorithmen von der Benutzeroberfläche und den Anzeigekomponenten entkoppelt ist. Dadurch bleibt der Simulationskern klar definiert, reproduzierbar und testbar. Die Oberfläche kann anschließend die erzeugten Zustände, Ereignisse und Kennzahlen darstellen, ohne die eigentliche Berechnung zu beeinflussen.
+
+\section{Architekturprinzipien}
+
+Die Anwendung folgt einer komponentenbasierten Struktur mit klaren Verantwortlichkeiten. Die wichtigsten Prinzipien sind:
+
+\begin{itemize}
+    \item \textbf{Trennung von Logik und Darstellung:} Die Berechnung des Ablaufs liegt in der Simulationslogik; die UI zeigt nur die resultierenden Zustände an.
+    \item \textbf{Deterministische Verarbeitung:} Gleiche Eingaben erzeugen dieselben Laufdaten und dieselben Berechnungen.
+    \item \textbf{Modularität:} Die Struktur wird in fachlich getrennte Bereiche aufgeteilt, damit einzelne Teile unabhängig entwickelt, getestet und erweitert werden können.
+    \item \textbf{Nachvollziehbarkeit:} Jede Darstellung lässt sich auf einen konkreten Simulationszustand zurückführen.
+\end{itemize}
+
+Diese Architekturentscheidungen sind für den Studiengang besonders relevant, weil sie typische Software-Engineering-Prinzipien sichtbar machen: Lose Kopplung, klare Zuständigkeiten, Wiederverwendbarkeit und Testbarkeit.
+
+\section{Komponentenmodell der Anwendung}
+
+Das Komponentenmodell beschreibt die wichtigsten Bausteine der Anwendung und deren Beziehungen zueinander. Die Struktur lässt sich in vier Ebenen gliedern:
+
+\begin{itemize}
+    \item \textbf{Benutzerschnittstelle:} Szenario-Editor, Steuerungselemente, Ergebnisansichten und Vergleichsbereiche.
+    \item \textbf{Anwendungslogik:} Verwaltung von Prozessdaten, Laufkonfigurationen und Zustandswechseln.
+    \item \textbf{Simulationskern:} Berechnung der Scheduling-Entscheidungen, Ereignisse und Kennzahlen.
+    \item \textbf{Visualisierung:} Zeitachsen, Gantt-Darstellung, Kennzahlen-Panel und Vergleichsübersicht.
+\end{itemize}
+
+Diese Abgrenzung ist nicht nur technisch sinnvoll, sondern auch didaktisch relevant: Nutzerinnen und Nutzer sehen die fachliche Logik nicht als Black Box, sondern als klar strukturierte, nachvollziehbare Verarbeitungskette. Das erhöht sowohl das Verständnis für das System als auch das Vertrauen in die dargestellten Ergebnisse.
+
+\section{Vektorgrafik: Komponentenmodell der Anwendung}
+
+\begin{figure}[htbp]
+    \centering
+    \input{images/system-architecture-diagram}
+    \caption{Komponentenmodell der Scheduling-Visualisierungsanwendung. Die Benutzeroberfläche nutzt die fachliche Simulationslogik; Ergebnisse werden anschließend in Visualisierungs- und Vergleichskomponenten dargestellt.}
+    \label{fig:komponentenmodell}
+\end{figure}
+
+\section{Beschreibung der Hauptkomponenten}
+
+\subsection{Szenario- und Konfigurationskomponente}
+
+Diese Komponente verwaltet die Eingabedaten eines Laufes. Sie enthält Prozessinformationen wie Ankunftszeit, Burst-Zeit, Priorität und Laufparameter. Über sie werden neue Szenarien erzeugt und bestehende Konfigurationen angepasst.
+
+\subsection{Simulationskern}
+
+Der Simulationskern bildet das fachliche Zentrum der Anwendung. Er verarbeitet die Prozesse nach den Regeln des ausgewählten Scheduling-Verfahrens und erzeugt den zeitlichen Ablauf, den Ereignislog und die relevanten Kennzahlen. Innerhalb dieser Schicht erfolgen die eigentlichen Entscheidungen über Auswahl, Präemption und Neuordnung der Prozesse.
+
+\subsection{Wiedergabe- und Steuerungslogik}
+
+Die Wiedergabe- und Steuerungslogik bestimmt, welche Zustände des Simulationsverlaufs zu welchem Zeitpunkt in der Oberfläche sichtbar sind. Sie steuert Start, Pause, Schrittmodus und Geschwindigkeit, ohne die fachliche Berechnung erneut zu initiieren.
+
+\subsection{Visualisierungs- und Vergleichskomponenten}
+
+Diese Komponenten rendern den Ablauf als Gantt-Diagramm, ergänzen Kennzahlen und erlauben die Gegenüberstellung mehrerer Läufe. Die Darstellung ist somit nicht die Ursache der Berechnung, sondern die sichtbare Ableitung eines bereits bestehenden Simulationszustands.
+
+\section{Beziehung zwischen den Komponenten}
+
+Die einzelnen Module arbeiten als Flussmodell zusammen: Ein Nutzer konfiguriert ein Szenario, der Simulationskern berechnet den Ablauf, die Wiedergabe-Logik zeigt den richtigen Zeitstand an und die Visualisierungs-Komponenten präsentieren die finalen Ergebnisse. Diese Struktur sorgt dafür, dass Änderungen an einem Bereich nicht unmittelbar die fachliche Logik oder die Darstellung anderer Bereiche zerstören.
+
+Diese Form der Entkopplung ist in Software Engineering ein wichtiges Qualitätsmerkmal, weil sie die Anwendung modular und erweiterbar macht. Insbesondere für ein Lehrprojekt ist das sinnvoll: neue Scheduling-Verfahren, neue Kennzahlen oder zusätzliche Visualisierungsansichten lassen sich mit vergleichsweise geringem Aufwand ergänzen.
+
+\section{Erklärende Darstellung des Komponentenmodells}
+
+Das Komponentenmodell wird in der Vektorgrafik als Architekturübersicht dargestellt. Die Abbildung zeigt die zentrale Rolle des Simulationskerns und die Verbindung zwischen Eingabe, Verarbeitung und Visualisierung. Diese Darstellung ist wichtig, weil sie das technische Verständnis der Anwendung unterstützt und zugleich die fachliche Struktur der Lösung transparent macht.
+
+Die Abbildung verdeutlicht drei zentrale Aspekte:
+
+\begin{itemize}
+    \item Die Benutzeroberfläche ist nicht der eigentliche Rechenort der Scheduling-Logik.
+    \item Die fachliche Berechnung wird in einem klar abgegrenzten Kern modelliert.
+    \item Die Visualisierung ist eine nachgelagerte Schicht, die den Ablauf für den Nutzer verständlich macht.
+\end{itemize}
+
+Diese Architektur ist eine zentrale Grundlage der Arbeit, da sie die technische Qualität und den professionellen Entwurf des Systems belegt. Sie zeigt, dass es sich bei der Anwendung nicht nur um ein einfaches Demo-Tool handelt, sondern um eine nachvollziehbar designte, erweiterbare und modular aufgebaute Software.
+
+\section{Zusammenfassung}
+
+Das vorgestellte Komponentenmodell macht den Kern der Arbeit sichtbar: Die Anwendung verbindet fachliche Korrektheit mit klarer Softwarearchitektur und verständlicher Darstellung. Die Systemstruktur ist damit nicht nur für die technische Umsetzung relevant, sondern auch für die didaktische Qualität der Anwendung. Ein gut gegliedertes System reduziert Komplexität, verbessert die Wartbarkeit und ermöglicht eine verständliche Präsentation der Ideen hinter CPU-Scheduling.

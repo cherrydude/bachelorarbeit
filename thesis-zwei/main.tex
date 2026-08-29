@@ -1,0 +1,44 @@
+\documentclass[11pt,a4paper,openany,oneside]{scrbook}
+
+% Preamble
+\input{packages}
+\input{commands}
+\input{settings}
+\input{hyphenation}
+
+\hypersetup{
+    linkcolor = {black},
+    allcolors = {black},
+}
+
+\bibliographystyle{plain}
+\pagestyle{plain}
+\raggedbottom
+\emergencystretch=2em
+
+\begin{document}
+
+\pagenumbering{roman}
+\include{deckblatt}
+\onehalfspacing
+\include{vorwort}
+
+\singlespacing
+\include{verzeichnisse}
+\include{acronyms}
+
+\pagenumbering{arabic}
+\onehalfspacing
+\include{01-einleitung}
+\include{02-grundlagen}
+\include{03-didaktische-grundlagen}
+\include{04-mensch-computer-interaktion}
+\include{05-anforderungen-konzeption}
+\include{06-implementierung}
+\include{07-evaluation}
+\include{08-fazit-ausblick}
+
+\bibliography{bib}
+\include{anhang}
+
+\end{document}

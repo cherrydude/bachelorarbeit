@@ -1,0 +1,126 @@
+\chapter{Implementierung}
+
+Dieses Kapitel beschreibt die konkrete technische Umsetzung auf Basis der zuvor definierten Anforderungen und der konzeptionellen Architektur. Im Fokus stehen die Trennung zwischen Simulationskern und Darstellung, die typsichere Modellierung der Scheduling-Domäne sowie die Umsetzung interaktiver Analysefunktionen.
+
+\section{Technische Grundlagen und verwendete Technologien}
+
+Die Anwendung wurde als rein clientseitige Webanwendung umgesetzt. Der gewählte Technologie-Stack besteht aus Vue 3, TypeScript und Vite \cite{vue3,vite}. Diese Kombination unterstützt eine schnelle Entwicklungsiteration und bietet zugleich eine klare Struktur für komponentenbasierte Oberflächen und typsichere Fachlogik.
+
+Vue 3 wird für die komponentenorientierte UI-Schicht eingesetzt. TypeScript dient der expliziten Modellierung von Prozessen, Ereignissen, Simulationsergebnissen und Metriken. Vite übernimmt Build- und Entwicklungsworkflow inklusive schneller Aktualisierung während der Entwicklung. Für automatisierte Tests wird Vitest verwendet \cite{vitest}. Animationsbezogene UI-Effekte werden mit GSAP realisiert, ohne in die Simulationslogik einzugreifen \cite{gsap}. Zusätzlich ist die Oberfläche mit einem Willkommensdialog, einem Szenario-Generator und einer strukturierten Algorithmusauswahl erweitert, die den Nutzungsfluss für Lehr- und Vergleichszwecke deutlich verbessern.
+
+\section{Architektur der Anwendung}
+
+Die Implementierung folgt einer klaren Schichtenlogik:
+
+\begin{itemize}
+  \item \textbf{Domänenkern:} deterministische Simulationslogik für Scheduling-Verfahren.
+  \item \textbf{Anwendungslogik:} Verwaltung von Szenarien, Runs und Vergleichsdaten.
+  \item \textbf{Darstellungsschicht:} Visualisierung der Ergebnisse und Interaktion mit Nutzenden.
+\end{itemize}
+
+Zentral ist dabei die Einbahnbeziehung vom Kern zur Darstellung: Die UI berechnet keine Scheduling-Entscheidungen, sondern rendert die vom Kern gelieferten Segmente, Ereignisse, Snapshots und Metriken. Dadurch wird verhindert, dass Visualisierung und Berechnungslogik auseinanderlaufen.
+
+Ein weiterer Architekturpunkt ist die bewusste Entkopplung von Simulationszustand und Wiedergabesteuerung. Die Simulation liefert einen konsistenten Ergebnisdatensatz; die Wiedergabelogik steuert nur, welcher Zustand zu einem Zeitpunkt angezeigt wird. Das verbessert Testbarkeit und Wiederholbarkeit von Experimenten.
+
+\section{Modellierung der Scheduling-Verfahren}
+
+Die fachliche Modellierung basiert auf einem gemeinsamen Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität und dynamischem Ausführungszustand. Darauf aufbauend werden die einzelnen Scheduling-Verfahren als Strategien innerhalb desselben Simulationsrahmens umgesetzt.
+
+Round Robin wird über ein Zeitquantum modelliert, Strict Priority über prioritätsbasierte Auswahl inklusive Präemption bei höherrangigen Ankünften, LCFS über last-in-first-out-Mechanik und MLFQ über mehrere Warteschlangenebenen mit regelbasierter Herabstufung. Damit wird die in der Literatur beschriebene algorithmische Charakteristik im Kern einheitlich und vergleichbar operationalisiert \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}.
+
+Wichtig für die Vergleichbarkeit ist, dass alle Verfahren über dieselbe Tick- und Ereignislogik laufen. Unterschiede im Ergebnis ergeben sich damit aus dem jeweiligen Scheduling-Verhalten und nicht aus abweichenden Ausführungsmodellen.
+
+\section{Umsetzung der Simulation}
+
+Die Simulation ist als diskreter, deterministischer Ablauf umgesetzt. Zu jedem Simulationsschritt werden neue Ankünfte verarbeitet, Auswahlregeln angewendet und gegebenenfalls Präemptionen oder Kontextwechsel protokolliert. Dadurch entsteht ein vollständiger Verlauf, der sowohl für die visuelle Darstellung als auch für die Metrikberechnung genutzt wird.
+
+Konkret erzeugt der Kern mehrere Ergebnisformen:
+
+\begin{itemize}
+  \item \textbf{Ereignislog:} chronologische Ereignisse wie Dispatch, Start, Präemption und Abschluss.
+  \item \textbf{Segmente:} Zeitabschnitte für die Gantt-Darstellung.
+  \item \textbf{Snapshots:} zustandsbasierte Zwischenbilder für Wiedergabe und Zeitsprünge.
+  \item \textbf{Metriken:} aggregierte Kenngrössen pro Simulationslauf.
+\end{itemize}
+
+Diese Mehrfachausgabe aus einem Kernmodell entspricht den Prinzipien diskreter Ereignissimulation und verbessert die Nachvollziehbarkeit der Laufzeitdynamik \cite{banks2010discrete}.
+
+\section{Umsetzung der Visualisierung}
+
+Die Visualisierung erfolgt auf Basis von SVG-Komponenten. Diese Wahl ermöglicht präzise Positionierung auf der Zeitachse, saubere Segmentdarstellung und semantisch adressierbare Interaktionselemente. Jeder Balken in der Gantt-Ansicht repräsentiert einen konkreten Ausführungsabschnitt eines Prozesses. Die Anwendung stellt die Simulation in zwei Hauptansichten dar: der Fokusansicht und der Vergleichsübersicht.
+
+Die Oberfläche reagiert abhängig vom aktuellen Anwendungszustand. Beim initialen Aufruf stehen noch keine Simulationsdaten zur Verfügung, weshalb die Fokusansicht und die Kennzahlen mit einem erklärenden Leerzustand dargestellt werden (Abbildung~\ref{fig:ausgangslage}). Nach dem Laden eines Szenarios werden die Prozessdaten bereits in der Zeitachse sichtbar, während die Ausführungs- und Kennzahlenbereiche bis zur Anwendung eines Algorithmus deaktiviert bleiben (Abbildung~\ref{fig:szenario-geladen}). Erst nach diesem Schritt wird die eigentliche Simulation erzeugt und kann abgespielt werden.
+
+\input{images/screenshot-ausgangslage}
+
+\input{images/screenshot-szenario-geladen}
+
+Die Darstellung nutzt die vom Simulationskern gelieferten Segment- und Snapshot-Daten direkt. Dadurch lassen sich sowohl statische Vergleiche als auch dynamische Wiedergabevarianten umsetzen. Interaktive Hilfen wie Tooltips und Hervorhebungen unterstützen die detaillierte Analyse einzelner Entscheidungen und Kontextwechsel.
+
+\subsection{Fokusansicht}
+
+Die Fokusansicht zeigt einen einzelnen, ausgewählten Lauf. Dieser Lauf entsteht aus einem ausgewählten Algorithmus, der auf ein konkretes Szenario angewendet wurde. Die Ansicht verbindet drei Bestandteile: das Gantt-Modell, die Stack-Visualisierung und die Kennzahlen. Abbildung~\ref{fig:fokusansicht} zeigt diese Bestandteile in ihrer gemeinsamen Anordnung.
+
+\input{images/screenshot-fokusansicht}
+
+Die Gantt-Zeitachse bildet den zeitlichen Ablauf des ausgewählten Laufs ab. Die Segmente zeigen, welcher Prozess in welchem Zeitintervall ausgeführt wird. An den Segmentgrenzen lassen sich insbesondere Präemptionen, abgelaufene Zeitquanten und Wechsel zwischen Prozessen nachvollziehen (Abbildung~\ref{fig:gantt-detail}).
+
+\input{images/screenshot-gantt-detail}
+
+Die Fokusansicht verfügt über einen Wiedergabemodus. Die Wiedergabe bewegt sich entlang der vom Simulationskern erzeugten Snapshots. Der aktuelle Simulationszeitpunkt wird dabei in der Gantt-Ansicht markiert. Die Stack-Visualisierung orientiert sich an demselben Zeitpunkt und zeigt den aktiven Prozess sowie die wartenden Prozesse mit ihrem jeweiligen Status (Abbildung~\ref{fig:stack-detail}). Dadurch kann die Auswahlentscheidung des Algorithmus unmittelbar mit der sichtbaren Queue-Situation verknüpft werden.
+
+\input{images/screenshot-stack-detail}
+
+Die Kennzahlen orientieren sich ebenfalls am aktuellen Simulationslauf und werden aus dessen Berechnungsergebnis abgeleitet. Neben Warte-, Durchlauf- und Reaktionszeit werden maximale Wartezeit, Starvation-Fälle, Präemptionen, Kontextwechsel und der Fairness-Index ausgewiesen (Abbildung~\ref{fig:kennzahlen-detail}). Während des Wiedergabemodus ändern sich die laufbezogenen Zustandsinformationen synchron zur Wiedergabe; die abschließenden Kennzahlen fassen den vollständig berechneten Lauf zusammen.
+
+\input{images/screenshot-kennzahlen-detail}
+
+\FloatBarrier
+
+\subsection{Vergleichsübersicht}
+
+Die Vergleichsübersicht dient der kompakten Gegenüberstellung aller bisher erstellten Runs des ausgewählten Szenarios. Die Gesamtansicht verbindet die nebeneinander angeordneten Läufe mit der darunterliegenden Bewertungsmatrix (Abbildung~\ref{fig:vergleichsuebersicht-gesamt}).
+
+\input{images/screenshot-vergleichsuebersicht-gesamt}
+
+Jeder Run wird als Mini-Gantt dargestellt und eindeutig mit seinem verwendeten Algorithmus und seinen relevanten Parametern gekennzeichnet. Die Runs werden nebeneinander angeordnet, damit Unterschiede in Ausführungsreihenfolge, Durchlauf und Unterbrechungen schnell erfasst werden können (Abbildung~\ref{fig:vergleichsuebersicht}).
+
+Im Gegensatz zur Fokusansicht besitzt die Vergleichsübersicht keinen Wiedergabemodus. Sie zeigt die berechneten Verläufe statisch und konzentriert sich auf den direkten Vergleich mehrerer Runs. Präemptionen werden durch einen orangefarbenen Strich am Ende des betroffenen Ausführungssegments markiert. Dadurch sind Unterbrechungen auch in der verkleinerten Mini-Gantt-Darstellung sichtbar, ohne dass die einzelnen Runs schrittweise abgespielt werden müssen.
+
+Die Vergleichsübersicht wird durch die Bewertungsmatrix ergänzt. Diese ordnet die vorhandenen Runs anhand ausgewählter Kennzahlen und eines Anwendungskontexts ein. Die Matrix ist damit nicht selbst Teil der Simulationsberechnung, sondern eine zusätzliche Vergleichsschicht für die strukturierte Interpretation der bereits berechneten Ergebnisse.
+
+\input{images/screenshot-vergleichsmatrix}
+
+Die Bewertungsmatrix wählt abhängig vom Anwendungskontext unterschiedliche Gewichtungen für die vorhandenen Kennzahlen. Im dargestellten Beispiel wird ein Batch-/HPC-Kontext ausgewählt. Die Tabelle ordnet die Runs anschließend anhand von Durchlaufzeit, Durchsatz, Kontextwechseln, Präemptionen und Starvation und kennzeichnet den jeweils besser bewerteten Lauf.
+
+\input{images/screenshot-bewertungsmatrix}
+
+\FloatBarrier
+
+Für visuelle Übergänge und Aufmerksamkeitssteuerung werden selektiv Animationen eingesetzt. Diese sind jedoch bewusst dekorativ entkoppelt und haben keinen Einfluss auf den fachlichen Simulationszustand \cite{gsap}.
+
+\section{Umsetzung der Interaktionsmechanismen}
+
+Die Interaktionsmechanismen orientieren sich am Lernworkflow: Szenario definieren, Algorithmus auswählen, Ablauf steuern, Ergebnis interpretieren. Daraus ergeben sich konkrete Steuerfunktionen für Start, Pause, Schrittbetrieb, Geschwindigkeitsanpassung und Zeitsprung.
+
+Die Wiedergabelogik ist als separater Anwendungsbaustein realisiert. Sie konsumiert vorberechnete Snapshots und steuert ausschliesslich die Darstellung des aktuellen Zeitpunkts. Dadurch bleiben Interaktionen reaktionsschnell, ohne den Simulationskern neu auszuführen.
+
+Ergänzend wurde auf robuste Bedienbarkeit geachtet: klare Statusrückmeldungen, nachvollziehbares Fokusverhalten und semantisch benannte UI-Elemente. Damit werden die in Kapitel 4 formulierten HCI-Anforderungen in konkrete Implementierungsmechanismen übersetzt \cite{wcag2018,brooke1996sus}.
+
+\section{Besondere technische Herausforderungen}
+
+Eine zentrale Herausforderung bestand in der Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Einerseits musste die fachliche Korrektheit bei Präemption, Kontextwechsel und MLFQ-Regelwerk sichergestellt werden, andererseits sollte die Anwendung unmittelbar auf Eingaben reagieren.
+
+Ein zweiter Schwerpunkt war die Sicherung von Reproduzierbarkeit. Dazu wurden deterministische Ausführungspfade und testbare Schnittstellen priorisiert. Automatisierte Tests prüfen sowohl Kernlogik als auch zentrale Integrationsfälle, wodurch Regressionen früh sichtbar werden \cite{vitest}.
+
+Schliesslich ergab sich ein Trade-off zwischen Detailtiefe und Ressourcenverbrauch: Dichte Snapshot-Folgen verbessern Analyse und Wiedergabe, erhöhen jedoch Speicherbedarf. Diese Spannung wurde durch parametrisierbare Snapshot-Intervalle adressiert, sodass zwischen Genauigkeit und Laufzeitverhalten situationsgerecht balanciert werden kann.
+
+\section{Teststrategie und Qualitätssicherung}
+
+Die Qualitätssicherung konzentriert sich auf den Simulationskern und die Anwendungslogik. Die Tests werden mit Vitest ausgeführt und prüfen sowohl isolierte Simulationseigenschaften als auch zentrale Integrationspfade der Szenarioverwaltung \cite{vitest}. Ein Schwerpunkt liegt auf der Deterministik: Wird ein identisches Szenario zweimal ausgeführt, müssen Gesamtdauer, Prozessabschluss, Ereignisfolge und Ausführungssegmente übereinstimmen.
+
+Darüber hinaus werden die fachlich relevanten Verhaltensweisen der Verfahren mit kleinen, gezielt konstruierten Prozessmengen geprüft. Dazu gehören der Quantum-Ablauf und die Präemption bei Round Robin, die Präemption bei einer neuen Ankunft im präemptiven LCFS-Verfahren sowie die Herabstufung eines Prozesses nach Ablauf seines Quantums in der MLFQ. Ergänzend prüft die Eingabevalidierung, ob ungültige oder unvollständige Szenariodaten normalisiert werden und ob die erzeugten Zeitsegmente gültige Grenzen besitzen.
+
+Die Tests der Anwendungslogik ergänzen diese Kernprüfungen um die Verwaltung von Szenarien und Runs. Dabei wird unter anderem kontrolliert, ob aus einem Szenario und einem ausgewählten Run ein vollständiges Simulationsszenario erzeugt wird, ob Prozessdaten dabei kopiert werden und ob Änderungen an Szenario, Parametern oder aktivem Run zu einer veränderten Darstellung führen.
+
+Zum Zeitpunkt der Erstellung dieser Arbeit umfasst die automatisierte Testsuite elf Testdateien mit insgesamt 34 erfolgreichen Tests. Die Tests sichern die technische Konsistenz der Implementierung ab, ersetzen jedoch keine fachliche Prüfung aller denkbaren Prozesskombinationen und keine empirische Untersuchung der Nutzung oder Lernwirkung. Die in Kapitel 7 verwendeten Evaluationsszenarien dienen daher zusätzlich als nachvollziehbare Prüf- und Vergleichsfälle.
