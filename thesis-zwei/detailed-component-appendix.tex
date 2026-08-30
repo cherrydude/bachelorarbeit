@@ -1,0 +1,68 @@
+\section*{Anhang A: Detailliertes Komponentenmodell}
+
+Die Anwendung ist als hierarchische Komponentenstruktur in Vue 3 organisiert. Das nachfolgende Diagramm zeigt alle Komponenten, ihre Gruppierung nach Funktion und ihre Abhängigkeiten zur Simulationslogik.
+
+\begin{figure}[htbp]
+    \centering
+    \input{images/detailed-component-model}
+    \caption{Detailliertes Komponentenmodell der Anwendung. Die vier Schichten zeigen: (1) Modal- und Dialog-Komponenten für Eingabe und Einstellungen, (2) Visualisierungs- und Interaktionskomponenten für die Darstellung, (3) Kern-Simulationslogik und Utilities, (4) Shared Composables für Cross-Cutting Concerns wie State Management und Zustandssynchronisation.}
+    \label{fig:detailed-component-model}
+\end{figure}
+
+\subsection*{Komponentengruppen}
+
+\subsubsection*{Modal/Dialog Layer}
+Diese Schicht enthält alle modalen Dialoge und Eingabe-Komponenten:
+\begin{itemize}
+    \item \textbf{WelcomeModal:} Initiale Begrüßung und Szenario-Auswahl
+    \item \textbf{AlgorithmPickerModal:} Auswahl und Konfiguration von Scheduling-Algorithmen
+    \item \textbf{KnowledgePage:} Hilfetexte und Wissensdatenbank
+    \item \textbf{RankingEditModal:} Konfiguration der Bewertungsmatrix
+    \item \textbf{BurgerMenu / RadialMenu:} Navigation und schnelle Aktionen
+\end{itemize}
+
+\subsubsection*{Visualization/Interaction Layer}
+Die Hauptkomponenten für die Visualisierung und Benutzerinteraktion:
+\begin{itemize}
+    \item \textbf{MultiView:} Haupt-Container für alle Visualisierungen
+    \item \textbf{Gantt:} Gantt-Zeitachsen-Darstellung
+    \item \textbf{MiniGantt:} Kompakte Gantt-Darstellung für Vergleichsübersicht
+    \item \textbf{StackList:} Darstellung der Warteschlange
+    \item \textbf{MetricsTable:} Kennzahlen-Panel
+    \item \textbf{ComparisonPanel:} Vergleichsübersicht mehrerer Läufe
+    \item \textbf{RankingList:} Bewertungs- und Ranking-Darstellung
+\end{itemize}
+
+\subsubsection*{Simulation/Logic Layer}
+Kern-Simulationslogik und domänenspezifische Utilities:
+\begin{itemize}
+    \item \textbf{simulation.ts:} Deterministische Simulationsengine für alle Scheduling-Algorithmen
+    \item \textbf{types.ts:} TypeScript-Domänenmodell (Tasks, Events, Metrics, etc.)
+    \item \textbf{compare.ts:} Vergleich- und Bewertungs-Utilities
+    \item \textbf{timelineLayout.ts:} Layout-Berechnungen für die Gantt-Darstellung
+\end{itemize}
+
+\subsubsection*{Composables (Shared Logic)}
+Vue 3 Composables für wiederverwandte Logik und Cross-Cutting Concerns:
+\begin{itemize}
+    \item \textbf{useScenarioWorkspace:} Verwaltung von Szenarien und aktiven Läufen
+    \item \textbf{usePlayback:} Kontrolle der Wiedergabe-Logik (Play, Pause, Step)
+    \item \textbf{useComparison:} State Management für Vergleichsansicht
+    \item \textbf{useGanttZoom:} Zoom- und Pan-Verwaltung für die Gantt-Achse
+    \item \textbf{useTimelineSync:} Synchronisation zwischen Gantt, Stack und Kennzahlen
+    \item \textbf{useTheme:} Theme- und Dark-Mode-Verwaltung
+    \item \textbf{useFocusTrap / useTour:} Accessibility und User Guidance
+\end{itemize}
+
+\subsection*{Datenfluss}
+
+Der Datenfluss folgt dem Master-Slave-Prinzip:
+\begin{enumerate}
+    \item Nutzer-Eingaben in Modalen oder Steuerelementen triggern State-Updates in Composables
+    \item Composables orchestrieren die Neuberechnung in der Simulationslogik
+    \item simulation.ts produziert neue Ereignisse, Segmente und Metriken
+    \item Visualisierungs-Komponenten abonnieren reactive State aus Composables und rendern die neuen Daten
+    \item Die Darstellung aktualisiert sich synchron ohne zurückzufließende Berechnungen
+\end{enumerate}
+
+Diese unidirektionale Architektur gewährleistet, dass UI und Simulationslogik sich niemals widersprechen.

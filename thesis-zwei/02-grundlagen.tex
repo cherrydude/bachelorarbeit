@@ -4,39 +4,67 @@ Dieses Kapitel beschreibt die theoretischen Grundlagen, auf denen Konzeption, Im
 
 \section{Betriebssysteme und Prozessverwaltung}
 
-Betriebssysteme koordinieren den Zugriff auf Hardware-Ressourcen und stellen Ausführungsumgebungen für Programme bereit. Eine Kernaufgabe ist dabei die Verwaltung konkurrierender Prozesse, die um CPU-Zeit, Speicher und weitere Ressourcen konkurrieren \cite{silberschatz2018operating,tanenbaum2014modern}.
+Betriebssysteme koordinieren den Zugriff auf Hardware-Ressourcen und stellen Ausführungsumgebungen für Programme bereit. Eine Kernaufgabe ist dabei die Verwaltung konkurrierender Ausführungseinheiten, die um CPU-Zeit, Speicher und weitere Ressourcen konkurrieren \cite{silberschatz2018operating,tanenbaum2014modern}.
 
-Prozesse durchlaufen typischerweise mehrere Zustände, etwa bereit, laufend und blockiert. Das Betriebssystem steuert Übergänge zwischen diesen Zuständen und bestimmt durch Scheduling-Entscheidungen, welcher bereite Prozess als nächstes ausgeführt wird. Diese Entscheidungen wirken sich direkt auf wahrgenommene Systemreaktion und Gesamtdurchlauf aus.
+Historisch stand der Begriff des Prozesses im Mittelpunkt: Ein Prozess ist eine vollständige, isolierte Ausführungsumgebung mit eigenem Adressraum, Dateihandles und Ressourcenzustand. Prozesse durchlaufen typischerweise mehrere Zustände, etwa bereit, laufend und blockiert. Das Betriebssystem steuert Übergänge zwischen diesen Zuständen und bestimmt durch Scheduling-Entscheidungen, welcher bereite Prozess als nächstes ausgeführt wird. Diese Entscheidungen wirken sich direkt auf wahrgenommene Systemreaktion und Gesamtdurchlauf aus.
+
+Parallel zur Prozessabstraktion existiert das Konzept des Threads (oder leichtgewichtigen Prozesses). Ein Thread ist eine Ausführungseinheit innerhalb eines Prozesses und teilt sich Speicher, offene Dateien und andere Ressourcen mit anderen Threads des gleichen Prozesses. Der Hauptunterschied liegt in der Isolation und dem Ressourcenaufwand: Ein Kontextwechsel zwischen Threads ist deutlich schneller als zwischen Prozessen, da weniger Systemzustand zurückgespeichert und wiederhergestellt werden muss. Threads erlauben es daher, eine feinere Parallelisierung innerhalb eines Programms zu erreichen.
+
+Aus der Perspektive des CPU-Schedulers gibt es zwei Ebenen der Entscheidung: Auf Kernel-Ebene plant der Scheduler Prozesse oder Kernel-Level-Threads ein, während auf User-Level Scheduling-Strategien zusätzlich oder alternativ Anwendungs-Threads verwalten können. Moderne Systeme wie Linux arbeiten typischerweise mit einer Eins-zu-Eins-Abbildung (ein Kernel-Thread pro User-Thread), wodurch die Grenze zwischen Prozessen und Threads verschwimmt.
 
 \section{CPU-Scheduling in Betriebssystemen}
 
-CPU-Scheduling beschreibt die Auswahlstrategie für die Vergabe von Prozessorzeit an bereite Prozesse. Ziel ist ein sinnvoller Ausgleich zwischen konkurrierenden Kriterien wie kurzer Reaktionszeit, niedriger Wartezeit, hoher Auslastung und fairer Behandlung \cite{pinedo2016scheduling,silberschatz2018operating}.
+CPU-Scheduling beschreibt die Auswahlstrategie für die Vergabe von Prozessorzeit an bereite Ausführungseinheiten – ob Prozesse, Kernel-Threads oder User-Level-Threads. Ziel ist ein sinnvoller Ausgleich zwischen konkurrierenden Kriterien wie kurzer Reaktionszeit, niedriger Wartezeit, hoher Auslastung und fairer Behandlung \cite{pinedo2016scheduling,silberschatz2018operating}.
 
-In Mehrprogrammsystemen ist Scheduling eine kontinuierliche Entscheidung unter Unsicherheit, da Ankunftszeitpunkte und Prozessverhalten variieren. Deshalb sind Scheduling-Verfahren typischerweise als Heuristiken formuliert, deren Eignung vom Lastprofil und vom Systemziel abhängt.
+In Mehrprogrammsystemen ist Scheduling eine kontinuierliche Entscheidung unter Unsicherheit, da Ankunftszeitpunkte und Verhalten der Ausführungseinheiten variieren. Deshalb sind Scheduling-Verfahren typischerweise als Heuristiken formuliert, deren Eignung vom Lastprofil und vom Systemziel abhängt. Obwohl Threads schnellere Kontextwechsel ermöglichen als Prozesse, unterliegen sie denselben Scheduling-Prinzipien: die Wahl des nächsten auszuführenden Elements, die Behandlung von Präemption und Kontextwechsel, und die Berechnung relevanter Metriken wie Wartezeit und Durchlaufzeit.
 
-\section{Präemptive Scheduling-Verfahren}
+Aus didaktischer Perspektive konzentriert sich die vorliegende Anwendung auf die Prozess-Abstraktion, weil diese das Konzept klarer macht und die zugrunde liegenden Scheduling-Prinzipien ohne die zusätzliche Komplexität der Speicher- und Ressourcenteilung illustriert. Die dargestellten Verfahren sind aber unmittelbar auf Threads übertragbar und verdeutlichen daher auch die modernen Scheduling-Herausforderungen in Multi-Core- und Multi-Threading-Umgebungen.
 
-Präemptive Verfahren erlauben es dem Betriebssystem, einen laufenden Prozess aktiv zu unterbrechen und einen anderen Prozess einzuplanen. Dies verbessert in vielen Kontexten die Reaktionsfähigkeit, verursacht jedoch zusätzlichen Verwaltungsaufwand durch Kontextwechsel \cite{tanenbaum2014modern,silberschatz2018operating}.
+\section{Präemptive versus nicht-präemptive Scheduling-Verfahren}
 
-Der zentrale Unterschied zu nicht-präemptiven Strategien besteht darin, dass Entscheidungen nicht nur bei Abschluss oder Blockierung eines Prozesses getroffen werden, sondern auch während seiner Ausführung. Dadurch steigt die Steuerbarkeit, gleichzeitig aber auch die Komplexität von Analyse und Visualisierung \cite{tanenbaum2014modern}.
+Eine grundlegende Klassifikation von Scheduling-Verfahren unterscheidet zwischen präemptiven und nicht-präemptiven Strategien. Dieser Unterschied hat tiefgreifende Auswirkungen auf die Verhalten von Systemen und auf die Komplexität von Analyse und Visualisierung.
+
+\subsection{Nicht-präemptive Verfahren}
+
+Nicht-präemptive Verfahren (auch kooperativ genannt) erlauben es einem Prozess, die CPU zu behalten, bis er selbst die Ausführung beendet oder sich aktiv freiwillig blockiert (etwa beim Warten auf eine Ressource oder Ein-/Ausgabe). Das Betriebssystem trifft Scheduling-Entscheidungen also nur an diskreten Punkten: beim Abschluss eines Prozesses oder beim Eintreten einer blockierenden Bedingung.
+
+Vorteilhaft sind nicht-präemptive Verfahren, weil sie weniger Kontextwechsel verursachen und die Implementierung einfacher ist. Ein Prozess kann sich auf sein Verhalten konzentrieren, ohne plötzlich unterbrochen zu werden. Nachteilig ist jedoch, dass ein langläufiger oder fehlerhafter Prozess das ganze System blockieren kann und andere Prozesse unbegrenzt warten müssen. Nicht-präemptive Verfahren eignen sich daher eher für Batch-Systeme oder eingebettete Systeme mit vorhersagbarem Verhalten.
+
+Historische Beispiele nicht-präemptiven Schedulings sind First Come First Served (FCFS) oder Shortest Job First (SJF), bei denen die Entscheidung jeweils beim Eintreffen eines neuen Prozesses oder beim Abschluss des aktuellen Prozesses getroffen wird.
+
+\subsection{Präemptive Verfahren}
+
+Präemptive Verfahren erlauben es dem Betriebssystem oder dem Scheduler aktiv, einen laufenden Prozess zu unterbrechen und einen anderen Prozess einzuplanen – unabhängig davon, ob der unterbrochene Prozess seine Arbeit abgeschlossen hat oder sich selbst freiwillig abgegeben hat. Eine Präemption wird typischerweise durch einen Timer-Interrupt (nach einem Zeitquantum) oder durch das Eintreffen eines höher priorisierten Prozesses ausgelöst.
+
+Die Hauptvorteile präemptiven Schedulings liegen in der verbesserten Reaktionsfähigkeit und Steuerbarkeit. Kein einzelner Prozess kann das System monopolisieren, und interaktive Prozesse können schnell reagieren. Dies ist entscheidend für moderne, zeitkritische und interaktive Systeme wie Betriebssysteme für Desktops, Mobilgeräte oder Echtzeit-Systeme. Die Kosten präemptiven Schedulings sind jedoch höher: Jede Präemption erfordert einen Kontextwechsel, bei dem Prozessorspeicher, Register und Zustand gespeichert und wiederhergestellt werden müssen. Dies verursacht Overhead und kann die Systemleistung reduzieren.
+
+Ein zentraler Unterschied zwischen präemptiven und nicht-präemptiven Verfahren ist auch die zeitliche Struktur der Entscheidungen. Nicht-präemptive Verfahren treffen Entscheidungen nur beim Abschluss oder der Blockierung von Prozessen; präemptive Verfahren können Entscheidungen kontinuierlich oder in regelmäßigen Abständen treffen. Das macht präemptive Verfahren zeitlich komplexer und interessanter für Analyse und Visualisierung, da sich der Zustand des Systems häufiger ändert.
+
+\subsection{Herausforderungen präemptiver Verfahren}
+
+Die Visualisierung präemptiver Verfahren stellt besondere Anforderungen dar, da die Dynamik höher ist: Ein Prozess kann mehrmals unterbrochen werden, muss seinen Zustand zwischen Unterbrechungen speichern, und die Auswirkungen von Präemptionen auf Wartezeit, Durchlaufzeit und Kontextwechsel sind nicht unmittelbar offensichtlich. Genau deshalb ist interaktive Visualisierung hier besonders wertvoll – sie macht die sonst abstrakten Entscheidungen des Schedulers räumlich und zeitlich nachvollziehbar.
+
+Die vorliegende Anwendung konzentriert sich ausschließlich auf präemptive Verfahren, weil diese die modernen Anforderungen widerspiegeln und gleichzeitig die pädagogische Herausforderung sind, die durch eine gute Visualisierung am besten gelöst wird.
 
 \section{Überblick über die betrachteten Algorithmen}
 
-\subsection{Last Come First Served}
+Alle in der vorliegenden Anwendung implementierten Verfahren sind präemptiv. Sie repräsentieren verschiedene Strategien zur Auswahl des nächsten auszuführenden Prozesses und zur Handhabung von Unterbrechungen.
 
-Last Come First Served (LCFS) priorisiert neu eingetroffene Prozesse. In der präemptiven Variante kann ein neu ankommender Prozess den aktuell laufenden Prozess sofort verdrängen. Das Verfahren ist anschaulich, kann aber unter ungünstigen Lastprofilen zu langen Wartezeiten früher eingetroffener Prozesse führen.
+\subsection{Last Come First Served (LCFS)}
 
-\subsection{Round Robin}
+Last Come First Served (LCFS) priorisiert neu eingetroffene Prozesse. In der präemptiven Variante kann ein neu ankommender Prozess den aktuell laufenden Prozess sofort verdrängen. Das Verfahren ist anschaulich und verdeutlicht unmittelbar die Auswirkungen von Präemptionen: Ein lange laufender Prozess wird immer wieder unterbrochen, wenn neue Prozesse ankommen. Das Verfahren kann aber unter ungünstigen Lastprofilen zu langen Wartezeiten früher eingetroffener Prozesse führen und ist daher in der Praxis selten allein verwendet. Es dient jedoch didaktisch gut zur Illustration von Präemption.
 
-Round Robin (RR) weist jedem Prozess ein Zeitquantum zu. Nach Ablauf des Quantums wird der Prozess, falls noch nicht abgeschlossen, wieder in die Bereitwarteschlange eingeordnet. RR gilt als faires Grundverfahren für zeitscheibenbasierte Systeme, da alle Prozesse regelmässig CPU-Zeit erhalten \cite{silberschatz2018operating}.
+\subsection{Round Robin (Zeitscheiben-Verfahren)}
 
-\subsection{Strict Priority}
+Round Robin (RR) ist ein klassisches präemptives Verfahren, das jedem Prozess ein Zeitquantum (Time Slice) zuweist. Nach Ablauf des Quantums wird der Prozess durch den Scheduler unterbrochen (präemptiert) und wieder in die Bereitwarteschlange eingeordnet, während der nächste Prozess seine eigene Zeitscheibe erhält. RR gilt als faires Grundverfahren für zeitscheibenbasierte Systeme, da alle Prozesse zyklisch und regelmässig CPU-Zeit erhalten. Die Präemption findet hier regelmässig nach festgelegten Zeitintervallen statt, was Round Robin didaktisch besonders interessant macht: Die Struktur der Unterbrechungen ist vorhersagbar und lässt sich leicht visualisieren \cite{silberschatz2018operating}.
 
-Strict Priority wählt stets den Prozess mit der höchsten Priorität aus. Trifft ein noch höher priorisierter Prozess ein, kann eine sofortige Präemption stattfinden. Vorteilhaft ist die gezielte Bevorzugung wichtiger Aufgaben; problematisch ist jedoch das Risiko von Starvation für niedrig priorisierte Prozesse \cite{tanenbaum2014modern}.
+\subsection{Strict Priority (Prioritätsbasiertes Verfahren)}
 
-\subsection{Multilevel Feedback Queue}
+Strict Priority ist ein ereignisgesteuertes präemptives Verfahren, das stets den bereiten Prozess mit der höchsten Priorität auswählt. Trifft ein Prozess mit höherer Priorität ein während ein niedrig priorisierter Prozess läuft, verursacht dies sofort eine Präemption des laufenden Prozesses. Vorteilhaft ist die gezielte Bevorzugung kritischer Aufgaben und schnelle Reaktion auf wichtige Ereignisse; problematisch ist jedoch, dass niedrig priorisierte Prozesse lange warten müssen, wenn ständig höher priorisierte Prozesse ankommen. Strict Priority verdeutlicht daher den Zielkonflikt zwischen Responsivität und gleichmäßiger Ressourcennutzung \cite{tanenbaum2014modern}.
 
-Multilevel Feedback Queue (MLFQ) kombiniert mehrere Warteschlangenebenen mit unterschiedlichen Prioritäten und Zeitquanten. Prozesse können in niedrigere Ebenen verschoben werden, wenn sie CPU-intensiv sind, während kurz laufende oder interaktive Prozesse in höheren Ebenen profitieren. Dadurch entsteht ein adaptives Verhalten, das auf heterogene Lastprofile reagieren kann \cite{silberschatz2018operating,meing2025mlfq}.
+\subsection{Multilevel Feedback Queue (MLFQ)}
+
+Multilevel Feedback Queue (MLFQ) ist ein präemptives Verfahren, das mehrere Warteschlangenebenen mit unterschiedlichen Prioritäten und Zeitquanten kombiniert. Prozesse werden zunächst in die höchste Ebene eingeplant; wenn ein Prozess sein Zeitquantum auf dieser Ebene aufbraucht, wird er in eine niedrigere Ebene mit längerem Zeitquantum verschoben. Kurz laufende oder interaktive Prozesse profitieren davon, dass sie schnell auf der höchsten Ebene bearbeitet werden und die CPU schnell freigeben. CPU-intensive Prozesse werden schrittweise in niedrigere Ebenen verschoben, wo sie längere Zeitscheiben, aber niedrigere Priorität erhalten. Dadurch entsteht ein adaptives Verhalten, das auf heterogene Lastprofile mit gemischten Prozesstypen reagieren kann. MLFQ zeigt, wie Präemption kombiniert mit Feedback-Mechanismen ein ausgewogenes Verhalten ermöglichen kann \cite{silberschatz2018operating,meing2025mlfq}.
 
 \section{Kriterien zur Bewertung von Scheduling-Verfahren}
 
@@ -54,4 +82,12 @@ Die Durchlaufzeit (Turnaround Time) ist die Zeit vom Eintreffen eines Prozesses 
 
 Die Reaktionszeit beschreibt die Zeit vom Eintreffen eines Prozesses bis zu seiner ersten CPU-Zuteilung. Diese Kennzahl ist besonders relevant für interaktive Systeme, in denen frühes Feedback wichtiger sein kann als minimale Gesamtdurchlaufzeit \cite{silberschatz2018operating,tanenbaum2014modern}.
 
-Ergänzend können Kontextwechselhäufigkeit, Präemptionsanzahl, Fairnessmasse und CPU-Leerlaufanteile betrachtet werden, um Zielkonflikte zwischen Responsivität, Stabilität und Ressourceneffizienz sichtbar zu machen.
+Ergänzend können Kontextwechselhäufigkeit, Präemptionsanzahl, CPU-Auslastung und Leerlaufanteile betrachtet werden, um Zielkonflikte zwischen Responsivität, Durchsatz und Ressourceneffizienz sichtbar zu machen.
+
+\section{Stand der Forschung zu Scheduling-Visualisierungen}
+
+Die Forschung zur Algorithmusvisualisierung zeigt, dass interaktive Darstellungen Lernprozesse deutlich unterstützen können, wenn Zustandswechsel, Warteschlangen und zeitliche Dynamiken gleichzeitig sichtbar gemacht werden. Besonders in technischen Fächern ist die Visualisierung von Abläufen häufig wirksamer als reine Textbeschreibungen, weil Lernende dadurch nicht nur das Ergebnis, sondern auch den Entstehungsprozess verstehen \cite{hundhausen2002meta,naps2002engagement,stasko1998software}. 
+
+Für präemptive Scheduling-Verfahren ist diese didaktische Herausforderung besonders groß, da diese Verfahren durch häufige Kontextwechsel, unerwartete Unterbrechungen und Rückkehr in die Warteschlange eine dynamische, nicht-lineare Logik aufweisen. Die Auswirkungen von Präemptionen auf Reaktionszeit, Durchlaufzeit und Wartezeit sind durch statische Beispiele und Tabellen oft schwer nachvollziehbar. Genau deshalb sind interaktive Visualisierungen für das Verständnis präemptiver Scheduling-Verfahren besonders relevant: Sie erlauben es, die Entscheidungen des Schedulers in ihrer zeitlichen Reihenfolge zu beobachten, die Gründe für Präemptionen zu verstehen und die direkten Konsequenzen dieser Entscheidungen auf die Metriken zu sehen.
+
+Die vorliegende Anwendung positioniert sich in diesem Bereich als didaktisches Werkzeug für präemptives Scheduling: Sie kombiniert fachlich korrekte Simulation mit einer verständlichen, zugänglichen Benutzeroberfläche und ermöglicht dadurch das Lernen durch direktes Experimentieren. Damit folgt sie dem in der Forschung beschriebenen Ansatz, dass Lernwirkung nicht nur durch fachliche Korrektheit, sondern auch durch klare Visualisierung und aktive Interaktion entsteht.

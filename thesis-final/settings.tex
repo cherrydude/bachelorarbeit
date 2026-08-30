@@ -1,0 +1,91 @@
+% ---------------------------------------------------------
+% Theorems
+% ---------------------------------------------------------
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{corollary}{Corollary}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{assumption}{Assumption}[chapter]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+
+% ---------------------------------------------------------
+% Graphic paths
+% ---------------------------------------------------------
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\newcommand{\figurepath}{{images/}}
+\graphicspath{{images/}}
+
+% ---------------------------------------------------------
+% Spacing
+% ---------------------------------------------------------
+
+\renewcommand{\arraystretch}{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.0ex plus 0.0ex minus 0.0ex}
+
+\setcounter{tocdepth}{1}
+
+
+% ---------------------------------------------------------
+% Counter
+% ---------------------------------------------------------
+\counterwithout{footnote}{chapter} 
+
+
+% ---------------------------------------------------------
+% Listings
+% ---------------------------------------------------------
+
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{darkviolett}{rgb}{.4,0,.4}
+\definecolor{blue}{rgb}{0,0,.9}
+\newcommand{\listingswidth}{\textwidth-1cm}
+\lstset{
+    language=Java,                  % oder  C++, Pascal, {[77]Fortran}, ...
+    numbers=left,                   % Position der Zeilennummerierung
+    firstnumber=auto,               % Erste  Zeilennummer
+    basicstyle=\ttfamily\footnotesize,     % Textgröße  des Standardtexts
+    keywordstyle=\ttfamily\bfseries\color{blue},    % Formattierung Schlüsselwörter
+    commentstyle=\ttfamily\color{gray},       % Formattierung Kommentar
+    stringstyle=\ttfamily\color{darkgreen},             % Formattierung Strings
+    numberstyle=\small,              % Textgröße der Zeilennummern
+    stepnumber=1,                   % Angezeigte Zeilennummern
+    numbersep=5pt,                  % Abstand zw. Zeilennummern und Code
+    aboveskip=15pt,                 % Abstand oberhalb des Codes
+    belowskip=11pt,                 % Abstand unterhalb des Codes
+    captionpos=b,                   % Position der Überschrift
+    linewidth=\textwidth,               % \textwidth-2em
+    xleftmargin=10pt,               % Linke Einrückung
+    frame=lines,                   % Rahmentyp
+    breaklines=true,                % Umbruch langer Zeilen
+    showstringspaces=true,          % Spezielles Zeichen für Leerzeichen
+    tabsize=2,
+    escapeinside={@}{@)}			% Escaping labels 
+}
+
+% ---------------------------------------------------------
+% Links and Hyperlinks
+% ---------------------------------------------------------
+
+\hypersetup{
+    breaklinks=true,           % Zeilenumbruch bei Links
+    colorlinks=true,           % true = farbige Links, false = Rahmen
+    linkcolor=blue,            % Farbe für Links auf gleicher Seite
+    citecolor=blue,            % Farbe für Links auf Zitatstellen
+    filecolor=blue,
+    urlcolor=blue,             % Farbe für Links (nicht nur URLs)
+    anchorcolor=blue,          % Farbe für Anker (?)
+    menucolor=red,             % Farbe für Acrobatmenüeinträge
+    plainpages=false           % Fehlermeldungen reduzieren
+}

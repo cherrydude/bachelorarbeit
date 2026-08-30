@@ -1,50 +1,53 @@
-\begin{tikzpicture}[
-    box/.style={draw, rounded corners, minimum width=3.2cm, minimum height=1.4cm, align=center, fill=white},
-    layer/.style={draw, rounded corners, fill=gray!10, minimum width=10.5cm, minimum height=3.5cm},
-    edge/.style={-Latex, thick}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  layer/.style={draw=gray!55, fill=gray!8, rounded corners=3pt, line width=0.7pt},
+  box/.style={draw=gray!60, fill=white, align=center, minimum width=2.8cm, minimum height=1.5cm, font=\large, rounded corners=2pt},
+  leftlabel/.style={font=\bfseries\small, text=black!70, align=right},
+  arrow/.style={->, >=Latex, line width=0.85pt, black!65}
 ]
 
-% Layers
-\node[layer, anchor=west] (uiLayer) at (0,0) {
-};
-\node[layer, anchor=west] (logicLayer) at (0,-4.2) {
-};
-\node[layer, anchor=west] (visualLayer) at (0,-8.4) {
-};
+% Layer rectangles
+\node[layer, minimum width=13cm, minimum height=2.8cm] (uiLayer) at (6.5, 8.8) {};
+\node[layer, minimum width=13cm, minimum height=2.8cm] (logicLayer) at (6.5, 4.5) {};
+\node[layer, minimum width=13cm, minimum height=2.8cm] (visualLayer) at (6.5, 0.2) {};
 
-% Labels
-\node[font=\bfseries] at (5.1, 2.2) {Benutzerschnittstelle};
-\node[font=\bfseries] at (5.1, -2.0) {Anwendungslogik und Simulationskern};
-\node[font=\bfseries] at (5.1, -6.2) {Visualisierung und Vergleich};
+% Left-side labels
+\node[leftlabel, anchor=east] at (1.5, 8.8) {Benutzer-\\schnittstelle};
+\node[leftlabel, anchor=east] at (1.5, 4.5) {Anwendungs-\\logik};
+\node[leftlabel, anchor=east] at (1.5, 0.2) {Visualisierung};
 
-% UI components
-\node[box] (scenario) at (2.1, 0.7) {Szenario-\\Editor};
-\node[box] (controls) at (5.8, 0.7) {Steuerung\\Start/Pause/Schritt};
-\node[box] (compare) at (9.4, 0.7) {Vergleichs-\\ansicht};
+% Top row boxes (UI layer)
+\node[box] (scenario) at (3.2, 8.8) {Szenario-\\Editor};
+\node[box] (controls) at (6.5, 8.8) {Steuerung\\Start / Pause / Schritt};
+\node[box] (compare) at (10.3, 8.8) {Vergleichs-\\ansicht};
 
-% Logic components
-\node[box] (config) at (2.1, -3.5) {Task-\\konfiguration};
-\node[box] (engine) at (5.8, -3.5) {Scheduling-\\Simulation};
-\node[box] (metrics) at (9.4, -3.5) {Metriken\\und\\Ereignisse};
+% Middle row boxes (Logic layer)
+\node[box] (config) at (3.2, 4.5) {Task-\\Konfiguration};
+\node[box] (engine) at (6.5, 4.5) {Scheduling-\\Simulation};
+\node[box] (metrics) at (10.3, 4.5) {Metriken\\und Ereignisse};
 
-% Visual components
-\node[box] (gantt) at (3.0, -7.7) {Gantt-/\\Zeitachsenansicht};
-\node[box] (stack) at (6.2, -7.7) {Queue-/\\Statusanzeige};
-\node[box] (panel) at (9.3, -7.7) {Kennzahlen-\\panel};
+% Bottom row boxes (Visualization layer)
+\node[box] (gantt) at (3.2, 0.2) {Gantt-/\\Zeitachsenansicht};
+\node[box] (stack) at (6.5, 0.2) {Queue-/\\Statusanzeige};
+\node[box] (panel) at (10.3, 0.2) {Kennzahlen-\\panel};
 
-% Connections
-\draw[edge] (scenario) -- (config);
-\draw[edge] (controls) -- (engine);
-\draw[edge] (compare) -- (panel);
+% Main data flow arrows (top to middle)
+\draw[arrow] (scenario.south) -- (config.north);
+\draw[arrow] (controls.south) -- (engine.north);
 
-\draw[edge] (config) -- (engine);
-\draw[edge] (engine) -- (metrics);
-\draw[edge] (metrics) -- (gantt);
-\draw[edge] (metrics) -- (stack);
-\draw[edge] (metrics) -- (panel);
+% Data flow within middle layer
+\draw[arrow] (config.east) -- (engine.west);
+\draw[arrow] (engine.east) -- (metrics.west);
 
-\draw[edge] (gantt) -- (compare);
-\draw[edge] (stack) -- (controls);
-\draw[edge] (panel) -- (controls);
+% Flow from middle to bottom (vertical only)
+\draw[arrow] (config.south) -- (gantt.north);
+\draw[arrow] (engine.south) -- (stack.north);
+\draw[arrow] (metrics.south) -- (panel.north);
+
+% Feedback from visualization to controls (right side, outside layer boxes)
+\draw[arrow] (stack.east) .. controls +(1.2,0.3) and +(1.2,-0.3) .. (controls.east);
+
+% Top layer connections
+\draw[arrow] (scenario.east) .. controls +(0.5,0.2) and +(-0.5,0.2) .. (controls.west);
+\draw[arrow] (metrics.north) .. controls +(0.3,0.4) and +(-0.3,0.4) .. (compare.south);
 
 \end{tikzpicture}

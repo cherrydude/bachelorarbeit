@@ -1,84 +1,37 @@
-\chapter{Systemarchitektur und Komponentenmodell}
+\chapter{Anforderungsanalyse}
 
-\section{Ziel und Bedeutung der Architektur}
+Die fachlichen Anforderungen an die Anwendung ergeben sich aus der Kombination aus Betriebssystemtheorie, Didaktik und Software Engineering. Ziel ist nicht nur die fachlich korrekte Abbildung von Scheduling-Verfahren, sondern auch ihre verständliche, interaktive Darstellung für Lernende. Deshalb müssen die Kriterien für die Anwendung sowohl die technische Korrektheit der Simulation als auch die Verständlichkeit der Visualisierung berücksichtigen. 
 
-Die Architektur der Anwendung ist ein zentraler Bestandteil des Projekts, weil sie den fachlichen Kern von der visuellen Darstellung und der Interaktion sauber trennt. Eine gut strukturierte Architektur ist für ein Lehrwerkzeug besonders wichtig, da sie nicht nur Wartbarkeit und Erweiterbarkeit sichert, sondern auch die Nachvollziehbarkeit der Scheduling-Entscheidungen erhöht.
+\section{Zielgruppe und Einsatzkontext}
 
-Das System wurde deshalb so konzipiert, dass die fachliche Logik der Scheduling-Algorithmen von der Benutzeroberfläche und den Anzeigekomponenten entkoppelt ist. Dadurch bleibt der Simulationskern klar definiert, reproduzierbar und testbar. Die Oberfläche kann anschließend die erzeugten Zustände, Ereignisse und Kennzahlen darstellen, ohne die eigentliche Berechnung zu beeinflussen.
+Die primäre Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll im Lernkontext helfen, zeitliche Entscheidungen bei präemptiven Verfahren nachvollziehbar zu machen. Der Einsatzbereich reicht von einer geführten Lehrveranstaltung bis hin zur selbstständigen Exploration einzelner Szenarien.
 
-\section{Architekturprinzipien}
+\section{Fachliche Anforderungen}
 
-Die Anwendung folgt einer komponentenbasierten Struktur mit klaren Verantwortlichkeiten. Die wichtigsten Prinzipien sind:
+Aus fachlicher Sicht muss der Visualizer die wichtigsten Verfahren konsistent modellieren: Round Robin, LCFS, Strict Priority und MLFQ. Die Anwendung muss dabei die relevanten Parameter berücksichtigen, insbesondere Ankunftszeit, Burst-Zeit, Priorität, Zeitquantum und Präemption. Zusätzlich müssen die wichtigsten Kennzahlen zusammen mit dem Verlauf sichtbar sein: Wartezeit, Durchlaufzeit, Reaktionszeit, Kontextwechsel und Präemptionsanzahl.
 
-\begin{itemize}
-    \item \textbf{Trennung von Logik und Darstellung:} Die Berechnung des Ablaufs liegt in der Simulationslogik; die UI zeigt nur die resultierenden Zustände an.
-    \item \textbf{Deterministische Verarbeitung:} Gleiche Eingaben erzeugen dieselben Laufdaten und dieselben Berechnungen.
-    \item \textbf{Modularität:} Die Struktur wird in fachlich getrennte Bereiche aufgeteilt, damit einzelne Teile unabhängig entwickelt, getestet und erweitert werden können.
-    \item \textbf{Nachvollziehbarkeit:} Jede Darstellung lässt sich auf einen konkreten Simulationszustand zurückführen.
-\end{itemize}
+Die zentrale Anforderung lautet deshalb: Simulationslogik, Ereignisprotokoll und Kennzahlen müssen aus derselben Zustandsbasis abgeleitet werden. Dadurch bleiben die dargestellten Ergebnisse konsistent und nachvollziehbar.
 
-Diese Architekturentscheidungen sind für den Studiengang besonders relevant, weil sie typische Software-Engineering-Prinzipien sichtbar machen: Lose Kopplung, klare Zuständigkeiten, Wiederverwendbarkeit und Testbarkeit.
+\section{Didaktische Anforderungen}
 
-\section{Komponentenmodell der Anwendung}
+Die didaktische Qualität der Anwendung ist für den Projekterfolg zentral. Lernende sollen nicht nur das Ergebnis sehen, sondern auch erkennen, warum ein Prozess zu einem bestimmten Zeitpunkt ausgewählt, unterbrochen oder in eine Warteschlange verschoben wird. Deshalb müssen Zustandswechsel sichtbar und erklärbar sein. Ein gutes Lehrwerkzeug muss nicht nur korrekt, sondern auch verständlich und steuerbar sein.
 
-Das Komponentenmodell beschreibt die wichtigsten Bausteine der Anwendung und deren Beziehungen zueinander. Die Struktur lässt sich in vier Ebenen gliedern:
+Drei Leitprinzipien sind dabei besonders wichtig:
 
 \begin{itemize}
-    \item \textbf{Benutzerschnittstelle:} Szenario-Editor, Steuerungselemente, Ergebnisansichten und Vergleichsbereiche.
-    \item \textbf{Anwendungslogik:} Verwaltung von Prozessdaten, Laufkonfigurationen und Zustandswechseln.
-    \item \textbf{Simulationskern:} Berechnung der Scheduling-Entscheidungen, Ereignisse und Kennzahlen.
-    \item \textbf{Visualisierung:} Zeitachsen, Gantt-Darstellung, Kennzahlen-Panel und Vergleichsübersicht.
+    \item \textbf{Transparenz}: Start, Präemption, Kontextwechsel und Abschluss müssen nachvollziehbar dargestellt werden.
+    \item \textbf{Vergleichbarkeit}: Mehrere Runs unter identischem Szenario sollen direkt gegenübergestellt werden können.
+    \item \textbf{Kontrollierbares Lerntempo}: Schrittweises und automatisches Abspielen müssen beide möglich sein.
 \end{itemize}
 
-Diese Abgrenzung ist nicht nur technisch sinnvoll, sondern auch didaktisch relevant: Nutzerinnen und Nutzer sehen die fachliche Logik nicht als Black Box, sondern als klar strukturierte, nachvollziehbare Verarbeitungskette. Das erhöht sowohl das Verständnis für das System als auch das Vertrauen in die dargestellten Ergebnisse.
+\section{Interaktions- und Usability-Anforderungen}
 
-\section{Vektorgrafik: Komponentenmodell der Anwendung}
+Die Oberfläche soll die kognitive Last der Nutzenden reduzieren. Die wichtigsten Aufgaben müssen ohne unnötige Hürden durchgeführt werden können: Szenario definieren, Algorithmus auswählen, Ablauf starten und Ergebnis interpretieren. Die UI soll daher klar strukturiert sein und die Funktionen in sinnvoller Reihenfolge bereitstellen.
 
-\begin{figure}[htbp]
-    \centering
-    \input{images/system-architecture-diagram}
-    \caption{Komponentenmodell der Scheduling-Visualisierungsanwendung. Die Benutzeroberfläche nutzt die fachliche Simulationslogik; Ergebnisse werden anschließend in Visualisierungs- und Vergleichskomponenten dargestellt.}
-    \label{fig:komponentenmodell}
-\end{figure}
+Für die Lernanwendung gelten zusätzlich Anforderungen an Verständlichkeit und Zugänglichkeit. Die wichtigsten Statusinformationen müssen direkt sichtbar sein, und die Interaktion muss mit wenigen Schritten und ohne Mehrdeutigkeit erfolgen. Die Benutzungsoberfläche soll außerdem als didaktisches Hilfsmittel und nicht als technische Black Box wirken.
 
-\section{Beschreibung der Hauptkomponenten}
+\section{Technische Qualitätsziele}
 
-\subsection{Szenario- und Konfigurationskomponente}
+Neben fachlicher Korrektheit und didaktischer Verständlichkeit ist die technische Qualität entscheidend. Die Anwendung soll modular, deterministisch und erweiterbar sein. Eine klare Trennung zwischen Simulationslogik, Zustandsverwaltung und Visualisierung reduziert Fehleranfälligkeit und erleichtert spätere Erweiterungen, etwa neue Algorithmen, neue Kennzahlen oder alternative Darstellungen.
 
-Diese Komponente verwaltet die Eingabedaten eines Laufes. Sie enthält Prozessinformationen wie Ankunftszeit, Burst-Zeit, Priorität und Laufparameter. Über sie werden neue Szenarien erzeugt und bestehende Konfigurationen angepasst.
-
-\subsection{Simulationskern}
-
-Der Simulationskern bildet das fachliche Zentrum der Anwendung. Er verarbeitet die Prozesse nach den Regeln des ausgewählten Scheduling-Verfahrens und erzeugt den zeitlichen Ablauf, den Ereignislog und die relevanten Kennzahlen. Innerhalb dieser Schicht erfolgen die eigentlichen Entscheidungen über Auswahl, Präemption und Neuordnung der Prozesse.
-
-\subsection{Wiedergabe- und Steuerungslogik}
-
-Die Wiedergabe- und Steuerungslogik bestimmt, welche Zustände des Simulationsverlaufs zu welchem Zeitpunkt in der Oberfläche sichtbar sind. Sie steuert Start, Pause, Schrittmodus und Geschwindigkeit, ohne die fachliche Berechnung erneut zu initiieren.
-
-\subsection{Visualisierungs- und Vergleichskomponenten}
-
-Diese Komponenten rendern den Ablauf als Gantt-Diagramm, ergänzen Kennzahlen und erlauben die Gegenüberstellung mehrerer Läufe. Die Darstellung ist somit nicht die Ursache der Berechnung, sondern die sichtbare Ableitung eines bereits bestehenden Simulationszustands.
-
-\section{Beziehung zwischen den Komponenten}
-
-Die einzelnen Module arbeiten als Flussmodell zusammen: Ein Nutzer konfiguriert ein Szenario, der Simulationskern berechnet den Ablauf, die Wiedergabe-Logik zeigt den richtigen Zeitstand an und die Visualisierungs-Komponenten präsentieren die finalen Ergebnisse. Diese Struktur sorgt dafür, dass Änderungen an einem Bereich nicht unmittelbar die fachliche Logik oder die Darstellung anderer Bereiche zerstören.
-
-Diese Form der Entkopplung ist in Software Engineering ein wichtiges Qualitätsmerkmal, weil sie die Anwendung modular und erweiterbar macht. Insbesondere für ein Lehrprojekt ist das sinnvoll: neue Scheduling-Verfahren, neue Kennzahlen oder zusätzliche Visualisierungsansichten lassen sich mit vergleichsweise geringem Aufwand ergänzen.
-
-\section{Erklärende Darstellung des Komponentenmodells}
-
-Das Komponentenmodell wird in der Vektorgrafik als Architekturübersicht dargestellt. Die Abbildung zeigt die zentrale Rolle des Simulationskerns und die Verbindung zwischen Eingabe, Verarbeitung und Visualisierung. Diese Darstellung ist wichtig, weil sie das technische Verständnis der Anwendung unterstützt und zugleich die fachliche Struktur der Lösung transparent macht.
-
-Die Abbildung verdeutlicht drei zentrale Aspekte:
-
-\begin{itemize}
-    \item Die Benutzeroberfläche ist nicht der eigentliche Rechenort der Scheduling-Logik.
-    \item Die fachliche Berechnung wird in einem klar abgegrenzten Kern modelliert.
-    \item Die Visualisierung ist eine nachgelagerte Schicht, die den Ablauf für den Nutzer verständlich macht.
-\end{itemize}
-
-Diese Architektur ist eine zentrale Grundlage der Arbeit, da sie die technische Qualität und den professionellen Entwurf des Systems belegt. Sie zeigt, dass es sich bei der Anwendung nicht nur um ein einfaches Demo-Tool handelt, sondern um eine nachvollziehbar designte, erweiterbare und modular aufgebaute Software.
-
-\section{Zusammenfassung}
-
-Das vorgestellte Komponentenmodell macht den Kern der Arbeit sichtbar: Die Anwendung verbindet fachliche Korrektheit mit klarer Softwarearchitektur und verständlicher Darstellung. Die Systemstruktur ist damit nicht nur für die technische Umsetzung relevant, sondern auch für die didaktische Qualität der Anwendung. Ein gut gegliedertes System reduziert Komplexität, verbessert die Wartbarkeit und ermöglicht eine verständliche Präsentation der Ideen hinter CPU-Scheduling.
+Diese Qualitätsziele sind nicht nur technische Feinheiten, sondern tragen direkt zur Produktqualität und zur Nachvollziehbarkeit bei. Sie machen die Anwendung zu einem verständlichen, wiederverwendbaren Softwaresystem und nicht nur zu einer demonstrativen Demoszene.

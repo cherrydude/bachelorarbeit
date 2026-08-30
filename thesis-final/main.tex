@@ -1,0 +1,61 @@
+\documentclass[11pt,a4paper,oneside,openright,bibliography=totoc]{scrbook}
+
+\input{packages}
+\input{settings}
+\input{commands}
+\input{hyphenation}
+
+\hypersetup{
+    linkcolor = {black},
+    allcolors = {black},
+}
+
+% ---------------------------------------------------------
+\bibliographystyle{plainnat} 
+\pagestyle{plain}
+\raggedbottom
+
+% ---------------------------------------------------------
+% Document
+% ---------------------------------------------------------
+
+\begin{document}
+
+% ---------------------------------------------------------
+% Pre content
+% ---------------------------------------------------------
+
+\pagenumbering{roman}
+\include{deckblatt}
+\onehalfspacing
+\include{vorwort}
+\include{danksagung}
+
+\singlespacing
+\include{verzeichnisse}
+\include{acronyms}
+
+% ---------------------------------------------------------
+% Main content
+% ---------------------------------------------------------
+
+\pagenumbering{arabic}
+\onehalfspacing
+\include{01-einleitung}
+\include{02-grundlagen}
+\include{03-anforderungsanalyse}
+\include{04-systementwurf}
+\include{05-implementierung}
+\include{06-qualitaetssicherung}
+\include{07-ergebnis-produktpraesentation}
+\include{08-fazit-ausblick}
+
+% ---------------------------------------------------------
+% Bibliography and Appendix
+% ---------------------------------------------------------
+
+\bibliography{bib}
+\include{anhang}
+\include{affidavit}
+
+\end{document}

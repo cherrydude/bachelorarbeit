@@ -1,81 +1,60 @@
-\chapter{Anforderungen und Konzeption des Scheduling-Visualizers}
+\chapter{Implementierung}
 
-Dieses Kapitel definiert die fachlichen, didaktischen und technischen Anforderungen der Anwendung und leitet daraus das konzeptionelle Lösungsdesign ab. Im Mittelpunkt steht die Frage, wie präemptive Scheduling-Verfahren fachlich korrekt, didaktisch nachvollziehbar und mit hoher Interaktionsqualität visualisiert werden können. Die konzeptionellen Entscheidungen orientieren sich dabei an etablierten Scheduling-Grundlagen \cite{silberschatz2018operating,tanenbaum2014modern,pinedo2016scheduling}, an Erkenntnissen aus der Algorithmusvisualisierung \cite{hundhausen2002meta,naps2002engagement} sowie an Anforderungen der Usability und Accessibility \cite{brooke1996sus,wcag2018}.
+Die technische Umsetzung der Webanwendung orientiert sich direkt an den im vorangegangenen Kapitel definierten fachlichen und didaktischen Anforderungen. Ziel dieses Kapitels ist die konkrete Realisierung eines interaktiven Scheduling-Visualizers, der fachlich korrekte Simulationsergebnisse mit einer verständlichen und steuerbaren Oberfläche verbindet. Dabei bleibt die fachliche Logik von der Präsentation getrennt, sodass die Visualisierung immer auf nachvollziehbare Berechnungsergebnisse zurückgeführt werden kann.
 
-\section{Zielgruppe und Einsatzkontext}
+\section{Technische Grundlagen und verwendete Technologien}
 
-Primäre Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll insbesondere in Situationen unterstützen, in denen formale Algorithmusbeschreibungen allein nicht ausreichen, um den zeitlichen Ablauf präemptiver Entscheidungen zu verstehen.
+Die Anwendung wurde als clientseitige Webanwendung mit Vue 3 und TypeScript umgesetzt. Vue 3 dient als Basis für die komponentenbasierte UI-Struktur, während TypeScript die Modellierung von Tasks, Events, Snapshots, Runs und Kennzahlen typensicher macht. Vite übernimmt den Build- und Entwicklungsprozess, Vitest dient der automatisierten Verifikation der Kernlogik und GSAP ergänzt die Oberfläche mit gezielten Übergängen und einer klaren dynamischen Präsentation \, ohne die fachliche Logik der Simulation zu beeinflussen.
 
-Der Einsatzkontext umfasst sowohl Lehrveranstaltungen mit geführter Demonstration als auch das selbstständige Lernen. Daraus folgen zwei zentrale Rahmenbedingungen: Erstens muss die Anwendung reproduzierbare Ergebnisse liefern, damit Beobachtungen zwischen verschiedenen Nutzenden vergleichbar bleiben. Zweitens braucht sie eine flexible Interaktion, damit sowohl exploratives Ausprobieren als auch gezieltes Nachstellen vorgegebener Szenarien möglich ist.
+Die zentrale technische Entscheidung ist die Trennung von fachlicher Modellierung, Laufsteuerung und Visualisierung. Dadurch entsteht ein klarer Datenfluss: Eingabedaten werden in eine deterministische Simulation überführt, die Ergebnisse werden als Ereignisliste, Segmente und Kennzahlen modelliert und anschließend in der Oberfläche als Gantt-Darstellung, Queue-Ansicht und Vergleichsübersicht visualisiert.
 
-\section{Fachliche Anforderungen}
+\section{Architektur der Anwendung}
 
-Aus fachlicher Sicht muss der Visualizer die betrachteten Verfahren konsistent und korrekt modellieren. Dazu gehören insbesondere LCFS, Round Robin, Strict Priority und MLFQ. Relevante Kernaspekte sind Ankunftszeit, Burst-Zeit, Priorität, Zeitquantum, Präemption und Kontextwechsel \cite{silberschatz2018operating,tanenbaum2014modern}.
-
-Zusätzlich müssen die wichtigsten Vergleichsmetriken nachvollziehbar berechnet werden. Dazu zählen Wartezeit, Durchlaufzeit, Reaktionszeit, Kontextwechselhäufigkeit und weitere Kenngrößen zur Bewertung von Fairness und Ressourcennutzung \cite{pinedo2016scheduling}. Die konzeptionelle Anforderung lautet daher, dass Simulationslogik und Metrikberechnung auf derselben Zustandsbasis arbeiten und keine voneinander getrennten Berechnungspfade verwenden.
-
-\section{Didaktische Anforderungen}
-
-Didaktisch soll die Anwendung nicht nur Ergebnisse anzeigen, sondern den Entscheidungsprozess der Algorithmen sichtbar machen. Lernende sollen erkennen können, warum ein Task zu einem bestimmten Zeitpunkt ausgewählt, unterbrochen oder erneut eingeplant wird. Dieser Anspruch folgt aus Forschung zur Algorithmusvisualisierung, die aktive Interaktion und vergleichende Betrachtung als potenziell lernunterstützende Gestaltungsmerkmale beschreibt \cite{hundhausen2002meta,naps2002engagement,stasko1998software}.
-
-Die Konzeption priorisiert deshalb drei didaktische Leitprinzipien:
+Die Architektur folgt dem in Kapitel 4 beschriebenen Schichtenmodell mit drei Ebenen:
 
 \begin{itemize}
-    \item \textbf{Transparenz der Zustandsübergänge:} Ereignisse wie Start, Präemption und Abschluss müssen nachvollziehbar dargestellt werden.
-    \item \textbf{Vergleichbarkeit:} Mehrere Algorithmen sollen unter identischen Eingabedaten gegenübergestellt werden können.
-    \item \textbf{Kontrollierbares Lerntempo:} Schrittweises und automatisches Abspielen sollen gleichwertig unterstützt werden.
+    \item \textbf{Szenario- und Konfigurationslogik:} Verwaltung von Taskdaten, Parametern, Szenario-Definitionen und gespeicherten Laufkonfigurationen.
+    \item \textbf{Simulationskern:} Deterministische Berechnung der Scheduling-Strategien auf Basis eines gemeinsamen Zustandsmodells.
+    \item \textbf{Darstellung und Steuerung:} Gantt-Darstellung, Warteschlangenvisualisierung, Kennzahlbereiche und Interaktionssteuerung für Abspielen, Pausieren und Vergleichen.
 \end{itemize}
 
-\section{Funktionale Anforderungen}
+Diese Gliederung ist nicht nur aus Sicht des Software-Engineering sinnvoll, sondern entspricht auch den didaktischen Anforderungen der Anwendung. Der Nutzer kann den fachlichen Ablauf nachvollziehen, ohne die technische Struktur der Oberfläche direkt mit der Berechnung vermischen zu müssen.
 
-Funktional muss die Anwendung den gesamten Ablauf von der Szenariodefinition bis zur Ergebnisinterpretation abdecken. Daraus ergeben sich folgende Kernfunktionen:
+\section{Datenmodell und Simulationskern}
+
+Die fachliche Grundlage bildet ein gemeinsames Task-Modell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität, Verlauf, Restzeit und Status. Auf dieser Grundlage werden die einzelnen Scheduling-Verfahren als Varianten eines gemeinsamen Ablaufmodells umgesetzt. Dadurch bleiben die Verfahren unter identischen Bedingungen vergleichbar, und die Unterschiede im Ergebnis sind fachlich auf die jeweilige Algorithmik zurückführbar.
+
+Der Kern erzeugt nicht nur ein Endergebnis, sondern mehrere, logisch zusammengehörige Datensätze:
 
 \begin{itemize}
-    \item Erfassung und Bearbeitung von Task-Mengen mit relevanten Attributen.
-    \item Unterstützung bei der Szenariogenerierung durch vordefinierte Basis-Szenarien und eine interaktive Eingabemaske.
-    \item Auswahl eines Scheduling-Verfahrens und seiner Parameter über einen klar strukturierten Dialog.
-    \item Start, Pause, Schrittmodus und Zeitsprung innerhalb der Simulation.
-    \item Visualisierung der Ausführungssegmente auf einer Zeitachse.
-    \item Ausgabe vergleichbarer Metriken pro Lauf.
-    \item Gegenüberstellung mehrerer Läufe auf identischem Szenario mit Bewertungs- und Vergleichslogik.
+    \item \textbf{Ereignislog:} chronologische Information über Dispatches, Präemptionen, Kontextwechsel und Abschluss.
+    \item \textbf{Segmente:} zeitlich abgegrenzte Ausführungsschritte für die Gantt-Darstellung.
+    \item \textbf{Snapshots:} Zustandsbilder für die Wiedergabe und die genaue Zeitmarkierung im Ablauf.
+    \item \textbf{Metriken:} aggregierte Kennzahlen für Wartezeit, Durchlaufzeit, Reaktionszeit und Kontextwechsel.
 \end{itemize}
 
-Konzeptionell wird damit ein durchgängiger Workflow vom Eingabemodell zur Auswertung abgebildet. Jede Funktion muss auf denselben Simulationsdaten aufbauen, um Inkonsistenzen zwischen Anzeige und Metrikberechnung zu vermeiden. Die zusätzliche Szenariogenerierung und die Vergleichsübersicht erhöhen dabei den praktischen Nutzen der Anwendung, da sie den Nutzungsfluss von der ersten Definition bis zur fachlichen Bewertung deutlich besser unterstützen.
+Diese Struktur ist besonders wichtig für die fachliche Nachvollziehbarkeit: Die Visualisierung bezieht sich immer auf dieselben Daten, die auch der kennzahlenbasierte Vergleich verwendet. So bleiben die Darstellung und die Bewertung konsistent.
 
-\section{Nicht-funktionale Anforderungen}
+\section{Umsetzung der Scheduling-Verfahren}
 
-Nicht-funktionale Anforderungen betreffen vor allem Nachvollziehbarkeit, Robustheit und Nutzbarkeit. Die Anwendung soll deterministisch arbeiten, damit identische Eingaben zu identischen Ergebnissen führen. Dies ist für didaktische Vergleichbarkeit und wissenschaftliche Reproduzierbarkeit zentral \cite{banks2010discrete}.
+Die Simulation modelliert das Verhalten der wichtigsten präemptiven Verfahren innerhalb eines identischen Simulationsrahmens. Round Robin wird durch Zeitquantum-Logik realisiert, Strict Priority durch prioritätsbasierte Auswahl mit Präemptionsentscheidungen, LCFS über LIFO-basierte Warteschlangenlogik und MLFQ über mehrere Ebenen mit reduzierter Priorität bei längeren Ausführungsintervallen.
 
-Darüber hinaus gelten Anforderungen an Performance und Bedienqualität: Interaktionen müssen unmittelbar rückmelden, die Darstellung muss auch bei grösseren Szenarien stabil bleiben, und zentrale Funktionen müssen ohne Maus nutzbar sein. Anforderungen an semantische Benennung, Fokusführung und Kontrast orientieren sich an etablierten Accessibility-Kriterien \cite{wcag2018}. Für die spätere Nutzerbewertung wird ein standardisiertes Usability-Instrument wie SUS als geeignet betrachtet \cite{brooke1996sus}.
+Die zentrale Gemeinsamkeit aller Verfahren liegt in der konsistenten Tick- und Ereignislogik. Jeder Lauf wird auf Grundlage desselben Szenarios und derselben Zustandsbasis berechnet, sodass Unterschiede in Laufzeit, Wartezeit und Durchlaufzeit tatsächlich auf die Strategiedefinitionen zurückzuführen sind und nicht auf abweichende Berechnungsmethoden.
 
-\section{Software-Engineering-Qualitätsziele}
+\section{Umsetzung der Visualisierung}
 
-Neben den fachlichen und didaktischen Anforderungen spielen in einer engineering-orientierten Arbeit auch strukturelle Qualitätsziele eine entscheidende Rolle. Die Anwendung wurde deshalb mit Blick auf Wartbarkeit, Erweiterbarkeit und Testbarkeit entworfen. Diese Ziele sind für ein Lehrprojekt besonders wichtig, weil sie zeigen, dass das System nicht nur als Demo, sondern als nachvollziehbar entwickeltes Softwaresystem konzipiert wurde.
+Die Oberfläche ist in mehrere, logische Bereiche aufgeteilt: Szenario- und Parameterwahl, Laufsteuerung, Fokusansicht, Vergleichsübersicht und Kennzahlenbereich. Die Gantt-Zeitachse bildet den Ablauf eines einzelnen Laufes ab, die Stack-Visualisierung zeigt den aktuellen Zustand der Warteschlange und die Kennzahlen verknüpfen den Lauf mit relevanten fachlichen Metriken.
 
-Ein zentrales Qualitätsziel ist die klare Trennung von Verantwortlichkeiten. Die fachliche Logik der Scheduling-Verfahren, die Zustandsverwaltung der Simulation und die Darstellung im Frontend werden bewusst voneinander abgegrenzt. Dadurch wird die Kopplung zwischen den Komponenten reduziert und Änderungen an einem Bereich wirken sich nicht unmittelbar auf die übrigen Schichten aus. Dieses Vorgehen entspricht den grundlegenden Prinzipien des Software Engineering und erhöht die langfristige Qualität des Systems.
+Die Anwendung nutzt SVG-basierte Darstellungen, um Zeitabschnitte, Segmentgrenzen, Ankunftsereignisse und Präemptionen präzise in der Oberfläche zu markieren. Dadurch entsteht eine visuell klare, fachlich genaue Darstellung, die zugleich als Lehrmittel genutzt werden kann. Die Visualisierung ist daher nicht nur dekorativ, sondern trägt unmittelbar zum Verständnis von Scheduling-Entscheidungen bei.
 
-Ein weiteres Qualitätsmerkmal ist die Reproduzierbarkeit. Die Simulation soll bei identischen Eingabedaten immer denselben Ablauf und dieselben Kennzahlen erzeugen. Dieses Verhalten ist für den didaktischen Einsatz relevant, da Lernende auf dieselben Ergebnisse vertrauen und die Auswirkungen von Parametern oder Verfahrensentscheidungen direkt vergleichen können. Reproduzierbarkeit ist damit nicht nur ein technisches, sondern auch ein didaktisches Qualitätsmerkmal.
+\section{Interaktionsmechanismen und Nutzerworkflow}
 
-Zusätzlich wird die Anwendung als erweiterbare Architektur modelliert. Neue Scheduling-Verfahren, zusätzliche Kennzahlen oder alternative Visualisierungsebenen lassen sich an die bestehende Struktur anfügen, ohne die gesamte Simulationsarchitektur neu zu entwerfen. Diese Flexibilität ist in engineering-Projekten ein zentraler Erfolgsfaktor, weil sie das System über einen kurzen Prototypen hinaus zu einer stabilen Grundlage für weitere Iterationen macht.
+Die Interaktion folgt einem didaktisch klaren Ablauf: Szenario definieren, Algorithmus wählen, Lauf steuern, Ergebnis interpretieren und vergleichen. Die Wiedergabelogik wird getrennt von der Simulation modelliert. Sie liest vorberechnete Snapshots und zeigt nur den jeweils aktuellen Ablaufzustand an, ohne den fachlichen Berechnungsprozess erneut zu starten.
 
-\section{Konzeption der Simulationslogik}
+Wichtige Interaktionsfunktionen sind Start, Pause, Schrittmodus, Geschwindigkeitsanpassung und Zeitsprung. Ergänzend gibt es einen Vergleichsmodus, der mehrere Läufe auf identischer Eingabebasis nebeneinander darstellt. Dadurch wird die fachliche Bedeutung der Algorithmuswahl unmittelbar erfahrbar und mit den entsprechenden Kennzahlen verknüpft.
 
-Die Simulationslogik wird als deterministischer Kern konzipiert, der diskrete Zeitschritte verarbeitet und Ereignisse in wohldefinierter Reihenfolge erzeugt. Die zentrale Entscheidung besteht darin, Simulationszustand, Ereignisprotokoll, Zeitachsen-Segmente und Metriken gemeinsam aus einem einheitlichen Zustandsmodell abzuleiten. Dadurch bleiben alle Ausgaben konsistent.
+\section{Besondere Designentscheidungen}
 
-Konzeptionell werden dabei zwei Anforderungen verbunden: erstens fachliche Korrektheit der Scheduling-Regeln, zweitens auswertbare Verlaufsdaten für Visualisierung und Evaluation. Das Ereignismodell muss daher nicht nur Endergebnisse liefern, sondern auch Zwischenschritte explizit protokollieren, damit Präemptionen und Kontextwechsel analytisch nachvollzogen werden können \cite{silberschatz2018operating,pinedo2016scheduling}.
+Eine zentrale Designentscheidung war die Verbindung von fachlicher Korrektheit und didaktischer Transparenz. Die Anwendung zeigt nicht nur das Ergebnis, sondern auch die Zustandswechsel, die zu einer Entscheidung geführt haben. Dadurch wird aus einer bloßen Simulation ein erklärbares Lehrwerkzeug.
 
-\section{Konzeption der Visualisierung}
-
-Als primäres Visualisierungsmedium wird ein Gantt-artiger Zeitverlauf eingesetzt. Diese Form ist geeignet, da sie parallel Informationen über Task-Dauer, Unterbrechungen und Wartephasen abbildet und damit den Vergleich unterschiedlicher Strategien erleichtert.
-
-Die Visualisierung wird konzeptionell als Ableitung des Simulationskerns verstanden, nicht als eigene Logikinstanz. Das bedeutet: Die Darstellung interpretiert vorhandene Zustands- und Segmentdaten, trifft aber keine eigenständigen Scheduling-Entscheidungen. Diese Trennung reduziert Fehlerquellen und erhöht die Validierbarkeit. Für die Interaktion werden ergänzend Tooltips, Hervorhebungen und Zeitsteuerung vorgesehen, um sowohl globale als auch detailorientierte Analyse zu ermöglichen \cite{hundhausen2002meta,stasko1998software}.
-
-\section{Konzeption der Benutzungsoberfläche}
-
-Die Benutzungsoberfläche wird in drei logisch getrennte Bereiche gegliedert: Eingabe und Konfiguration, Simulationssteuerung sowie Ergebnisdarstellung. Diese Struktur soll die mentale Last reduzieren und den Wechsel zwischen Experimentieren und Interpretieren erleichtern.
-
-Die Umsetzung dieser Aufteilung ist in Abbildung~\ref{fig:szenario-generator} exemplarisch zu sehen. Der Generator verbindet die Eingabe der Task-Daten mit einer Vorschau und vordefinierten Szenarien.
-
-\input{images/screenshot-szenario-generator}
-
-Zentrale Interaktionsprinzipien sind Konsistenz, Sichtbarkeit des Systemzustands und fehlertolerante Bedienung. Aktionen müssen eindeutig rückgemeldet werden, insbesondere beim Wechsel zwischen pausiertem und laufendem Zustand. Modale Dialoge und Menüs sind mit klarem Fokusverhalten und semantischer Beschriftung auszustatten, damit die Anwendung auch mit assistiven Technologien nutzbar bleibt \cite{wcag2018}. Insgesamt bildet die Oberflächenkonzeption damit die operative Umsetzung der in Kapitel 3 und Kapitel 4 abgeleiteten didaktischen und HCI-Anforderungen.
+Ein weiterer wichtiger Punkt ist die klare Trennung zwischen Berechnung und Vergleich. Die Laufberechnung erzeugt die Basisdaten, während die Vergleichsansicht diese Daten auswertet und visuell gegenüberstellt. Diese Struktur verbessert die Wiederverwendbarkeit, vereinfacht die Testbarkeit und erleichtert zukünftige Erweiterungen um weitere Algorithmen oder Lernpfade.

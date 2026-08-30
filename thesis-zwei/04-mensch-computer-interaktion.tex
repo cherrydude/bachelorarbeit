@@ -1,53 +1,51 @@
-\chapter{Grundlagen der Mensch-Computer-Interaktion}
+\chapter{Systementwurf}
 
-\section{Ziele der Mensch-Computer-Interaktion}
+Die Anwendung basiert auf der Idee, dass fachliche Korrektheit und nachvollziehbare Interaktion nicht getrennt betrachtet werden sollten. Ein Scheduling-Visualizer muss nicht nur Ergebnisse berechnen, sondern auch erklären, warum bestimmte Prozesse zu einem Zeitpunkt laufen und andere warten. Deshalb ist die Architektur der Anwendung direkt mit den Anforderungen an die Interaktion verbunden.
 
-Mensch-Computer-Interaktion beschreibt die Gestaltung digitaler Systeme so, dass sie für Menschen verständlich, effizient und verlässlich nutzbar sind. Bei einer Lernanwendung wie dem Scheduling-Visualizer steht nicht allein die funktionale Korrektheit im Vordergrund, sondern auch die Qualität der Interaktion.
+\section{Architekturprinzipien}
 
-Ziel ist eine Oberfläche, die Nutzerinnen und Nutzer sicher durch den Lernprozess führt: Eingaben sollen nachvollziehbar sein, Zustandsänderungen klar rückgemeldet werden, und Bedienhandlungen müssen ohne unnötige Hürden ausführbar bleiben.
+Die Anwendung folgt einer komponentenbasierten Struktur mit klaren Verantwortlichkeiten. Die wichtigsten Prinzipien sind eine strikte Trennung zwischen fachlicher Simulationslogik und Präsentation, die deterministische Verarbeitung identischer Eingaben und die Modularisierung der wichtigsten Funktionen. Dadurch bleibt der Simulationskern testbar und die UI kann als Vermittler zwischen Fachlogik und Nutzer wirken.
 
-\section{Usability und Nutzerfreundlichkeit}
+Diese Struktur folgt im Kern gängigen Software-Engineering-Prinzipien. Die Kopplung zwischen den Bereichen bleibt niedrig, die Zuständigkeiten sind klar und neue Funktionen wie zusätzliche Algorithmen oder Visualisierungsansichten können ergänzend eingebaut werden, ohne die gesamte Architektur zu verändern.
 
-Usability umfasst die Frage, wie wirksam, effizient und zufriedenstellend ein System in einem konkreten Nutzungskontext bedient werden kann. Für den Scheduling-Visualizer bedeutet das unter anderem, dass Interaktionen verständlich, effizient und fehlertolerant gestaltet sein müssen. Für die spätere Bewertung kann dabei auf etablierte Verfahren wie die System Usability Scale zurückgegriffen werden \cite{brooke1996sus}.
+\section{Komponentenmodell der Anwendung}
 
-\begin{itemize}
-    \item Prozesse und Parameter sollen mit möglichst wenigen Schritten erfasst werden können,
-    \item Simulationszustände müssen eindeutig erkennbar sein,
-    \item und Fehlbedienungen sollen durch klares Feedback schnell korrigierbar bleiben.
-\end{itemize}
-
-Eine hohe Nutzerfreundlichkeit kann dazu beitragen, dass kognitive Ressourcen nicht in Bedienproblemen gebunden werden, sondern für das fachliche Verständnis verfügbar bleiben.
-
-\section{Interaktionsgestaltung für Lernanwendungen}
-
-Interaktionsgestaltung im Lernkontext folgt dem Prinzip der didaktischen Unterstützung: Das Interface soll Lernziele erleichtern, nicht verdecken. Im vorliegenden Fall betrifft das insbesondere die Steuerung des Zeitverlaufs und den Vergleich verschiedener Scheduling-Strategien.
-
-Sinnvolle Interaktion entsteht dabei durch eine klare Aufgabenteilung zwischen Eingabe, Steuerung und Ergebnisdarstellung. Wenn diese Bereiche konsistent strukturiert sind, können Nutzende schneller zwischen Experimentieren und Interpretieren wechseln.
-
-\section{Rückmeldung, Transparenz und Verständlichkeit}
-
-Ein zentrales HCI-Prinzip ist die Sichtbarkeit des Systemzustands. Im Scheduling-Visualizer müssen daher wesentliche Informationen permanent oder mit minimalem Aufwand abrufbar sein. Gleichzeitig sind Anforderungen an Barrierefreiheit früh in die Interaktionsgestaltung zu integrieren, damit zentrale Funktionen für möglichst viele Nutzende zugänglich bleiben \cite{wcag2018}:
+Das System lässt sich in drei Ebenen aufteilen:
 
 \begin{itemize}
-    \item aktueller Simulationszeitpunkt,
-    \item gerade laufender Prozess,
-    \item Warteschlangen- und Prioritätszustände,
-    \item wichtige Ereignisse wie Präemptionen und Kontextwechsel.
+    \item \textbf{Szenario- und Konfigurationslogik:} Verwaltung der Taskdaten und der Eingabeparameter.
+    \item \textbf{Simulationskern:} Berechnung des Ablaufes anhand des gewählten Algorithmus.
+    \item \textbf{Darstellung und Steuerung:} Gantt-Zeitachse, Stack-Visualisierung, Kennzahlen und Vergleichsübersicht sowie Steuerungselemente (Start, Pause, Schrittmodus, Zeitnavigation).
 \end{itemize}
 
-Rückmeldungen sollen nicht nur korrekt, sondern auch semantisch klar formuliert sein. Das reduziert Interpretationsfehler und erhöht die Nachvollziehbarkeit von Algorithmusentscheidungen.
+Die Steuerungslogik ist dabei integral in die Darstellungsschicht eingebunden. Sie ist nicht eine separate Verarbeitungsebene, sondern ein Bestandteil der Benutzeroberfläche, die den Simulationsablauf steuert und visualisiert. Diese Trennung ist für die didaktische Qualität der Anwendung entscheidend. Der Nutzer sieht nicht nur ein fertiges Ergebnis, sondern den Ablauf in seiner zeitlichen Abfolge, die er durch Steuerungselemente selbst veranlasst. Die fachliche Entscheidung und ihre Präsentation bleiben in derselben Logik verknüpft, aber nicht in derselben Schicht zusammengefasst.
 
-\section{Anforderungen an die Benutzungsoberfläche des Visualizers}
+\begin{figure}[htbp]
+    \centering
+    \input{images/system-architecture-diagram}
+    \caption{Komponentenmodell der Anwendung mit den Ebenen Benutzeroberfläche, Anwendungslogik und Visualisierung. Die fachliche Simulation liefert die Daten, während die Darstellungsschicht die Ergebnisse verständlich aufbereitet.}
+    \label{fig:komponentenmodell}
+\end{figure}
 
-Auf Basis der HCI-Analyse ergeben sich konkrete Anforderungen an die Benutzungsoberfläche.
-Die folgenden Punkte konkretisieren diese Anforderungen:
+Die Pfeile in der Abbildung stellen den Datenfluss dar: Eingaben fließen von der Benutzeroberfläche durch die Anwendungslogik zur Visualisierung. Die Steuerungselemente (Start, Pause, Schritt) bewirken Neuberechnungen in der Simulationslogik, deren Ergebnisse dann sofort in den Visualisierungskomponenten dargestellt werden.
+
+\input{images/scheduling-visualizer-overview-placeholder}
+
+\section{Interaktionsmodell für den Lernprozess}
+
+Die Interaktion der Anwendung folgt einem klaren Nutzungsfluss: Erst wird ein Szenario definiert, dann ein Algorithmus ausgewählt, anschließend wird der Ablauf gesteuert und schließlich vergleichend analysiert. Dieser Ablauf entspricht der kognitiven Logik der Lernenden: Die Bedienung ist nicht als bloße Technik, sondern als Hilfsmittel zur fachlichen Erkenntnis gestaltet.
+
+Die wichtigsten interaktiven Elemente sind deshalb nicht allein „Buttons“, sondern Lernwerkzeuge. Der Zeitstrahl zeigt, wer wann läuft; die Stack-Visualisierung erklärt, welche Prozesse in der Warteschlange warten; die Kennzahlen bilden die fachliche Zusammenfassung der Laufzeitdynamik. Dieses Zusammenspiel ist das eigentliche Interaktionsmodell der Anwendung.
+
+\section{Human-Computer-Interaction als Qualitätsmerkmal}
+
+Für eine Lernanwendung ist die Benutzeroberfläche kein Nebenaspekt, sondern ein integraler Bestandteil der fachlichen Aussage. Gute HCI in diesem Kontext bedeutet, dass:
 
 \begin{itemize}
-    \item \textbf{Konsistente Navigations- und Fokusführung:} Interaktive Elemente müssen in logischer Reihenfolge erreichbar sein.
-    \item \textbf{Barrierearme Interaktion:} Tastaturbedienung, semantische Beschriftungen und ausreichende Kontraste sind notwendig.
-    \item \textbf{Robuste Dialoginteraktion:} Modale Dialoge brauchen klares Fokusmanagement sowie nachvollziehbares Schliessen.
-    \item \textbf{Eindeutige Statuskommunikation:} Der Unterschied zwischen laufender, pausierter und abgeschlossener Simulation muss sofort erkennbar sein.
-    \item \textbf{Fehlertoleranz:} Nutzende sollen Eingaben korrigieren können, ohne den gesamten Arbeitskontext zu verlieren.
+    \item relevante Zustände direkt sichtbar sind,
+    \item wichtige Ereignisse klar gekennzeichnet sind,
+    \item Bedienung und fachlicher Inhalt in einem konsistenten Ablauf zusammenwirken,
+    \item und die Visualisierung den Nutzer an der richtigen Stelle in den Lernprozess führt.
 \end{itemize}
 
-Diese Anforderungen greifen die vorhandenen Erkenntnisse zur Interaktionsqualität auf und bilden die Grundlage für die anschliessende Konzeption und Implementierung der Anwendung. Damit werden didaktische Zielsetzung und HCI-Qualitätskriterien systematisch zusammengeführt \cite{hundhausen2002meta,wcag2018}.
+Dadurch wird die Anwendung nicht nur nutzbar, sondern auch lernförderlich. Sie macht die fachlichen Zusammenhänge verständlich, ohne die formale Korrektheit der Simulation zu verlieren. Genau diese Verbindung aus Technik, Didaktik und sichtbarer Interaktion ist der Kern des Projekts.

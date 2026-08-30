@@ -1,0 +1,75 @@
+\babel@toc {german}{}\relax 
+\contentsline {chapter}{Vorwort}{ii}{chapter*.1}%
+\contentsline {chapter}{Abbildungsverzeichnis}{vi}{chapter*.4}%
+\contentsline {chapter}{Tabellenverzeichnis}{vii}{chapter*.5}%
+\contentsline {chapter}{Verzeichnis der Listings}{viii}{chapter*.6}%
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation und Problemstellung}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Zielsetzung der Arbeit}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Thematische Ausrichtung und Abgrenzung}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Vorgehensweise und Aufbau der Arbeit}{1}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Leitgedanke der Arbeit}{1}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Grundlagen}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Betriebssysteme und Prozessverwaltung}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}CPU-Scheduling in Betriebssystemen}{2}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Präemptive versus nicht-präemptive Scheduling-Verfahren}{2}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Betrachtete Scheduling-Algorithmen}{2}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Last Come First Served (LCFS)}{2}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Round Robin (RR)}{2}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Strict Priority}{2}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Multilevel Feedback Queue (MLFQ)}{2}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Kennzahlen und Einordnungskriterien}{2}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Wartezeit}{2}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Durchlaufzeit}{2}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Reaktionszeit}{2}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Ergänzende Kennzahlen (Kontextwechsel, Präemptionen, Auslastung)}{2}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}Stand der Forschung zu Scheduling-Visualisierungen}{2}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Anforderungsanalyse}{3}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Zielgruppe und Einsatzkontext}{3}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Funktionale Anforderungen}{3}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Didaktische Anforderungen}{3}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Interaktions- und Usability-Anforderungen}{3}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Technische Qualitätsziele}{3}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Nicht-Ziele und Randbedingungen}{3}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Systementwurf}{4}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Entwurfsprinzipien}{4}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Gesamtarchitektur und Schichtenmodell}{4}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Domänenmodell und Datenflüsse}{4}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Interaktionsmodell für den Lernprozess}{4}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Begründung zentraler Designentscheidungen}{4}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Implementierung}{5}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Technologie-Stack und Projektstruktur}{5}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Umsetzung des Simulationskerns}{5}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Umsetzung der Scheduling-Strategien}{5}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Umsetzung der Visualisierung}{5}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Fokusansicht}{5}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Vergleichsübersicht}{5}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Bewertungsmatrix}{5}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Umsetzung der Interaktionsmechanismen}{5}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Szenario-Management inkl. Import/Export}{5}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Technische Herausforderungen und Lösungen}{5}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Qualitätssicherung}{6}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Teststrategie und Testaufbau}{6}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Abgesicherte Kernfunktionen und Testfälle}{6}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Deterministik und Reproduzierbarkeit}{6}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Verfahrensspezifische Korrektheit (RR, LCFS, Strict Priority, MLFQ)}{6}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Validierung von Eingaben und Zuständen}{6}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Grenzen der Testabdeckung}{6}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Nachvollziehbarkeit der Ergebnisse im Produktkontext}{6}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Ergebnis und Produktpräsentation}{7}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Überblick über das entwickelte Endprodukt}{7}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Nutzerfluss und Bedienablauf}{7}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Produktdarstellung mit Screenshots}{7}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Soll-Ist-Abgleich der Anforderungen}{7}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Ergebnisbetrachtung und Einordnung}{7}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Fazit und Ausblick}{8}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Zusammenfassung der Ergebnisse}{8}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Kritische Reflexion und Grenzen}{8}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Ausblick}{8}{section.8.3}%
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{9}{chapter*.7}%
+\def \@chapapp {\appendixname }
+\contentsline {chapter}{\numberline {A}Anhang}{10}{chapter.A}%
+\contentsline {section}{\numberline {A.1}Ergänzende Abbildungen}{10}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Zusätzliche Testfälle und Szenarien}{10}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Ergänzende technische Artefakte (z. B. Konfigurationsbeispiele)}{10}{section.A.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
