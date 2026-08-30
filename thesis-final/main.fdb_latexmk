@@ -1,6 +1,6 @@
 # Fdb version 4
-["bibtex main"] 1788108924.54185 "main.aux" "main.bbl" "main" 1788109091.52754 0
-  "./bib.bib" 1788108614.75087 5311 ec99c7bea1ba46b38a635a503e800111 ""
+["bibtex main"] 1788109454.79828 "main.aux" "main.bbl" "main" 1788109454.98824 0
+  "./bib.bib" 1788109454.56041 4436 e78b4b3854c58b33172fdf0f0e21a405 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
   "01-einleitung.aux" 1788109090.79565 2597 95c0c607b25eafc811bd5a02794d4c7a "pdflatex"
   "02-grundlagen.aux" 1788109090.82765 3878 5b109d0223277c24c0484ba5eeaab273 "pdflatex"
@@ -22,7 +22,7 @@
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1788109088.74802 "/home/cherrydude/Projekte/bht-ba-root/bachlorarbeit/thesis-final/main.tex" "main.pdf" "main" 1788109091.52859 0
+["pdflatex"] 1788109088.74802 "/home/cherrydude/Projekte/bht-ba-root/bachlorarbeit/thesis-final/main.tex" "main.pdf" "main" 1788109454.98924 0
   "/home/cherrydude/Projekte/bht-ba-root/bachlorarbeit/thesis-final/main.tex" 1788108918.4495 1417 d6b282ff89d16d371aebf510641c89a6 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -321,7 +321,7 @@
   "deckblatt.tex" 1788108614.71453 593 15f76f4e27d29026d377e39f8f570bc7 ""
   "hyphenation.tex" 1788108834.37789 376 98f5cb42efb0e8ad8b551eb82b2370c9 ""
   "main.aux" 1788109090.98865 23992 ab5a3aa3fec595c2c9c1ab310e4665dd "pdflatex"
-  "main.bbl" 1788108924.7141 275 de5ffaf5b665b622658d80bed97ba2a5 "bibtex main"
+  "main.bbl" 1788109454.97647 275 de5ffaf5b665b622658d80bed97ba2a5 "bibtex main"
   "main.lof" 1788109091.00808 326 fd004d1b75a9c83a76387c959548baa2 "pdflatex"
   "main.lol" 1788109091.00808 326 fd004d1b75a9c83a76387c959548baa2 "pdflatex"
   "main.lot" 1788109091.00808 326 fd004d1b75a9c83a76387c959548baa2 "pdflatex"
