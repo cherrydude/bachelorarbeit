@@ -1,29 +1,87 @@
 \chapter{Grundlagen}
 
+Dieses Kapitel beschreibt die theoretischen Grundlagen, auf denen Konzeption, Implementierung und Bewertung der Anwendung aufbauen.
+
 \section{Betriebssysteme und Prozessverwaltung}
+
+Betriebssysteme koordinieren den Zugriff auf Hardware-Ressourcen und stellen Ausführungsumgebungen für Programme bereit. Eine Kernaufgabe ist dabei die Verwaltung konkurrierender Ausführungseinheiten, die um CPU-Zeit, Speicher und weitere Ressourcen konkurrieren \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+Historisch stand der Begriff des Prozesses im Mittelpunkt: Ein Prozess ist eine vollständige, isolierte Ausführungsumgebung mit eigenem Adressraum, Dateihandles und Ressourcenzustand. Prozesse durchlaufen typischerweise mehrere Zustände, etwa bereit, laufend und blockiert. Das Betriebssystem steuert Übergänge zwischen diesen Zuständen und bestimmt durch Scheduling-Entscheidungen, welcher bereite Prozess als Nächstes ausgeführt wird. Diese Entscheidungen wirken sich direkt auf wahrgenommene Systemreaktion und Gesamtdurchlauf aus.
+
+Parallel zur Prozessabstraktion existiert das Konzept des Threads (oder leichtgewichtigen Prozesses). Ein Thread ist eine Ausführungseinheit innerhalb eines Prozesses und teilt sich Speicher, offene Dateien und andere Ressourcen mit anderen Threads desselben Prozesses. Der Hauptunterschied liegt in Isolation und Ressourcenaufwand: Ein Kontextwechsel zwischen Threads ist in der Regel schneller als zwischen Prozessen, da weniger Systemzustand gesichert und wiederhergestellt werden muss.
+
+Aus der Perspektive des CPU-Schedulers gibt es zwei Ebenen der Entscheidung: Auf Kernel-Ebene plant der Scheduler Prozesse oder Kernel-Threads ein, während auf Benutzerebene zusätzlich anwendungsspezifische Strategien für User-Threads existieren können. Für die vorliegende Arbeit bleibt die Prozessabstraktion als didaktische Vereinfachung ausreichend, da die grundlegenden Scheduling-Prinzipien identisch bleiben.
 
 \section{CPU-Scheduling in Betriebssystemen}
 
+CPU-Scheduling beschreibt die Auswahlstrategie für die Vergabe von Prozessorzeit an bereite Ausführungseinheiten. Ziel ist ein sinnvoller Ausgleich zwischen konkurrierenden Kriterien wie kurzer Reaktionszeit, niedriger Wartezeit, hoher Auslastung und fairer Behandlung \cite{stallings_betriebssysteme}.
+
+In Mehrprogrammsystemen ist Scheduling eine kontinuierliche Entscheidungsaufgabe unter Unsicherheit, da Ankunftszeitpunkte und Laufzeitverhalten variieren. Deshalb sind Scheduling-Verfahren typischerweise als Heuristiken formuliert, deren Eignung vom Lastprofil und vom Systemziel abhängt. Unabhängig davon, ob Prozesse oder Threads geplant werden, bleiben die zentralen Fragen gleich: Auswahl des nächsten Elements, Behandlung von Präemption und Kontextwechsel sowie Auswertung über Kennzahlen wie Warte- und Durchlaufzeit.
+
 \section{Präemptive versus nicht-präemptive Scheduling-Verfahren}
 
-\section{Betrachtete Scheduling-Algorithmen}
+Eine grundlegende Klassifikation unterscheidet zwischen präemptiven und nicht-präemptiven Strategien. Dieser Unterschied beeinflusst sowohl das Systemverhalten als auch die Komplexität von Analyse und Visualisierung.
+
+\subsection{Nicht-präemptive Verfahren}
+
+Nicht-präemptive Verfahren erlauben es einem Prozess, die CPU bis zum Abschluss oder bis zur freiwilligen Blockierung zu behalten. Scheduling-Entscheidungen treten damit nur an diskreten Zeitpunkten auf. Vorteilhaft sind geringerer Kontextwechsel-Overhead und eine vergleichsweise einfache Implementierung. Nachteilig ist die Gefahr langer Wartezeiten für nachfolgende Prozesse.
+
+Klassische Beispiele sind FCFS und SJF in nicht-präemptiver Form.
+
+\subsection{Präemptive Verfahren}
+
+Präemptive Verfahren erlauben dem Scheduler, einen laufenden Prozess aktiv zu unterbrechen und einen anderen Prozess einzuplanen. Auslöser sind typischerweise Zeitquanten (Timer-Interrupt) oder die Ankunft eines Prozesses mit höherer Priorität.
+
+Vorteile liegen in besserer Reaktionsfähigkeit und höherer Steuerbarkeit, insbesondere in interaktiven Systemen. Gleichzeitig erhöhen Präemptionen die Zahl der Kontextwechsel und damit den Verwaltungsaufwand \cite{tanenbaum_moderne_betriebssysteme_de}.
+
+\subsection{Herausforderungen präemptiver Verfahren}
+
+Die Analyse präemptiver Verfahren ist anspruchsvoll, weil Prozesse mehrfach unterbrochen und später fortgesetzt werden. Dadurch entstehen dynamische, nicht-lineare Abläufe, deren Auswirkungen auf Kennzahlen nicht unmittelbar offensichtlich sind. Genau an dieser Stelle bieten interaktive Visualisierungen einen didaktischen Mehrwert, da sie Entscheidungen und Konsequenzen zeitlich nachvollziehbar machen.
+
+Die vorliegende Anwendung konzentriert sich daher bewusst auf präemptive Verfahren.
+
+\section{Überblick über die betrachteten Algorithmen}
+
+Alle in der Anwendung implementierten Verfahren sind präemptiv und bilden unterschiedliche Strategien zur Auswahl des nächsten Prozesses ab.
 
 \subsection{Last Come First Served (LCFS)}
 
-\subsection{Round Robin (RR)}
+In der präemptiven Variante von LCFS verdrängen neu eintreffende Prozesse den aktuell laufenden Prozess unmittelbar. Das Verfahren verdeutlicht Präemptionsdynamik besonders klar, kann aber unter ungünstigen Lastprofilen zu langen Wartezeiten früher Prozesse führen.
+
+\subsection{Round Robin}
+
+Round Robin weist jedem Prozess ein Zeitquantum zu. Nach Ablauf des Quantums wird präemptiert und der Prozess am Ende der Bereitwarteschlange wieder eingereiht. Das Verfahren gilt als faires Basismodell für zeitscheibenbasierte Planung und ist didaktisch gut nachvollziehbar \cite{stallings_betriebssysteme}.
 
 \subsection{Strict Priority}
 
+Strict Priority wählt stets den bereiten Prozess mit der höchsten Priorität und führt sofortige Präemption bei höher priorisierten Neuankünften durch. Das Verfahren verbessert die Reaktion auf wichtige Aufgaben, kann jedoch zu Benachteiligung niedriger Prioritäten führen \cite{tanenbaum_moderne_betriebssysteme_de}.
+
 \subsection{Multilevel Feedback Queue (MLFQ)}
 
-\section{Kennzahlen und Einordnungskriterien}
+MLFQ kombiniert mehrere Warteschlangen mit unterschiedlichen Prioritäten und Zeitquanten. Prozesse starten in hoher Priorität und werden bei CPU-intensivem Verhalten schrittweise herabgestuft. Damit entsteht ein adaptives Verfahren, das kurze/interaktive und lange CPU-lastige Aufgaben unterschiedlich behandelt \cite{meing2025mlfq}.
+
+\section{Kriterien zur Bewertung von Scheduling-Verfahren}
+
+Die Bewertung erfolgt über definierte Kennzahlen, um Verfahren nicht nur qualitativ, sondern auch quantitativ zu vergleichen \cite{stallings_betriebssysteme}.
 
 \subsection{Wartezeit}
 
+Die Wartezeit ist die Zeitspanne, die ein Prozess im Zustand bereit verbringt, ohne ausgeführt zu werden.
+
 \subsection{Durchlaufzeit}
+
+Die Durchlaufzeit (Turnaround Time) ist die Zeit vom Eintreffen bis zum Abschluss eines Prozesses.
 
 \subsection{Reaktionszeit}
 
-\subsection{Ergänzende Kennzahlen (Kontextwechsel, Präemptionen, Auslastung)}
+Die Reaktionszeit beschreibt die Zeit vom Eintreffen bis zur ersten CPU-Zuteilung und ist besonders relevant für interaktive Systeme \cite{tanenbaum_moderne_betriebssysteme_de}.
+
+Ergänzend können Kontextwechselhäufigkeit, Präemptionsanzahl und Leerlaufanteile betrachtet werden, um Zielkonflikte zwischen Responsivität, Durchsatz und Ressourceneffizienz sichtbar zu machen.
 
 \section{Stand der Forschung zu Scheduling-Visualisierungen}
+
+Die Forschung zur Algorithmusvisualisierung zeigt, dass interaktive Darstellungen Lernprozesse unterstützen können, insbesondere wenn Zustandswechsel und zeitliche Dynamik nachvollziehbar dargestellt werden \cite{hundhausen2002meta}.
+
+Für präemptive Scheduling-Verfahren ist diese didaktische Herausforderung besonders hoch, da häufige Unterbrechungen und Wiedereinplanungen zu komplexen Ablaufmustern führen. Interaktive Visualisierung kann hier helfen, Entscheidungspfade verständlich zu machen und die Wirkung einzelner Strategien auf zentrale Kennzahlen transparent darzustellen.
+
+Die vorliegende Anwendung positioniert sich in diesem Kontext als didaktisches Werkzeug, das fachlich korrekte Simulation mit verständlicher, interaktiver Darstellung verbindet.

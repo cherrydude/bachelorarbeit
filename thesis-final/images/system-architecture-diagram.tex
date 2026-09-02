@@ -1,0 +1,67 @@
+\begin{tikzpicture}[
+  font=\footnotesize,
+  >=Latex,
+  comp/.style={
+    draw=black!65,
+    rounded corners=2mm,
+    very thick,
+    minimum width=3.9cm,
+    minimum height=1.15cm,
+    align=center
+  },
+  layer/.style={
+    draw=black!55,
+    rounded corners=2mm,
+    very thick,
+    minimum width=13.4cm,
+    minimum height=3.25cm
+  },
+  flow/.style={->, thick, draw=black!75},
+  feedback/.style={->, thick, dashed, draw=black!65}
+]
+
+% Layer
+\node[layer, fill=blue!5]   (L1) at (0,0) {};
+\node[layer, fill=green!5]  (L2) at (0,-4.0) {};
+\node[layer, fill=orange!6] (L3) at (0,-8.0) {};
+
+% Titles
+\node[anchor=west, font=\bfseries] at (-6.45,1.4) {Benutzeroberfläche (Darstellung \& Steuerung)};
+\node[anchor=west, font=\bfseries] at (-6.45,-2.6) {Anwendungslogik};
+\node[anchor=west, font=\bfseries] at (-6.45,-6.6) {Visualisierung \& Auswertung};
+
+% Row 1
+\node[comp, fill=blue!14] (ui1) at (-4.2,0.05) {Szenario \&\\Parameter};
+\node[comp, fill=blue!14] (ui2) at (0,0.05)    {Laufsteuerung\\(Start/Pause/Schritt)};
+\node[comp, fill=blue!14] (ui3) at (4.2,0.05)  {Vergleich\\\& Navigation};
+
+% Row 2
+\node[comp, fill=green!14] (app1) at (-4.2,-3.95) {Szenario-\\logik};
+\node[comp, fill=green!14] (app2) at (0,-3.95)    {Simulationskern\\(RR, LCFS, Priority, MLFQ)};
+\node[comp, fill=green!14] (app3) at (4.2,-3.95)  {Run-/Snapshot-\\Verwaltung};
+
+% Row 3
+\node[comp, fill=orange!18] (viz1) at (-4.2,-7.95) {Gantt-Zeitachse};
+\node[comp, fill=orange!18] (viz2) at (0,-7.95)    {Warteschlange\\/ Statusansicht};
+\node[comp, fill=orange!18] (viz3) at (4.2,-7.95)  {Kennzahlen\\\& Vergleich};
+
+% Vertical main flow
+\draw[flow] (ui1.south) -- (app1.north);
+\draw[flow] (ui2.south) -- (app2.north);
+\draw[flow] (ui3.south) -- (app3.north);
+
+\draw[flow] (app1.south) -- (viz1.north);
+\draw[flow] (app2.south) -- (viz2.north);
+\draw[flow] (app3.south) -- (viz3.north);
+
+% Internal logic flow WITHOUT labels (for readability)
+\draw[flow] (app1.east) -- (app2.west);
+\draw[flow] (app2.east) -- (app3.west);
+
+% Feedback
+\draw[feedback] (viz2.north) .. controls +(0,1.3) and +(0,-1.3) .. (ui2.south);
+
+% Tiny legend
+\node[anchor=west, font=\scriptsize] at (-6.45,-9.75)
+{Hauptdatenfluss: oben $\rightarrow$ unten \quad gestrichelt: interaktive Rückkopplung};
+\end{tikzpicture}
