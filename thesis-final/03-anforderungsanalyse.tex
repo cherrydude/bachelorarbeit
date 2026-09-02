@@ -1,13 +1,68 @@
 \chapter{Anforderungsanalyse}
 
+Die Anforderungen ergeben sich aus der Verbindung fachlicher Grundlagen des CPU-Scheduling mit didaktischen Zielen und softwaretechnischen Qualitätsansprüchen. Ziel ist eine Anwendung, die präemptive Verfahren korrekt abbildet und ihre Abläufe für Lernende verständlich zugänglich macht.
+
 \section{Zielgruppe und Einsatzkontext}
 
-\section{Funktionale Anforderungen}
+Die primäre Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung unterstützt sowohl die begleitete Demonstration im Unterricht als auch die eigenständige Analyse von Szenarien.
+
+\section{Fachliche Anforderungen}
+
+Die Anwendung muss die Verfahren Round Robin, LCFS, Strict Priority und MLFQ konsistent simulieren. Dafür sind zentrale Eingabeparameter wie Ankunftszeit, Burst-Zeit, Priorität und Zeitquantum korrekt zu verarbeiten. Als Ergebnis müssen insbesondere Wartezeit, Durchlaufzeit, Reaktionszeit, Kontextwechsel und Präemptionsanzahl bereitgestellt werden.
+
+Eine Kernanforderung lautet: Simulationslogik, Ereignisverlauf und Kennzahlen müssen aus derselben Zustandsbasis abgeleitet werden, damit Ergebnisse fachlich konsistent und vergleichbar bleiben.
 
 \section{Didaktische Anforderungen}
 
+Die Anwendung soll nicht nur Endwerte liefern, sondern Entscheidungswege sichtbar machen. Lernende müssen erkennen können, warum Prozesse ausgewählt, unterbrochen oder zurückgestellt werden.
+
+Im Zentrum stehen drei Leitprinzipien:
+
+\begin{itemize}
+    \item \textbf{Transparenz:} Dispatch, Präemption, Kontextwechsel und Abschluss sind eindeutig darzustellen.
+    \item \textbf{Vergleichbarkeit:} Mehrere Verfahren sollen auf identischer Szenariobasis gegenüberstellbar sein.
+    \item \textbf{Kontrollierbares Lerntempo:} Schrittmodus und kontinuierliche Wiedergabe müssen unterstützt werden.
+\end{itemize}
+
 \section{Interaktions- und Usability-Anforderungen}
+
+Die Oberfläche soll die kognitive Last reduzieren und den typischen Arbeitsablauf unterstützen: Szenario definieren, Verfahren auswählen, Lauf starten, Ergebnis interpretieren, Verfahren vergleichen. Funktionen müssen in konsistenter Reihenfolge verfügbar und ohne unnötige Bedienhürden nutzbar sein.
+
+Für den Lehrkontext ist wesentlich, dass relevante Zustände unmittelbar erkennbar sind und die Bedienlogik die fachliche Analyse unterstützt statt überlagert.
+
+\section{Anforderungen an Accessibility}
+
+Da die Anwendung im Lehrkontext eingesetzt wird, sind grundlegende Accessibility-Anforderungen zu berücksichtigen: semantisch klare Struktur, nachvollziehbare Fokusführung, verständliche Statuskommunikation und ausreichende Kontraste. Ziel ist, dass zentrale Lern- und Bedienfunktionen auch ohne rein visuelle Orientierung nutzbar bleiben \cite{wcag2018}.
 
 \section{Technische Qualitätsziele}
 
-\section{Nicht-Ziele und Randbedingungen}
+Die Anwendung soll modular, deterministisch und erweiterbar aufgebaut sein. Die Trennung von Simulationskern, Zustandsverwaltung und Visualisierung reduziert Fehleranfälligkeit und erleichtert Erweiterungen, etwa um weitere Algorithmen oder Analyseansichten.
+
+Diese Qualitätsziele sichern sowohl Wartbarkeit als auch fachliche Verlässlichkeit im Lehrbetrieb.
+
+\section{Abgeleitete funktionale und nicht-funktionale Anforderungen}
+
+Die vorherigen Abschnitte lassen sich in funktionale und nicht-funktionale Kernanforderungen überführen.
+
+\subsection*{Funktionale Anforderungen}
+
+\begin{itemize}
+    \item Erfassung und Bearbeitung von Prozessen mit relevanten Scheduling-Parametern.
+    \item Simulation der Verfahren Round Robin, LCFS, Strict Priority und MLFQ.
+    \item Visualisierung des zeitlichen Ablaufs inklusive Präemptionen und Zustandswechseln.
+    \item Ausgabe zentraler Kennzahlen pro Lauf.
+    \item Vergleich mehrerer Läufe auf identischer Szenariobasis.
+    \item Interaktive Ablaufsteuerung mit Start, Pause, Schrittmodus und Zeitsprung.
+\end{itemize}
+
+\subsection*{Nicht-funktionale Anforderungen}
+
+\begin{itemize}
+    \item Deterministisches Verhalten bei identischer Eingabe.
+    \item Klare Trennung von Fachlogik und Darstellung.
+    \item Verständliche, konsistente und zugängliche Benutzerführung.
+    \item Erweiterbarkeit für zusätzliche Verfahren und Darstellungsformen.
+    \item Testbarkeit der Kernlogik und zentraler Interaktionspfade.
+\end{itemize}
+
+Die abgeleiteten Anforderungen bilden die Grundlage für den Systementwurf im folgenden Kapitel.

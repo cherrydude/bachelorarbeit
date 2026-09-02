@@ -1,29 +1,29 @@
 \chapter{Grundlagen}
 
+Dieses Kapitel stellt die theoretischen Grundlagen dar, auf denen Konzeption, Implementierung und Bewertung der Anwendung basieren.
+
 \section{Betriebssysteme und Prozessverwaltung}
+
+Betriebssysteme koordinieren den Zugriff auf Hardware-Ressourcen und stellen Ausführungsumgebungen für Programme bereit. Zu ihren Kernaufgaben zählt die Verwaltung konkurrierender Ausführungseinheiten, die um CPU-Zeit, Speicher und weitere Ressourcen konkurrieren \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+Ein Prozess bezeichnet dabei eine isolierte Ausführungsumgebung mit eigenem Adressraum und eigenem Ressourcenzustand. Prozesse durchlaufen typischerweise Zustände wie \textit{bereit}, \textit{laufend} und \textit{blockiert}. Das Betriebssystem steuert die Übergänge zwischen diesen Zuständen und trifft Scheduling-Entscheidungen über die nächste CPU-Zuteilung.
+
+Ergänzend existiert die Thread-Abstraktion als leichtgewichtige Ausführungseinheit innerhalb eines Prozesses. Threads teilen sich den Adressraum und weitere Ressourcen des Prozesses; Kontextwechsel zwischen Threads sind daher in der Regel günstiger als zwischen Prozessen. Für die vorliegende Arbeit ist jedoch die Prozessabstraktion ausreichend, da die zentralen Scheduling-Prinzipien unverändert gelten.
 
 \section{CPU-Scheduling in Betriebssystemen}
 
+CPU-Scheduling beschreibt die Auswahlstrategie zur Vergabe von Prozessorzeit an bereite Ausführungseinheiten. Ziel ist ein Ausgleich zwischen konkurrierenden Kriterien wie Reaktionszeit, Wartezeit, Auslastung und Fairness \cite{stallings_betriebssysteme}.
+
+In Mehrprogrammsystemen erfolgt diese Auswahl unter variierenden Ankunftszeiten und Laufzeiten. Scheduling-Verfahren werden daher üblicherweise als Heuristiken formuliert, deren Eignung vom Lastprofil und den Systemzielen abhängt. Zentrale Fragestellungen sind die Auswahl des nächsten Prozesses, der Umgang mit Präemption und Kontextwechseln sowie die Bewertung über geeignete Kennzahlen.
+
 \section{Präemptive versus nicht-präemptive Scheduling-Verfahren}
 
-\section{Betrachtete Scheduling-Algorithmen}
+Scheduling-Verfahren lassen sich grundlegend in präemptive und nicht-präemptive Strategien einteilen. Diese Unterscheidung beeinflusst sowohl das Laufzeitverhalten als auch die analytische Komplexität.
 
-\subsection{Last Come First Served (LCFS)}
+\subsection{Nicht-präemptive Verfahren}
 
-\subsection{Round Robin (RR)}
+Nicht-präemptive Verfahren erlauben einem Prozess, die CPU bis zum Abschluss oder bis zur Blockierung zu behalten. Entscheidungen treten dadurch nur an diskreten Punkten auf. Vorteile sind geringer Kontextwechselaufwand und einfache Ablaufstrukturen; nachteilig sind potenziell lange Wartezeiten. Typische Vertreter sind FCFS und nicht-präemptives SJF.
 
-\subsection{Strict Priority}
+\subsection{Präemptive Verfahren}
 
-\subsection{Multilevel Feedback Queue (MLFQ)}
-
-\section{Kennzahlen und Einordnungskriterien}
-
-\subsection{Wartezeit}
-
-\subsection{Durchlaufzeit}
-
-\subsection{Reaktionszeit}
-
-\subsection{Ergänzende Kennzahlen (Kontextwechsel, Präemptionen, Auslastung)}
-
-\section{Stand der Forschung zu Scheduling-Visualisierungen}
+Präemptive Verfahren erlauben dem Scheduler, einen laufenden Prozess aktiv zu unterbrechen und einen anderen einzuplanen. Auslöser sind typischerweise Zeitquantumsgrenzen (Timer-Interrupt) oder die Ankunft höher priorisierter Prozesse. Dadurch steigen Reaktionsfähigkeit und Steuerbarkeit, zugleich aber auch die Anzahl der Kontextwechsel \cite{tanenbaum_moderne_betriebssysteme_de}.

@@ -1,21 +1,124 @@
 \chapter{Implementierung}
 
-\section{Technologie-Stack und Projektstruktur}
+Die Implementierung überführt den in Kapitel~\ref{chap:systementwurf} beschriebenen Entwurf in eine lauffähige Webanwendung. Ziel ist die technisch konsistente Realisierung einer Visualisierungsanwendung, die präemptive Scheduling-Verfahren korrekt berechnet und verständlich darstellt.
 
-\section{Umsetzung des Simulationskerns}
+\section{Technische Grundlagen und verwendete Technologien}
 
-\section{Umsetzung der Scheduling-Strategien}
+Die Anwendung wurde als clientseitige Webanwendung mit Vue~3 und TypeScript umgesetzt \cite{vue3docs}. Vue strukturiert die Benutzeroberfläche komponentenbasiert, während TypeScript die fachlichen Datenmodelle typensicher abbildet. Der Build- und Entwicklungsprozess erfolgt mit Vite \cite{vitedocs}, die automatisierte Verifikation mit Vitest \cite{vitestdocs}. Für gezielte Übergänge in der Oberfläche wird GSAP eingesetzt \cite{gsapdocs}.
+
+Eine zentrale technische Entscheidung ist die Trennung von Simulationslogik, Zustandsverwaltung und Darstellung. Dadurch bleibt der Simulationskern unabhängig testbar, während die Oberfläche auf konsistenten Ergebnisdaten operiert.
+
+\subsection{Begründung der Technologieentscheidungen}
+
+Die Auswahl des Technologie-Stacks orientiert sich an den fachlichen und didaktischen Anforderungen der Anwendung. Da der Scheduling-Visualizer vollständig clientseitig arbeitet und unmittelbar auf Benutzerinteraktionen reagieren soll, wurde eine Webtechnologie gewählt, die komponentenbasierte Oberflächen, reaktive Zustandsaktualisierung und eine einfache Bereitstellung als statische Anwendung verbindet.
+
+Vue~3 wurde als UI-Framework gewählt, weil die Oberfläche in klar abgegrenzte Komponenten für Szenariokonfiguration, Laufsteuerung, Visualisierung und Vergleichsansicht aufgeteilt werden kann \cite{vue3docs}. Die reaktive Aktualisierung sorgt dafür, dass Änderungen am aktiven Laufzustand direkt in den betroffenen Ansichten sichtbar werden. Die Composition API unterstützt dabei die Trennung wiederverwendbarer Zustands- und Interaktionslogik von der konkreten Darstellung. Dadurch lässt sich beispielsweise die Wiedergabesteuerung unabhängig von einer einzelnen Ansicht organisieren.
+
+TypeScript ergänzt diese Struktur um statische Typisierung. Domänenobjekte wie Prozesse, Ereignisse, Segmente, Snapshots und Metriken bilden Schnittstellen zwischen Simulationskern und Benutzeroberfläche. Eine explizite Typisierung macht diese Schnittstellen bereits während der Entwicklung überprüfbar und reduziert das Risiko, dass eine Ansicht unvollständige oder strukturell falsche Simulationsergebnisse verarbeitet. Dies unterstützt insbesondere das Prinzip der gemeinsamen Ergebnisbasis, das mit \texttt{SimulationRun} umgesetzt wird.
+
+Vite wurde als Build- und Entwicklungswerkzeug eingesetzt \cite{vitedocs}. Für die Entwicklung ist vor allem die kurze Rückkopplungszeit durch schnelle Aktualisierung relevant: Änderungen an Komponenten und Styles können unmittelbar geprüft werden. Für die Bereitstellung erzeugt Vite zudem statische Artefakte, die anschließend unabhängig von einer serverseitigen Anwendungslogik ausgeliefert werden können.
+
+Für die Gantt-Darstellung und weitere zeitbezogene Ansichten wird SVG verwendet. SVG eignet sich für die präzise Positionierung von Zeitabschnitten, Segmentgrenzen, Beschriftungen und Ereignismarkierungen. Die einzelnen Elemente bleiben dabei im Dokumentmodell adressierbar und können mit CSS oder Ereignisbehandlung verbunden werden. Gegenüber einer reinen Canvas-Darstellung erleichtert dies die Zuordnung von Interaktionen und Beschriftungen zu konkreten Prozessen.
+
+GSAP ergänzt die Darstellung für gezielte Übergänge und Animationen \cite{gsapdocs}. Die Bibliothek wird bewusst nur für Präsentationseffekte eingesetzt; sie verändert weder Scheduling-Entscheidungen noch die erzeugten Ergebnisdaten. Damit bleibt die fachliche Berechnung deterministisch, während Zustandswechsel in der Oberfläche zeitlich nachvollziehbar hervorgehoben werden können.
+
+Vitest wurde für die automatisierte Verifikation der Simulationslogik gewählt \cite{vitestdocs}. Die deterministische Ausführung der Verfahren ermöglicht reproduzierbare Tests von Ereignisfolgen, Präemptionen, Segmenten und Kennzahlen. Die Tests greifen dabei auf die fachlichen Ergebnisstrukturen zu und müssen die Darstellung nicht nachbilden. Dadurch werden fachliche Fehler unabhängig von Layout- oder Animationseffekten erkennbar.
+
+Die Technologieentscheidungen bilden somit eine zusammenhängende Architektur: Vue strukturiert die Interaktion, TypeScript beschreibt die fachlichen Verträge, der Simulationskern erzeugt reproduzierbare Daten, SVG stellt diese präzise dar und Vitest überprüft die Kernlogik. Vite und GSAP unterstützen Entwicklungsprozess und Präsentation, ohne die fachliche Zuständigkeit des Simulationskerns zu erweitern.
+
+\section{Datenmodell und Simulationskern}
+
+Die fachliche Basis bildet ein einheitliches Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität, Restzeit und Status. Auf dieser Grundlage werden alle Verfahren innerhalb eines gemeinsamen Simulationsrahmens berechnet.
+
+Ein Simulationslauf erzeugt mehrere zusammenhängende Ergebnisstrukturen:
+
+\begin{itemize}
+    \item \textbf{Ereignislog:} chronologische Ereignisse (z.\,B. Dispatch, Präemption, Abschluss),
+    \item \textbf{Segmente:} zeitlich abgegrenzte Ausführungsintervalle für die Gantt-Darstellung,
+    \item \textbf{Snapshots:} Zustandsabbilder für Wiedergabe und Zeitsprung,
+    \item \textbf{Metriken:} aggregierte Kennzahlen wie Warte-, Durchlauf- und Reaktionszeit sowie Kontextwechsel.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/diagramme/Domänenmodell.pdf}
+    \caption{Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}
+    \label{fig:domaenenmodell}
+\end{figure}
+
+Das Domänenmodell zeigt \texttt{SimulationRun} als zentrales Ergebnisobjekt. Es bündelt Ereignisse, Snapshots, Segmente, Kennzahlen und Prozesszustände und bildet damit die gemeinsame Datenbasis für nachgelagerte Ansichten.
+
+\subsection{Single Source of Truth: \texttt{SimulationRun}}
+
+Die Implementierung folgt dem Prinzip der \emph{Single Source of Truth}: \texttt{SimulationRun} repräsentiert das vollständige Ergebnis eines Simulationsdurchlaufs. Nachgelagerte Darstellungen -- insbesondere Gantt-Visualisierung, Vergleichsansichten und Kennzahlen -- greifen ausschließlich auf dieses Objekt zu. Dadurch basieren Darstellung und Bewertung auf identischer Datenbasis.
+
+\texttt{SimulationRun} umfasst den Ereignisverlauf (\texttt{events}), Zustandsabbilder (\texttt{snapshots}), Ausführungssegmente (\texttt{segments}), aggregierte Kennzahlen (\texttt{finalMetrics}) und Prozesszustände (\texttt{processStates}). Inkonsistenzen zwischen visualisiertem Ablauf und numerischer Auswertung werden dadurch vermieden.
+
+Die zentrale Ergebnisstruktur unterstützt zugleich Reproduzierbarkeit und Testbarkeit: Bei identischem Szenario und identischen Parametern entsteht deterministisch dieselbe Struktur; Tests können direkt auf Ereignisse, Segmente und Kennzahlen zugreifen. Neue Ansichten lassen sich ergänzen, ohne den Simulationskern zu verändern.
+
+\section{Umsetzung der Scheduling-Verfahren}
+
+Round Robin, LCFS, Strict Priority und MLFQ wurden als präemptive Strategien innerhalb derselben Simulationslogik implementiert:
+
+\begin{itemize}
+    \item \textbf{Round Robin:} Präemption nach Ablauf eines konfigurierbaren Zeitquantums.
+    \item \textbf{LCFS (präemptiv):} Neu eintreffende Prozesse verdrängen den laufenden Prozess.
+    \item \textbf{Strict Priority:} Auswahl des höchstprioren bereiten Prozesses mit sofortiger Präemption bei höher priorisierten Neuankünften.
+    \item \textbf{MLFQ:} Mehrere Warteschlangen mit stufenabhängigen Quantumswerten und Herabstufungslogik.
+\end{itemize}
+
+Alle Verfahren nutzen dieselbe Tick- und Ereignisverarbeitung. Unterschiede im Ablauf und in den Kennzahlen ergeben sich damit aus der Verfahrensstrategie, nicht aus unterschiedlicher Berechnungsinfrastruktur.
+
+\subsection{Ablauf eines Simulationslaufs}
+
+\texttt{simulateScenario()} erhält das konfigurierte Szenario, führt die tick-basierte Simulation aus und erzeugt ein vollständiges \texttt{SimulationRun}. Die Oberfläche rendert anschließend die enthaltenen Segmente, Snapshots, Ereignisse und Kennzahlen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/diagramme/Sequenzdiagramm.pdf}
+    \caption{Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}
+    \label{fig:sequenzdiagramm}
+\end{figure}
+
+Die tick-basierte Schleife verarbeitet Ankünfte, Scheduling-Entscheidungen, Präemptionen und Abschlüsse in zeitlicher Reihenfolge. Die erforderlichen Artefakte für Wiedergabe und Auswertung entstehen innerhalb dieses Ablaufs, sodass die Oberfläche auf einem vorberechneten Laufzustand navigieren kann.
+
+\subsection{Prozesszustände und Übergänge}
+
+Jeder Prozess durchläuft einen definierten Lebenszyklus. Die Zustände \texttt{pending}, \texttt{ready}, \texttt{running}, \texttt{preempted} und \texttt{finished} beschreiben, ob ein Prozess noch nicht eingetroffen, zur Ausführung bereit, aktiv, verdrängt oder abgeschlossen ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/diagramme/ZustandsdiagrammProzess.pdf}
+    \caption{Zustände und Übergänge eines Prozesses im Simulationsmodell.}
+    \label{fig:zustandsdiagramm-prozess}
+\end{figure}
+
+Die Übergänge sind mit Ereignissen verknüpft: \texttt{arrival} (Eintritt), \texttt{dispatch} (CPU-Zuteilung), \texttt{preempt} (Verdrängung), \texttt{quantumExpired} (Ablauf des Zeitquantums) und \texttt{finish} (Abschluss). Die code-nahe Benennung erleichtert die Rückverfolgbarkeit zwischen Modell, Implementierung und Tests.
 
 \section{Umsetzung der Visualisierung}
 
-\subsection{Fokusansicht}
+Die Visualisierung ist in getrennte Funktionsbereiche gegliedert: Eingabe und Konfiguration, Laufsteuerung, Fokusansicht, Kennzahlenbereich und Vergleichsansicht.
 
-\subsection{Vergleichsübersicht}
+Die zeitliche Ausführung wird als Gantt-Darstellung auf Basis der Segmentdaten visualisiert. Ergänzende Ansichten zeigen Wartesituationen und laufzeitbezogene Kennzahlen. Die Umsetzung nutzt SVG-basierte Darstellungen, um Zeitachsen, Segmentgrenzen und Ereignisse präzise abzubilden.
 
-\subsection{Bewertungsmatrix}
+Ziel ist fachliche Lesbarkeit: Entscheidungen des Schedulers sollen zeitlich und inhaltlich nachvollziehbar werden.
 
-\section{Umsetzung der Interaktionsmechanismen}
+\section{Interaktionsmechanismen und Nutzerworkflow}
 
-\section{Szenario-Management inkl. Import/Export}
+Die Interaktion folgt einem didaktischen Ablauf: Szenario definieren, Verfahren auswählen, Lauf steuern, Ergebnis interpretieren und Verfahren vergleichen.
 
-\section{Technische Herausforderungen und Lösungen}
+Die Wiedergabelogik arbeitet auf vorberechneten Snapshots und startet die Simulation nicht bei jedem Interaktionsschritt neu. Dadurch bleiben Funktionen wie Start, Pause, Schrittmodus, Geschwindigkeitsanpassung und Zeitsprung reaktiv, ohne die Konsistenz der Ergebnisdaten zu gefährden.
+
+Im Vergleichsmodus werden mehrere Läufe auf identischer Eingabebasis nebeneinander dargestellt. Das unterstützt die direkte Gegenüberstellung algorithmischer Unterschiede.
+
+\section{Build- und Deploymentprozess}
+
+Für die Bereitstellung wird ein containerbasierter Deploymentprozess verwendet. Die Anwendung wird mit Vite in statische Artefakte überführt und in ein Docker-Image paketiert. Dadurch entsteht eine reproduzierbare Laufzeitumgebung unabhängig vom lokalen Entwicklungsrechner.
+
+Das Deployment erfolgt auf einer Hosting-Plattform mit Container-Unterstützung. Änderungen können konsistent gebaut und in stabiler Umgebung veröffentlicht werden; im Lehrkontext stellt dies eine einheitliche Versionsbasis für Demonstration und Nutzung sicher.
+
+\section{Besondere technische Herausforderungen}
+
+Eine zentrale Herausforderung war die Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Präemptive Verfahren erzeugen häufige Zustandswechsel, während die Oberfläche gleichzeitig unmittelbar auf Interaktionen reagieren muss.
+
+Ein weiterer Schwerpunkt war die Sicherung der Deterministik durch klare Zustandsübergänge, konsistente Datenmodelle und testbare Schnittstellen. Zusätzlich ergibt sich ein Zielkonflikt zwischen Detailtiefe und Ressourcenbedarf: Dichtere Snapshot-Folgen verbessern Analyse und Zeitsprung, erhöhen jedoch Speicher- und Verarbeitungsaufwand. Dieser Konflikt wurde durch parametrisierbare Granularität der Wiedergabedaten adressiert.

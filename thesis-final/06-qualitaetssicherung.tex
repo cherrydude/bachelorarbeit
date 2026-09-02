@@ -1,15 +1,52 @@
 \chapter{Qualitätssicherung}
 
-\section{Teststrategie und Testaufbau}
+Für eine didaktisch ausgerichtete Anwendung mit fachlichem Anspruch ist Qualitätssicherung ein zentraler Entwicklungsbestandteil. Bewertet werden nicht nur technische Funktionsfähigkeit, sondern insbesondere Konsistenz der Simulationslogik, Reproduzierbarkeit der Ergebnisse und Verlässlichkeit der Interaktion.
 
-\section{Abgesicherte Kernfunktionen und Testfälle}
+\section{Qualitätsziele und Prüfstrategie}
 
-\subsection{Deterministik und Reproduzierbarkeit}
+Die Qualitätssicherung verfolgt drei Hauptziele:
 
-\subsection{Verfahrensspezifische Korrektheit (RR, LCFS, Strict Priority, MLFQ)}
+\begin{itemize}
+    \item \textbf{Fachliche Korrektheit:} Scheduling-Entscheidungen und Kennzahlen müssen konsistent abgeleitet werden.
+    \item \textbf{Reproduzierbarkeit:} Identische Eingaben müssen identische Abläufe erzeugen.
+    \item \textbf{Bedienbarkeit und Zugänglichkeit:} Zentrale Funktionen müssen verlässlich und verständlich nutzbar sein.
+\end{itemize}
 
-\subsection{Validierung von Eingaben und Zuständen}
+Zur Erreichung dieser Ziele wurde ein mehrstufiges Vorgehen gewählt: automatisierte Tests der Kernlogik, Prüfung zentraler Interaktionspfade sowie Bewertung grundlegender Accessibility-Aspekte.
 
-\section{Grenzen der Testabdeckung}
+\section{Automatisierte Verifikation der Simulationslogik}
 
-\section{Nachvollziehbarkeit der Ergebnisse im Produktkontext}
+Die Simulationslogik wird mit Vitest automatisiert geprüft \cite{vitestdocs}. Im Fokus stehen deterministische Berechnungsschritte, korrekte Präemptionsentscheidungen und konsistente Kennzahlenableitung.
+
+Geprüft werden unter anderem:
+
+\begin{itemize}
+    \item Quantum-Verhalten und Wiedereinreihung bei Round Robin,
+    \item Präemption bei Neuankunft in präemptiven Verfahren (z.\,B. LCFS, Strict Priority),
+    \item Herabstufungslogik in MLFQ,
+    \item Konsistenz von Ereignisfolge, Segmenten und Endzustand.
+\end{itemize}
+
+Zusätzlich wird validiert, ob unvollständige bzw. ungültige Eingaben robust normalisiert werden und erzeugte Segmente gültige Zeitgrenzen aufweisen.
+
+\section{Prüfung von Interaktion und Accessibility}
+
+Ergänzend zur Fachlogik wurde die Oberfläche hinsichtlich Bedienbarkeit und Zugänglichkeit geprüft. Betrachtet wurden semantische Struktur, Fokusführung und Konsistenz der Interaktionsabläufe. Als Referenz dienen die Grundprinzipien der WCAG \cite{wcag2018}.
+
+Für den Lehrkontext ist wesentlich, dass Benutzerinnen und Benutzer ohne zusätzliche Hürden zwischen Szenariokonfiguration, Ablaufsteuerung und Ergebnisinterpretation wechseln können. Klare Statusanzeigen und eindeutige Steuerzustände unterstützen diese Nutzbarkeit.
+
+\section{Reproduzierbarkeit und Vergleichbarkeit}
+
+Ein zentrales Qualitätsmerkmal ist die deterministische Reproduzierbarkeit: Bei identischem Szenario und identischen Parametern entsteht derselbe Ablauf mit denselben Kennzahlen. Diese Eigenschaft ist für belastbare Verfahrensvergleiche wesentlich, da Unterschiede eindeutig auf die jeweilige Scheduling-Strategie zurückgeführt werden können.
+
+Auch die Vergleichsansicht profitiert davon: Mehrere Läufe lassen sich auf gemeinsamer Eingabebasis direkt gegenüberstellen, ohne dass zufällige Abweichungen die Interpretation verzerren.
+
+\section{Erreichte Testabdeckung und Grenzen}
+
+Zum Zeitpunkt der Erstellung umfasst die automatisierte Testsuite elf Testdateien mit insgesamt 34 erfolgreichen Tests. Damit werden zentrale Kern- und Integrationspfade abgedeckt und die technische Verlässlichkeit der Implementierung deutlich erhöht.
+
+Die Testsuite stellt jedoch keinen vollständigen formalen Korrektheitsbeweis für alle denkbaren Prozesskonstellationen dar. Ebenso ersetzt sie keine empirische Untersuchung der Lernwirksamkeit mit Nutzergruppen. Die Qualitätssicherung ist daher als risikoorientierte Absicherung zentraler Funktionen zu verstehen.
+
+\section{Fazit zur Qualitätssicherung}
+
+Qualitätssicherung wurde als integraler Bestandteil der Entwicklung umgesetzt. Die Kombination aus deterministischer Simulationslogik, automatisierter Verifikation und strukturierter Interaktionsprüfung bildet die Grundlage für ein fachlich belastbares und didaktisch nutzbares Lehrwerkzeug.

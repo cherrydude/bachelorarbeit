@@ -3,7 +3,9 @@
 ## Inhalt und Forschungsfrage
 
 - Ist die Forschungsfrage präzise genug und für eine Bachelorarbeit angemessen?
-- Ist der Schwerpunkt klar genug auf interaktiver Visualisierung oder liegt zu viel Gewicht auf Scheduling?
+- "Wie kann eine interaktive Visualisierung präemptiver Scheduling-Verfahren so
+  konzipiert und implementiert werden, dass sie fachliche Korrektheit, didaktis-
+  che Nachvollziehbarkeit und vergleichende Analyse vereint?"
 - Reicht die technische Evaluation aus, oder ist zusätzlich eine Nutzerstudie erforderlich?
 
 ## Aufbau und Umfang
@@ -15,15 +17,12 @@
 ## Evaluation
 
 - Sind die drei Szenarien und verwendeten Metriken angemessen?
-- Sind deterministische Einzelkonfigurationen als Evaluation ausreichend belastbar?
 - Welche Hypothesen sollte ich besonders hervorheben?
 - Sollte die Bewertungsmatrix als Anwendungseigenschaft oder als Evaluationsergebnis dargestellt werden?
+-
 
 ## Technische Umsetzung
 
-- Ist die Trennung zwischen Fokusansicht und Vergleichsübersicht verständlich?
-- Sind die Screenshots sinnvoll in den Kapiteln platziert?
-- Soll ich zusätzliche Quelltextauszüge oder ein Architekturdiagramm aufnehmen?
 - Welche technischen Aspekte der Webapp sollte ich stärker hervorheben?
 
 ## Literatur und wissenschaftliche Qualität
@@ -50,3 +49,23 @@
 - Algorithmus anwenden
 - Wiedergabemodus zeigen
 - Zwei Runs in der Vergleichsübersicht gegenüberstellen
+
+
+änderungen webapp:
+fiarness ruas
+ausgangslage mit als  fenster 
+starvation weg
+prozess durch task ersetzen
+
+punkt der szenario gen, preset hoch 
+seedpunkt raus lieber export via json
+
+
+ba 
+
+komponentendiagramm, (vectorgrafik) plus erklärung als erklärung
+
+anstatt evaluation ergebnis 
+forschungsfrage nein
+
+verlängerung beantragen, cc forlan untersützt

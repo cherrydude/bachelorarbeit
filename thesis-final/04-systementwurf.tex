@@ -1,11 +1,109 @@
 \chapter{Systementwurf}
+\label{chap:systementwurf}
 
-\section{Entwurfsprinzipien}
+Der Systementwurf folgt der Leitidee, fachliche Korrektheit und verständliche Interaktion gemeinsam umzusetzen. Ein Scheduling-Visualizer soll nicht nur Ergebnisse berechnen, sondern auch Entscheidungswege transparent machen. Entsprechend verbindet dieses Kapitel Architekturentscheidungen mit didaktischen Anforderungen.
+
+\section{Entwurfsziele und Leitprinzipien}
+
+Aus der Anforderungsanalyse ergeben sich vier zentrale Entwurfsziele:
+
+\begin{itemize}
+    \item \textbf{Fachliche Konsistenz:} Simulation, Ereignisverlauf und Kennzahlen basieren auf einer gemeinsamen Zustandsbasis.
+    \item \textbf{Didaktische Nachvollziehbarkeit:} Zustandswechsel und Präemptionen sind zeitlich eindeutig darzustellen.
+    \item \textbf{Deterministik:} Identische Eingaben führen zu identischen Abläufen.
+    \item \textbf{Erweiterbarkeit:} Neue Algorithmen und Darstellungsformen sollen ohne grundlegenden Umbau integrierbar sein.
+\end{itemize}
+
+Diese Ziele werden durch eine komponentenbasierte Struktur mit klaren Verantwortlichkeiten umgesetzt. Simulationslogik und Darstellung bleiben bewusst entkoppelt, sodass fachliche Änderungen kontrolliert möglich sind und die Oberfläche als Vermittlungsschicht wirken kann.
 
 \section{Gesamtarchitektur und Schichtenmodell}
 
-\section{Domänenmodell und Datenflüsse}
+Das System ist in mehrere logisch getrennte, miteinander verbundene Bereiche gegliedert:
+
+\begin{itemize}
+    \item \textbf{Präsentationsschicht:} Darstellung der Fokusansicht, der Vergleichsübersicht, der Gantt-Zeitachse, der Statusansicht und der Bewertungsmatrix.
+    \item \textbf{Anwendungslogik:} Wiederverwendbare Composables für Szenarioverwaltung, Vergleich und Wiedergabesteuerung.
+    \item \textbf{Simulationskern:} Deterministische Berechnung des zeitlichen Ablaufs durch die Scheduling Engine.
+    \item \textbf{Domänenmodell:} Gemeinsame fachliche Datenbasis aus Szenario und SimulationRun.
+\end{itemize}
+
+Die konkrete Komponenten- und Datenstruktur ist in Abbildung~\ref{fig:komponentenmodell} dargestellt. Die Anwendungshülle \texttt{AppShell.vue} vermittelt zwischen Benutzerinteraktion, Composables und den sichtbaren Ansichten. Die Steuerung ist damit nicht in einer eigenständigen fachlichen Zustandswelt gekapselt, sondern wirkt über die Anwendungslogik auf die gemeinsame Datenbasis ein.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.78\textwidth,
+        height=0.82\textheight,
+        keepaspectratio
+    ]{images/diagramme/komponentenDiagrammGross.pdf}
+    \caption{Komponentenmodell der Anwendung mit Präsentationsschicht, Composables, Simulationskern und Domänenmodell.}
+    \label{fig:komponentenmodell}
+\end{figure}
+
+Abbildung~\ref{fig:komponentenmodell} zeigt den zentralen Daten- und Kontrollfluss der Anwendung. Die Benutzerinteraktion wird zunächst von \texttt{AppShell.vue} aufgenommen und an die zuständigen Composables weitergeleitet. \texttt{useScenarioWorkspace()} verwaltet Szenarien und stößt die Berechnung eines Laufs an, während \texttt{usePlayback()} die Navigation durch die erzeugten Zustandsabbilder steuert und \texttt{useComparison()} den Vergleich mehrerer Läufe unterstützt.
+
+Die Scheduling Engine mit \texttt{simulateScenario()} verarbeitet das Szenario und erzeugt ein \texttt{SimulationRun}. Dieses Ergebnisobjekt bildet die gemeinsame fachliche Grundlage für die Präsentationsschicht. Die Fokusansicht nutzt daraus unter anderem die Gantt-Darstellung durch \texttt{GanttWithGsap.vue} und die Statusdarstellung durch \texttt{StackList.vue}. Die Vergleichsübersicht verwendet \texttt{MultiView.vue} und die Bewertungsmatrix, um mehrere erzeugte Läufe gegenüberzustellen.
+
+Die Architektur trennt damit die Berechnung eines Ablaufs von seiner Darstellung, ohne den Datenfluss unnötig zu vervielfachen. Neue Ansichten können auf den bestehenden Ergebnisstrukturen aufbauen, während Änderungen an der Scheduling Engine nicht unmittelbar eine Anpassung jeder einzelnen Präsentationskomponente erfordern.
+
+\input{images/scheduling-visualizer-overview-placeholder}
+
+\section{Komponenten und Verantwortlichkeiten}
+
+\subsection{Szenario- und Konfigurationskomponente}
+
+Diese Komponente verwaltet die Eingabedaten der Prozesse (z.\,B. Ankunftszeit, Burst-Zeit, Priorität) sowie algorithmusspezifische Parameter (z.\,B. Zeitquantum). Zusätzlich übernimmt sie die Validierung und Normalisierung der Eingaben, sodass alle Läufe auf strukturell konsistenten Daten aufsetzen.
+
+\subsection{Simulationskomponente}
+
+Die Simulationskomponente bildet den fachlichen Kern. Aus Szenario und Verfahrensdefinition erzeugt sie den vollständigen Ablauf als deterministische Folge von Zustandsübergängen. Ergebnisse werden nicht nur als Endzustand abgelegt, sondern in auswertbaren Strukturen bereitgestellt (Segmente, Ereignisse, Snapshots, Kennzahlen).
+
+\subsection{Visualisierungs- und Interaktionskomponente}
+
+Diese Komponente überführt Simulationsdaten in Analyseansichten: zeitlicher Ablauf (Gantt), Warteschlangen-/Statusdarstellung und Kennzahlen. Gleichzeitig steuert sie die Wiedergabe über Interaktionsfunktionen und ermöglicht den Vergleich mehrerer Läufe auf identischer Datenbasis.
+
+\section{Datenfluss und Zustandsmodell}
+
+Der Datenfluss folgt einem festen Muster:
+
+\begin{enumerate}
+    \item Eingabeszenario wird erfasst und validiert.
+    \item Der Simulationskern berechnet den Ablauf für ein Verfahren.
+    \item Ergebnisstrukturen (Ereignisse, Segmente, Snapshots, Metriken) werden bereitgestellt.
+    \item Die Darstellungsschicht rendert die aktuelle Sicht und reagiert auf Interaktionsbefehle.
+\end{enumerate}
+
+Entscheidend ist, dass Visualisierung und Kennzahlen auf denselben Ergebnisstrukturen basieren. Dadurch entstehen keine widersprüchlichen Anzeigen zwischen Ablaufdarstellung und numerischer Bewertung.
 
 \section{Interaktionsmodell für den Lernprozess}
 
-\section{Begründung zentraler Designentscheidungen}
+Das Interaktionsmodell folgt einem didaktisch motivierten Nutzungsfluss:
+
+\begin{enumerate}
+    \item Szenario definieren,
+    \item Verfahren auswählen,
+    \item Ablauf steuern und beobachten,
+    \item Ergebnisse interpretieren,
+    \item Verfahren vergleichen.
+\end{enumerate}
+
+Die Interaktion ist damit kein rein technischer Bedienvorgang, sondern Teil des Lernprozesses. Die Steuerung beeinflusst die Sicht auf den Ablauf (z.\,B. Schrittmodus), ohne die fachliche Berechnung selbst zu verändern.
+
+\section{HCI-Leitlinien im Entwurf}
+
+Für eine Lernanwendung ist die Benutzeroberfläche ein fachlich relevantes Element. Der Entwurf folgt daher grundlegenden HCI-Leitlinien:
+
+\begin{itemize}
+    \item zentrale Zustände müssen direkt sichtbar sein,
+    \item wichtige Ereignisse (Präemption, Kontextwechsel, Abschluss) müssen klar markiert werden,
+    \item Bedienung und Analyse sollen in einem konsistenten Ablauf zusammenwirken,
+    \item die Oberfläche soll Orientierung bieten und zusätzliche kognitive Last minimieren.
+\end{itemize}
+
+Damit wird sichergestellt, dass die Anwendung nicht nur technisch korrekt arbeitet, sondern auch als didaktisches Werkzeug nutzbar ist.
+
+\section{Erweiterbarkeit und Entwurfsgrenzen}
+
+Die Architektur ist auf Erweiterbarkeit ausgelegt: Neue Scheduling-Verfahren können als zusätzliche Strategien im Simulationskern ergänzt werden, ohne die UI grundlegend umzubauen. Ebenso lassen sich neue Kennzahlen oder Ansichten integrieren, sofern sie auf den vorhandenen Ergebnisstrukturen aufsetzen.
+
+Eine bewusste Entwurfsgrenze liegt in der Fokussierung auf präemptive Verfahren und den Lehrkontext. Die Architektur ist zwar übertragbar, aber nicht als vollständiger Ersatz für produktive Betriebssystem-Scheduler konzipiert.

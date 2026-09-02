@@ -3,9 +3,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Komponentenmodell der Anwendung mit Präsentationsschicht, Composables, Simulationskern und Domänenmodell.}}{9}{figure.caption.7}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Übersicht der Benutzeroberfläche: Eingabebereich, Simulationsfenster und Metriken-Anzeige.}}{10}{figure.caption.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}}{15}{figure.caption.9}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}}{17}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Zustände und Übergänge eines Prozesses im Simulationsmodell.}}{18}{figure.caption.11}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Startansicht der Anwendung mit Ausgangszustand und Einstieg in die Szenariokonfiguration.}}{23}{figure.caption.12}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}}{23}{figure.caption.13}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}}{24}{figure.caption.14}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Detaildarstellung der Gantt-Ansicht mit segmentierter Ausführung und sichtbaren Task-Wechseln.}}{24}{figure.caption.15}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Warteschlangen- und Statusdarstellung zur Einordnung der aktuellen Scheduling-Entscheidung.}}{24}{figure.caption.16}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Kennzahlenbereich mit Wartezeit, Durchlaufzeit und Reaktionszeit als quantitative Auswertung des Laufs.}}{24}{figure.caption.17}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}}{25}{figure.caption.18}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \def \@chapapp {\appendixname }

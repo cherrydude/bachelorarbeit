@@ -2,10 +2,52 @@
 
 \section{Motivation und Problemstellung}
 
+Scheduling-Verfahren gehören zu den Kernmechanismen moderner Betriebssysteme. Sie legen fest, welcher Prozess zu welchem Zeitpunkt CPU-Zeit erhält, und beeinflussen damit Reaktionsfähigkeit, Fairness und Ressourcenauslastung \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}. Obwohl die Verfahren in der Lehre formal behandelt werden, bleibt ihr zeitlicher Ablauf für Studierende häufig abstrakt.
+
+Dies gilt insbesondere für präemptive Verfahren: Häufige Unterbrechungen, Wiedereinplanungen und Zustandswechsel erschweren die mentale Nachvollziehbarkeit. Der Unterschied zwischen Verfahren ist theoretisch beschreibbar, wird jedoch in seiner konkreten Wirkung auf Ablauf, Wartezeit und Reaktionszeit oft erst durch eine zeitliche Darstellung verständlich.
+
+Vor diesem Hintergrund wurde eine interaktive Webanwendung entwickelt, die präemptive Scheduling-Verfahren als steuerbaren Ablauf visualisiert. Die Arbeit zielt auf die Entwicklung eines didaktisch nutzbaren Softwaresystems; sie verfolgt keine hypothesengetriebene Wirksamkeitsstudie.
+
 \section{Zielsetzung der Arbeit}
+
+Ziel der Arbeit ist die Konzeption und Implementierung einer interaktiven Webanwendung zur Veranschaulichung präemptiver Scheduling-Verfahren. Die Anwendung soll:
+
+\begin{itemize}
+    \item ausgewählte Verfahren korrekt simulieren,
+    \item deren zeitliche Dynamik verständlich visualisieren,
+    \item Verfahren auf identischer Szenariobasis vergleichbar machen,
+    \item und im Lehrkontext praktisch einsetzbar sein.
+\end{itemize}
+
+Die Arbeit verbindet hierfür Betriebssystemgrundlagen mit Prinzipien des Software Engineering und der Human-Computer Interaction. Im Zentrum stehen eine konsistente Architektur, transparente Interaktion und ein belastbares Produktartefakt.
 
 \section{Thematische Ausrichtung und Abgrenzung}
 
+Die Arbeit ist als engineering-orientierte Produktdokumentation angelegt. Gegenstand ist die Entwicklung und Begründung eines konkreten Artefakts inklusive fachlicher, technischer und gestalterischer Entscheidungen.
+
+Abgegrenzt wird sie von empirischen Wirksamkeitsstudien mit Nutzergruppen, statistischer Auswertung und Hypothesentests. Im Fokus stehen stattdessen Simulationskonsistenz, Architekturentscheidungen, Implementierung und qualitätsgesicherte Produktdarstellung.
+
 \section{Vorgehensweise und Aufbau der Arbeit}
 
+Die Vorgehensweise umfasst sechs Schritte:
+
+\begin{enumerate}
+    \item fachliche Grundlagen zu CPU-Scheduling und Bewertungsmetriken,
+    \item Ableitung funktionaler und nicht-funktionaler Anforderungen,
+    \item Systementwurf mit Architektur- und Interaktionsmodell,
+    \item Implementierung der Webanwendung,
+    \item Qualitätssicherung von Simulationslogik und Interaktion,
+    \item Ergebnisdarstellung und Einordnung des Produkts.
+\end{enumerate}
+
+Kapitel~2 behandelt die Grundlagen, Kapitel~3 die Anforderungsanalyse, Kapitel~4 den Systementwurf, Kapitel~5 die Implementierung und Kapitel~6 die Qualitätssicherung. Kapitel~7 präsentiert das entwickelte Produkt; Kapitel~8 schließt mit Fazit und Ausblick.
+
 \section{Leitgedanke der Arbeit}
+
+Der leitende Gedanke lautet:
+
+\begin{quote}
+Praktische Verständlichkeit entsteht durch das Zusammenspiel aus fachlicher Korrektheit, klarer Architektur, transparenter Interaktion und nachvollziehbarer Ablaufdarstellung.
+\end{quote}
+
+Damit wird Scheduling-Visualisierung nicht nur als Implementierungsaufgabe verstanden, sondern als Verbindung von Fachmodell, Interaktionsgestaltung und didaktischer Vermittlung.

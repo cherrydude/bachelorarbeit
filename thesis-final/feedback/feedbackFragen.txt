@@ -1,0 +1,3 @@
+"Welche Systemebene möchten Sie im Komponentendiagramm sehen? Fachliche Komponenten oder die Implementierungskomponenten?"
+
+Das ist eine sehr professionelle Rückfrage.

@@ -1,11 +1,145 @@
 \chapter{Ergebnis und Produktpräsentation}
 
-\section{Überblick über das entwickelte Endprodukt}
+Dieses Kapitel stellt das entwickelte Produkt vor und ordnet es anhand der zuvor definierten Ziele ein. Im Fokus stehen Funktionsumfang, Nutzungsablauf und fachliche Belastbarkeit der Anwendung als didaktisches Werkzeug.
 
-\section{Nutzerfluss und Bedienablauf}
+\section{Entwickeltes Endprodukt}
 
-\section{Produktdarstellung mit Screenshots}
+Das Ergebnis der Arbeit ist eine interaktive Webanwendung zur Visualisierung präemptiver CPU-Scheduling-Verfahren. Sie ermöglicht die Definition von Prozessen mit relevanten Parametern, die Ausführung unterschiedlicher Verfahren und die vergleichende Analyse von Ablauf und Kennzahlen.
 
-\section{Soll-Ist-Abgleich der Anforderungen}
+Das Produkt vereint drei Kerneigenschaften:
 
-\section{Ergebnisbetrachtung und Einordnung}
+\begin{itemize}
+    \item konsistente Simulationslogik,
+    \item interaktive und verständliche Ablaufdarstellung,
+    \item direkte Vergleichbarkeit mehrerer Verfahren auf identischer Datenbasis.
+\end{itemize}
+
+Damit geht die Anwendung über eine reine Demonstration hinaus und ist als Werkzeug für Lehr- und Lernszenarien einsetzbar.
+
+\section{Produktüberblick und Nutzerfluss}
+
+Der typische Nutzungsablauf folgt einer festen Sequenz:
+
+\begin{enumerate}
+    \item Definition oder Auswahl eines Szenarios,
+    \item Auswahl und Parametrisierung eines Scheduling-Verfahrens,
+    \item Ausführung und Steuerung des Laufs,
+    \item Interpretation von Ablauf und Kennzahlen,
+    \item Vergleich mit alternativen Verfahren.
+\end{enumerate}
+
+Dieser Ablauf unterstützt das didaktische Ziel, Entscheidungen nicht nur als Endwerte, sondern im zeitlichen Kontext ihrer Entstehung zu analysieren.
+
+\section{Produktpräsentation mit Screenshots}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-ausgangslage.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-ausgangslage.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Screenshot der Startansicht
+        \end{minipage}}%
+    }
+    \caption{Startansicht der Anwendung mit Ausgangszustand und Einstieg in die Szenariokonfiguration.}
+    \label{fig:produkt-start}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-szenario-geladen.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-szenario-geladen.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Screenshot des geladenen Szenarios
+        \end{minipage}}%
+    }
+    \caption{Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}
+    \label{fig:produkt-szenario}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-fokusansicht.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-fokusansicht.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Screenshot der Fokusansicht
+        \end{minipage}}%
+    }
+    \caption{Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}
+    \label{fig:produkt-fokus}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-gantt-detail.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-gantt-detail.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Detailansicht des Gantt-Diagramms
+        \end{minipage}}%
+    }
+    \caption{Detaildarstellung der Gantt-Ansicht mit segmentierter Ausführung und sichtbaren Task-Wechseln.}
+    \label{fig:produkt-gantt}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-stack-detail.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-stack-detail.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Warteschlangen- und Statusdarstellung
+        \end{minipage}}%
+    }
+    \caption{Warteschlangen- und Statusdarstellung zur Einordnung der aktuellen Scheduling-Entscheidung.}
+    \label{fig:produkt-stack}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-kennzahlen-detail.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-kennzahlen-detail.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Detailansicht der Kennzahlen
+        \end{minipage}}%
+    }
+    \caption{Kennzahlenbereich mit Wartezeit, Durchlaufzeit und Reaktionszeit als quantitative Auswertung des Laufs.}
+    \label{fig:produkt-kennzahlen}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{images/screenshot-vergleichsuebersicht-gesamt.png}{%
+        \includegraphics[width=\textwidth]{images/screenshot-vergleichsuebersicht-gesamt.png}%
+    }{%
+        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
+            \centering Platzhalter: Vergleichsansicht mehrerer Verfahren
+        \end{minipage}}%
+    }
+    \caption{Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}
+    \label{fig:produkt-vergleich}
+\end{figure}
+
+\section{Umgesetzte Funktionalität im Soll-Ist-Abgleich}
+
+Die aus Kapitel~3 abgeleiteten Anforderungen wurden in den zentralen Funktionsbereichen umgesetzt:
+
+\begin{itemize}
+    \item \textbf{Szenarioverwaltung:} Erfassung und Bearbeitung von Task-Daten mit relevanten Scheduling-Parametern.
+    \item \textbf{Verfahrensauswahl:} Ausführung von Round Robin, LCFS, Strict Priority und MLFQ innerhalb eines einheitlichen Simulationsrahmens.
+    \item \textbf{Ablaufsteuerung:} Start, Pause, Schrittmodus, Zeitsprung und Geschwindigkeitsanpassung.
+    \item \textbf{Visualisierung:} Zeitliche Darstellung der Ausführung mit Ereignisbezug.
+    \item \textbf{Kennzahlenanalyse:} Ausgabe zentraler Metriken pro Lauf.
+    \item \textbf{Vergleichsmodus:} Gegenüberstellung mehrerer Läufe unter identischen Eingaben.
+\end{itemize}
+
+Damit ist der funktionale Kern vollständig umgesetzt. Nicht-funktionale Ziele wie Deterministik, Nachvollziehbarkeit und Erweiterbarkeit werden durch Architektur und Implementierung unterstützt.
+
+\section{Ergebnisbetrachtung}
+
+Das entwickelte Produkt erfüllt die Zielsetzung der Arbeit: Präemptive Scheduling-Verfahren werden nicht nur berechnet, sondern als dynamischer Ablauf verständlich und vergleichbar dargestellt. Die Verknüpfung von Ablaufvisualisierung, Kennzahlen und Interaktion ermöglicht die Analyse algorithmischer Unterschiede in einem didaktisch nutzbaren Kontext.
+
+Besonders relevant ist die Sichtbarkeit der Entscheidungspfade. Benutzerinnen und Benutzer erkennen nicht nur das Ergebnis, sondern auch dessen Entstehung im zeitlichen Verlauf. Daraus ergibt sich ein praktischer Mehrwert für Lehre, Demonstration und eigenständiges Lernen.
