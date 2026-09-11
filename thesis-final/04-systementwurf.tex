@@ -1,18 +1,13 @@
 \chapter{Systementwurf}
 \label{chap:systementwurf}
 
-<<<<<<< HEAD
 Der Systementwurf folgt der Leitidee, fachliche Korrektheit und verständliche Interaktion gemeinsam umzusetzen. Ein Scheduling-Visualizer soll nicht nur Ergebnisse berechnen, sondern auch Entscheidungswege transparent machen. Entsprechend verbindet dieses Kapitel Architekturentscheidungen mit didaktischen Anforderungen.
-=======
-Die Anwendung basiert auf der Leitidee, dass fachliche Korrektheit und nachvollziehbare Interaktion gemeinsam gedacht werden müssen. Ein Scheduling-Visualizer soll nicht nur Ergebnisse berechnen, sondern auch verständlich machen, warum ein Prozess zu einem bestimmten Zeitpunkt läuft und ein anderer wartet. Der Systementwurf verbindet daher Architekturentscheidungen mit didaktischen Anforderungen.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \section{Entwurfsziele und Leitprinzipien}
 
 Aus der Anforderungsanalyse ergeben sich vier zentrale Entwurfsziele:
 
 \begin{itemize}
-<<<<<<< HEAD
     \item \textbf{Fachliche Konsistenz:} Simulation, Ereignisverlauf und Kennzahlen basieren auf einer gemeinsamen Zustandsbasis.
     \item \textbf{Didaktische Nachvollziehbarkeit:} Zustandswechsel und Präemptionen sind zeitlich eindeutig darzustellen.
     \item \textbf{Deterministik:} Identische Eingaben führen zu identischen Abläufen.
@@ -50,36 +45,6 @@ Abbildung~\ref{fig:komponentenmodell} zeigt den zentralen Daten- und Kontrollflu
 Die Scheduling Engine mit \texttt{simulateScenario()} verarbeitet das Szenario und erzeugt ein \texttt{SimulationRun}. Dieses Ergebnisobjekt bildet die gemeinsame fachliche Grundlage für die Präsentationsschicht. Die Fokusansicht nutzt daraus unter anderem die Gantt-Darstellung durch \texttt{GanttWithGsap.vue} und die Statusdarstellung durch \texttt{StackList.vue}. Die Vergleichsübersicht verwendet \texttt{MultiView.vue} und die Bewertungsmatrix, um mehrere erzeugte Läufe gegenüberzustellen.
 
 Die Architektur trennt damit die Berechnung eines Ablaufs von seiner Darstellung, ohne den Datenfluss unnötig zu vervielfachen. Neue Ansichten können auf den bestehenden Ergebnisstrukturen aufbauen, während Änderungen an der Scheduling Engine nicht unmittelbar eine Anpassung jeder einzelnen Präsentationskomponente erfordern.
-=======
-    \item \textbf{Fachliche Konsistenz:} Simulation, Ereignisverlauf und Kennzahlen müssen aus einer gemeinsamen Zustandsbasis abgeleitet werden.
-    \item \textbf{Didaktische Nachvollziehbarkeit:} Zustandswechsel und Präemptionen müssen zeitlich verständlich dargestellt werden.
-    \item \textbf{Deterministik:} Identische Eingaben sollen zu identischen Abläufen führen.
-    \item \textbf{Erweiterbarkeit:} Neue Algorithmen und Darstellungsformen sollen ohne grundlegenden Umbau integrierbar sein.
-\end{itemize}
-
-Diese Ziele werden durch eine komponentenbasierte Struktur mit klaren Verantwortlichkeiten umgesetzt. Die Kopplung zwischen Simulationslogik und Darstellung bleibt bewusst gering, damit fachliche Änderungen kontrolliert möglich sind und die UI als Vermittlungsschicht wirken kann.
-
-\section{Gesamtarchitektur und Schichtenmodell}
-
-Das System ist in drei logisch getrennte Ebenen gegliedert:
-
-\begin{itemize}
-    \item \textbf{Szenario- und Konfigurationslogik:} Verwaltung von Taskdaten, Parametern und Laufkonfigurationen.
-    \item \textbf{Simulationskern:} Deterministische Berechnung des zeitlichen Ablaufs je Scheduling-Verfahren.
-    \item \textbf{Darstellung und Steuerung:} Visualisierung der Ergebnisse sowie Interaktion (Start, Pause, Schrittmodus, Zeitnavigation, Vergleich).
-\end{itemize}
-
-Die Steuerung ist dabei Teil der Darstellungsschicht, weil sie den didaktischen Ablauf unmittelbar beeinflusst: Nutzende greifen über die Oberfläche in die Wiedergabe ein und erhalten direkt visuelles Feedback auf denselben fachlichen Daten.
-
-\begin{figure}[htbp]
-    \centering
-    \input{images/system-architecture-diagram}
-    \caption{Komponentenmodell der Anwendung mit den Ebenen Benutzeroberfläche, Anwendungslogik und Visualisierung.}
-    \label{fig:komponentenmodell}
-\end{figure}
-
-Die Pfeile in Abbildung~\ref{fig:komponentenmodell} repräsentieren den Datenfluss vom Eingabeszenario über die Simulationsberechnung zur Visualisierung. Steueraktionen lösen keine fachlich getrennte Parallelwelt aus, sondern wirken auf denselben konsistenten Ablaufzustand.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \input{images/scheduling-visualizer-overview-placeholder}
 
@@ -87,7 +52,6 @@ Die Pfeile in Abbildung~\ref{fig:komponentenmodell} repräsentieren den Datenflu
 
 \subsection{Szenario- und Konfigurationskomponente}
 
-<<<<<<< HEAD
 Diese Komponente verwaltet die Eingabedaten der Prozesse (z.\,B. Ankunftszeit, Burst-Zeit, Priorität) sowie algorithmusspezifische Parameter (z.\,B. Zeitquantum). Zusätzlich übernimmt sie die Validierung und Normalisierung der Eingaben, sodass alle Läufe auf strukturell konsistenten Daten aufsetzen.
 
 \subsection{Simulationskomponente}
@@ -107,27 +71,6 @@ Der Datenfluss folgt einem festen Muster:
     \item Der Simulationskern berechnet den Ablauf für ein Verfahren.
     \item Ergebnisstrukturen (Ereignisse, Segmente, Snapshots, Metriken) werden bereitgestellt.
     \item Die Darstellungsschicht rendert die aktuelle Sicht und reagiert auf Interaktionsbefehle.
-=======
-Diese Komponente verwaltet die Eingabedaten der Prozesse (z.\,B. Ankunftszeit, Burst-Zeit, Priorität) sowie algorithmusspezifische Parameter (z.\,B. Zeitquantum). Zusätzlich verantwortet sie Validierung und Normalisierung der Eingaben, sodass alle Läufe auf strukturell konsistenten Daten aufsetzen.
-
-\subsection{Simulationskomponente}
-
-Die Simulationskomponente bildet den fachlichen Kern. Sie erzeugt aus Szenario und Verfahrensdefinition den vollständigen Ablauf als deterministische Folge von Zustandsübergängen. Ergebnisse werden nicht nur als Endzustand abgelegt, sondern in auswertbaren Strukturen bereitgestellt (Segmente, Ereignisse, Kennzahlen).
-
-\subsection{Visualisierungs- und Interaktionskomponente}
-
-Diese Komponente übersetzt Simulationsdaten in verständliche Ansichten: zeitlicher Ablauf (Gantt), Warteschlangen-/Statusdarstellung und Kennzahlen. Gleichzeitig steuert sie die Wiedergabe über Interaktionsfunktionen und ermöglicht den Vergleich mehrerer Läufe auf identischer Datenbasis.
-
-\section{Datenfluss und Zustandsmodell}
-
-Der Datenfluss folgt einem eindeutigen Muster:
-
-\begin{enumerate}
-    \item Eingabeszenario wird erfasst und validiert.
-    \item Simulationskern berechnet den Ablauf für ein Verfahren.
-    \item Ergebnisstrukturen (Ereignisse, Segmente, Snapshots, Metriken) werden bereitgestellt.
-    \item Darstellungsschicht rendert die aktuelle Sicht und reagiert auf Interaktionsbefehle.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \end{enumerate}
 
 Entscheidend ist, dass Visualisierung und Kennzahlen auf denselben Ergebnisstrukturen basieren. Dadurch entstehen keine widersprüchlichen Anzeigen zwischen Ablaufdarstellung und numerischer Bewertung.
@@ -148,21 +91,13 @@ Die Interaktion ist damit kein rein technischer Bedienvorgang, sondern Teil des 
 
 \section{HCI-Leitlinien im Entwurf}
 
-<<<<<<< HEAD
 Für eine Lernanwendung ist die Benutzeroberfläche ein fachlich relevantes Element. Der Entwurf folgt daher grundlegenden HCI-Leitlinien:
-=======
-Für eine Lernanwendung ist die UI ein fachlich relevantes Element. Der Entwurf folgt daher grundlegenden HCI-Leitlinien:
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \begin{itemize}
     \item zentrale Zustände müssen direkt sichtbar sein,
     \item wichtige Ereignisse (Präemption, Kontextwechsel, Abschluss) müssen klar markiert werden,
     \item Bedienung und Analyse sollen in einem konsistenten Ablauf zusammenwirken,
-<<<<<<< HEAD
     \item die Oberfläche soll Orientierung bieten und zusätzliche kognitive Last minimieren.
-=======
-    \item die Oberfläche soll Orientierung bieten und nicht zusätzliche kognitive Last erzeugen.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \end{itemize}
 
 Damit wird sichergestellt, dass die Anwendung nicht nur technisch korrekt arbeitet, sondern auch als didaktisches Werkzeug nutzbar ist.

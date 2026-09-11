@@ -1,6 +1,5 @@
 \chapter{Implementierung}
 
-<<<<<<< HEAD
 Die Implementierung überführt den in Kapitel~\ref{chap:systementwurf} beschriebenen Entwurf in eine lauffähige Webanwendung. Ziel ist die technisch konsistente Realisierung einer Visualisierungsanwendung, die präemptive Scheduling-Verfahren korrekt berechnet und verständlich darstellt.
 
 \section{Technische Grundlagen und verwendete Technologien}
@@ -30,19 +29,6 @@ Die Technologieentscheidungen bilden somit eine zusammenhängende Architektur: V
 \section{Datenmodell und Simulationskern}
 
 Die fachliche Basis bildet ein einheitliches Prozessmodell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität, Restzeit und Status. Auf dieser Grundlage werden alle Verfahren innerhalb eines gemeinsamen Simulationsrahmens berechnet.
-=======
-Die Implementierung setzt den in Kapitel~\ref{chap:systementwurf} beschriebenen Entwurf in eine lauffähige Webanwendung um. Ziel ist die technisch saubere Realisierung eines Visualizers, der präemptive Scheduling-Verfahren fachlich korrekt berechnet und gleichzeitig verständlich darstellt.
-
-\section{Technische Grundlagen und verwendete Technologien}
-
-Die Anwendung wurde als clientseitige Webanwendung mit Vue~3 und TypeScript umgesetzt \cite{vue3docs}. Vue strukturiert die Benutzeroberfläche komponentenbasiert, während TypeScript die fachlichen Datenmodelle und Zustände typensicher abbildet. Der Build- und Entwicklungsprozess erfolgt mit Vite \cite{vitedocs}, die automatisierte Verifikation mit Vitest \cite{vitestdocs}. Für gezielte Übergänge in der Oberfläche wird GSAP eingesetzt \cite{gsapdocs}.
-
-Die zentrale technische Entscheidung ist die Trennung von Simulationslogik, Zustandsverwaltung und Darstellung. Dadurch bleibt der Simulationskern unabhängig testbar, während die UI konsistente Daten visualisiert.
-
-\section{Datenmodell und Simulationskern}
-
-Die fachliche Basis bildet ein gemeinsames Task-Modell mit Attributen wie Ankunftszeit, Burst-Zeit, Priorität, Restzeit und Status. Auf dieser Grundlage werden alle Verfahren innerhalb eines einheitlichen Simulationsrahmens berechnet.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 Ein Simulationslauf erzeugt mehrere zusammenhängende Ergebnisstrukturen:
 
@@ -53,7 +39,6 @@ Ein Simulationslauf erzeugt mehrere zusammenhängende Ergebnisstrukturen:
     \item \textbf{Metriken:} aggregierte Kennzahlen wie Warte-, Durchlauf- und Reaktionszeit sowie Kontextwechsel.
 \end{itemize}
 
-<<<<<<< HEAD
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/diagramme/Domänenmodell.pdf}
@@ -74,18 +59,10 @@ Die zentrale Ergebnisstruktur unterstützt zugleich Reproduzierbarkeit und Testb
 \section{Umsetzung der Scheduling-Verfahren}
 
 Round Robin, LCFS, Strict Priority und MLFQ wurden als präemptive Strategien innerhalb derselben Simulationslogik implementiert:
-=======
-Diese Struktur stellt sicher, dass Ablaufdarstellung und Kennzahlen aus derselben Berechnungsbasis stammen und somit konsistent bleiben.
-
-\section{Umsetzung der Scheduling-Verfahren}
-
-Die Verfahren Round Robin, LCFS, Strict Priority und MLFQ wurden als präemptive Strategien innerhalb derselben Simulationslogik implementiert.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \begin{itemize}
     \item \textbf{Round Robin:} Präemption nach Ablauf eines konfigurierbaren Zeitquantums.
     \item \textbf{LCFS (präemptiv):} Neu eintreffende Prozesse verdrängen den laufenden Prozess.
-<<<<<<< HEAD
     \item \textbf{Strict Priority:} Auswahl des höchstprioren bereiten Prozesses mit sofortiger Präemption bei höher priorisierten Neuankünften.
     \item \textbf{MLFQ:} Mehrere Warteschlangen mit stufenabhängigen Quantumswerten und Herabstufungslogik.
 \end{itemize}
@@ -145,38 +122,3 @@ Das Deployment erfolgt auf einer Hosting-Plattform mit Container-Unterstützung.
 Eine zentrale Herausforderung war die Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Präemptive Verfahren erzeugen häufige Zustandswechsel, während die Oberfläche gleichzeitig unmittelbar auf Interaktionen reagieren muss.
 
 Ein weiterer Schwerpunkt war die Sicherung der Deterministik durch klare Zustandsübergänge, konsistente Datenmodelle und testbare Schnittstellen. Zusätzlich ergibt sich ein Zielkonflikt zwischen Detailtiefe und Ressourcenbedarf: Dichtere Snapshot-Folgen verbessern Analyse und Zeitsprung, erhöhen jedoch Speicher- und Verarbeitungsaufwand. Dieser Konflikt wurde durch parametrisierbare Granularität der Wiedergabedaten adressiert.
-=======
-    \item \textbf{Strict Priority:} Auswahl des jeweils höchstprioren bereiten Prozesses mit sofortiger Präemption bei höher priorisierten Neuankünften.
-    \item \textbf{MLFQ:} Mehrere Warteschlangen mit stufenabhängigen Quantumswerten und Herabstufungslogik.
-\end{itemize}
-
-Alle Verfahren verwenden dieselbe Tick- und Ereignisverarbeitung. Unterschiede in Kennzahlen und Ablauf ergeben sich daher aus der Verfahrensstrategie und nicht aus abweichender Berechnungsinfrastruktur.
-
-\section{Umsetzung der Visualisierung}
-
-Die Visualisierung ist in klar getrennte Funktionsbereiche gegliedert: Eingabe- und Konfigurationsbereich, Laufsteuerung, Fokusansicht, Kennzahlenbereich und Vergleichsansicht.
-
-Die zeitliche Ausführung wird in einer Gantt-Darstellung auf Basis der Segmentdaten visualisiert. Ergänzende Ansichten zeigen aktuelle Wartesituationen und laufzeitbezogene Metriken. Die Umsetzung nutzt SVG-basierte Darstellungen, um Zeitachsen, Segmentgrenzen und Ereignisse präzise abzubilden.
-
-Ziel der Visualisierung ist nicht dekorative Darstellung, sondern fachliche Lesbarkeit: Entscheidungen des Schedulers sollen zeitlich und inhaltlich nachvollziehbar werden.
-
-\section{Interaktionsmechanismen und Nutzerworkflow}
-
-Die Interaktion folgt einem didaktisch motivierten Ablauf: Szenario definieren, Verfahren auswählen, Lauf steuern, Ergebnis interpretieren und Verfahren vergleichen.
-
-Die Wiedergabelogik arbeitet auf vorberechneten Snapshots und startet die Simulation nicht bei jedem Interaktionsschritt neu. Dadurch bleiben Steuerfunktionen wie Start, Pause, Schrittmodus, Geschwindigkeitsanpassung und Zeitsprung reaktiv, ohne die fachliche Konsistenz zu gefährden.
-
-Für den Vergleichsmodus werden mehrere Läufe auf derselben Eingabebasis nebeneinander dargestellt. Dies unterstützt die direkte Gegenüberstellung algorithmischer Unterschiede.
-
-\section{Build- und Deploymentprozess}
-
-Für die Bereitstellung wurde ein containerbasierter Deploymentprozess verwendet. Die Anwendung wird über den Vite-Build in statische Artefakte überführt und in einem Docker-Image paketiert. Damit entsteht eine reproduzierbare Laufzeitumgebung unabhängig vom lokalen Entwicklungsrechner.
-
-Das Deployment erfolgt auf einer Hosting-Plattform mit Container-Unterstützung. Änderungen am Quellcode können dadurch konsistent gebaut und in einer stabilen Umgebung veröffentlicht werden. Für den Einsatz im Lehrkontext ist diese Reproduzierbarkeit wesentlich, da dieselbe Version für Demonstration und Nutzung bereitsteht.
-
-\section{Besondere technische Herausforderungen}
-
-Eine zentrale Herausforderung war die Synchronisation von Simulationsgenauigkeit und interaktiver Bedienung. Präemptive Verfahren erzeugen häufige Zustandswechsel; gleichzeitig muss die Oberfläche unmittelbar auf Nutzerinteraktionen reagieren.
-
-Ein weiterer Schwerpunkt war die Sicherung der Deterministik. Dafür wurden klare Zustandsübergänge, konsistente Datenmodelle und testbare Schnittstellen priorisiert. Zusätzlich entstand ein technischer Zielkonflikt zwischen Detailtiefe und Ressourcenbedarf: Dichtere Snapshot-Folgen verbessern Analyse und Zeitsprung, erhöhen jedoch Speicher- und Verarbeitungsaufwand. Dieser Zielkonflikt wurde durch parametrisierbare Granularität der Wiedergabedaten adressiert.
->>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc

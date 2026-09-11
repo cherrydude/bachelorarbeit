@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,23 +9,6 @@
 {GreenSock}.
 \newblock Gsap documentation, 2026.
 \newblock URL \url{https://greensock.com/docs/}.
-
-\bibitem[Hundhausen et~al.(2002)Hundhausen, Douglas, and
-  Stasko]{hundhausen2002meta}
-Christopher~D. Hundhausen, Sarah~A. Douglas, and John~T. Stasko.
-\newblock A meta-study of algorithm visualization effectiveness.
-\newblock \emph{Journal of Visual Languages \& Computing}, 13\penalty0
-  (3):\penalty0 259--290, 2002.
-\newblock \doi{10.1006/jvlc.2002.0237}.
-
-\bibitem[Meing and Tandingan(2025)]{meing2025mlfq}
-L.~W.~C. Meing and D.~R. Tandingan.
-\newblock Exploring multilevel feedback queue combinations and regression-based
-  time quanta in scheduling algorithms.
-\newblock \emph{Journal of Information Systems Engineering and Management},
-  2025.
-\newblock URL
-  \url{https://jisem-journal.com/index.php/journal/article/view/699}.
 
 \bibitem[Stallings(2003)]{stallings_betriebssysteme}
 William Stallings.
