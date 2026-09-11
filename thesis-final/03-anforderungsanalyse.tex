@@ -1,5 +1,6 @@
 \chapter{Anforderungsanalyse}
 
+<<<<<<< HEAD
 Die Anforderungen ergeben sich aus der Verbindung fachlicher Grundlagen des CPU-Scheduling mit didaktischen Zielen und softwaretechnischen Qualitätsansprüchen. Ziel ist eine Anwendung, die präemptive Verfahren korrekt abbildet und ihre Abläufe für Lernende verständlich zugänglich macht.
 
 \section{Zielgruppe und Einsatzkontext}
@@ -22,10 +23,35 @@ Im Zentrum stehen drei Leitprinzipien:
     \item \textbf{Transparenz:} Dispatch, Präemption, Kontextwechsel und Abschluss sind eindeutig darzustellen.
     \item \textbf{Vergleichbarkeit:} Mehrere Verfahren sollen auf identischer Szenariobasis gegenüberstellbar sein.
     \item \textbf{Kontrollierbares Lerntempo:} Schrittmodus und kontinuierliche Wiedergabe müssen unterstützt werden.
+=======
+Die fachlichen Anforderungen an die Anwendung ergeben sich aus der Kombination von Betriebssystemtheorie, didaktischen Zielen und softwaretechnischen Qualitätsansprüchen. Ziel ist nicht nur die korrekte Abbildung präemptiver Scheduling-Verfahren, sondern deren verständliche und steuerbare Darstellung für Lernende.
+
+\section{Zielgruppe und Einsatzkontext}
+
+Die primäre Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll helfen, zeitliche Entscheidungen bei präemptiven Verfahren nachvollziehbar zu machen. Der Einsatz reicht von der begleiteten Demonstration in der Lehre bis zur eigenständigen Exploration einzelner Szenarien.
+
+\section{Fachliche Anforderungen}
+
+Aus fachlicher Sicht muss die Anwendung die Verfahren Round Robin, LCFS, Strict Priority und MLFQ konsistent simulieren. Dafür müssen zentrale Eingabeparameter wie Ankunftszeit, Burst-Zeit, Priorität und Zeitquantum korrekt verarbeitet werden. Zusätzlich müssen relevante Ergebnisgrößen bereitgestellt werden, insbesondere Wartezeit, Durchlaufzeit, Reaktionszeit, Kontextwechsel und Präemptionsanzahl.
+
+Eine zentrale Anforderung lautet daher: Simulationslogik, Ereignisverlauf und Kennzahlen müssen aus derselben Zustandsbasis entstehen. Nur so bleiben die angezeigten Ergebnisse fachlich konsistent und vergleichbar.
+
+\section{Didaktische Anforderungen}
+
+Die didaktische Qualität ist für den Projekterfolg wesentlich. Lernende sollen nicht nur Endergebnisse sehen, sondern auch verstehen, warum ein Prozess zu einem bestimmten Zeitpunkt ausgewählt, unterbrochen oder zurückgestellt wird. Zustandswechsel müssen daher sichtbar und nachvollziehbar sein.
+
+Drei Leitprinzipien stehen im Mittelpunkt:
+
+\begin{itemize}
+    \item \textbf{Transparenz:} Dispatch, Präemption, Kontextwechsel und Abschluss müssen klar erkennbar sein.
+    \item \textbf{Vergleichbarkeit:} Mehrere Verfahren sollen unter identischer Ausgangsbasis gegenübergestellt werden können.
+    \item \textbf{Kontrollierbares Lerntempo:} Sowohl schrittweise Wiedergabe als auch kontinuierliches Abspielen müssen unterstützt werden.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \end{itemize}
 
 \section{Interaktions- und Usability-Anforderungen}
 
+<<<<<<< HEAD
 Die Oberfläche soll die kognitive Last reduzieren und den typischen Arbeitsablauf unterstützen: Szenario definieren, Verfahren auswählen, Lauf starten, Ergebnis interpretieren, Verfahren vergleichen. Funktionen müssen in konsistenter Reihenfolge verfügbar und ohne unnötige Bedienhürden nutzbar sein.
 
 Für den Lehrkontext ist wesentlich, dass relevante Zustände unmittelbar erkennbar sind und die Bedienlogik die fachliche Analyse unterstützt statt überlagert.
@@ -43,6 +69,25 @@ Diese Qualitätsziele sichern sowohl Wartbarkeit als auch fachliche Verlässlich
 \section{Abgeleitete funktionale und nicht-funktionale Anforderungen}
 
 Die vorherigen Abschnitte lassen sich in funktionale und nicht-funktionale Kernanforderungen überführen.
+=======
+Die Oberfläche soll die kognitive Last reduzieren und den typischen Arbeitsablauf unterstützen: Szenario definieren, Verfahren auswählen, Lauf starten, Ergebnis interpretieren, Verfahren vergleichen. Funktionen müssen in nachvollziehbarer Reihenfolge verfügbar sein und ohne unnötige Bedienhürden nutzbar bleiben.
+
+Für den didaktischen Einsatz ist zusätzlich entscheidend, dass relevante Zustände direkt sichtbar sind, Interaktionen konsistent ausfallen und die Bedienlogik nicht von der fachlichen Analyse ablenkt.
+
+\section{Anforderungen an Accessibility}
+
+Da die Anwendung im Lehrkontext eingesetzt wird, sind grundlegende Accessibility-Anforderungen zu berücksichtigen. Dazu gehören eine semantisch klare Struktur, nachvollziehbare Fokusführung, verständliche Statuskommunikation und ausreichende visuelle Kontraste. Ziel ist, dass zentrale Lern- und Bedienfunktionen auch ohne ausschließlich visuelle Orientierung nutzbar bleiben \cite{wcag2018}.
+
+\section{Technische Qualitätsziele}
+
+Neben fachlicher Korrektheit und didaktischer Verständlichkeit sind technische Qualitätsziele zentral. Die Anwendung soll modular, deterministisch und erweiterbar aufgebaut sein. Eine klare Trennung zwischen Simulationskern, Zustandsverwaltung und Visualisierung reduziert Fehleranfälligkeit und erleichtert Erweiterungen, etwa durch zusätzliche Algorithmen oder weitere Analyseansichten.
+
+Diese Qualitätsziele sichern nicht nur die Wartbarkeit des Systems, sondern stützen unmittelbar die fachliche Verlässlichkeit und didaktische Nutzbarkeit.
+
+\section{Abgeleitete funktionale und nicht-funktionale Anforderungen}
+
+Aus den vorherigen Abschnitten lassen sich die Kernanforderungen bündeln.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \subsection*{Funktionale Anforderungen}
 
@@ -65,4 +110,8 @@ Die vorherigen Abschnitte lassen sich in funktionale und nicht-funktionale Kerna
     \item Testbarkeit der Kernlogik und zentraler Interaktionspfade.
 \end{itemize}
 
+<<<<<<< HEAD
 Die abgeleiteten Anforderungen bilden die Grundlage für den Systementwurf im folgenden Kapitel.
+=======
+Die abgeleiteten Anforderungen bilden die Grundlage für den Systementwurf im nächsten Kapitel.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc

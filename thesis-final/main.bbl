@@ -1,15 +1,39 @@
+<<<<<<< HEAD
 \begin{thebibliography}{7}
+=======
+\begin{thebibliography}{9}
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+<<<<<<< HEAD
 \bibitem[{GreenSock}(2026)]{gsapdocs}
 {GreenSock}.
 \newblock Gsap documentation, 2026.
 \newblock URL \url{https://greensock.com/docs/}.
 
+=======
+\bibitem[{GreenSock}()]{gsapdocs}
+{GreenSock}.
+\newblock Gsap documentation.
+\newblock URL \url{https://greensock.com/docs/}.
+
+\bibitem[Hundhausen et~al.(2002)Hundhausen, Douglas, and Stasko]{hundhausen2002meta}
+Christopher~D. Hundhausen, Sarah~A. Douglas, and John~T. Stasko.
+\newblock A meta-study of algorithm visualization effectiveness.
+\newblock \emph{Journal of Visual Languages \& Computing}, 13\penalty0 (3):\penalty0 259--290, 2002.
+\newblock \doi{10.1006/jvlc.2002.0237}.
+
+\bibitem[Meing and Tandingan(2025)]{meing2025mlfq}
+L.~W.~C. Meing and D.~R. Tandingan.
+\newblock Exploring multilevel feedback queue combinations and regression-based time quanta in scheduling algorithms.
+\newblock \emph{Journal of Information Systems Engineering and Management}, 2025.
+\newblock URL \url{https://jisem-journal.com/index.php/journal/article/view/699}.
+
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \bibitem[Stallings(2003)]{stallings_betriebssysteme}
 William Stallings.
 \newblock \emph{Betriebssysteme: Prinzipien und Umsetzung}.
@@ -20,6 +44,7 @@ Andrew~S. Tanenbaum and Herbert Bos.
 \newblock \emph{Moderne Betriebssysteme}.
 \newblock Pearson Studium, München, 4., aktualisierte auflage edition, 2016.
 
+<<<<<<< HEAD
 \bibitem[{Vite}(2026)]{vitedocs}
 {Vite}.
 \newblock Vite documentation, 2026.
@@ -33,6 +58,21 @@ Andrew~S. Tanenbaum and Herbert Bos.
 \bibitem[{Vue.js Core Team}(2026)]{vue3docs}
 {Vue.js Core Team}.
 \newblock Vue 3 documentation, 2026.
+=======
+\bibitem[{Vite}()]{vitedocs}
+{Vite}.
+\newblock Vite documentation.
+\newblock URL \url{https://vitejs.dev/}.
+
+\bibitem[{Vitest Team}()]{vitestdocs}
+{Vitest Team}.
+\newblock Vitest documentation.
+\newblock URL \url{https://vitest.dev/}.
+
+\bibitem[{Vue.js Core Team}()]{vue3docs}
+{Vue.js Core Team}.
+\newblock Vue 3 documentation.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \newblock URL \url{https://vuejs.org/}.
 
 \bibitem[{W3C}(2018)]{wcag2018}

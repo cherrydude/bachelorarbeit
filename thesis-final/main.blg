@@ -35,6 +35,7 @@ A level-1 auxiliary file: anhang.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: affidavit.aux
 Database file #1: bib.bib
+<<<<<<< HEAD
 You've used 7 entries,
             2773 wiz_defined-function locations,
             641 strings with 5689 characters,
@@ -76,3 +77,51 @@ warning$ -- 0
 while$ -- 21
 width$ -- 0
 write$ -- 95
+=======
+Warning--empty year in gsapdocs
+Warning--empty year in vitedocs
+Warning--empty year in vitestdocs
+Warning--empty year in vue3docs
+You've used 9 entries,
+            2773 wiz_defined-function locations,
+            654 strings with 6171 characters,
+and the built_in function-call counts, 3084 in all, are:
+= -- 266
+> -- 132
+< -- 8
++ -- 48
+- -- 39
+* -- 196
+:= -- 481
+add.period$ -- 29
+call.type$ -- 9
+change.case$ -- 40
+chr.to.int$ -- 9
+cite$ -- 22
+duplicate$ -- 155
+empty$ -- 296
+format.name$ -- 52
+if$ -- 645
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 6
+newline$ -- 55
+num.names$ -- 36
+pop$ -- 103
+preamble$ -- 1
+purify$ -- 31
+quote$ -- 0
+skip$ -- 129
+stack$ -- 0
+substring$ -- 43
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 89
+warning$ -- 4
+while$ -- 29
+width$ -- 0
+write$ -- 120
+(There were 4 warnings)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc

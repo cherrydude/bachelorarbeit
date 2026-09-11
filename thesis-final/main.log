@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.5.11)  9 SEP 2026 19:31
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  2 SEP 2026 16:04
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -171,6 +175,7 @@ Package tocbasic Info: omitting babel extension for `lot'
 \c@table=\count284
 Class scrbook Info: Redefining `\numberline' on input line 7426.
 \bibindent=\dimen150
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/front
 endlayer\tikz.sty
@@ -200,6 +205,19 @@ Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
 layer\pgfcore.sty
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\
 graphicx.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen151
+\pgfutil@tempdimb=\dimen152
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box55
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\
@@ -222,6 +240,7 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen153
 \Gin@req@width=\dimen154
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/syste
 mlayer\pgfsys.sty
@@ -295,6 +314,57 @@ Package xcolor Info: Driver file: pdftex.def on input line 274.
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\
 mathcolor.ltx)
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen155
+\pgf@y=\dimen156
+\pgf@xa=\dimen157
+\pgf@ya=\dimen158
+\pgf@xb=\dimen159
+\pgf@yb=\dimen160
+\pgf@xc=\dimen161
+\pgf@yc=\dimen162
+\pgf@xd=\dimen163
+\pgf@yd=\dimen164
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count285
+\c@pgf@countb=\count286
+\c@pgf@countc=\count287
+\c@pgf@countd=\count288
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count289
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count290
+\pgfsyssoftpath@bigbuffer@items=\count291
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -304,6 +374,7 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcore.code.tex
@@ -315,12 +386,18 @@ h\pgfmath.code.tex
 h\pgfmathutil.code.tex)
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/mat
 h\pgfmathparser.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \pgfmath@dimen=\dimen165
 \pgfmath@count=\count292
 \pgfmath@box=\box56
 \pgfmath@toks=\toks25
 \pgfmath@stack@operand=\toks26
 \pgfmath@stack@operation=\toks27
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/mat
 h\pgfmathfunctions.code.tex)
@@ -350,6 +427,11 @@ h\pgfmathfloat.code.tex
 h\pgfint.code.tex)
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcorepoints.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count293
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen166
 \pgf@picmaxx=\dimen167
@@ -365,6 +447,7 @@ File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yy=\dimen177
 \pgf@zx=\dimen178
 \pgf@zy=\dimen179
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcorepathconstruct.code.tex
@@ -380,11 +463,23 @@ File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcorescopes.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen180
+\pgf@path@lasty=\dimen181
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen182
+\pgf@shorten@start@additional=\dimen183
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box57
 \pgf@hbox=\box58
 \pgf@layerbox@main=\box59
 \pgf@picture@serial@count=\count294
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcoregraphicstate.code.tex
@@ -393,10 +488,17 @@ File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcoretransformations.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen184
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@pt@x=\dimen185
 \pgf@pt@y=\dimen186
 \pgf@pt@temp=\dimen187
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcorequick.code.tex
@@ -417,10 +519,23 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcoreshade.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen188
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen189
 \pgf@sys@shading@range@num=\count295
 \pgf@shadingcount=\count296
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/bas
 iclayer\pgfcoreimage.code.tex
@@ -478,11 +593,39 @@ pgfmath.sty
 h\pgfmath.code.tex))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/uti
 lities\pgffor.code.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box60
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box61
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen190
+\pgf@nodesepend=\dimen191
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen192
 \pgffor@skip=\dimen193
 \pgffor@stack=\toks28
 \pgffor@toks=\toks29
+<<<<<<< HEAD
 ))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
 ntendlayer/tikz\tikz.code.tex
@@ -490,6 +633,11 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
 raries\pgflibraryplothandlers.code.tex
+=======
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@plot@mark@count=\count297
 \pgfplotmarksize=\dimen194
@@ -510,15 +658,20 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikznumberofchildren=\count299
 \tikznumberofcurrentchild=\count300
 \tikz@fig@count=\count301
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/mod
 ules\pgfmodulematrix.code.tex
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfmatrixcurrentrow=\count302
 \pgfmatrixcurrentcolumn=\count303
 \pgf@matrix@numberofcolumns=\count304
 )
 \tikz@expandcount=\count305
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
 ntendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
@@ -526,11 +679,17 @@ File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
 raries\pgflibraryarrows.meta.code.tex
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowinset=\dimen259
 \pgfarrowlength=\dimen260
 \pgfarrowwidth=\dimen261
 \pgfarrowlinewidth=\dimen262
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
 ntendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
@@ -548,13 +707,28 @@ Package: epsfig 2024/01/14 v1.7b (e)psfig emulation (SPQR)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/psfrag\ps
 frag.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (./packages.tex (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 2024/01/14 v1.7b (e)psfig emulation (SPQR)
+\epsfxsize=\dimen263
+\epsfysize=\dimen264
+) (/usr/share/texlive/texmf-dist/tex/latex/psfrag/psfrag.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
 \pfg@pcount=\count306
 \pfg@scount=\count307
 \pfg@temp=\write4
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\
 footmisc.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
 \FN@temptoken=\toks30
 \footnotemargin=\dimen265
@@ -586,11 +760,15 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \g__lipsum_par_int=\count309
 \l__lipsum_a_int=\count310
 \l__lipsum_b_int=\count311
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\li
 psum.ltd.tex))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/mdframed\
 mdframed.sty
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: mdframed 2013/07/01 1.9b: mdframed
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions
@@ -613,9 +791,13 @@ Package: xparse 2025-10-09 L3 Experimental document command parser
 etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count312
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/zref\zref
 -abspage.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: zref-abspage 2026-03-07 v2.37 Module abspage for zref (HO)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/zref\zref
@@ -657,11 +839,17 @@ Package zref Info: New property: page on input line 769.
 )
 \c@abspage=\count313
 Package zref Info: New property: abspage on input line 67.
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/needspace
 \needspace.sty
 Package: needspace 2025/03/13 v1.3e reserve vertical space
 )
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2025/03/13 v1.3e reserve vertical space
+)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \mdf@templength=\skip66
 \c@mdf@globalstyle@cnt=\count314
 \mdf@skipabove@length=\skip67
@@ -759,17 +947,22 @@ Package: acronym 2025/01/17 v1.50 Support for acronyms (Tobias Oetiker)
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/bigfoot\s
 uffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/xstring\x
 string.sty
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/xstring
 \xstring.tex
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \xs_counta=\count320
 \xs_countb=\count321
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
 \AC@clearlist=\toks31
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/algorithm
 s\algorithm.sty
@@ -778,22 +971,35 @@ nment
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/float\flo
 at.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count322
 \float@exts=\toks32
 \float@box=\box71
 \@float@everytoks=\toks33
 \@floatcapt=\box72
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/base\ifth
 en.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks34
 \c@algorithm=\count323
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/algorithm
 icx\algpseudocode.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: algpseudocode 
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/algorithm
@@ -830,6 +1036,7 @@ msgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks35
 \ex@=\dimen266
+<<<<<<< HEAD
 ))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\a
 msbsy.sty
@@ -838,6 +1045,12 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\a
 msopn.sty
+=======
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen267
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count331
@@ -913,9 +1126,13 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip140
 \thm@headsep=\skip141
 \dth@everypar=\toks45
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xp
 atch.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/xpatch/xpatch.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
 )
 Class scrbook Info: amsthm's \deferred@thm@head patched.
@@ -940,9 +1157,13 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count345
 \@lastruleclass=\count346
 \@thisrulewidth=\dimen287
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/tools\cal
 c.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
 \calc@Acount=\count347
 \calc@Bcount=\count348
@@ -983,9 +1204,13 @@ Package caption Info: float package is loaded.
 urosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
 \@eurobox=\box75
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/base\font
 enc.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/mdwtools\
@@ -993,9 +1218,13 @@ footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box76
 \fn@width=\dimen298
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/geometry\
 geometry.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: geometry 2026/03/07 v6.0 Page Geometry
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/iftex\i
@@ -1014,11 +1243,15 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen305
 \Gm@layoutvoffset=\dimen306
 \Gm@dimlist=\toks46
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/geometry\
 geometry.cfg))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\
 hyperref.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pdfesca
@@ -1042,6 +1275,7 @@ estring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count355
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/stringe
 nc\stringenc.sty
@@ -1054,6 +1288,15 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\
 pd1enc.def
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen307
+\Hy@linkcounter=\count356
+\Hy@pagecounter=\count357
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
@@ -1063,9 +1306,13 @@ Now handling font encoding PD1 ...
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count358
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\
 puenc.def
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -1079,17 +1326,25 @@ Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count359
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/url\url.s
 ty
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen308
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/bitset\
 bitset.sty
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/bigintc
@@ -1119,9 +1374,13 @@ File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
 \HyAnn@Count=\count364
 \Fld@listcount=\count365
 \c@bookmark@seq@number=\count366
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/rerunfile
 check\rerunfilecheck.sty
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/uniquec
@@ -1148,9 +1407,13 @@ tenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks47
 \inpenc@posthook=\toks48
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/listings\
 listings.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \lst@mode=\count367
 \lst@gtempboxa=\box77
 \lst@token=\toks49
@@ -1163,9 +1426,13 @@ listings.sty
 \lst@newlines=\count371
 \lst@lineno=\count372
 \lst@maxwidth=\dimen314
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/listings\
 lstpatch.sty
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstpatch.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/listings\
@@ -1174,9 +1441,13 @@ File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 \c@lstnumber=\count373
 \lst@skipnumbers=\count374
 \lst@framebox=\box78
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/listings\
 listings.cfg
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
 Package: listings 2025/11/14 1.11b (Carsten Heinz)
@@ -1231,14 +1502,19 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@cntb=\count375
 \multirow@dima=\skip147
 \bigstrutjot=\dimen315
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/natbib\na
 tbib.sty
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip148
 \bibsep=\skip149
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count376
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\n
 omencl.sty
@@ -1255,6 +1531,17 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks50
 \XKV@tempa@toks=\toks51
 )
+=======
+) (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
+Package: nomencl 2021/11/10 v5.6 Nomenclature package
+ (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
+ (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks50
+\XKV@tempa@toks=\toks51
+\XKV@tempb@toks=\toks52
+)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \XKV@depth=\count377
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
@@ -1273,10 +1560,15 @@ Package: paralist 2017/01/22 v2.7 Extended list environments
 \plpartopsep=\skip152
 \plitemsep=\skip153
 \plparsep=\skip154
+<<<<<<< HEAD
 \pl@lab=\toks52
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/setspace\
 setspace.sty
+=======
+\pl@lab=\toks53
+) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/tools\xsp
@@ -1292,6 +1584,7 @@ Package: shortvrb 2024/12/25 v3.0q Standard LaTeX documentation package V3 (FMi
 ularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 
+<<<<<<< HEAD
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/tools\arr
 ay.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
@@ -1299,6 +1592,16 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \ar@mcellbox=\box79
 \extrarowheight=\dimen319
 \NC@list=\toks53
+=======
+LaTeX Warning: You have requested release `2026/06/01' of LaTeX,
+               but only release `2025-11-01' is available.
+
+Package: array 2026/01/25 v2.7a Tabular extension package (FMi)
+\col@sep=\dimen318
+\ar@mcellbox=\box79
+\extrarowheight=\dimen319
+\NC@list=\toks54
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \extratabsurround=\skip155
 \backup@length=\skip156
 \ar@cellbox=\box80
@@ -1309,6 +1612,7 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \TX@target=\dimen323
 \TX@delta=\dimen324
 \TX@cols=\count378
+<<<<<<< HEAD
 \TX@ftn=\toks54
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/base\text
@@ -1324,6 +1628,17 @@ Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/xtab\xtab
 .sty
+=======
+\TX@ftn=\toks55
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+\everycr=\toks56
+\minrowclearance=\skip157
+\rownum=\count379
+) (/usr/share/texlive/texmf-dist/tex/latex/xtab/xtab.sty
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \c@tracingst=\count380
 \PWSTcapht=\dimen325
@@ -1351,6 +1666,7 @@ Package: xtab 2011/07/31 v2.3f Extended supertabular package
 \ST@toadd=\dimen338
 \ST@dimen=\dimen339
 \ST@pbox=\box81
+<<<<<<< HEAD
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/babel\b
 abel.sty
@@ -1397,6 +1713,24 @@ ocale/invalid\babel-ngerman.tex)
 ocale/en\babel-english.tex)
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/babel/l
 ocale/de\babel-german.tex)
+=======
+) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/04/15 v26.6 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count387
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2111.
+\U@D=\dimen340
+\l@unhyphenated=\language90
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count388
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/locale/invalid/babel-ngerman.tex) (/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex) (/usr/share/texlive/texmf-dist/tex/generic/babel/locale/de/babel-german.tex)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 Package babel Info: Importing font and identification data for ngerman
 (babel)             from babel-de.ini. Reported on input line 4330.
 
@@ -1427,6 +1761,7 @@ Package babel Info: Importing font and identification data for german
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/babel-ger
 man\german.ldf
 Language: german 
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/babel-ger
 man\babel-german.def)))
@@ -1439,6 +1774,11 @@ ikz package.
 ikzlibrarypie.code.tex
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\
 scalefnt.sty)
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/babel-german/babel-german.def))) (/usr/share/texlive/texmf-dist/tex/latex/pgf-pie/pgf-pie.sty
+Package: pgf-pie 2022/06/14 v0.7 Some LaTeX macros for pie chart by using PGF/Tikz package.
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf-pie/tikzlibrarypie.code.tex (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \pgfpie@angleEnd=\dimen341
 \pgfpie@explodeLength=\count389
 \pgfpie@colorLength=\count390
@@ -1501,11 +1841,15 @@ s\pst-fp.tex `pst-fp' v0.06, 2020/11/20 (hv)
 \@zero=\count412
 \pst@toks=\toks56
 --- We are running latex or xelatex ---
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pstricks.con)
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pstricks-color.tex)
+=======
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.con) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks-color.tex)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \psunit=\dimen352
 \psxunit=\dimen353
 \psyunit=\dimen354
@@ -1513,6 +1857,7 @@ s\pstricks-color.tex)
 \pslinewidth=\dimen355
 \psk@startLW=\dimen356
 \psk@endLW=\dimen357
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pstricks-arrows.tex
@@ -1523,10 +1868,19 @@ s\pstricks-arrows.tex
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pstricks-dots.tex)
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks-arrows.tex
+\pshooklength=\dimen358
+\pshookwidth=\dimen359
+)
+\pst@customdefs=\toks58
+ (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks-dots.tex)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \pslinearc=\dimen360
 \pst@symbolStep=\dimen361
 \pst@symbolWidth=\dimen362
 \pst@symbolLinewidth=\dimen363
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pst-code-grid.tex)
@@ -1547,6 +1901,14 @@ s\pst-code-put.tex
 )
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pstrick
 s\pst-code-pspicture.tex
+=======
+ (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-grid.tex) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-box.tex
+\everypsbox=\toks59
+\psframesep=\dimen364
+) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-arc.tex) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-circle_ellipse.tex) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-ref_rot.tex) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-put.tex
+\pslabelsep=\dimen365
+) (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-code-pspicture.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \sh@wgridXunit=\dimen366
 \sh@wgridYunit=\dimen367
 \pst@shift=\dimen368
@@ -1654,9 +2016,13 @@ File: tikzlibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 raries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \arrowsize=\dimen369
+<<<<<<< HEAD
 ))
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
 ntendlayer/tikz/libraries\tikzlibraryshadows.code.tex
+=======
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: tikzlibraryshadows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
@@ -1761,6 +2127,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
 (scrbook)           before \begin{document} on input line 26.
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\
 bookmark.sty
@@ -1779,6 +2146,18 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 26
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.
 fd
+=======
+ (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
+ (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
+\BKM@id=\count452
+))
+Package babel-german Info: Using legacy glottonyms
+(babel-german)             `german' denotes pre-1996 spelling. on input line 26.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 26.
+ (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmr.fd
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (main.aux (deckblatt.aux)
 Package babel Info: 'german' activates 'german' shorthands.
@@ -1808,9 +2187,13 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
+<<<<<<< HEAD
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/context/base/mk
 ii\supp-pdf.mkii
+=======
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count453
 \scratchdimen=\dimen370
@@ -1993,6 +2376,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
+<<<<<<< HEAD
  [5] (main.lof
 Overfull \hbox (7.64883pt too wide) in paragraph at lines 6--6
  [][] [][][]\T1/lmr/m/n/10.95 Komponentenmodell der An-wen-dung mit Pr‰-sen-ta-
@@ -2015,6 +2399,21 @@ Overfull \hbox (25.2605pt too wide) in paragraph at lines 18--18
 Overfull \hbox (2.17673pt too wide) in paragraph at lines 19--19
  [][] [][][]\T1/lmr/m/n/10.95 Kennzahlenbereich mit War-te-zeit, Durch-lauf-zei
 t und Re-ak-ti-ons-zeit als quan- 
+=======
+ [5] (./main.lof
+Overfull \hbox (5.68713pt too wide) in paragraph at lines 14--14
+ [][] [][][]\T1/lmr/m/n/10.95 Detaildarstellung der Gantt-Ansicht mit seg-men-tier-ter Aus-f¸h-rung und sicht- 
+ []
+
+
+Overfull \hbox (25.2605pt too wide) in paragraph at lines 15--15
+ [][] [][][]\T1/lmr/m/n/10.95 Warteschlangen- und Sta-tus-dar-stel-lung zur Ein-ord-nung der ak-tu-el-len Scheduling- 
+ []
+
+
+Overfull \hbox (2.17673pt too wide) in paragraph at lines 16--16
+ [][] [][][]\T1/lmr/m/n/10.95 Kennzahlenbereich mit War-te-zeit, Durch-lauf-zeit und Re-ak-ti-ons-zeit als quan- 
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
  []
 
 )
@@ -2041,6 +2440,7 @@ t und Re-ak-ti-ons-zeit als quan-
 ]
 \openout2 = `acronyms.aux'.
 
+<<<<<<< HEAD
  (acronyms.tex)
 \openout2 = `01-einleitung.aux'.
 
@@ -2051,6 +2451,15 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 
 (C:\Users\MartenKirschenhofer\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr
 .fd
+=======
+ (./acronyms.tex)
+\openout2 = `01-einleitung.aux'.
+
+ (./01-einleitung.tex
+chapter 1.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 16.
+(/usr/share/texlive/texmf-dist/tex/latex/lm/ts1lmr.fd
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
@@ -2061,24 +2470,45 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 
 
+<<<<<<< HEAD
 {C:/Users/MartenKirschenhofer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/
 lm-ts1.enc}]) [2]
+=======
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [2]) [3]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `02-grundlagen.aux'.
 
  (02-grundlagen.tex
 chapter 2.
+<<<<<<< HEAD
 [3
+=======
+[4
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
 
 
+<<<<<<< HEAD
 ]) [4]
+=======
+]
+Overfull \hbox (9.9pt too wide) in paragraph at lines 23--24
+\T1/lmr/m/n/10.95 Eine grund-le-gen-de Klas-si-fi-ka-ti-on un-ter-schei-det zwi-schen pr‰-emp-ti-ven und nicht-pr‰emptiven
+ []
+
+[5] [6]) [7]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `03-anforderungsanalyse.aux'.
 
  (03-anforderungsanalyse.tex
 chapter 3.
+<<<<<<< HEAD
 [5
+=======
+[8
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
@@ -2086,21 +2516,38 @@ chapter 3.
 
 ]
 Overfull \hbox (37.45872pt too wide) in paragraph at lines 35--36
+<<<<<<< HEAD
 \T1/lmr/m/n/10.95 Da die An-wen-dung im Lehr-kon-text ein-ge-setzt wird, sind g
 rund-le-gen-de Accessibility-Anforderungen
  []
 
 [6]) [7]
+=======
+\T1/lmr/m/n/10.95 Da die An-wen-dung im Lehr-kon-text ein-ge-setzt wird, sind grund-le-gen-de Accessibility-Anforderungen
+ []
+
+[9]) [10]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `04-systementwurf.aux'.
 
  (04-systementwurf.tex
 chapter 4.
+<<<<<<< HEAD
 [8
+=======
+
+Overfull \hbox (4.31566pt too wide) in paragraph at lines 25--26
+[]\T1/lmr/bx/n/10.95 Simulationskern: \T1/lmr/m/n/10.95 De-ter-mi-ni-sti-sche Be-rech-nung des zeit-li-chen Ab-laufs je Scheduling-
+ []
+
+[11
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
 
 
+<<<<<<< HEAD
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
 0.
@@ -2133,16 +2580,32 @@ ly-se-an-sich-ten: zeit-li-cher Ab-lauf (Gantt),
  []
 
 [11]) [12]
+=======
+] (./images/system-architecture-diagram.tex
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 66.
+) (./images/scheduling-visualizer-overview-placeholder.tex
+Underfull \hbox (badness 6493) in paragraph at lines 10--10
+[][]|\T1/lmr/m/n/10 ‹ber-sicht der Be-nut-ze-ro-ber-fl‰-che: Ein-ga-be-be-reich, Si-mu-la-ti-ons-fen-ster und
+ []
+
+) [12{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}] [13]) [14] [15]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `05-implementierung.aux'.
 
  (05-implementierung.tex
 chapter 5.
+<<<<<<< HEAD
 [13
+=======
+[16
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
 
 
+<<<<<<< HEAD
 ] [14]
 <images/diagramme/Dom√§nenmodell.pdf, id=356, 2902.845pt x 1255.81169pt>
 File: images/diagramme/Dom√§nenmodell.pdf Graphic file (type pdf)
@@ -2187,11 +2650,15 @@ t/m/n/10.95 arrival \T1/lmr/m/n/10.95 (Ein-tritt), \T1/lmtt/m/n/10.95 dispatch
  []
 
 [18 <./images/diagramme/ZustandsdiagrammProzess.pdf>]) [19]
+=======
+] [17]) [18]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `06-qualitaetssicherung.aux'.
 
 
 (06-qualitaetssicherung.tex
 chapter 6.
+<<<<<<< HEAD
 
 Overfull \hbox (5.43042pt too wide) in paragraph at lines 19--20
 \T1/lmr/m/n/10.95 ste-hen de-ter-mi-ni-sti-sche Be-rech-nungs-schrit-te, kor-re
@@ -2199,12 +2666,19 @@ k-te Pr‰-emp-ti-ons-ent-schei-dun-gen und kon-
  []
 
 [20
+=======
+[19
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
 
 
+<<<<<<< HEAD
 ]) [21]
+=======
+]) [20] [21]
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 \openout2 = `07-ergebnis-produktpraesentation.aux'.
 
  (07-ergebnis-produktpraesentation.tex
@@ -2217,14 +2691,27 @@ chapter 7.
 
 ]
 Underfull \hbox (badness 1540) in paragraph at lines 57--57
+<<<<<<< HEAD
 [][]|\T1/lmr/m/n/10 Ge-la-de-nes Szenario mit sicht-ba-ren Task-Parametern als 
 Grund-la-ge f¸r die
+=======
+[][]|\T1/lmr/m/n/10 Ge-la-de-nes Szenario mit sicht-ba-ren Task-Parametern als Grund-la-ge f¸r die
+ []
+
+
+Overfull \hbox (0.83737pt too wide) in paragraph at lines 139--140
+\T1/lmr/m/n/10.95 funktionale Zie-le wie De-ter-mi-ni-stik, Nach-voll-zieh-bar-keit und Er-weiter-bar-keit wur-den durch
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
  []
 
 [23] [24]
 Overfull \hbox (8.04883pt too wide) in paragraph at lines 143--144
+<<<<<<< HEAD
 \T1/lmr/m/n/10.95 Das ent-wickel-te Pro-dukt er-f¸llt die Ziel-set-zung der Ar-
 beit: Pr‰-emp-ti-ve Scheduling-Verfahren
+=======
+\T1/lmr/m/n/10.95 Das ent-wickel-te Pro-dukt er-f¸llt die Ziel-set-zung der Ar-beit: Pr‰-emp-ti-ve Scheduling-Verfahren
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
  []
 
 ) [25]
@@ -2232,6 +2719,19 @@ beit: Pr‰-emp-ti-ve Scheduling-Verfahren
 
  (08-fazit-ausblick.tex
 chapter 8.
+<<<<<<< HEAD
+=======
+
+Overfull \hbox (10.48665pt too wide) in paragraph at lines 3--4
+\T1/lmr/m/n/10.95 teln las-sen. Die zen-tra-le Lei-stung liegt in der Ver-bin-dung von Si-mu-la-ti-ons-lo-gik, Visualisierung
+ []
+
+
+Overfull \hbox (17.20245pt too wide) in paragraph at lines 7--8
+[]\T1/lmr/m/n/10.95 Die An-wen-dung er-f¸llt da-mit die Ziel-set-zung der Ar-beit: Sie macht Scheduling-Entscheidungen
+ []
+
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 ) [26
 
 
@@ -2240,7 +2740,14 @@ chapter 8.
 
 ] (main.bbl
 chapter without number
+<<<<<<< HEAD
 ) [27
+=======
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 11.
+(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) [27
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
@@ -2257,7 +2764,11 @@ chapter A.
 ]
 \openout2 = `affidavit.aux'.
 
+<<<<<<< HEAD
  (affidavit.tex) [29
+=======
+ (./affidavit.tex) [29
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 
 
@@ -2275,6 +2786,7 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  39300 strings out of 467691
  777028 string characters out of 5408211
  1578611 words of memory out of 5000000
@@ -2298,4 +2810,20 @@ PDF statistics:
  895 PDF objects out of 1000 (max. 8388607)
  147 named destinations out of 1000 (max. 500000)
  593 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+ 39458 strings out of 467363
+ 756817 string characters out of 5419001
+ 1581309 words of memory out of 6000000
+ 67480 multiletter control sequences out of 15000+600000
+ 696188 words of font info for 83 fonts, out of 8000000 for 9000
+ 1156 hyphenation exceptions out of 8191
+ 110i,8n,107p,11272b,1026s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (37 pages, 353063 bytes).
+PDF statistics:
+ 712 PDF objects out of 1000 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 597 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 

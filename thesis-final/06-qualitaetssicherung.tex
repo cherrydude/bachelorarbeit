@@ -1,12 +1,17 @@
 \chapter{Qualitätssicherung}
 
+<<<<<<< HEAD
 Für eine didaktisch ausgerichtete Anwendung mit fachlichem Anspruch ist Qualitätssicherung ein zentraler Entwicklungsbestandteil. Bewertet werden nicht nur technische Funktionsfähigkeit, sondern insbesondere Konsistenz der Simulationslogik, Reproduzierbarkeit der Ergebnisse und Verlässlichkeit der Interaktion.
+=======
+Für ein didaktisches Werkzeug mit fachlicher Relevanz ist Qualitätssicherung ein zentraler Bestandteil der Umsetzung. Entscheidend sind nicht nur technische Funktionsfähigkeit, sondern insbesondere fachliche Korrektheit der Simulation, reproduzierbares Verhalten und nachvollziehbare Interaktion.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
 
 \section{Qualitätsziele und Prüfstrategie}
 
 Die Qualitätssicherung verfolgt drei Hauptziele:
 
 \begin{itemize}
+<<<<<<< HEAD
     \item \textbf{Fachliche Korrektheit:} Scheduling-Entscheidungen und Kennzahlen müssen konsistent abgeleitet werden.
     \item \textbf{Reproduzierbarkeit:} Identische Eingaben müssen identische Abläufe erzeugen.
     \item \textbf{Bedienbarkeit und Zugänglichkeit:} Zentrale Funktionen müssen verlässlich und verständlich nutzbar sein.
@@ -22,11 +27,29 @@ Geprüft werden unter anderem:
 
 \begin{itemize}
     \item Quantum-Verhalten und Wiedereinreihung bei Round Robin,
+=======
+    \item \textbf{Fachliche Korrektheit:} Scheduling-Entscheidungen und Kennzahlen müssen inhaltlich konsistent sein.
+    \item \textbf{Reproduzierbarkeit:} Identische Eingaben müssen identische Abläufe erzeugen.
+    \item \textbf{Bedienbarkeit und Zugänglichkeit:} Zentrale Funktionen müssen verständlich und verlässlich nutzbar sein.
+\end{itemize}
+
+Zur Erreichung dieser Ziele wurde ein mehrstufiger Ansatz gewählt: automatisierte Tests der Kernlogik, Prüfungen zentraler Interaktionspfade sowie Bewertung von Accessibility-Aspekten in der Oberfläche.
+
+\section{Automatisierte Verifikation der Simulationslogik}
+
+Die Simulationslogik wird mit Vitest automatisiert geprüft \cite{vitestdocs}. Im Fokus stehen deterministische Berechnungsschritte, korrekte Präemptionsentscheidungen und konsistente Ableitung der Kennzahlen.
+
+Getestet werden unter anderem:
+
+\begin{itemize}
+    \item Quantum-Verhalten und Wiederanstellen bei Round Robin,
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
     \item Präemption bei Neuankunft in präemptiven Verfahren (z.\,B. LCFS, Strict Priority),
     \item Herabstufungslogik in MLFQ,
     \item Konsistenz von Ereignisfolge, Segmenten und Endzustand.
 \end{itemize}
 
+<<<<<<< HEAD
 Zusätzlich wird validiert, ob unvollständige bzw. ungültige Eingaben robust normalisiert werden und erzeugte Segmente gültige Zeitgrenzen aufweisen.
 
 \section{Prüfung von Interaktion und Accessibility}
@@ -50,3 +73,30 @@ Die Testsuite stellt jedoch keinen vollständigen formalen Korrektheitsbeweis f�
 \section{Fazit zur Qualitätssicherung}
 
 Qualitätssicherung wurde als integraler Bestandteil der Entwicklung umgesetzt. Die Kombination aus deterministischer Simulationslogik, automatisierter Verifikation und strukturierter Interaktionsprüfung bildet die Grundlage für ein fachlich belastbares und didaktisch nutzbares Lehrwerkzeug.
+=======
+Zusätzlich wird geprüft, ob ungültige oder unvollständige Eingabedaten korrekt normalisiert werden und ob erzeugte Segmente gültige Zeitgrenzen aufweisen.
+
+\section{Prüfung von Interaktion und Accessibility}
+
+Neben der Fachlogik wurde die Oberfläche hinsichtlich Bedienbarkeit und Zugänglichkeit betrachtet. Dazu zählen semantische Struktur, nachvollziehbare Fokusführung und konsistente Interaktionsabläufe. Orientierung bieten die Grundprinzipien der WCAG \cite{wcag2018}.
+
+Für den Lehrkontext ist wesentlich, dass Nutzende ohne unnötige Hürden zwischen Szenariokonfiguration, Ablaufsteuerung und Ergebnisinterpretation wechseln können. Klare Statusanzeigen und eindeutige Steuerzustände unterstützen diesen Prozess.
+
+\section{Reproduzierbarkeit und Vergleichbarkeit}
+
+Ein zentrales Qualitätsmerkmal ist die deterministische Reproduzierbarkeit: Bei identischem Szenario und identischen Parametern muss derselbe Ablauf mit denselben Kennzahlen entstehen. Diese Eigenschaft ist für didaktische Vergleiche essenziell, da nur so Unterschiede zwischen Verfahren sachlich auf die jeweilige Scheduling-Strategie zurückgeführt werden können.
+
+Auch die Vergleichsansicht profitiert davon: Mehrere Läufe lassen sich auf gemeinsamer Eingabebasis direkt gegenüberstellen, ohne dass zufällige Abweichungen die Interpretation verfälschen.
+
+\section{Erreichte Testabdeckung und Grenzen}
+
+Zum Zeitpunkt der Erstellung umfasst die automatisierte Testsuite elf Testdateien mit insgesamt 34 erfolgreichen Tests. Die Tests decken zentrale Kern- und Integrationspfade ab und erhöhen die technische Verlässlichkeit der Implementierung deutlich.
+
+Die Testsuite deckt damit Kernlogik und zentrale Integrationspfade ab, ist jedoch nicht als vollständiger formaler Korrektheitsbeweis aller möglichen Prozesskonstellationen zu verstehen.
+
+Gleichzeitig bestehen Grenzen: Die Testsuite stellt keine vollständige Abdeckung aller theoretisch möglichen Prozesskonstellationen dar und ersetzt keine empirische Untersuchung der Lernwirksamkeit mit Nutzergruppen. Die Qualitätssicherung ist daher als risikoorientierte Absicherung der Kernfunktionen zu verstehen.
+
+\section{Fazit zur Qualitätssicherung}
+
+Die Qualitätssicherung wurde nicht als nachgelagerte Kontrolle, sondern als integraler Bestandteil der Entwicklung umgesetzt. Die Kombination aus deterministischer Simulationslogik, automatisierter Verifikation und systematischer Interaktionsprüfung schafft die Grundlage für ein fachlich belastbares und didaktisch nutzbares Lehrwerkzeug.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc

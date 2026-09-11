@@ -2,6 +2,7 @@
 
 \section{Motivation und Problemstellung}
 
+<<<<<<< HEAD
 Scheduling-Verfahren gehören zu den Kernmechanismen moderner Betriebssysteme. Sie legen fest, welcher Prozess zu welchem Zeitpunkt CPU-Zeit erhält, und beeinflussen damit Reaktionsfähigkeit, Fairness und Ressourcenauslastung \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}. Obwohl die Verfahren in der Lehre formal behandelt werden, bleibt ihr zeitlicher Ablauf für Studierende häufig abstrakt.
 
 Dies gilt insbesondere für präemptive Verfahren: Häufige Unterbrechungen, Wiedereinplanungen und Zustandswechsel erschweren die mentale Nachvollziehbarkeit. Der Unterschied zwischen Verfahren ist theoretisch beschreibbar, wird jedoch in seiner konkreten Wirkung auf Ablauf, Wartezeit und Reaktionszeit oft erst durch eine zeitliche Darstellung verständlich.
@@ -51,3 +52,56 @@ Praktische Verständlichkeit entsteht durch das Zusammenspiel aus fachlicher Kor
 \end{quote}
 
 Damit wird Scheduling-Visualisierung nicht nur als Implementierungsaufgabe verstanden, sondern als Verbindung von Fachmodell, Interaktionsgestaltung und didaktischer Vermittlung.
+=======
+Scheduling-Verfahren gehören zu den zentralen Konzepten moderner Betriebssysteme. Sie bestimmen, welcher Prozess zu welchem Zeitpunkt CPU-Zeit erhält, und beeinflussen unmittelbar Reaktionsfähigkeit, Fairness und Auslastung eines Systems. Obwohl diese Verfahren in Lehrbüchern und Vorlesungen theoretisch sauber beschrieben werden, fällt es Studierenden häufig schwer, ihren zeitlichen Ablauf in konkreten Situationen zu verstehen \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+Gerade präemptive Verfahren sind für Lernende anspruchsvoll, weil sie viele Zustandswechsel, Unterbrechungen und Neuplanungen erzeugen. Die Entscheidungslogik bleibt bei reinen Textbeschreibungen und statischen Beispielen oft abstrakt. Das Problem zeigt sich besonders beim Vergleich verschiedener Verfahren unter identischen Eingaben: Die fachlichen Unterschiede sind zwar theoretisch bekannt, aber in ihrer unmittelbaren Wirkung auf Ablauf, Wartezeiten und Reaktionsverhalten nicht immer intuitiv nachvollziehbar.
+
+Vor diesem Hintergrund wurde eine interaktive Webanwendung entwickelt, die Scheduling-Verfahren als sichtbaren, steuerbaren Ablauf modelliert. Ziel ist nicht die Beantwortung einer rein wissenschaftlichen Forschungsfrage, sondern die Erstellung eines nutzbaren didaktischen Werkzeugs, das technische Zusammenhänge transparent macht und Studierenden einen praktischen Zugang zu den Grundlagen des CPU-Scheduling eröffnet.
+
+\section{Zielsetzung der Arbeit}
+
+Die vorliegende Arbeit verfolgt die Konzeption und Umsetzung einer interaktiven Webanwendung zur Veranschaulichung präemptiver Scheduling-Verfahren. Ziel ist die Entwicklung einer Anwendung, die:
+
+\begin{itemize}
+    \item ausgewählte Scheduling-Verfahren fachlich korrekt simuliert,
+    \item ihre zeitlichen Abläufe verständlich visualisiert,
+    \item verschiedene Verfahren anhand identischer Szenarien vergleichbar macht,
+    \item und als didaktisches Werkzeug im Lehrkontext nutzbar ist.
+\end{itemize}
+
+Der Fokus liegt damit auf der praktischen Umsetzung eines verständlichen und erweiterbaren Produkts. Die Arbeit verbindet fachliche Grundlagen aus der Betriebssystemtheorie mit Prinzipien aus Software Engineering und Human-Computer Interaction. Im Vordergrund stehen eine nachvollziehbare Architektur, klare Interaktion und ein belastbares Produkt für den Einsatz im Studium.
+
+\section{Thematische Ausrichtung und Abgrenzung}
+
+Die Arbeit ist bewusst nicht als klassische empirische Untersuchung konzipiert, sondern als engineering-orientierte Produktdokumentation. Der Schwerpunkt liegt auf der Gestaltung einer Anwendung, die im Studienkontext einen Mehrwert bietet und zugleich technische, didaktische und gestalterische Entscheidungen nachvollziehbar dokumentiert.
+
+Diese Ausrichtung ist für den Studiengang geeignet, weil sie die Verbindung zwischen theoretischem Wissen und praktischer Umsetzung sichtbar macht. Die fachlichen Grundlagen aus der Betriebssystemlehre werden mit einer strukturierten Architektur, benutzerfreundlicher Oberfläche und konkreten Produktbeispielen verknüpft. Dadurch entsteht eine Bachelorarbeit, die nicht nur theoretisch fundiert ist, sondern auch die Entwicklung eines nutzbaren Softwaresystems als zentrale Leistung hervorhebt.
+
+Die Arbeit grenzt sich dabei von einer empirischen Wirksamkeitsstudie mit Nutzergruppen, statistischer Auswertung und hypothesengetriebener Evaluation ab. Stattdessen liegt der Fokus auf fachlicher Korrektheit der Simulation, nachvollziehbarer Architektur, technischer Umsetzung und qualitativ begründeter Produktpräsentation.
+
+\section{Vorgehensweise und Aufbau der Arbeit}
+
+Die Arbeit folgt einem engineering-orientierten Vorgehen:
+
+\begin{enumerate}
+    \item Analyse der fachlichen Grundlagen zu CPU-Scheduling und relevanten Messgrößen,
+    \item Ableitung von Anforderungen an eine didaktische Visualisierungsanwendung,
+    \item Entwurf der Systemarchitektur und des Interaktionsmodells,
+    \item technische Umsetzung der Webanwendung,
+    \item Qualitätssicherung der Simulationslogik und Interaktion,
+    \item produktorientierte Darstellung und Einordnung der Ergebnisse.
+\end{enumerate}
+
+Der Aufbau der Bachelorarbeit folgt dieser Vorgehensweise: Kapitel~2 behandelt die fachlichen Grundlagen. Kapitel~3 leitet daraus die Anforderungen ab. Kapitel~4 beschreibt den Systementwurf mit Architektur- und Interaktionsmodell. Kapitel~5 dokumentiert die technische Implementierung. Kapitel~6 stellt die Maßnahmen zur Qualitätssicherung dar. Kapitel~7 präsentiert das entwickelte Produkt und ordnet die Ergebnisse ein. Kapitel~8 schließt mit Fazit und Ausblick.
+
+\section{Leitgedanke der Arbeit}
+
+Der zentrale Gedanke dieser Arbeit lautet:
+
+\begin{quote}
+Praktische Verständlichkeit entsteht nicht nur durch fachliche Korrektheit, sondern auch durch eine klar strukturierte Architektur, nachvollziehbare Interaktion und eine verständliche Darstellung des zeitlichen Ablaufs.
+\end{quote}
+
+Diese Perspektive bildet den Kern der Arbeit. Sie macht deutlich, dass die Simulation von Scheduling-Verfahren nicht nur eine fachliche Aufgabe ist, sondern auch ein Entwurfs- und Gestaltungsproblem mit unmittelbaren Auswirkungen auf Nutzbarkeit und Lernwirkung.
+>>>>>>> 82e002eec67f925c0df4b4f54fa62a8404ac3abc
