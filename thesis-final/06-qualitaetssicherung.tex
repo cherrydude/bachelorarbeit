@@ -31,7 +31,7 @@ Zusätzlich wird validiert, ob unvollständige bzw. ungültige Eingaben robust n
 
 \section{Prüfung von Interaktion und Accessibility}
 
-Ergänzend zur Fachlogik wurde die Oberfläche hinsichtlich Bedienbarkeit und Zugänglichkeit geprüft. Betrachtet wurden semantische Struktur, Fokusführung und Konsistenz der Interaktionsabläufe. Als Referenz dienen die Grundprinzipien der WCAG \cite{wcag2018}.
+Ergänzend zur Fachlogik wurde die Oberfläche hinsichtlich Bedienbarkeit und Zugänglichkeit geprüft. Betrachtet wurden die in Tabelle~\ref{tab:a11y-anforderungen} definierten A11Y-Anforderungen. Als Referenz dient WCAG~2.1 \cite{wcag2018}; die Prüfung ist auf den Scheduler fokussiert und keine vollständige Konformitätsbewertung.
 
 Für den Lehrkontext ist wesentlich, dass Benutzerinnen und Benutzer ohne zusätzliche Hürden zwischen Szenariokonfiguration, Ablaufsteuerung und Ergebnisinterpretation wechseln können. Klare Statusanzeigen und eindeutige Steuerzustände unterstützen diese Nutzbarkeit.
 
@@ -41,11 +41,19 @@ Ein zentrales Qualitätsmerkmal ist die deterministische Reproduzierbarkeit: Bei
 
 Auch die Vergleichsansicht profitiert davon: Mehrere Läufe lassen sich auf gemeinsamer Eingabebasis direkt gegenüberstellen, ohne dass zufällige Abweichungen die Interpretation verzerren.
 
+\subsection{Automatisierte und statische Prüfungen}
+
+Die automatisierten Tests werden mit Vitest ausgeführt. Im aktuellen Stand bestehen zehn Testdateien mit 35 Tests. Davon prüfen die beiden Accessibility-Dateien insgesamt elf statische Marker- und Strukturbedingungen. Sie lesen Quelltext und prüfen beispielsweise Dialogrollen, Fokusmanagement, Tabsemantik, Sliderbeschriftungen, Gantt-Beschreibungen und Reduced-Motion-Gating. Der Test mit dem Dateinamen \texttt{axe.runtime.test.ts} führt keinen DOM-Scan mit \texttt{axe-core} aus und wird deshalb nicht als axe-Runtime-Nachweis gezählt. Der vorhandene Placeholder-Test bleibt als Scaffold erhalten und wird ebenfalls nicht als Qualitätsnachweis gezählt.
+
+\subsection{Manuelles Prüfprotokoll}
+
+Die manuelle Prüfung umfasst einen Keyboard-only-Durchlauf, Dialogöffnung und Escape, Fokusfalle und Fokus-Rückgabe, Burger-Menü, Tab-Navigation, Slider, Playback, Gantt-Segmente und Statusmeldungen. Zusätzlich werden Desktop- und schmale Viewports, 200\,% Vergrößerung, Farbnutzung, Kontrast, Forced Colors und \texttt{prefers-reduced-motion} geprüft. Ergebnisse werden im Anhang mit Setup, Handlung, Beobachtung und Status als behoben, offen oder nicht im Scope dokumentiert. Ein automatisierter axe-DOM-Scan und eine empirische Nutzerstudie sind nicht Bestandteil dieses Prüfstands.
+
 \section{Erreichte Testabdeckung und Grenzen}
 
-Zum Zeitpunkt der Erstellung umfasst die automatisierte Testsuite elf Testdateien mit insgesamt 34 erfolgreichen Tests. Damit werden zentrale Kern- und Integrationspfade abgedeckt und die technische Verlässlichkeit der Implementierung deutlich erhöht.
+Zum Zeitpunkt der Prüfung umfasst die automatisierte Testsuite zehn Testdateien mit insgesamt 35 erfolgreichen Tests. Damit werden zentrale Kern- und Integrationspfade sowie statische Accessibility-Merkmale abgedeckt und die technische Verlässlichkeit der Implementierung erhöht.
 
-Die Testsuite stellt jedoch keinen vollständigen formalen Korrektheitsbeweis für alle denkbaren Prozesskonstellationen dar. Ebenso ersetzt sie keine empirische Untersuchung der Lernwirksamkeit mit Nutzergruppen. Die Qualitätssicherung ist daher als risikoorientierte Absicherung zentraler Funktionen zu verstehen.
+Die Testsuite stellt jedoch keinen vollständigen formalen Korrektheitsbeweis für alle denkbaren Prozesskonstellationen und keinen vollständigen WCAG-/BITV-Audit dar. Ebenso ersetzt sie keine empirische Untersuchung der Lernwirksamkeit mit Nutzergruppen. Die Qualitätssicherung ist daher als begrenzter, risikoorientierter Prüfstand zentraler Funktionen zu verstehen.
 
 \section{Fazit zur Qualitätssicherung}
 

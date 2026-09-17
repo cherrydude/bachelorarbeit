@@ -1,11 +1,19 @@
 {
-	"folders": [
-		{
-			"path": ".."
-		},
-		{
-			"path": "../../BA"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "..",
+    },
+    {
+      "path": "../../BA",
+    },
+  ],
+  "settings": {
+    "chat.tools.terminal.autoApprove": {
+      "npm run test": true,
+      "npm run build": true,
+      "npx vitest": true,
+      "make": true,
+      "awk": true,
+    },
+  },
 }

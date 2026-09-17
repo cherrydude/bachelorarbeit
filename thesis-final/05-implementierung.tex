@@ -111,6 +111,14 @@ Die Wiedergabelogik arbeitet auf vorberechneten Snapshots und startet die Simula
 
 Im Vergleichsmodus werden mehrere Läufe auf identischer Eingabebasis nebeneinander dargestellt. Das unterstützt die direkte Gegenüberstellung algorithmischer Unterschiede.
 
+\section{Umsetzung der Accessibility-Anforderungen}
+
+Die Dialogkomponenten verwenden mit \texttt{useFocusTrap} eine gemeinsame Implementierung für Escape, Tab-Zirkulation, initialen Fokus, \texttt{aria-hidden}/\texttt{inert} auf dem Hauptinhalt und Fokus-Rückgabe. Der Ranking-Dialog wurde an dieses Muster angeschlossen. Dadurch wird der Dialog nicht nur visuell überlagert, sondern auch als modal begrenzter Interaktionszustand behandelt.
+
+Die Vergleichsansicht in \texttt{ComparisonPanel.vue} ist als Tablist mit \texttt{role="tab"}, \texttt{aria-selected}, \texttt{aria-controls} und Tabpanels umgesetzt. Pfeil-, Home- und End-Tasten verschieben den Fokus innerhalb der Auswahl. In \texttt{GanttWithGsap.vue} und \texttt{Scrubber.vue} sind die Zeitregler sichtbar beschriftet und mit dem live aktualisierten Zeitstatus verbunden.
+
+\texttt{Gantt.vue} beschreibt die SVG-Struktur und die einzelnen Prozesssegmente. Bei geteilten Segmenten bleibt nur ein Teil ein eigenständiges Tastaturziel, damit dieselbe fachliche Information nicht doppelt angeboten wird. Das Burger-Menü unterstützt Escape, Erstfokus und Fokus-Rückgabe. Nicht notwendige GSAP- und Hover-Effekte werden bei aktivierter Präferenz für reduzierte Bewegung übersprungen; Änderungen dieser Präferenz werden während der Laufzeit berücksichtigt.
+
 \section{Build- und Deploymentprozess}
 
 Für die Bereitstellung wird ein containerbasierter Deploymentprozess verwendet. Die Anwendung wird mit Vite in statische Artefakte überführt und in ein Docker-Image paketiert. Dadurch entsteht eine reproduzierbare Laufzeitumgebung unabhängig vom lokalen Entwicklungsrechner.

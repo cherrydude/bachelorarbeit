@@ -138,6 +138,14 @@ Die aus Kapitel~3 abgeleiteten Anforderungen wurden in den zentralen Funktionsbe
 
 Damit ist der funktionale Kern vollständig umgesetzt. Nicht-funktionale Ziele wie Deterministik, Nachvollziehbarkeit und Erweiterbarkeit werden durch Architektur und Implementierung unterstützt.
 
+\section{Accessibility-relevante Produktzustände}
+
+Die Produktnachweise sind nicht nur als visuelle Screenshots zu verstehen. Die Fokusansicht unterstützt die Handlung, den Ablauf über Start, Pause, Schrittsteuerung und Zeitregler zu untersuchen; der Regler besitzt eine sichtbare Beschriftung und einen angekündigten Zeitstatus. Der Gantt-Nachweis zeigt Prozesssegmente, Zeitgrenzen und Ereignismarkierungen. Ein Segment kann per Tastatur fokussiert und aktiviert werden, sodass die Ablaufanalyse nicht ausschließlich von Pointer-Interaktion abhängt.
+
+Der Dialognachweis steht für einen begrenzten Interaktionszustand: Beim Öffnen wird der Fokus in den Dialog geführt, Tab bleibt innerhalb des Dialogs und Escape schließt ihn. Nach dem Schließen kehrt der Fokus zum auslösenden Element zurück. Die Vergleichsansicht stellt Anwendungsfälle als Tabs dar; der aktive Zustand wird nicht nur farblich, sondern auch über Auswahlstatus und zugehöriges Panel ausgedrückt. Statusmeldungen zu bestem und schwächstem Lauf werden zusätzlich über einen Statuskanal bereitgestellt.
+
+Diese Zustände belegen konkrete Nutzerhandlungen und Implementierungsentscheidungen. Sie sind zugleich nur ein fokussierter Nachweis für die in Tabelle~\ref{tab:a11y-anforderungen} definierten Anforderungen und keine Aussage über vollständige WCAG- oder BITV-Erfüllung.
+
 \section{Ergebnisbetrachtung}
 
 Das entwickelte Produkt erfüllt die Zielsetzung der Arbeit: Präemptive Scheduling-Verfahren werden nicht nur berechnet, sondern als dynamischer Ablauf verständlich und vergleichbar dargestellt. Die Verknüpfung von Ablaufvisualisierung, Kennzahlen und Interaktion ermöglicht die Analyse algorithmischer Unterschiede in einem didaktisch nutzbaren Kontext.

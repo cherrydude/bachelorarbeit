@@ -102,6 +102,14 @@ Für eine Lernanwendung ist die Benutzeroberfläche ein fachlich relevantes Elem
 
 Damit wird sichergestellt, dass die Anwendung nicht nur technisch korrekt arbeitet, sondern auch als didaktisches Werkzeug nutzbar ist.
 
+\section{Accessibility als Entwurfsprinzip}
+
+Accessibility wird im Entwurf als Querschnittseigenschaft der Interaktions- und Darstellungsschicht behandelt. Dialoge besitzen einen eindeutig benannten Zustand, einen initialen Fokus und eine definierte Rückgabe an das auslösende Element. Das Composable \texttt{useFocusTrap} kapselt diese Logik, sodass Welcome-, Auswahl-, Generator- und Ranking-Dialog nach demselben Muster bedient werden.
+
+Die Gantt-Ansicht wird als strukturiertes SVG mit Titel, Beschreibung und Zusammenfassung ausgegeben. Interaktive Segmente erhalten zusätzlich eigene zugängliche Namen und können per Enter oder Leertaste aktiviert werden. Die Vergleichsansicht verwendet eine echte Tabstruktur mit ausgewähltem Tab, zugehörigem Panel und Pfeiltastennavigation. Statusänderungen werden über separate Statuskanäle angekündigt, damit sie nicht ausschließlich über Farbe oder Bewegung vermittelt werden.
+
+Farbe dient der visuellen Orientierung, ist jedoch nicht die einzige Unterscheidung. Aktive, beste und schwächste Zustände erhalten zusätzlich Text oder strukturelle Merkmale. Fokusindikatoren, Forced-Colors-Regeln, Beschriftungen für Zeitsteuerungen und die Reaktion auf reduzierte Bewegung sind Teil des Entwurfs. Diese Entscheidungen adressieren die A11Y-Anforderungen aus Tabelle~\ref{tab:a11y-anforderungen}; sie begründen jedoch keine vollständige WCAG-Konformität.
+
 \section{Erweiterbarkeit und Entwurfsgrenzen}
 
 Die Architektur ist auf Erweiterbarkeit ausgelegt: Neue Scheduling-Verfahren können als zusätzliche Strategien im Simulationskern ergänzt werden, ohne die UI grundlegend umzubauen. Ebenso lassen sich neue Kennzahlen oder Ansichten integrieren, sofern sie auf den vorhandenen Ergebnisstrukturen aufsetzen.

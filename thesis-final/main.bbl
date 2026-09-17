@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,21 @@
 {GreenSock}.
 \newblock Gsap documentation, 2026.
 \newblock URL \url{https://greensock.com/docs/}.
+
+\bibitem[Heinecke and Gerken(2024)]{heinecke_gerken_mci3}
+Andreas~M. Heinecke and Jens Gerken.
+\newblock \emph{Mensch-Computer-Interaktion: Basiswissen für Entwickler und
+  Gestalter}.
+\newblock Xpert.press. Springer Vieweg, Berlin/Heidelberg, 3 edition, 2024.
+\newblock ISBN 978-3-662-67568-7.
+
+\bibitem[Hundhausen et~al.(2002)Hundhausen, Douglas, and
+  Stasko]{hundhausen2002meta}
+Christopher~D. Hundhausen, Sarah~A. Douglas, and John~T. Stasko.
+\newblock A meta-study of algorithm visualization effectiveness.
+\newblock \emph{Journal of Visual Languages \& Computing}, 13\penalty0
+  (3):\penalty0 259--290, 2002.
+\newblock \doi{10.1006/jvlc.2002.0237}.
 
 \bibitem[Stallings(2003)]{stallings_betriebssysteme}
 William Stallings.

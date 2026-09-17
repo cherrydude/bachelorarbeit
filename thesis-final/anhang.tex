@@ -6,4 +6,37 @@
 
 \section{Zusätzliche Testfälle und Szenarien}
 
+\section{Operationalisierungsmatrix Accessibility}
+
+Die vollständige Matrix ergänzt die Kurzfassung aus Tabelle~\ref{tab:a11y-anforderungen} um Implementierungsort, Nachweis und Ergebnisstatus.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.11\textwidth}p{0.25\textwidth}p{0.24\textwidth}p{0.25\textwidth}}
+\textbf{ID} & \textbf{Entwurfsentscheidung} & \textbf{Implementierung/Nachweis} & \textbf{Ergebnis und Grenze} \\
+\hline
+A11Y-01 & Semantische Dialoge, Namen und Panels. & Dialogkomponenten, Tablist, Statusrollen; statischer Test. & Erfüllt im fokussierten Umfang; Screenreader-Matrix offen. \\
+A11Y-02 & Keyboard-first-Bedienung. & Menü, Tabs, Gantt und Playback; manueller Walkthrough. & Geprüft; Browser-/Assistive-Tech-Kombinationen begrenzt. \\
+A11Y-03 & Sichtbarer Fokus und Dialogfalle. & \texttt{useFocusTrap}, Ranking-Dialog; Code- und manueller Test. & Erfüllt für die geprüften Dialogpfade. \\
+A11Y-04 & Statuskanäle statt ausschließlich visueller Effekte. & Live-Status in Playback und Vergleich; manueller Test. & Erfüllt im geprüften Ablauf. \\
+A11Y-05 & Beschreibbares, interaktives SVG. & \texttt{Gantt.vue}, Segmentlabels; statisch und manuell. & Erfüllt im fokussierten SVG; keine vollständige AT-Abdeckung. \\
+A11Y-06 & Nichtfarbliche Zustandsmerkmale und Kontrastprüfung. & Statuslabels, Fokusregeln, Forced Colors; manueller Checker. & Zustände geprüft; freie Prozessfarben bleiben Grenze. \\
+A11Y-07 & Reflow und Zoom. & Schmaler Viewport und 200\,\% Zoom; manuelles Protokoll. & Ergebnis nach Durchführung eintragen; keine Geräteabdeckung. \\
+A11Y-08 & Reduzierte Bewegung. & Medienpräferenz in \texttt{GanttWithGsap.vue}; manueller Test. & Nicht notwendige Effekte reduziert; keine Nutzerstudie. \\
+\end{tabular}
+\end{table}
+
+\section{Kompaktes manuelles Accessibility-Prüfprotokoll}
+
+\begin{tabular}{p{0.18\textwidth}p{0.34\textwidth}p{0.34\textwidth}}
+\textbf{Setup} & \textbf{Prüfschritte} & \textbf{Beobachtung/Status} \\
+\hline
+Desktop, Tastatur & Dialog öffnen, Tab/Shift-Tab, Escape, erneut fokussieren. & Fokusfalle und Rückgabe dokumentieren: behoben/offen. \\
+Desktop, Tastatur & Menü, Tabs, Slider, Playback und Gantt ohne Maus bedienen. & Reihenfolge, Aktivierung und Status dokumentieren. \\
+Schmaler Viewport, 200\,\% & Vergleich, Gantt und Steuerung bei vergrößerter Darstellung prüfen. & Überlappung, Abschneiden und Reflow dokumentieren. \\
+Reduced Motion/Forced Colors & Präferenz aktivieren und Zustände erneut ausführen. & Nicht notwendige Bewegung und Fokuskontrast dokumentieren. \\
+Kontrastprüfung & Tatsächlich verwendete Text-, Fokus- und Statuszustände messen. & Messwert und verbleibende Farbrisiken dokumentieren. \\
+\end{tabular}
+
 \section{Ergänzende technische Artefakte (z. B. Konfigurationsbeispiele)}

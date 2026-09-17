@@ -10,11 +10,59 @@ Ein Prozess bezeichnet dabei eine isolierte Ausführungsumgebung mit eigenem Adr
 
 Ergänzend existiert die Thread-Abstraktion als leichtgewichtige Ausführungseinheit innerhalb eines Prozesses. Threads teilen sich den Adressraum und weitere Ressourcen des Prozesses; Kontextwechsel zwischen Threads sind daher in der Regel günstiger als zwischen Prozessen. Für die vorliegende Arbeit ist jedoch die Prozessabstraktion ausreichend, da die zentralen Scheduling-Prinzipien unverändert gelten.
 
+\subsection{Aufgaben des Betriebssystems}
+
+Die Betriebssystemfunktionen lassen sich unter anderem in Prozessverwaltung, Speicherverwaltung, Ein-/Ausgabeverwaltung und Dateiverwaltung gliedern. Für das CPU-Scheduling sind vor allem Prozessverwaltung und Unterbrechungsbehandlung relevant. Das Betriebssystem verwaltet Prozesskontexte, führt Zustandswechsel durch und reagiert auf Ereignisse wie Timer-Interrupts, Ein-/Ausgabe-Abschlüsse oder die Ankunft neuer Prozesse.
+
+Stallings beschreibt Betriebssysteme dabei stark aus der Perspektive der Verwaltung und Zuteilung von Ressourcen. Tanenbaum und Bos ordnen dieselben Aufgaben stärker in ein konzeptionelles Modell aus Prozessen, Threads, Zuständen und Betriebssystemkomponenten ein. Für diese Arbeit werden beide Perspektiven verbunden: Die Ressourcenperspektive erklärt, warum Scheduling erforderlich ist, während das Prozessmodell beschreibt, wie die daraus entstehenden Entscheidungen ablaufen \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+\subsection{Prozesszustände und Zustandsübergänge}
+
+Ein Prozess befindet sich zu jedem Zeitpunkt in einem bestimmten Ausführungszustand. Für die Modellierung des Visualizers werden die Zustände \textit{pending}, \textit{ready}, \textit{running}, \textit{preempted} und \textit{finished} verwendet. Ein neu angelegter Prozess ist zunächst noch nicht bereit, solange seine Ankunftszeit nicht erreicht ist. Danach kann er in die Bereitschaftsmenge aufgenommen werden. Der Zustand \textit{running} bezeichnet den Prozess, dem aktuell CPU-Zeit zugewiesen ist.
+
+Wird ein laufender Prozess durch einen anderen verdrängt, wechselt er in einen unterbrochenen beziehungsweise wieder bereiten Zustand. Nach einer erneuten Auswahl kann er weiterlaufen. Mit dem Abschluss der benötigten Burst-Zeit erreicht er den Zustand \textit{finished}. Diese Übergänge bilden die fachliche Grundlage für die Ereignisse des Simulationslaufs und für die Segmentierung der Gantt-Ansicht.
+
+\begin{table}[H]
+\centering
+\caption{Für die Simulation verwendete Prozesszustände.}
+\label{tab:prozesszustaende}
+\small
+\begin{tabularx}{\textwidth}{p{0.2\textwidth}X X}
+\textbf{Zustand} & \textbf{Bedeutung} & \textbf{Typischer Übergang} \\
+\hline
+\textit{pending} & Prozess ist noch nicht angekommen. & Ankunftszeit erreicht $\rightarrow$ \textit{ready} \\
+\textit{ready} & Prozess wartet auf CPU-Zuteilung. & Auswahl durch Scheduler $\rightarrow$ \textit{running} \\
+\textit{running} & Prozess verwendet die CPU. & Abschluss, Präemption oder Quantumablauf \\
+\textit{preempted} & Prozess wurde unterbrochen und wartet auf erneute Auswahl. & erneute Auswahl $\rightarrow$ \textit{running} \\
+\textit{finished} & Prozess hat seine benötigte Ausführungszeit verbraucht. & Endzustand \\
+\end{tabularx}
+\end{table}
+
+\subsection{Scheduler, Dispatcher und Kontextwechsel}
+
+Der Scheduler entscheidet, welcher bereite Prozess als Nächstes CPU-Zeit erhalten soll. Der Dispatcher setzt diese Entscheidung technisch um, indem er den Kontext des bisher laufenden Prozesses sichert und den Kontext des ausgewählten Prozesses lädt. Zum Prozesskontext gehören je nach System unter anderem Registerinhalte, Program Counter und Verwaltungsinformationen.
+
+Der Wechsel zwischen zwei Prozessen wird als Kontextwechsel bezeichnet. Er ermöglicht Präemption, verursacht aber Verwaltungsaufwand, weil der laufende Zustand gesichert und ein anderer Zustand wiederhergestellt werden muss. In der Simulation wird dieser Aufwand nicht als reale Prozessorzeit modelliert; die Anzahl der Kontextwechsel wird jedoch als Kennzahl erfasst. Dadurch kann sichtbar gemacht werden, dass ein Verfahren zwar eine kurze Reaktionszeit erreichen, zugleich aber mehr Wechsel erzeugen kann.
+
+Ein Scheduling-Ereignis kann durch mehrere Ursachen ausgelöst werden. Dazu gehören die Ankunft eines neuen Prozesses, der Ablauf eines Zeitquantums, die Beendigung eines Prozesses oder ein Wechsel von einer blockierten in eine bereite Situation. Die Implementierung abstrahiert diese Betriebssystemereignisse auf diskrete Zeitschritte. Diese Abstraktion ist für eine didaktische Visualisierung geeignet, weil sie jeden relevanten Zustandswechsel explizit darstellen kann.
+
 \section{CPU-Scheduling in Betriebssystemen}
 
 CPU-Scheduling beschreibt die Auswahlstrategie zur Vergabe von Prozessorzeit an bereite Ausführungseinheiten. Ziel ist ein Ausgleich zwischen konkurrierenden Kriterien wie Reaktionszeit, Wartezeit, Auslastung und Fairness \cite{stallings_betriebssysteme}.
 
 In Mehrprogrammsystemen erfolgt diese Auswahl unter variierenden Ankunftszeiten und Laufzeiten. Scheduling-Verfahren werden daher üblicherweise als Heuristiken formuliert, deren Eignung vom Lastprofil und den Systemzielen abhängt. Zentrale Fragestellungen sind die Auswahl des nächsten Prozesses, der Umgang mit Präemption und Kontextwechseln sowie die Bewertung über geeignete Kennzahlen.
+
+\subsection{Eingabeparameter und Entscheidungsgrundlage}
+
+Ein Scheduling-Szenario besteht im Kern aus einer Menge von Prozessen. Für jeden Prozess werden mindestens eine Ankunftszeit und eine benötigte Ausführungszeit, die sogenannte Burst-Zeit, benötigt. Je nach Verfahren kommen Priorität, Zeitquantum oder eine Zugehörigkeit zu einer Warteschlange hinzu. Die Ankunftszeit legt fest, ab welchem Zeitpunkt ein Prozess berücksichtigt werden darf. Die Burst-Zeit beschreibt, wie viel CPU-Zeit bis zum Abschluss noch benötigt wird.
+
+Für jeden Zeitschritt wird zunächst bestimmt, welche Prozesse angekommen und noch nicht abgeschlossen sind. Aus dieser Bereitschaftsmenge wählt der Scheduler anhand der jeweiligen Verfahrensregel einen Prozess. Anschließend wird dessen Restzeit reduziert und das entsprechende Ereignis beziehungsweise Segment im Ergebnisobjekt gespeichert. Diese Reihenfolge ist wichtig, weil ansonsten Ankunft, Präemption und Abschluss in einer mehrdeutigen Reihenfolge verarbeitet werden könnten.
+
+\subsection{Ziele und Zielkonflikte}
+
+Scheduling-Verfahren optimieren unterschiedliche Ziele, die nicht gleichzeitig maximal erfüllt werden können. Eine kurze durchschnittliche Wartezeit kann beispielsweise zu einer langen Wartezeit einzelner Prozesse führen. Ein hoher Durchsatz kann mit einer schlechteren Reaktionszeit interaktiver Prozesse einhergehen. Häufige Präemption kann die Reaktionsfähigkeit verbessern, erhöht aber die Zahl der Kontextwechsel.
+
+Für die Bewertung wird deshalb kein einzelner universeller Gütewert vorausgesetzt. Stattdessen werden mehrere Kennzahlen gemeinsam betrachtet. Die Vergleichsansicht der Anwendung erlaubt zusätzlich, die Gewichtung dieser Kennzahlen an einen Anwendungsfall wie Interaktion, Batch-Verarbeitung oder Soft Real-Time anzupassen.
 
 \section{Präemptive versus nicht-präemptive Scheduling-Verfahren}
 
@@ -27,3 +75,149 @@ Nicht-präemptive Verfahren erlauben einem Prozess, die CPU bis zum Abschluss od
 \subsection{Präemptive Verfahren}
 
 Präemptive Verfahren erlauben dem Scheduler, einen laufenden Prozess aktiv zu unterbrechen und einen anderen einzuplanen. Auslöser sind typischerweise Zeitquantumsgrenzen (Timer-Interrupt) oder die Ankunft höher priorisierter Prozesse. Dadurch steigen Reaktionsfähigkeit und Steuerbarkeit, zugleich aber auch die Anzahl der Kontextwechsel \cite{tanenbaum_moderne_betriebssysteme_de}.
+
+\section{Bewertungsmetriken}
+
+Die Bewertung eines Scheduling-Verfahrens benötigt messbare Größen, die aus dem Ablauf eines Simulationslaufs abgeleitet werden. Im Folgenden bezeichnet $a_i$ die Ankunftszeit eines Prozesses $i$, $c_i$ seine Fertigstellungszeit, $s_i$ den Zeitpunkt seiner ersten Ausführung und $b_i$ seine gesamte benötigte CPU-Zeit.
+
+\subsection{Durchlaufzeit}
+
+Die Durchlaufzeit beschreibt die Zeitspanne vom Eintreffen bis zum Abschluss eines Prozesses:
+
+\begin{equation}
+T_i = c_i - a_i
+\label{eq:durchlaufzeit}
+\end{equation}
+
+Sie umfasst sowohl die tatsächliche Ausführungszeit als auch Wartezeiten und Unterbrechungen. Die durchschnittliche Durchlaufzeit ergibt sich aus:
+
+\begin{equation}
+\overline{T} = \frac{1}{n} \sum_{i=1}^{n} T_i.
+\label{eq:durchschnittliche-durchlaufzeit}
+\end{equation}
+
+Eine geringe durchschnittliche Durchlaufzeit ist besonders für abgeschlossene Aufträge und Batch-Szenarien relevant. Sie beschreibt jedoch nicht, wie früh ein Prozess erstmals reagieren kann.
+
+\subsection{Wartezeit}
+
+Die Wartezeit bezeichnet die Zeit, in der ein Prozess bereit ist, aber keine CPU erhält. Bei einem Prozess ohne Blockierung kann sie aus Durchlaufzeit und Burst-Zeit berechnet werden:
+
+\begin{equation}
+W_i = T_i - b_i.
+\label{eq:wartezeit}
+\end{equation}
+
+Bei präemptiven Verfahren enthält diese Größe alle Zeitanteile zwischen einzelnen Ausführungsabschnitten. Eine niedrige durchschnittliche Wartezeit kann daher anzeigen, dass die Bereitschaftsmenge insgesamt effizient bedient wurde. Zusätzlich ist die maximale Wartezeit relevant, weil ein guter Mittelwert lange Benachteiligungen einzelner Prozesse verdecken kann.
+
+\subsection{Reaktionszeit}
+
+Die Reaktionszeit misst, wie lange ein Prozess nach seiner Ankunft bis zur ersten CPU-Zuteilung warten muss:
+
+\begin{equation}
+R_i = s_i - a_i.
+\label{eq:reaktionszeit}
+\end{equation}
+
+Sie ist besonders für interaktive Systeme bedeutsam. Ein Verfahren kann eine akzeptable Durchlaufzeit erreichen, aber trotzdem eine schlechte Reaktionszeit aufweisen, wenn bestimmte Prozesse erst spät erstmals ausgeführt werden.
+
+\subsection{Durchsatz und Kontextwechsel}
+
+Der Durchsatz beschreibt die Zahl abgeschlossener Prozesse pro Zeiteinheit. Für einen Beobachtungszeitraum von $t_0$ bis $t_1$ kann er näherungsweise als Verhältnis der abgeschlossenen Prozesse zur Zeitspanne angegeben werden:
+
+\begin{equation}
+X = \frac{N_{\mathrm{fertig}}}{t_1 - t_0}.
+\label{eq:durchsatz}
+\end{equation}
+
+Die Anzahl der Kontextwechsel ist keine reine Zeitmetrik, sondern ein Indikator für die Häufigkeit von Scheduling-Entscheidungen. Zusammen mit Präemptionsanzahl und Reaktionszeit hilft sie, den Zielkonflikt zwischen Responsivität und Verwaltungsaufwand zu beschreiben.
+
+\section{Scheduling-Verfahren}
+
+Die folgenden Verfahren werden im Visualizer als deterministische Strategien auf derselben Prozess- und Ereignisstruktur umgesetzt. Zur Einordnung dient ein gemeinsames Beispielszenario:
+
+\begin{table}[H]
+\centering
+\caption{Beispielszenario zur Gegenüberstellung der Scheduling-Verfahren.}
+\label{tab:scheduling-beispiel}
+\small
+\begin{tabular}{lrrrr}
+\textbf{Prozess} & \textbf{Ankunft} & \textbf{Burst} & \textbf{Priorität} & \textbf{Quantum} \\
+\hline
+P1 & 0 & 5 & 2 & 2 \\
+P2 & 1 & 3 & 1 & 2 \\
+P3 & 2 & 2 & 3 & 2 \\
+\end{tabular}
+\end{table}
+
+Das Szenario ist kein vollständiger empirischer Leistungsvergleich. Es dient dazu, die unterschiedlichen Auswahlregeln und ihre sichtbaren Folgen zu erklären. Je nach Prioritätskonvention muss für das konkrete Verfahren zusätzlich festgelegt werden, ob ein kleiner oder großer Zahlenwert eine höhere Priorität bedeutet.
+
+\subsection{First-Come, First-Served und Shortest Job First als Referenz}
+
+First-Come, First-Served (FCFS) ordnet bereite Prozesse nach ihrer Ankunft. Der zuerst angekommene Prozess wird zuerst ausgeführt. Das Verfahren ist einfach nachvollziehbar und benötigt keine komplexe Auswahlregel, kann jedoch zu langen Wartezeiten führen, wenn ein langer Prozess vor mehreren kurzen Prozessen steht.
+
+Shortest Job First (SJF) wählt den Prozess mit der kürzesten erwarteten beziehungsweise verbleibenden Ausführungszeit. In der nicht-präemptiven Variante bleibt der ausgewählte Prozess bis zum Abschluss aktiv. SJF dient in dieser Arbeit als Referenz für das Spannungsfeld zwischen durchschnittlicher Wartezeit und der notwendigen Kenntnis zukünftiger Ausführungszeiten. Die produktive Anwendung konzentriert sich dagegen auf präemptive Verfahren.
+
+\subsection{Round Robin}
+
+Round Robin verwendet eine zyklische Bereitschaftswarteschlange und ein festgelegtes Zeitquantum. Ein Prozess erhält höchstens ein Quantum und wird bei weiter bestehender Restzeit am Ende der Warteschlange erneut eingereiht. Dadurch erhalten bereite Prozesse wiederholt CPU-Zeit.
+
+Ein kleines Quantum verbessert typischerweise die Reaktionsmöglichkeit, erzeugt aber mehr Kontextwechsel. Ein großes Quantum reduziert den Verwaltungsaufwand und kann das Verhalten in Richtung FCFS verschieben. Im Beispielszenario wird $P1$ zunächst ausgeführt. Nach Ablauf des Quantums werden die bereiten Prozesse entsprechend der Warteschlangenreihenfolge berücksichtigt. Die Visualisierung muss deshalb Quantumablauf, Wiedereinreihung und Wechsel des laufenden Prozesses sichtbar machen.
+
+\subsection{LCFS}
+
+Bei Last-Come, First-Served (LCFS) wird der zuletzt eingetroffene bereite Prozess bevorzugt. In einer präemptiven Ausprägung verdrängt ein neuer Prozess den aktuell laufenden Prozess. Dadurch kann ein später eintreffender Prozess sehr schnell reagieren. Gleichzeitig besteht die Gefahr, dass ältere Prozesse wiederholt zurückgestellt werden und lange warten.
+
+Für die Visualisierung sind bei LCFS insbesondere die Ankunftszeitpunkte, die Präemptionsereignisse und die Rückkehr des verdrängten Prozesses in die Bereitschaftsmenge relevant. Die Anwendung stellt diese Vorgänge als zeitlich geordnete Ereignisse und Segmente dar.
+
+\subsection{Strict Priority}
+
+Strict Priority wählt aus den bereiten Prozessen denjenigen mit der höchsten Priorität. In der präemptiven Variante kann die Ankunft eines höher priorisierten Prozesses den laufenden Prozess unmittelbar verdrängen. Die Priorität muss dabei als Teil des Szenarios eindeutig definiert sein.
+
+Die Stärke des Verfahrens liegt in der gezielten Bevorzugung wichtiger oder zeitkritischer Prozesse. Die zentrale Schwäche ist mögliche Starvation: Niedrig priorisierte Prozesse können trotz Bereitschaft lange nicht ausgeführt werden. Eine Analyse sollte deshalb neben Mittelwerten auch maximale Wartezeiten und die Ereignisfolge betrachten.
+
+\subsection{Multilevel Feedback Queue}
+
+Die Multilevel Feedback Queue (MLFQ) verwendet mehrere Bereitschaftswarteschlangen mit unterschiedlichen Prioritätsstufen und Zeitquantumswerten. Neue Prozesse werden abhängig von der gewählten Strategie in eine Warteschlange eingeordnet. Verbraucht ein Prozess sein Quantum, ohne abzuschließen, kann er in eine niedrigere Warteschlange herabgestuft werden. Höhere Warteschlangen werden bevorzugt bedient; dadurch erhalten kurze oder interaktive Prozesse häufig eine schnelle erste Reaktion.
+
+MLFQ ist adaptiv, weil die weitere Behandlung eines Prozesses von seinem bisherigen Verhalten abhängt. Die Strategie kann dadurch unterschiedliche Prozessarten ohne vorherige exakte Kenntnis ihrer gesamten Burst-Zeit behandeln. Gleichzeitig entstehen zusätzliche Zielkonflikte: Zu aggressive Bevorzugung hoher Ebenen kann Prozesse in niedrigen Ebenen benachteiligen, während lange Quantumswerte die Reaktionsfähigkeit verringern können. Aging oder periodische Promotionen sind typische Gegenmaßnahmen gegen Starvation, werden im fokussierten Modell jedoch nur berücksichtigt, wenn sie als Teil der konkreten Verfahrensvariante definiert sind.
+
+Im Visualizer wird MLFQ durch mehrere Ebenen, Segmentpositionen, Quantumabläufe und Herabstufungsereignisse sichtbar gemacht. Dadurch lässt sich nicht nur das Endergebnis, sondern auch die Anpassung des Verfahrens an den bisherigen Prozessverlauf nachvollziehen.
+
+\section{Vergleich der theoretischen Perspektiven}
+
+Stallings sowie Tanenbaum und Bos behandeln beide Betriebssysteme, Prozesse und Scheduling, setzen aber unterschiedliche Akzente. Die Werke werden in dieser Arbeit nicht als widersprüchliche Theorien gegenübergestellt, sondern als sich ergänzende Zugänge verwendet.
+
+\begin{table}[H]
+\centering
+\caption{Ergänzende Perspektiven der verwendeten Betriebssystemliteratur.}
+\label{tab:buchvergleich}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}X X}
+\textbf{Aspekt} & \textbf{Stallings} & \textbf{Tanenbaum und Bos} \\
+\hline
+Grundperspektive & Systematische Betrachtung von Betriebssystemaufgaben, Ressourcen und Verwaltungszielen. & Konzeptionelle Betrachtung von Betriebssystemstrukturen, Prozessen, Threads und Abläufen. \\
+Scheduling & Einordnung von Zielen und Kriterien der Prozessorzuteilung. & Erklärung von Prozessausführung, Präemption und dem Zusammenspiel der Betriebssystemkomponenten. \\
+Nutzen für diese Arbeit & Begründung der Bewertungsmetriken und Zielkonflikte. & Begründung des Prozessmodells, der Zustandswechsel und der Ereignisorientierung. \\
+Übertragung in den Visualizer & Vergleichsansicht mit Wartezeit, Durchlaufzeit, Reaktionszeit und Durchsatz. & Gantt-Segmente, Prozesszustände, Präemptionen und Kontextwechsel. \\
+\end{tabularx}
+\end{table}
+
+Stallings liefert damit vor allem den systematischen Rahmen für die Frage, nach welchen Kriterien Scheduling-Verfahren bewertet werden können. Tanenbaum und Bos ergänzen diesen Rahmen um die Perspektive auf Prozesse und die Abläufe, durch die Scheduling-Entscheidungen wirksam werden. Die Anwendung benötigt beide Ebenen: Ohne Metriken wären Verfahren nicht vergleichbar; ohne Zustands- und Ereignismodell bliebe unklar, wie ein Ergebnis zustande gekommen ist \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+\section{Algorithmusvisualisierung als Vermittlungsform}
+
+Eine Scheduling-Visualisierung übersetzt abstrakte Zustandsänderungen in eine zeitlich beobachtbare Darstellung. Für die vorliegende Anwendung bedeutet dies, dass ein Prozess nicht nur als fertige Kennzahl, sondern als Folge von Ankunft, Bereitschaft, Ausführung, Präemption und Abschluss sichtbar wird. Die Gantt-Ansicht stellt die zeitliche Ordnung her, während Status- und Ereignisansichten die Bedeutung einzelner Abschnitte ergänzen.
+
+Algorithmusvisualisierung ist dabei nicht automatisch mit Lernwirksamkeit gleichzusetzen. Die Meta-Studie von Hundhausen, Douglas und Stasko zeigt, dass der Nutzen algorithmischer Visualisierungen von Gestaltung, Aufgabenstellung und aktiver Auseinandersetzung abhängt \cite{hundhausen2002meta}. Für diese Arbeit folgt daraus die Anforderung, Entscheidungswege und Interaktionsmöglichkeiten bereitzustellen. Eine empirische Untersuchung, ob Studierende dadurch tatsächlich besser lernen, ist ausdrücklich nicht Gegenstand der Arbeit.
+
+\section{Accessibility als fachliche und gestalterische Grundlage}
+
+Die fachliche Komplexität des Scheduling-Modells darf nicht dazu führen, dass zentrale Zustände ausschließlich visuell oder nur mit einer Maus zugänglich sind. Für die Anwendung sind daher semantische Struktur, Tastaturbedienung, sichtbarer Fokus, verständliche Statusmeldungen und eine nicht ausschließlich farbliche Unterscheidung relevant. Die WCAG~2.1 dient hierfür als normative Referenz \cite{wcag2018}. Heinecke und Gerken ergänzen diese normative Perspektive um Grundlagen der Mensch-Computer-Interaktion und der Gestaltung verständlicher Interaktionen \cite{heinecke_gerken_mci3}.
+
+Accessibility wird in dieser Arbeit nicht als nachträgliche Prüfung einzelner Farben verstanden. Sie betrifft auch die Modellierung der Zustände: Ein Dialog benötigt Fokusmanagement, ein Zeitregler eine verständliche Beschriftung und ein Gantt-Segment einen zugänglichen Namen. Diese Grundlagen führen direkt zu den in Kapitel~3 operationalisierten Anforderungen A11Y-01 bis A11Y-08.
+
+\section{Zwischenfazit}
+
+Das Kapitel hat das fachliche Modell für die folgenden Teile der Arbeit hergeleitet. Prozesse werden als zustandsbehaftete Ausführungseinheiten verstanden, deren CPU-Zuteilung durch deterministische Scheduling-Regeln gesteuert wird. Präemption, Kontextwechsel und Ankunftsereignisse erzeugen eine zeitliche Folge, die über Kennzahlen und Visualisierung analysiert werden kann.
+
+Für den Systementwurf ergeben sich daraus drei Konsequenzen: Erstens müssen Zustände, Ereignisse und Segmente auf einer gemeinsamen Datenbasis beruhen. Zweitens müssen mehrere Metriken parallel betrachtet werden, weil Scheduling-Ziele in Konkurrenz stehen. Drittens muss die Interaktion den Ablauf erklärbar und zugänglich machen. Diese Konsequenzen bilden die Brücke von den Grundlagen zur Anforderungsanalyse und zum Systementwurf.

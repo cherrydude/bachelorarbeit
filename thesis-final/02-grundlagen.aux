@@ -2,20 +2,57 @@
 \providecommand\zref@newlabel[2]{}
 \providecommand\hyper@newdestlabel[2]{}
 \citation{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}
-\citation{stallings_betriebssysteme}
+\citation{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Betriebssysteme und Prozessverwaltung}{3}{section.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}CPU-Scheduling in Betriebssystemen}{3}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Aufgaben des Betriebssystems}{3}{subsection.2.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Prozesszustände und Zustandsübergänge}{4}{subsection.2.1.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Für die Simulation verwendete Prozesszustände.}}{4}{table.caption.7}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:prozesszustaende}{{2.1}{4}{Für die Simulation verwendete Prozesszustände}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}Scheduler, Dispatcher und Kontextwechsel}{4}{subsection.2.1.3}\protected@file@percent }
+\citation{stallings_betriebssysteme}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}CPU-Scheduling in Betriebssystemen}{5}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Eingabeparameter und Entscheidungsgrundlage}{5}{subsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Ziele und Zielkonflikte}{5}{subsection.2.2.2}\protected@file@percent }
 \citation{tanenbaum_moderne_betriebssysteme_de}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Präemptive versus nicht-präemptive Scheduling-Verfahren}{4}{section.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Nicht-präemptive Verfahren}{4}{subsection.2.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Präemptive Verfahren}{4}{subsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Präemptive versus nicht-präemptive Scheduling-Verfahren}{6}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Nicht-präemptive Verfahren}{6}{subsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Präemptive Verfahren}{6}{subsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Bewertungsmetriken}{6}{section.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Durchlaufzeit}{6}{subsection.2.4.1}\protected@file@percent }
+\newlabel{eq:durchlaufzeit}{{2.1}{6}{Durchlaufzeit}{equation.2.1}{}}
+\newlabel{eq:durchschnittliche-durchlaufzeit}{{2.2}{7}{Durchlaufzeit}{equation.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Wartezeit}{7}{subsection.2.4.2}\protected@file@percent }
+\newlabel{eq:wartezeit}{{2.3}{7}{Wartezeit}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Reaktionszeit}{7}{subsection.2.4.3}\protected@file@percent }
+\newlabel{eq:reaktionszeit}{{2.4}{7}{Reaktionszeit}{equation.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Durchsatz und Kontextwechsel}{7}{subsection.2.4.4}\protected@file@percent }
+\newlabel{eq:durchsatz}{{2.5}{8}{Durchsatz und Kontextwechsel}{equation.2.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Scheduling-Verfahren}{8}{section.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces Beispielszenario zur Gegenüberstellung der Scheduling-Verfahren.}}{8}{table.caption.8}\protected@file@percent }
+\newlabel{tab:scheduling-beispiel}{{2.2}{8}{Beispielszenario zur Gegenüberstellung der Scheduling-Verfahren}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}First-Come, First-Served und Shortest Job First als Referenz}{8}{subsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Round Robin}{9}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}LCFS}{9}{subsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Strict Priority}{9}{subsection.2.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Multilevel Feedback Queue}{9}{subsection.2.5.5}\protected@file@percent }
+\citation{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Vergleich der theoretischen Perspektiven}{10}{section.2.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Ergänzende Perspektiven der verwendeten Betriebssystemliteratur.}}{10}{table.caption.9}\protected@file@percent }
+\newlabel{tab:buchvergleich}{{2.3}{10}{Ergänzende Perspektiven der verwendeten Betriebssystemliteratur}{table.caption.9}{}}
+\citation{hundhausen2002meta}
+\citation{wcag2018}
+\citation{heinecke_gerken_mci3}
+\@writefile{toc}{\contentsline {section}{\numberline {2.7}Algorithmusvisualisierung als Vermittlungsform}{11}{section.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.8}Accessibility als fachliche und gestalterische Grundlage}{11}{section.2.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.9}Zwischenfazit}{11}{section.2.9}\protected@file@percent }
 \@setckpt{02-grundlagen}{
-\setcounter{page}{5}
-\setcounter{equation}{0}
+\setcounter{page}{13}
+\setcounter{equation}{5}
 \setcounter{enumi}{6}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -24,13 +61,13 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{2}
-\setcounter{section}{3}
-\setcounter{subsection}{2}
+\setcounter{section}{9}
+\setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
 \setcounter{figure}{0}
-\setcounter{table}{0}
+\setcounter{table}{3}
 \setcounter{mdf@globalstyle@cnt}{0}
 \setcounter{mdfcountframes}{0}
 \setcounter{mdf@env@i}{0}
@@ -46,7 +83,7 @@
 \setcounter{ALG@storecount}{0}
 \setcounter{ALG@tmpcounter}{0}
 \setcounter{parentequation}{0}
-\setcounter{caption@flags}{0}
+\setcounter{caption@flags}{2}
 \setcounter{continuedfloat}{0}
 \setcounter{section@level}{0}
 \setcounter{Item}{6}
