@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  17 SEP 2026 12:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.8.23)  17 SEP 2026 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2222,6 +2222,12 @@ nel.vue \T1/lmr/m/n/10.95 ist als Ta-blist mit \T1/lmtt/m/n/10.95 role=tt-ab"\T
 1/lmr/m/n/10.95 , \T1/lmtt/m/n/10.95 aria-selected\T1/lmr/m/n/10.95 ,
  []
 
+
+Overfull \hbox (11.25679pt too wide) in paragraph at lines 120--121
+\T1/lmr/m/n/10.95 bün-delt Play-back, Sli-der, Sta-tus-kom-mu-ni-ka-ti-on, GSAP
+-Übergänge und die Reduced-Motion-
+ []
+
 [29]) [30]
 \openout2 = `06-qualitaetssicherung.aux'.
 
@@ -2464,7 +2470,7 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/lm/lmtt10.pfb>
-Output written on main.pdf (51 pages, 1581880 bytes).
+Output written on main.pdf (51 pages, 1582153 bytes).
 PDF statistics:
  1110 PDF objects out of 1200 (max. 8388607)
  813 compressed objects within 9 object streams

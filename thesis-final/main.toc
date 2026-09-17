@@ -66,7 +66,7 @@
 \contentsline {section}{\numberline {5.4}Umsetzung der Visualisierung}{28}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Interaktionsmechanismen und Nutzerworkflow}{29}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Umsetzung der Accessibility-Anforderungen}{29}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Build- und Deploymentprozess}{29}{section.5.7}%
+\contentsline {section}{\numberline {5.7}Build- und Deploymentprozess}{30}{section.5.7}%
 \contentsline {section}{\numberline {5.8}Besondere technische Herausforderungen}{30}{section.5.8}%
 \contentsline {chapter}{\numberline {6}Qualitätssicherung}{31}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Qualitätsziele und Prüfstrategie}{31}{section.6.1}%
