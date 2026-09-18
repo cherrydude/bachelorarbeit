@@ -4,20 +4,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Komponentenmodell der Anwendung mit Präsentationsschicht, Composables, Simulationskern und Domänenmodell.}}{18}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Übersicht der Benutzeroberfläche: Eingabebereich, Simulationsfenster und Metriken-Anzeige.}}{19}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}}{25}{figure.caption.13}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}}{27}{figure.caption.14}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Zustände und Übergänge eines Prozesses im Simulationsmodell.}}{28}{figure.caption.15}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}}{26}{figure.caption.13}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Zustände und Übergänge eines Prozesses im Simulationsmodell.}}{27}{figure.caption.14}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Startansicht der Anwendung mit Ausgangszustand und Einstieg in die Szenariokonfiguration.}}{35}{figure.caption.16}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}}{35}{figure.caption.17}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}}{36}{figure.caption.18}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Detaildarstellung der Gantt-Ansicht mit segmentierter Ausführung und sichtbaren Task-Wechseln.}}{36}{figure.caption.19}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Warteschlangen- und Statusdarstellung zur Einordnung der aktuellen Scheduling-Entscheidung.}}{36}{figure.caption.20}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Kennzahlenbereich mit Wartezeit, Durchlaufzeit und Reaktionszeit als quantitative Auswertung des Laufs.}}{36}{figure.caption.21}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}}{37}{figure.caption.22}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}}{34}{figure.caption.15}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}}{34}{figure.caption.16}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}}{35}{figure.caption.17}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \def \@chapapp {\appendixname }

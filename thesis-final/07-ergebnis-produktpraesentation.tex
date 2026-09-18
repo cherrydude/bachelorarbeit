@@ -6,6 +6,15 @@ Dieses Kapitel stellt das entwickelte Produkt vor und ordnet es anhand der zuvor
 
 Das Ergebnis der Arbeit ist eine interaktive Webanwendung zur Visualisierung präemptiver CPU-Scheduling-Verfahren. Sie ermöglicht die Definition von Prozessen mit relevanten Parametern, die Ausführung unterschiedlicher Verfahren und die vergleichende Analyse von Ablauf und Kennzahlen.
 
+Die entwickelte Anwendung ist als öffentlich zugängliches Endprodukt verfügbar:
+
+\begin{itemize}
+    \item Live-Anwendung: \url{https://scheduling-visualizer.onrender.com/}
+    \item Quellcode und technische Dokumentation: \url{https://github.com/cherrydude/scheduling-visualizer}
+\end{itemize}
+
+Die Links wurden am 18.09.2026 geprüft. Da sich die Live-Anwendung und der Quellcode nach Abschluss der Arbeit weiterentwickeln können, dokumentieren die Screenshots den im Rahmen dieser Arbeit untersuchten Entwicklungsstand.
+
 Das Produkt vereint drei Kerneigenschaften:
 
 \begin{itemize}
@@ -34,19 +43,6 @@ Dieser Ablauf unterstützt das didaktische Ziel, Entscheidungen nicht nur als En
 
 \begin{figure}[htbp]
     \centering
-    \IfFileExists{images/screenshot-ausgangslage.png}{%
-        \includegraphics[width=\textwidth]{images/screenshot-ausgangslage.png}%
-    }{%
-        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
-            \centering Platzhalter: Screenshot der Startansicht
-        \end{minipage}}%
-    }
-    \caption{Startansicht der Anwendung mit Ausgangszustand und Einstieg in die Szenariokonfiguration.}
-    \label{fig:produkt-start}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
     \IfFileExists{images/screenshot-szenario-geladen.png}{%
         \includegraphics[width=\textwidth]{images/screenshot-szenario-geladen.png}%
     }{%
@@ -69,45 +65,6 @@ Dieser Ablauf unterstützt das didaktische Ziel, Entscheidungen nicht nur als En
     }
     \caption{Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}
     \label{fig:produkt-fokus}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \IfFileExists{images/screenshot-gantt-detail.png}{%
-        \includegraphics[width=\textwidth]{images/screenshot-gantt-detail.png}%
-    }{%
-        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
-            \centering Platzhalter: Detailansicht des Gantt-Diagramms
-        \end{minipage}}%
-    }
-    \caption{Detaildarstellung der Gantt-Ansicht mit segmentierter Ausführung und sichtbaren Task-Wechseln.}
-    \label{fig:produkt-gantt}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \IfFileExists{images/screenshot-stack-detail.png}{%
-        \includegraphics[width=\textwidth]{images/screenshot-stack-detail.png}%
-    }{%
-        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
-            \centering Platzhalter: Warteschlangen- und Statusdarstellung
-        \end{minipage}}%
-    }
-    \caption{Warteschlangen- und Statusdarstellung zur Einordnung der aktuellen Scheduling-Entscheidung.}
-    \label{fig:produkt-stack}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \IfFileExists{images/screenshot-kennzahlen-detail.png}{%
-        \includegraphics[width=\textwidth]{images/screenshot-kennzahlen-detail.png}%
-    }{%
-        \fbox{\begin{minipage}[c][0.18\textheight][c]{0.9\textwidth}
-            \centering Platzhalter: Detailansicht der Kennzahlen
-        \end{minipage}}%
-    }
-    \caption{Kennzahlenbereich mit Wartezeit, Durchlaufzeit und Reaktionszeit als quantitative Auswertung des Laufs.}
-    \label{fig:produkt-kennzahlen}
 \end{figure}
 
 \begin{figure}[htbp]
