@@ -3,16 +3,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Komponentenmodell der Anwendung mit Präsentationsschicht, Composables, Simulationskern und Domänenmodell.}}{18}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Komponentenmodell der Anwendung mit Präsentationsschicht, Composables, Simulationskern und Domänenmodell.}}{27}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}}{24}{figure.caption.12}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}}{26}{figure.caption.13}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Zustände und Übergänge eines Prozesses im Simulationsmodell.}}{27}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Domänenmodell des Simulationslaufs mit seinen Ergebnisstrukturen.}}{33}{figure.caption.11}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Sequenzdiagramm eines Simulationslaufs von der Benutzeraktion bis zur Aktualisierung der Benutzeroberfläche.}}{35}{figure.caption.12}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Zustände und Übergänge eines Prozesses im Simulationsmodell.}}{36}{figure.caption.13}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}}{34}{figure.caption.15}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}}{34}{figure.caption.16}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}}{35}{figure.caption.17}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Geladenes Szenario mit sichtbaren Task-Parametern als Grundlage für die Simulation.}}{43}{figure.caption.14}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Fokusansicht mit zeitlicher Ablaufdarstellung und Kennzahlenbereich für einen einzelnen Lauf.}}{43}{figure.caption.15}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Vergleichsansicht mehrerer Verfahren auf identischer Szenariobasis.}}{44}{figure.caption.16}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \def \@chapapp {\appendixname }

@@ -8,7 +8,7 @@
     "latexmk": true
   },
   "latex-workshop.formatting.latex": "latexindent",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "[latex]": {
     "editor.formatOnSave": false
   }

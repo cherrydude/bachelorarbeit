@@ -1,0 +1,279 @@
+\chapter{Grundlagen}
+
+Dieses Kapitel stellt die theoretischen Grundlagen dar, auf denen die Konzeption, Implementierung und Bewertung der Anwendung basieren. Zunächst werden die Aufgaben moderner Betriebssysteme sowie die Begriffe Prozess und Thread erläutert. Anschließend werden die für den Visualizer relevanten Task-Zustände, Scheduling-Konzepte und Bewertungsmetriken beschrieben. Abschließend wird der Zusammenhang zwischen diesen Grundlagen und der Visualisierung von Scheduling-Verfahren hergestellt.
+
+\section{Betriebssysteme und Prozessverwaltung}
+
+Um die Notwendigkeit und den Nutzen der dieser Arbeit zugrunde liegenden Konzepte des entwickelten Visualizers zu erläutern, ist zunächst die Rolle moderner Betriebssysteme und ihrer Prozessverwaltung zu betrachten. Moderne Betriebssysteme vermitteln zwischen der Hardware und den darauf ausgeführten Anwendungsprogrammen. Sie verbergen die technische Komplexität der Hardware weitgehend vor den Nutzenden und stellen standardisierte Schnittstellen für die Programmausführung und Ressourcenverwaltung bereit. Dadurch können Anwendungen verwendet werden, ohne dass die technischen Details der zugrunde liegenden Hardware bekannt sein müssen.
+
+Nach Tanenbaum und Bos lassen sich Betriebssysteme aus zwei ergänzenden Perspektiven betrachten: als erweiterte Maschine beziehungsweise Abstraktionsebene und als Ressourcenverwalter \cite{tanenbaum_moderne_betriebssysteme_de}. Diese beiden Perspektiven bilden den konzeptionellen Rahmen für die folgenden Betrachtungen.
+
+Als Abstraktionsebene verbergen Betriebssysteme die technischen Einzelheiten der Hardware und stellen einheitliche Konzepte wie Dateien, virtuelle Speicheradressen, Prozesse und standardisierte Geräteschnittstellen bereit. Anwendungen müssen dadurch beispielsweise nicht die physische Organisation eines Speichermediums kennen, um eine Datei zu öffnen oder zu speichern. Diese Abstraktion wird durch Systemaufrufe und Bibliotheken ermöglicht, die den direkten Hardwarezugriff kapseln. Die Abstraktionsebene erleichtert die Entwicklung von Anwendungssoftware, da sie eine einheitliche Schnittstelle bereitstellt und die Komplexität der Hardware verbirgt.
+
+Gleichzeitig koordinieren Betriebssysteme den Zugriff auf begrenzte Hardware-Ressourcen. Zu diesen Ressourcen zählen insbesondere Prozessorzeit, Arbeitsspeicher, Speicherplatz, Dateien, Ein-/Ausgabegeräte und Netzwerkverbindungen. Das Betriebssystem weist diese Ressourcen den laufenden Prozessen und Threads zu, kontrolliert Zugriffsrechte und behandelt Ereignisse wie Unterbrechungen oder Ein-/Ausgabeoperationen. Für die Einteilung der Prozessorzeit ist das sogenannte CPU-Scheduling vorgesehen. Dabei wird entschieden, zu welchem Zeitpunkt welche Ausführungseinheit wie lange Prozessorzeit erhält.
+
+\subsection{Prozesse}
+
+Ein Prozess kann als ein Programm in Ausführung bezeichnet werden. Während ein Programm zunächst nur eine statische Sammlung von Anweisungen darstellt, erhält es durch seine Ausführung einen vom Betriebssystem verwalteten Zustand. Dieser umfasst unter anderem den Programmcode, den virtuellen Adressraum, Registerinhalte, den Program Counter, geöffnete Dateien sowie weitere Ressourcen. Außerdem besitzt jeder Prozess eine eindeutige Prozesskennung und Verwaltungsinformationen zu seinem aktuellen Lebenszyklus.
+
+Ein Prozess stellt dabei einen geschützten Rahmen für die Ausführung eines Programms dar. Das Betriebssystem kann Prozesse dadurch unabhängig voneinander verwalten, anhalten, fortsetzen und beenden. In modernen Betriebssystemen wird die konkrete Ausführung häufig auf Ebene der Threads betrachtet, da Threads die eigentlichen Ausführungseinheiten darstellen. Der Prozess bleibt jedoch die zentrale Einheit für die Verwaltung des Adressraums und vieler gemeinsam genutzter Ressourcen \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+Prozesse wurden als Abstraktion eingeführt, um mehrere Programme kontrolliert und möglichst unabhängig voneinander verwalten zu können. In frühen Stapelverarbeitungssystemen wurden Aufträge überwiegend nacheinander abgearbeitet. Mit der Entwicklung von Mehrprogrammsystemen konnte ein Prozess die CPU abgeben, während er beispielsweise auf eine Ein-/Ausgabe wartete. Das Betriebssystem konnte in dieser Zeit eine andere bereite Ausführungseinheit ausführen. Dadurch wurde die Auslastung der Rechenressourcen verbessert und die Grundlage für die später verbreiteten Time-Sharing-Systeme geschaffen. Ein frühes Beispiel dafür ist das am Massachusetts Institute of Technology entwickelte Compatible Time-Sharing System (CTSS), das 1961 demonstriert wurde \cite{computerhistory_ctss}.
+
+Die Prozessabstraktion bietet mehrere Vorteile. Erstens ermöglicht sie die kontrollierte Ausführung mehrerer Programme und damit eine bessere Auslastung der CPU. Zweitens unterstützt sie die Isolation von Speicherbereichen und Ressourcen. Fehler eines Prozesses müssen dadurch nicht unmittelbar andere Prozesse beeinträchtigen. Drittens kann das Betriebssystem die Prozessorzeit anhand von Scheduling-Regeln auf mehrere Prozesse beziehungsweise Threads verteilen. Auf Mehrkernprozessoren können mehrere Ausführungseinheiten außerdem gleichzeitig auf unterschiedlichen Prozessorkernen ausgeführt werden.
+
+Auf einem Einkernprozessor kann zu einem Zeitpunkt jedoch nur ein Ausführungsstrang tatsächlich CPU-Zeit beanspruchen. Mehrere Prozesse oder Threads können dort nicht physisch gleichzeitig ausgeführt werden. Durch schnelle Wechsel zwischen den bereiten Ausführungseinheiten entsteht für die Nutzenden dennoch der Eindruck einer gleichzeitigen Ausführung.
+
+Prozesse sind vergleichsweise schwergewichtige Verwaltungseinheiten. Ihre Erzeugung und Beendigung sowie der Wechsel zwischen Prozessen verursachen Verwaltungsaufwand. Außerdem sind Prozesse durch ihre getrennten virtuellen Adressräume stärker voneinander isoliert. Der Datenaustausch zwischen ihnen erfordert daher spezielle Kommunikationsmechanismen wie Pipes, Nachrichtenwarteschlangen oder gemeinsam genutzten Speicher. Für Programme, die mehrere eng zusammenhängende Aufgaben parallel bearbeiten sollen, kann die ausschließliche Verwendung mehrerer Prozesse daher unnötig aufwendig sein.
+
+\subsection{Threads als Ausführungseinheiten}
+
+Um mehrere eng zusammenhängende Aufgaben innerhalb eines gemeinsamen Prozesskontexts effizient ausführen zu können, wurden Threads eingeführt. Ein Thread ist ein einzelner Ausführungsstrang innerhalb eines Prozesses. Während der Prozess den geschützten Rahmen mit seinem virtuellen Adressraum und den zugehörigen Ressourcen beschreibt, repräsentiert der Thread die konkrete Ausführung von Programmanweisungen.
+
+Ein Prozess kann aus einem oder mehreren Threads bestehen. Threads desselben Prozesses teilen sich typischerweise den Programmcode, den Heap, globale Variablen, geöffnete Dateien und weitere Ressourcen. Jeder Thread verfügt dagegen über einen eigenen Program Counter, eigene Register, einen eigenen Stack und einen eigenen Ausführungszustand \cite{tanenbaum_moderne_betriebssysteme_de}.
+
+Die gemeinsame Nutzung von Ressourcen erleichtert die Kommunikation zwischen Threads und verursacht in der Regel weniger Verwaltungsaufwand als die Kommunikation zwischen voneinander isolierten Prozessen. Threads können dadurch unterschiedliche Aufgaben innerhalb eines Programms übernehmen. In einem Browser kann beispielsweise ein Thread die Benutzeroberfläche bedienen, während andere Threads Netzwerkdaten verarbeiten oder Downloads durchführen.
+
+Auf einem Einkernprozessor wird zu jedem Zeitpunkt nur ein Thread tatsächlich ausgeführt. Der Scheduler teilt die Prozessorzeit durch schnelle Wechsel zwischen den Threads auf. Auf einem Mehrkernprozessor können mehrere Threads desselben Prozesses dagegen gleichzeitig auf unterschiedlichen Prozessorkernen ausgeführt werden.
+
+Die gemeinsame Nutzung des Speichers bringt neben Vorteilen auch Risiken mit sich. Greifen mehrere Threads ohne geeignete Synchronisation auf dieselben Daten zu, kann eine Race Condition entstehen. Dabei hängt das Ergebnis von der zeitlichen Reihenfolge der Zugriffe ab. Synchronisationsmechanismen wie Mutexes, Semaphore oder Monitore können solche Zugriffe koordinieren. Eine fehlerhafte Synchronisation kann jedoch beispielsweise zu einem Deadlock führen, bei dem Threads dauerhaft aufeinander warten.
+
+Threads verbessern daher die Reaktionsfähigkeit und Parallelität von Programmen, erfordern aber eine sorgfältige Verwaltung gemeinsam genutzter Daten. Die Prozessstruktur sorgt dabei für einen übergeordneten Schutz- und Ressourcenrahmen, während Threads die eigentlichen Ausführungsstränge innerhalb dieses Rahmens darstellen.
+
+\subsection{Aufgaben des Betriebssystems}
+
+Die Funktionen eines Betriebssystems lassen sich unter anderem in Prozessverwaltung, Speicherverwaltung, Ein-/Ausgabeverwaltung, Dateiverwaltung, Geräteverwaltung, Netzwerkverwaltung und Sicherheitsfunktionen gliedern.
+
+Die Prozessverwaltung umfasst die Erzeugung, Zustandsverwaltung, Ausführung und Beendigung von Prozessen und Threads sowie deren Kommunikation. Die Speicherverwaltung stellt Prozessen jeweils einen eigenen virtuellen Adressraum bereit. Threads desselben Prozesses teilen sich dagegen grundsätzlich diesen Adressraum, verfügen jedoch über eigene Stacks und Register. Die Speicherverwaltung sorgt außerdem dafür, dass belegter Speicher wieder freigegeben wird und Prozesse nicht unerlaubt auf den Speicher anderer Prozesse zugreifen.
+
+Die Datei- und Geräteverwaltung abstrahieren den Zugriff auf dauerhafte Daten und angeschlossene Hardware. Anwendungen können dadurch mit Dateien und Geräten arbeiten, ohne deren technische Implementierung im Detail kennen zu müssen. Ergänzend schützen Benutzer- und Berechtigungsmodelle den Zugriff auf Ressourcen.
+
+Für das CPU-Scheduling sind vor allem die Prozess- und Threadverwaltung sowie die Unterbrechungsbehandlung relevant. Das Betriebssystem verwaltet Ausführungskontexte, führt Zustandswechsel durch und reagiert auf Ereignisse wie Timer-Interrupts, Ein-/Ausgabeabschlüsse oder die Ankunft neuer Prozesse und Threads.
+
+Auf einem Einkernprozessor kann zu einem Zeitpunkt nur ein Thread tatsächlich ausgeführt werden. Durch schnelle Wechsel zwischen bereiten Threads entsteht dennoch der Eindruck einer gleichzeitigen Ausführung. Auf Mehrkernprozessoren können mehrere Threads oder Prozesse tatsächlich parallel auf unterschiedlichen Kernen laufen. Auch dann muss das Betriebssystem die Ausführungseinheiten auf die verfügbaren Kerne verteilen und die Nutzung der Ressourcen überwachen.
+
+Stallings beschreibt Betriebssysteme insbesondere aus der Perspektive der Verwaltung und Zuteilung von Ressourcen. Tanenbaum und Bos ordnen dieselben Aufgaben stärker in ein konzeptionelles Modell aus Prozessen, Threads, Zuständen und Betriebssystemkomponenten ein. Für diese Arbeit werden beide Perspektiven verbunden: Die Ressourcenperspektive erklärt, warum Scheduling erforderlich ist, während das Prozess- und Threadmodell beschreibt, wie die daraus entstehenden Entscheidungen umgesetzt werden \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+Für die theoretische Beschreibung realer Betriebssysteme werden im Folgenden weiterhin die Begriffe Prozess und Thread verwendet. Für das konkrete Simulationsmodell des Visualizers wird dagegen die einheitliche Bezeichnung \textit{Task} eingeführt. Ein Task repräsentiert dort eine schedulierbare Ausführungseinheit mit eigener Ankunftszeit, Burst-Zeit, Priorität und aktuellem Zustand.
+
+Im Betriebssystemkontext kann eine solche Ausführungseinheit je nach Modellierung einem Prozess oder einem Thread entsprechen. Der Visualizer abstrahiert diese technische Unterscheidung, da für die Simulation vor allem die zeitliche Zuteilung der CPU und die daraus entstehenden Zustandsänderungen relevant sind. Die Simulation modelliert somit keine innerhalb eines Prozesses parallel laufenden Threads, sondern unabhängige Tasks, deren Ausführung durch das jeweils gewählte Scheduling-Verfahren gesteuert wird.
+
+\subsection{Task-Zustände und Zustandsübergänge}
+
+Ein Task befindet sich zu jedem Zeitpunkt in einem bestimmten Simulationszustand. Für die Modellierung des Visualizers werden die Zustände \textit{pending}, \textit{ready}, \textit{running}, \textit{preempted} und \textit{finished} verwendet. Diese Zustandsbezeichnungen bilden die fachliche Modellierung der Anwendung ab und sind nicht als vollständige Abbildung aller Zustände realer Betriebssysteme zu verstehen.
+
+Ein neu angelegter Task ist zunächst noch nicht bereit, solange seine Ankunftszeit nicht erreicht ist. Danach wird er in die Bereitschaftsmenge aufgenommen. Der Zustand \textit{running} bezeichnet den Task, dem aktuell CPU-Zeit zugewiesen ist. Wird ein laufender Task durch einen anderen verdrängt, wird dies in der Simulation als Übergang in den Zustand \textit{preempted} erfasst. Nach einer erneuten Auswahl kann er weiterlaufen. Mit dem Abschluss der benötigten Burst-Zeit erreicht der Task den Zustand \textit{finished}.
+
+Diese Übergänge bilden die fachliche Grundlage für die Ereignisse des Simulationslaufs und für die Segmentierung der Gantt-Ansicht.
+
+\begin{table}[H]
+\centering
+\caption{Für die Simulation verwendete Task-Zustände.}
+\label{tab:taskzustaende}
+\small
+\begin{tabularx}{\textwidth}{p{0.2\textwidth}X X}
+\textbf{Zustand} & \textbf{Bedeutung} & \textbf{Typischer Übergang} \\
+\hline
+\textit{pending} & Task ist noch nicht angekommen. & Ankunftszeit erreicht $\rightarrow$ \textit{ready} \\
+\textit{ready} & Task wartet auf CPU-Zuteilung. & Auswahl durch den Scheduler $\rightarrow$ \textit{running} \\
+\textit{running} & Task verwendet die CPU. & Abschluss, Präemption oder Quantumablauf \\
+\textit{preempted} & Task wurde unterbrochen und wartet auf erneute Auswahl. & Erneute Auswahl $\rightarrow$ \textit{running} \\
+\textit{finished} & Task hat seine benötigte Ausführungszeit verbraucht. & Endzustand \\
+\end{tabularx}
+\end{table}
+
+\subsection{Scheduler, Dispatcher und Kontextwechsel}
+
+Der Scheduler entscheidet, welcher bereite Task als Nächstes CPU-Zeit erhalten soll. Der Dispatcher setzt diese Entscheidung technisch um, indem er den Kontext des bisher laufenden Tasks sichert und den Kontext des ausgewählten Tasks lädt. Zum Ausführungskontext gehören je nach System unter anderem Registerinhalte, der Program Counter, der Stack sowie weitere Verwaltungsinformationen.
+
+Der Wechsel zwischen zwei Ausführungseinheiten wird als Kontextwechsel bezeichnet. Er ermöglicht unter anderem Präemption, kann aber auch durch die Beendigung oder Blockierung eines Tasks ausgelöst werden. Dabei wird der bisherige Zustand gesichert und ein anderer Zustand wiederhergestellt. Dieser Vorgang verursacht Verwaltungsaufwand und kann die tatsächlich für Anwendungsaufgaben verfügbare Prozessorzeit reduzieren.
+
+In der Simulation wird der Aufwand eines Kontextwechsels nicht als zusätzliche reale Prozessorzeit modelliert. Die Anzahl der Kontextwechsel wird jedoch als Kennzahl erfasst. Dadurch kann sichtbar gemacht werden, dass ein Verfahren zwar eine kurze Reaktionszeit erreichen, zugleich aber mehr Kontextwechsel verursachen kann.
+
+Ein Scheduling-Ereignis kann durch mehrere Ursachen ausgelöst werden. Dazu gehören die Ankunft eines neuen Tasks, der Ablauf eines Zeitquantums, die Beendigung eines Tasks oder ein Wechsel von einer blockierten in eine bereite Situation. Die Implementierung abstrahiert diese Betriebssystemereignisse auf diskrete Zeitschritte. Diese Abstraktion ist für eine didaktische Visualisierung geeignet, weil sie jeden relevanten Zustandswechsel explizit darstellen kann.
+
+\section{CPU-Scheduling in Betriebssystemen}
+
+CPU-Scheduling beschreibt die Auswahlstrategie zur Vergabe von Prozessorzeit an bereite Ausführungseinheiten. Ziel ist ein Ausgleich zwischen konkurrierenden Kriterien wie Reaktionszeit, Wartezeit, Durchlaufzeit, Auslastung und Durchsatz \cite{stallings_betriebssysteme}.
+
+In Mehrprogrammsystemen erfolgt diese Auswahl unter variierenden Ankunftszeiten und Laufzeiten. Scheduling-Verfahren werden daher üblicherweise als Heuristiken formuliert, deren Eignung vom Lastprofil und den Systemzielen abhängt. Zentrale Fragestellungen sind die Auswahl des nächsten Tasks, der Umgang mit Präemption und Kontextwechseln sowie die Bewertung über geeignete Kennzahlen.
+
+\subsection{Eingabeparameter und Entscheidungsgrundlage}
+
+Ein Scheduling-Szenario besteht im Kern aus einer Menge von Tasks. Für jeden Task werden mindestens eine Ankunftszeit und eine benötigte Ausführungszeit, die sogenannte Burst-Zeit, benötigt. Je nach Verfahren kommen eine Priorität, ein Zeitquantum oder eine Zugehörigkeit zu einer Warteschlange hinzu.
+
+Die Ankunftszeit legt fest, ab welchem Zeitpunkt ein Task berücksichtigt werden darf. Die Burst-Zeit beschreibt, wie viel CPU-Zeit bis zum Abschluss benötigt wird. Während der Simulation wird zusätzlich die verbleibende Ausführungszeit eines Tasks verfolgt.
+
+Für jeden Zeitschritt wird zunächst bestimmt, welche Tasks angekommen und noch nicht abgeschlossen sind. Aus dieser Bereitschaftsmenge wählt der Scheduler anhand der jeweiligen Verfahrensregel einen Task. Anschließend wird dessen Restzeit reduziert und das entsprechende Ereignis beziehungsweise Segment im Ergebnisobjekt gespeichert. Diese Reihenfolge ist wichtig, weil ansonsten Ankunft, Präemption und Abschluss in einer mehrdeutigen Reihenfolge verarbeitet werden könnten.
+
+\subsection{Ziele und Zielkonflikte}
+
+Scheduling-Verfahren optimieren unterschiedliche Ziele, die nicht gleichzeitig maximal erfüllt werden können. Eine kurze durchschnittliche Wartezeit kann beispielsweise zu einer langen Wartezeit einzelner Tasks führen. Ein hoher Durchsatz kann mit einer schlechteren Reaktionszeit interaktiver Tasks einhergehen. Häufige Präemption kann die Reaktionsfähigkeit verbessern, erhöht aber die Anzahl der Kontextwechsel und damit den Verwaltungsaufwand.
+
+Für die Bewertung wird deshalb kein einzelner universeller Gütewert vorausgesetzt. Stattdessen werden mehrere Kennzahlen gemeinsam betrachtet. Die Vergleichsansicht der Anwendung erlaubt zusätzlich, die Gewichtung dieser Kennzahlen an einen Anwendungsfall wie Interaktion, Batch-Verarbeitung oder Soft Real-Time anzupassen.
+
+\section{Präemptive und nicht-präemptive Scheduling-Verfahren}
+
+Scheduling-Verfahren lassen sich grundlegend in präemptive und nicht-präemptive Strategien einteilen. Diese Unterscheidung beeinflusst sowohl das Laufzeitverhalten als auch die Anzahl möglicher Kontextwechsel.
+
+\subsection{Nicht-präemptive Verfahren}
+
+Nicht-präemptive Verfahren erlauben einem Task, die CPU bis zum Abschluss oder bis zur Blockierung zu behalten. Der Scheduler unterbricht einen laufenden Task nicht aktiv, um einen anderen bereiten Task auszuführen. Entscheidungen treten dadurch in der Regel nur bei der Beendigung oder Blockierung des laufenden Tasks auf.
+
+Vorteile nicht-präemptiver Verfahren sind eine einfache Ablaufstruktur und ein geringer Verwaltungsaufwand. Nachteilig sind potenziell lange Wartezeiten, wenn ein langer Task vor mehreren kürzeren Tasks ausgeführt wird. Typische Vertreter sind First-Come, First-Served und nicht-präemptives Shortest Job First.
+
+\subsection{Präemptive Verfahren}
+
+Präemptive Verfahren erlauben dem Scheduler, einen laufenden Task aktiv zu unterbrechen und einen anderen Task einzuplanen. Auslöser sind typischerweise der Ablauf eines Zeitquantums, ein Timer-Interrupt oder die Ankunft eines höher priorisierten Tasks.
+
+Dadurch steigen die Reaktionsfähigkeit und die Steuerbarkeit des Systems. Gleichzeitig nimmt jedoch die Anzahl der Kontextwechsel zu, wodurch zusätzlicher Verwaltungsaufwand entsteht \cite{tanenbaum_moderne_betriebssysteme_de}.
+
+\section{Bewertungsmetriken}
+
+Die Bewertung eines Scheduling-Verfahrens benötigt messbare Größen, die aus dem Ablauf eines Simulationslaufs abgeleitet werden. Im Folgenden bezeichnet $a_i$ die Ankunftszeit eines Tasks $i$, $c_i$ seine Fertigstellungszeit, $s_i$ den Zeitpunkt seiner ersten Ausführung und $b_i$ seine gesamte benötigte CPU-Zeit.
+
+\subsection{Durchlaufzeit}
+
+Die Durchlaufzeit beschreibt die Zeitspanne vom Eintreffen bis zum Abschluss eines Tasks:
+
+\begin{equation}
+T_i = c_i - a_i
+\label{eq:durchlaufzeit}
+\end{equation}
+
+Sie umfasst sowohl die tatsächliche Ausführungszeit als auch Wartezeiten und Unterbrechungen. Die durchschnittliche Durchlaufzeit ergibt sich aus:
+
+\begin{equation}
+\overline{T} = \frac{1}{n} \sum_{i=1}^{n} T_i.
+\label{eq:durchschnittliche-durchlaufzeit}
+\end{equation}
+
+Eine geringe durchschnittliche Durchlaufzeit ist insbesondere für abgeschlossene Aufträge und Batch-Szenarien relevant. Sie beschreibt jedoch nicht, wie früh ein Task erstmals CPU-Zeit erhält.
+
+\subsection{Wartezeit}
+
+Die Wartezeit bezeichnet die Zeit, in der ein Task bereit ist, aber keine CPU erhält. Bei einem Task ohne Blockierung kann sie aus Durchlaufzeit und Burst-Zeit berechnet werden:
+
+\begin{equation}
+W_i = T_i - b_i.
+\label{eq:wartezeit}
+\end{equation}
+
+Bei präemptiven Verfahren enthält diese Größe alle Zeitanteile zwischen den einzelnen Ausführungsabschnitten. Eine niedrige durchschnittliche Wartezeit kann anzeigen, dass die Bereitschaftsmenge insgesamt effizient bedient wurde. Zusätzlich ist die maximale Wartezeit relevant, weil ein guter Mittelwert lange Benachteiligungen einzelner Tasks verdecken kann.
+
+\subsection{Reaktionszeit}
+
+Die Reaktionszeit misst, wie lange ein Task nach seiner Ankunft bis zur ersten CPU-Zuteilung warten muss:
+
+\begin{equation}
+R_i = s_i - a_i.
+\label{eq:reaktionszeit}
+\end{equation}
+
+Sie ist besonders für interaktive Systeme bedeutsam. Ein Verfahren kann eine akzeptable Durchlaufzeit erreichen, aber trotzdem eine schlechte Reaktionszeit aufweisen, wenn bestimmte Tasks erst spät erstmals ausgeführt werden.
+
+\subsection{Durchsatz und Kontextwechsel}
+
+Der Durchsatz beschreibt die Zahl abgeschlossener Tasks pro Zeiteinheit. Für einen Beobachtungszeitraum von $t_0$ bis $t_1$ kann er näherungsweise als Verhältnis der abgeschlossenen Tasks zur Zeitspanne angegeben werden:
+
+\begin{equation}
+X = \frac{N_{\mathrm{fertig}}}{t_1 - t_0}.
+\label{eq:durchsatz}
+\end{equation}
+
+Die Anzahl der Kontextwechsel ist keine reine Zeitmetrik, sondern ein Indikator für die Häufigkeit von Scheduling-Entscheidungen. Zusammen mit Präemptionsanzahl und Reaktionszeit hilft sie, den Zielkonflikt zwischen Responsivität und Verwaltungsaufwand zu beschreiben.
+
+\section{Scheduling-Verfahren}
+
+Die folgenden Verfahren werden im Visualizer als deterministische Strategien auf derselben Task- und Ereignisstruktur umgesetzt. Sie unterscheiden sich insbesondere darin, nach welcher Regel der nächste bereite Task ausgewählt wird und ob ein laufender Task durch einen anderen verdrängt werden darf.
+
+Für die Simulation werden jedem Task mindestens eine Ankunftszeit und eine benötigte Ausführungszeit, die sogenannte Burst-Zeit, zugeordnet. Je nach Scheduling-Verfahren kommen zusätzliche Parameter wie Priorität, Zeitquantum oder eine Warteschlangenzugehörigkeit hinzu. Diese Parameter werden in der Anwendung über das jeweilige Szenario und die Einstellungen des Scheduling-Verfahrens festgelegt.
+
+Die Verfahren werden im Folgenden zunächst fachlich beschrieben. Ihre konkreten Ablaufsequenzen und die daraus resultierenden Bewertungsmetriken werden in den entsprechenden Visualisierungen beziehungsweise im Ergebniskapitel dargestellt.
+
+\subsection{First-Come, First-Served und Shortest Job First als Referenz}
+
+First-Come, First-Served (FCFS) ordnet bereite Tasks nach ihrer Ankunft. Der zuerst angekommene Task wird zuerst ausgeführt. Das Verfahren ist einfach nachvollziehbar und benötigt keine komplexe Auswahlregel. Es kann jedoch zu langen Wartezeiten führen, wenn ein langer Task vor mehreren kurzen Tasks steht.
+
+Shortest Job First (SJF) wählt den bereiten Task mit der kürzesten erwarteten Burst-Zeit. In der nicht-präemptiven Variante bleibt der ausgewählte Task bis zum Abschluss aktiv. Eine Auswahl nach der jeweils verbleibenden Ausführungszeit bezeichnet dagegen das präemptive Verfahren Shortest Remaining Time First (SRTF).
+
+SJF dient in dieser Arbeit als Referenz für das Spannungsfeld zwischen durchschnittlicher Wartezeit und der notwendigen Kenntnis zukünftiger Ausführungszeiten. Die produktive Anwendung konzentriert sich dagegen auf präemptive Verfahren.
+
+\subsection{Round Robin}
+
+Round Robin verwendet eine zyklische Bereitschaftswarteschlange und ein festgelegtes Zeitquantum. Ein Task erhält höchstens ein Quantum. Wenn er danach noch nicht abgeschlossen ist, wird er am Ende der Warteschlange erneut eingereiht. Dadurch erhalten bereite Tasks wiederholt CPU-Zeit.
+
+Ein kleines Quantum verbessert typischerweise die Reaktionsfähigkeit, erzeugt aber mehr Kontextwechsel. Ein großes Quantum reduziert den Verwaltungsaufwand und kann das Verhalten in Richtung FCFS verschieben.
+
+Im Beispielszenario wird zunächst $P1$ ausgeführt. Nach Ablauf des Quantums werden die bereiten Tasks entsprechend der Warteschlangenreihenfolge berücksichtigt. Die Visualisierung muss deshalb insbesondere den Quantumablauf, die Wiedereinreihung und den Wechsel des laufenden Tasks sichtbar machen.
+
+\subsection{Last-Come, First-Served}
+
+Bei Last-Come, First-Served (LCFS) wird der zuletzt eingetroffene bereite Task bevorzugt. In der für den Visualizer betrachteten präemptiven Variante kann ein neu eintreffender Task den aktuell laufenden Task verdrängen. Dadurch kann ein später eintreffender Task sehr schnell CPU-Zeit erhalten.
+
+Gleichzeitig besteht die Gefahr, dass ältere Tasks wiederholt zurückgestellt werden und lange warten. Für die Visualisierung sind bei LCFS insbesondere die Ankunftszeitpunkte, die Präemptionsereignisse und die Rückkehr verdrängter Tasks in die Bereitschaftsmenge relevant.
+
+\subsection{Strict Priority}
+
+Strict Priority wählt aus den bereiten Tasks denjenigen mit der höchsten Priorität. In der präemptiven Variante kann die Ankunft eines höher priorisierten Tasks den aktuell laufenden Task unmittelbar verdrängen. Die Prioritätskonvention muss dabei als Teil des Szenarios eindeutig definiert sein.
+
+Die Stärke des Verfahrens liegt in der gezielten Bevorzugung wichtiger oder zeitkritischer Tasks. Die zentrale Schwäche ist das Risiko einer Starvation: Niedrig priorisierte Tasks können trotz bestehender Bereitschaft lange nicht ausgeführt werden. Eine Analyse sollte deshalb neben Mittelwerten auch maximale Wartezeiten und die Ereignisfolge betrachten.
+
+\subsection{Multilevel Feedback Queue}
+
+Die Multilevel Feedback Queue (MLFQ) verwendet mehrere Bereitschaftswarteschlangen mit unterschiedlichen Prioritätsstufen und Zeitquantumsgrößen. Neue Tasks werden entsprechend der gewählten Verfahrensvariante in eine Warteschlange eingeordnet. Verbraucht ein Task sein Quantum, ohne abzuschließen, kann er in eine niedrigere Warteschlange herabgestuft werden. Höhere Warteschlangen werden bevorzugt bedient.
+
+Dadurch erhalten kurze oder interaktive Tasks häufig eine schnelle erste Reaktion. MLFQ ist adaptiv, weil die weitere Behandlung eines Tasks von seinem bisherigen Verhalten abhängt. Die Strategie kann dadurch unterschiedliche Task-Typen behandeln, ohne dass die vollständige Burst-Zeit vorher bekannt sein muss.
+
+Für die konkrete Umsetzung des Visualizers müssen die Anzahl der Warteschlangen, die jeweiligen Quantumsgrößen, die Regeln zur Herabstufung und die Behandlung neu eintreffender Tasks festgelegt werden. Aging oder periodische Promotionen sind typische Gegenmaßnahmen gegen Starvation. Sie werden im fokussierten Simulationsmodell nur berücksichtigt, wenn sie ausdrücklich als Bestandteil der jeweiligen Verfahrensvariante definiert sind.
+
+Im Visualizer wird MLFQ durch mehrere Ebenen, Segmentpositionen, Quantumabläufe und Herabstufungsereignisse sichtbar gemacht. Dadurch lässt sich nicht nur das Endergebnis, sondern auch die Anpassung des Verfahrens an den bisherigen Task-Verlauf nachvollziehen.
+
+\section{Vergleich der theoretischen Perspektiven}
+
+Stallings sowie Tanenbaum und Bos behandeln beide Betriebssysteme, Prozesse und Scheduling, setzen jedoch unterschiedliche Akzente. Die Werke werden in dieser Arbeit nicht als widersprüchliche Theorien gegenübergestellt, sondern als sich ergänzende Zugänge verwendet.
+
+\begin{table}[H]
+\centering
+\caption{Ergänzende Perspektiven der verwendeten Betriebssystemliteratur.}
+\label{tab:buchvergleich}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}X X}
+\textbf{Aspekt} & \textbf{Stallings} & \textbf{Tanenbaum und Bos} \\
+\hline
+Grundperspektive & Systematische Betrachtung von Betriebssystemaufgaben, Ressourcen und Verwaltungszielen. & Konzeptionelle Betrachtung von Betriebssystemstrukturen, Prozessen, Threads und Abläufen. \\
+Scheduling & Einordnung von Zielen und Kriterien der Prozessorzuteilung. & Erklärung von Prozessausführung, Präemption und dem Zusammenspiel der Betriebssystemkomponenten. \\
+Nutzen für diese Arbeit & Begründung der Bewertungsmetriken und Zielkonflikte. & Begründung des Prozessmodells, der Zustandswechsel und der Ereignisorientierung. \\
+Übertragung in den Visualizer & Vergleichsansicht mit Wartezeit, Durchlaufzeit, Reaktionszeit und Durchsatz. & Gantt-Segmente, Task-Zustände, Präemptionen und Kontextwechsel. \\
+\end{tabularx}
+\end{table}
+
+Stallings liefert damit vor allem den systematischen Rahmen für die Frage, nach welchen Kriterien Scheduling-Verfahren bewertet werden können. Tanenbaum und Bos ergänzen diesen Rahmen um die Perspektive auf Prozesse und die Abläufe, durch die Scheduling-Entscheidungen wirksam werden.
+
+Die Anwendung benötigt beide Ebenen: Ohne Metriken wären Scheduling-Verfahren nicht vergleichbar; ohne Zustands- und Ereignismodell bliebe unklar, wie ein Ergebnis zustande gekommen ist \cite{stallings_betriebssysteme,tanenbaum_moderne_betriebssysteme_de}.
+
+\section{Algorithmusvisualisierung als Vermittlungsform}
+
+Eine Scheduling-Visualisierung übersetzt abstrakte Zustandsänderungen in eine zeitlich beobachtbare Darstellung. Für die vorliegende Anwendung bedeutet dies, dass ein Task nicht nur als fertige Kennzahl, sondern als Folge von Ankunft, Bereitschaft, Ausführung, Präemption und Abschluss sichtbar wird.
+
+Die Gantt-Ansicht stellt die zeitliche Ordnung her, während Status- und Ereignisansichten die Bedeutung einzelner Abschnitte ergänzen. Auf diese Weise können sowohl das Ergebnis eines Scheduling-Verfahrens als auch der Weg dorthin untersucht werden.
+
+Algorithmusvisualisierung ist dabei nicht automatisch mit Lernwirksamkeit gleichzusetzen. Die Meta-Studie von Hundhausen, Douglas und Stasko zeigt, dass der Nutzen algorithmischer Visualisierungen von der Gestaltung, der Aufgabenstellung und der aktiven Auseinandersetzung mit der Darstellung abhängt \cite{hundhausen2002meta}.
+
+Für diese Arbeit folgt daraus die Anforderung, Entscheidungswege und Interaktionsmöglichkeiten bereitzustellen. Eine empirische Untersuchung, ob Studierende dadurch tatsächlich besser lernen, ist ausdrücklich nicht Gegenstand dieser Arbeit.
+
+\section{Accessibility als fachliche und gestalterische Grundlage}
+
+Die fachliche Komplexität des Scheduling-Modells darf nicht dazu führen, dass zentrale Zustände ausschließlich visuell oder nur mit einer Maus zugänglich sind. Für die Anwendung sind daher eine semantische Struktur, Tastaturbedienung, ein sichtbarer Fokus, verständliche Statusmeldungen und eine nicht ausschließlich farbliche Unterscheidung relevant.
+
+Die Web Content Accessibility Guidelines 2.1 dienen hierfür als normative Referenz \cite{wcag2018}. Heinecke und Gerken ergänzen diese normative Perspektive um Grundlagen der Mensch-Computer-Interaktion und der Gestaltung verständlicher Interaktionen \cite{heinecke_gerken_mci3}.
+
+Accessibility wird in dieser Arbeit nicht als nachträgliche Prüfung einzelner Farben verstanden. Sie betrifft auch die Modellierung der Zustände: Ein Dialog benötigt Fokusmanagement, ein Zeitregler eine verständliche Beschriftung und ein Gantt-Segment einen zugänglichen Namen. Diese Grundlagen führen direkt zu den in Kapitel~3 operationalisierten Anforderungen A11Y-01 bis A11Y-08.
+
+\section{Zwischenfazit}
+
+Dieses Kapitel hat das fachliche Modell für die folgenden Teile der Arbeit hergeleitet. Prozesse und Threads bilden den theoretischen Rahmen, während Tasks im Visualizer als zustandsbehaftete, schedulierbare Ausführungseinheiten modelliert werden.
+
+Präemption, Kontextwechsel und Ankunftsereignisse erzeugen eine zeitliche Folge, die über Kennzahlen und Visualisierung analysiert werden kann. Dabei wurde außerdem herausgearbeitet, dass ein Einkernprozessor zu jedem Zeitpunkt nur einen Thread tatsächlich ausführen kann. Die scheinbare Gleichzeitigkeit mehrerer Programme entsteht dort durch schnelle Wechsel der Prozessorzuteilung. Auf Mehrkernprozessoren ist dagegen eine echte parallele Ausführung mehrerer Threads oder Prozesse möglich.
+
+Für den Systementwurf ergeben sich daraus drei Konsequenzen. Erstens müssen Task-Zustände, Ereignisse und Segmente auf einer gemeinsamen Datenbasis beruhen. Zweitens müssen mehrere Metriken parallel betrachtet werden, weil Scheduling-Ziele in Konkurrenz stehen. Drittens muss die Interaktion den Ablauf erklärbar und zugänglich machen. Diese Konsequenzen bilden die Brücke von den Grundlagen zur Anforderungsanalyse und zum Systementwurf.

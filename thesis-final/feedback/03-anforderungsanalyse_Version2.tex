@@ -1,0 +1,238 @@
+\chapter{Anforderungsanalyse}
+
+Die Anforderungen ergeben sich aus der Verbindung der fachlichen Grundlagen des CPU-Schedulings mit didaktischen Zielen und softwaretechnischen Qualitätsansprüchen. Ziel ist eine Anwendung, die ausgewählte präemptive Scheduling-Verfahren fachlich korrekt simuliert und ihre Abläufe für Lernende verständlich und zugänglich darstellt.
+
+Die Anforderungen werden in fachliche, didaktische, interaktionsbezogene, technische und auf Accessibility bezogene Anforderungen gegliedert. Die daraus abgeleiteten Anforderungen bilden die Grundlage für den Systementwurf und die spätere Qualitätssicherung.
+
+\section{Zielgruppe und Einsatzkontext}
+
+Die primäre Zielgruppe sind Studierende in einführenden und vertiefenden Lehrveranstaltungen zu Betriebssystemen. Die Anwendung soll sowohl die begleitete Demonstration im Unterricht als auch die eigenständige Analyse von Scheduling-Szenarien unterstützen.
+
+Der Visualizer ist als ergänzendes Lehr- und Lernmittel vorgesehen. Er ersetzt keine theoretische Einführung in Betriebssysteme und führt keine realen Betriebssystemprozesse aus. Stattdessen modelliert er die zeitliche CPU-Zuteilung ausgewählter Scheduling-Verfahren in einer kontrollierten Simulationsumgebung.
+
+Die Anwendung soll insbesondere dabei unterstützen, die Auswirkungen verschiedener Scheduling-Regeln auf die Reihenfolge der Ausführung, Präemptionen, Wartezeiten, Reaktionszeiten und Kontextwechsel nachzuvollziehen.
+
+\section{Fachliche Anforderungen}
+
+Die Anwendung muss die präemptiven Scheduling-Verfahren Round Robin, LCFS, Strict Priority und Multilevel Feedback Queue (MLFQ) simulieren. Die Verfahren müssen auf derselben grundlegenden Task- und Ereignisstruktur arbeiten, damit ihre Abläufe und Kennzahlen miteinander verglichen werden können.
+
+Im Simulationsmodell bezeichnet der Begriff \textit{Task} eine abstrahierte schedulierbare Ausführungseinheit. Ein Task besitzt mindestens eine eindeutige Kennung, eine Ankunftszeit, eine benötigte Ausführungszeit und eine Priorität. Zusätzlich können eine Bezeichnung, eine Farbe und eine Gruppenzugehörigkeit hinterlegt werden.
+
+Die Anwendung muss folgende fachliche Anforderungen erfüllen:
+
+\begin{itemize}
+    \item \textbf{FR-01:} Es müssen Szenarien mit mehreren Tasks erstellt, bearbeitet und gelöscht werden können.
+    \item \textbf{FR-02:} Für jeden Task müssen mindestens eine Task-ID, eine Ankunftszeit, eine Burst-Zeit und eine Priorität festgelegt werden können.
+    \item \textbf{FR-03:} Die Anwendung muss die präemptiven Verfahren Round Robin, LCFS, Strict Priority und MLFQ simulieren.
+    \item \textbf{FR-04:} Die Auswahl eines Tasks darf ausschließlich auf Grundlage der zum jeweiligen Zeitpunkt bereiten und noch nicht abgeschlossenen Tasks erfolgen.
+    \item \textbf{FR-05:} Präemptionen, Kontextwechsel, Zustandsänderungen und Fertigstellungen müssen im Simulationsablauf erfasst werden.
+    \item \textbf{FR-06:} Simulationslogik, Ereignisverlauf, Zeitsegmente und Kennzahlen müssen aus derselben Simulationsgrundlage abgeleitet werden.
+    \item \textbf{FR-07:} Bei identischen Eingabedaten und identischen Verfahrensparametern muss die Simulation deterministisch denselben Ablauf erzeugen.
+\end{itemize}
+
+Die Simulation verwendet für die vier Verfahren folgende verfahrensspezifische Parameter und Regeln.
+
+\subsection{Round Robin}
+
+Round Robin verwendet eine FIFO-Bereitschaftswarteschlange und ein globales Zeitquantum. Das Zeitquantum muss für die Simulation konfigurierbar sein.
+
+Läuft das Quantum eines noch nicht abgeschlossenen Tasks ab und befindet sich mindestens ein weiterer Task in der Bereitschaftsmenge, wird der laufende Task präemptiert und am Ende der Bereitschaftswarteschlange erneut eingereiht. Ist kein weiterer Task bereit, wird das Quantum zurückgesetzt und der aktuelle Task weiter ausgeführt.
+
+\subsection{LCFS}
+
+LCFS wird in der Anwendung präemptiv umgesetzt. Der zuletzt in die Bereitschaftsmenge eingereihte Task wird bevorzugt ausgewählt. Trifft während der Ausführung ein neuer Task ein, kann dieser den aktuell laufenden Task verdrängen.
+
+Für gleichzeitig eintreffende Tasks kann die Reihenfolge über eine konfigurierbare Tie-Break-Regel bestimmt werden. Unterstützt werden die Stack-Reihenfolge und die Task-ID.
+
+\subsection{Strict Priority}
+
+Strict Priority wird präemptiv umgesetzt. Aus den bereiten Tasks wird zunächst der Task mit der höchsten Priorität ausgewählt. In der Anwendung entspricht ein kleinerer Prioritätswert einer höheren Priorität.
+
+Besitzt ein neu eingetroffener Task eine höhere Priorität als der aktuell laufende Task, wird dieser verdrängt. Bei gleicher Priorität kann eine Tie-Break-Regel ausgewählt werden. Die Anwendung unterstützt folgende Tie-Break-Regeln:
+
+\begin{itemize}
+    \item längste Wartezeit,
+    \item kürzeste Restzeit,
+    \item FIFO-Reihenfolge,
+    \item früheste Ankunftszeit,
+    \item Task-ID.
+\end{itemize}
+
+\subsection{Multilevel Feedback Queue}
+
+Die Multilevel Feedback Queue verwendet mehrere Bereitschaftswarteschlangen mit unterschiedlichen Prioritätsstufen. Die Anzahl der Queue-Stufen und das Basisquantum müssen konfigurierbar sein.
+
+Neue Tasks starten in der höchsten Queue-Stufe. Die Queue-Stufe wird durch einen numerischen Level beschrieben, wobei kleinere Werte eine höhere Priorität darstellen. Die Quantumgröße einer Queue-Stufe ergibt sich aus dem Basisquantum und der aktuellen Queue-Stufe:
+
+\begin{equation}
+q_l = q_{\mathrm{Basis}} \cdot (l+1),
+\end{equation}
+
+wobei $l$ den Queue-Level bezeichnet. Bei einem Basisquantum von $2$ ergeben sich beispielsweise die Quantumsgrößen $2$, $4$ und $6$ für die Queue-Level $0$, $1$ und $2$.
+
+Verbraucht ein Task sein Quantum, ohne abgeschlossen zu sein, wird er um eine Queue-Stufe herabgestuft. Ein laufender Task wird präemptiert, sobald ein bereiter Task aus einer höher priorisierten Queue vorhanden ist. Eine automatische Beförderung durch Aging ist im fokussierten Simulationsmodell nicht vorgesehen.
+
+\section{Bereitstellung von Simulationsergebnissen}
+
+Die Anwendung muss die Ergebnisse eines Simulationslaufs in mehreren miteinander verbundenen Darstellungen bereitstellen.
+
+\begin{itemize}
+    \item \textbf{FR-08:} Der zeitliche Ablauf muss in einer Gantt-Ansicht dargestellt werden.
+    \item \textbf{FR-09:} Relevante Ereignisse wie Ankunft, Dispatch, Start, Präemption, Quantumablauf, Kontextwechsel und Abschluss müssen in einer Ereignisliste nachvollziehbar sein.
+    \item \textbf{FR-10:} Die aktuellen Zustände der Tasks müssen während des Ablaufs sichtbar sein.
+    \item \textbf{FR-11:} Die Anwendung muss zentrale Kennzahlen pro Simulationslauf berechnen und anzeigen.
+\end{itemize}
+
+Für einen Simulationslauf werden insbesondere folgende Kennzahlen bereitgestellt:
+
+\begin{itemize}
+    \item durchschnittliche Wartezeit,
+    \item durchschnittliche Durchlaufzeit,
+    \item durchschnittliche Reaktionszeit,
+    \item maximale Wartezeit,
+    \item Anzahl der Präemptionen,
+    \item Anzahl der Kontextwechsel.
+\end{itemize}
+
+Die Reaktionszeit beschreibt dabei die Zeitspanne zwischen der Ankunft eines Tasks und seiner ersten CPU-Zuteilung. Die Präemptionsanzahl umfasst sowohl explizite Verdrängungen als auch Quantumabläufe, bei denen ein noch nicht abgeschlossener Task die CPU abgeben muss.
+
+Ein Kontextwechsel bezeichnet in dieser Arbeit den Wechsel der CPU-Zuteilung von einem zuvor laufenden Task zu einem anderen Task. Der initiale Start des ersten Tasks sowie der Start eines Tasks nach einer Leerlaufphase werden nicht als Kontextwechsel gezählt. Die Fortsetzung desselben Tasks wird ebenfalls nicht als Kontextwechsel gewertet.
+
+\section{Didaktische Anforderungen}
+
+Die Anwendung soll nicht nur Endwerte liefern, sondern auch die Entscheidungswege des Schedulers sichtbar machen. Lernende sollen erkennen können, warum ein Task ausgewählt, unterbrochen, erneut eingeplant oder zurückgestellt wird.
+
+Im Zentrum stehen folgende didaktische Anforderungen:
+
+\begin{itemize}
+    \item \textbf{DID-01 -- Transparenz:} Dispatch, Präemption, Kontextwechsel, Quantumablauf und Abschluss müssen eindeutig dargestellt werden.
+    \item \textbf{DID-02 -- Vergleichbarkeit:} Mehrere Scheduling-Verfahren müssen auf einer identischen Szenariobasis gegenübergestellt werden können.
+    \item \textbf{DID-03 -- Kontrollierbares Lerntempo:} Die Anwendung muss sowohl einen Schrittmodus als auch eine kontinuierliche Wiedergabe unterstützen.
+    \item \textbf{DID-04 -- Nachvollziehbarkeit:} Relevante Zustandsänderungen müssen mit verständlichen Ereignisinformationen erklärt werden.
+    \item \textbf{DID-05 -- Mehrperspektivität:} Zeitlicher Ablauf, Task-Zustände und Bewertungsmetriken müssen miteinander in Beziehung gesetzt werden können.
+\end{itemize}
+
+Die Anwendung soll dadurch das Verständnis der Auswahlregeln und ihrer Auswirkungen auf Wartezeit, Reaktionszeit, Durchlaufzeit und Kontextwechsel unterstützen. Eine empirische Untersuchung des tatsächlichen Lernerfolgs ist nicht Gegenstand dieser Arbeit.
+
+\section{Interaktions- und Usability-Anforderungen}
+
+Die Oberfläche soll die kognitive Belastung reduzieren und den typischen Arbeitsablauf unterstützen:
+
+\begin{enumerate}
+    \item Szenario definieren,
+    \item Scheduling-Verfahren auswählen,
+    \item verfahrensspezifische Parameter festlegen,
+    \item Simulation starten,
+    \item Ablauf untersuchen,
+    \item Ergebnisse interpretieren,
+    \item Verfahren miteinander vergleichen.
+\end{enumerate}
+
+Daraus ergeben sich folgende Anforderungen:
+
+\begin{itemize}
+    \item \textbf{UX-01:} Tasks müssen angelegt, bearbeitet und gelöscht werden können.
+    \item \textbf{UX-02:} Szenarien müssen gespeichert und erneut geladen werden können.
+    \item \textbf{UX-03:} Eine Simulation muss gestartet, pausiert, fortgesetzt und zurückgesetzt werden können.
+    \item \textbf{UX-04:} Der Simulationsablauf muss schrittweise durchlaufen werden können.
+    \item \textbf{UX-05:} Die Anwendung muss Zeitsprünge beziehungsweise eine zeitbasierte Ablaufsteuerung unterstützen.
+    \item \textbf{UX-06:} Der aktuell laufende Task und relevante Zustandsänderungen müssen unmittelbar erkennbar sein.
+    \item \textbf{UX-07:} Die wesentlichen Bedienfunktionen müssen in einer konsistenten und nachvollziehbaren Reihenfolge erreichbar sein.
+    \item \textbf{UX-08:} Ungültige oder fehlende Eingaben müssen verständlich angezeigt werden.
+    \item \textbf{UX-09:} Die Bedienlogik darf die fachliche Analyse nicht durch unnötige Interaktionsschritte überlagern.
+\end{itemize}
+
+Ein Export der Ergebnisse ist nicht Bestandteil des festgelegten Funktionsumfangs.
+
+\section{Vergleich mehrerer Simulationsläufe}
+
+Die Anwendung muss mehrere Läufe auf einer identischen Szenariobasis miteinander vergleichen können. Hierzu müssen mehrere Algorithmen auf dasselbe Task-Szenario angewendet werden können.
+
+Die Vergleichsübersicht soll neben den einzelnen Kennzahlen auch eine Bewertungsmatrix bereitstellen. Dafür können unterschiedliche Anwendungsfälle ausgewählt werden, deren Gewichtung die Bedeutung einzelner Kennzahlen verändert. Vorgesehen sind:
+
+\begin{itemize}
+    \item \textbf{Interaktiv / UI:} Schwerpunkt auf Reaktionszeit und kurzen Wartezeiten.
+    \item \textbf{Batch / HPC:} Schwerpunkt auf Durchsatz und Durchlaufzeit; Kontextwechsel werden als kostenintensiv betrachtet.
+    \item \textbf{Webserver:} Schwerpunkt auf kurzen Wartezeiten und stabiler Reaktionszeit.
+    \item \textbf{Soft Real-Time:} Schwerpunkt auf Reaktionszeit und Präemptionsverhalten.
+    \item \textbf{Eigener Anwendungsfall:} Individuelle Gewichtung der verfügbaren Kennzahlen.
+\end{itemize}
+
+Die Anwendung soll aus den gewichteten Kennzahlen einen vergleichenden Score ableiten und den besten sowie den schwächsten Lauf kenntlich machen. Der Score dient dabei als anwendungsbezogene Vergleichshilfe und nicht als allgemeingültige Bewertung eines Scheduling-Verfahrens.
+
+\section{Anforderungen an Accessibility}
+
+Da die Anwendung im Lehrkontext eingesetzt wird, sind grundlegende Anforderungen an die Barrierefreiheit zu berücksichtigen. Dazu gehören eine semantisch klare Struktur, eine nachvollziehbare Fokusführung, verständliche Statuskommunikation und ausreichende Kontraste.
+
+Ziel ist, dass zentrale Lern- und Bedienfunktionen auch ohne ausschließliche visuelle Orientierung und ohne Maus nutzbar bleiben \cite{wcag2018}. Die folgende Operationalisierung begrenzt den Prüfstand auf die tatsächlich relevante Scheduler-Oberfläche. Sie stellt keine vollständige Konformitätserklärung für alle WCAG-Erfolgskriterien dar.
+
+\begin{table}[H]
+\centering
+\caption{Operationalisierte Accessibility-Anforderungen des fokussierten Prüfstands.}
+\label{tab:a11y-anforderungen}
+\small
+\begin{tabularx}{\textwidth}{p{0.12\textwidth}X p{0.18\textwidth}X}
+\textbf{ID} & \textbf{Anforderung} & \textbf{Referenz} & \textbf{Prüfverfahren und Grenze} \\
+\hline
+A11Y-01 & Semantische Struktur und verständliche Namen für Dialoge, Steuerelemente und Ansichten. & WCAG 1.3.1, 4.1.2 & Statische und manuelle Prüfung; keine vollständige Assistive-Tech-Kompatibilitätsmessung. \\
+A11Y-02 & Zentrale Funktionen sind vollständig per Tastatur bedienbar. & WCAG 2.1.1 & Keyboard-Walkthrough; komplexe Browser-/Assistive-Tech-Kombinationen bleiben offen. \\
+A11Y-03 & Der Fokus ist sichtbar und logisch geführt. In modalen Dialogen bleibt er innerhalb des Dialogs und wird nach dem Schließen an das auslösende Element zurückgegeben. & WCAG 2.4.3, 2.4.7 & Codeprüfung und manueller Dialogtest; keine formale Fokusabdeckungsmessung. \\
+A11Y-04 & Zustandsänderungen von Playback und Vergleich werden verständlich angekündigt. & WCAG 4.1.3 & Prüfung der Statuskanäle und manueller Test; Sprachverständlichkeit wird nicht empirisch bewertet. \\
+A11Y-05 & Gantt-SVG und interaktive Segmente besitzen beschreibende Namen und Tastaturzugriff. & WCAG 1.1.1, 2.1.1 & Statische Prüfung und manuelle Segmentprüfung; SVG wird nicht mit jedem Screenreader getestet. \\
+A11Y-06 & Farbe ist nicht alleiniger Informationsträger und Fokus-/Textkontraste sind ausreichend. & WCAG 1.4.1, 1.4.3, 1.4.11 & Kontrastprüfung und manuelle Farbnutzung; frei kombinierbare Farben bleiben eine Grenze. \\
+A11Y-07 & Die Oberfläche bleibt bei Vergrößerung und schmalem Viewport nutzbar. & WCAG 1.4.4, 1.4.10 & Prüfung bei 200\,\% und schmalem Viewport; keine Prüfung aller Endgeräte. \\
+A11Y-08 & Nicht notwendige Bewegung wird bei reduzierter Bewegungspräferenz vermieden. & WCAG 2.3.3 & Prüfung der Medienpräferenz und des Playbacks; keine Aussage zu vestibulären Wirkungen. \\
+\end{tabularx}
+\end{table}
+
+WCAG~2.1 bildet den normativen Maßstab. Das im Projektkontext verwendete Kurs- oder Handoutmaterial dient als angewandte Entwurfsgrundlage, ersetzt jedoch weder die Primärquelle noch die hier vorgenommene Prüfung.
+
+\section{Technische Qualitätsziele}
+
+Die Anwendung soll modular, deterministisch, testbar und erweiterbar aufgebaut sein. Daraus ergeben sich folgende nicht-funktionale Anforderungen:
+
+\begin{itemize}
+    \item \textbf{NFR-01 -- Determinismus:} Bei identischer Eingabe und identischer Konfiguration muss die Simulation denselben Ereignis- und Ergebnisverlauf erzeugen.
+    \item \textbf{NFR-02 -- Trennung der Verantwortlichkeiten:} Simulationskern, Zustandsverwaltung und Darstellung müssen logisch voneinander getrennt sein.
+    \item \textbf{NFR-03 -- Testbarkeit:} Die Simulationslogik und zentrale Interaktionspfade müssen unabhängig voneinander überprüfbar sein.
+    \item \textbf{NFR-04 -- Erweiterbarkeit:} Weitere Scheduling-Verfahren und Darstellungsformen sollen über klar definierte Schnittstellen ergänzt werden können.
+    \item \textbf{NFR-05 -- Konsistenz:} Visualisierung, Ereignisprotokoll und Bewertungsmetriken müssen auf derselben Simulationsausgabe beruhen.
+    \item \textbf{NFR-06 -- Wartbarkeit:} Änderungen an einem Scheduling-Verfahren sollen möglichst ohne Änderungen an den Darstellungs- und Vergleichskomponenten vorgenommen werden können.
+    \item \textbf{NFR-07 -- Bedienbarkeit:} Die zentrale Scheduler-Oberfläche soll ohne unnötige Bedienhürden nutzbar sein.
+\end{itemize}
+
+Diese Qualitätsziele sichern sowohl die Wartbarkeit der Anwendung als auch ihre fachliche Verlässlichkeit im Lehrbetrieb.
+
+\section{Abgeleitete funktionale und nicht-funktionale Anforderungen}
+
+Die Anforderungen lassen sich abschließend in funktionale und nicht-funktionale Kernanforderungen zusammenfassen.
+
+\subsection{Funktionale Anforderungen}
+
+\begin{itemize}
+    \item \textbf{FR-01:} Erstellen, Bearbeiten und Löschen von Szenarien und Tasks.
+    \item \textbf{FR-02:} Erfassung von Task-ID, Ankunftszeit, Burst-Zeit und Priorität.
+    \item \textbf{FR-03:} Simulation von Round Robin, LCFS, Strict Priority und MLFQ.
+    \item \textbf{FR-04:} Konfiguration verfahrensspezifischer Parameter wie Zeitquantum, Tie-Break-Regel, Queue-Stufen und Basisquantum.
+    \item \textbf{FR-05:} Visualisierung des zeitlichen Ablaufs einschließlich Präemptionen und Zustandswechseln.
+    \item \textbf{FR-06:} Anzeige der Ereignisse eines Simulationslaufs.
+    \item \textbf{FR-07:} Anzeige der zentralen Bewertungsmetriken.
+    \item \textbf{FR-08:} Vergleich mehrerer Läufe auf identischer Szenariobasis.
+    \item \textbf{FR-09:} Gewichteter Vergleich anhand verschiedener Anwendungsfälle.
+    \item \textbf{FR-10:} Interaktive Ablaufsteuerung mit Start, Pause, Fortsetzen, Schrittmodus, Zeitsprung und Zurücksetzen.
+    \item \textbf{FR-11:} Speichern und Laden von Szenarien.
+\end{itemize}
+
+\subsection{Nicht-funktionale Anforderungen}
+
+\begin{itemize}
+    \item \textbf{NFR-01:} Deterministisches Verhalten bei identischer Eingabe und Konfiguration.
+    \item \textbf{NFR-02:} Klare Trennung von Simulationslogik, Zustandsverwaltung und Darstellung.
+    \item \textbf{NFR-03:} Verständliche und konsistente Benutzerführung.
+    \item \textbf{NFR-04:} Berücksichtigung der festgelegten Accessibility-Anforderungen.
+    \item \textbf{NFR-05:} Erweiterbarkeit für zusätzliche Verfahren und Darstellungsformen.
+    \item \textbf{NFR-06:} Testbarkeit der Simulationslogik und zentraler Interaktionspfade.
+    \item \textbf{NFR-07:} Konsistenz zwischen Simulationsablauf, Ereignisprotokoll, Visualisierung und Kennzahlen.
+\end{itemize}
+
+Die abgeleiteten Anforderungen bilden die Grundlage für den Systementwurf im folgenden Kapitel. Die dort beschriebenen Architektur- und Interaktionsentscheidungen werden auf diese Anforderungen zurückgeführt und anschließend im Rahmen der Implementierung und Qualitätssicherung überprüft.
