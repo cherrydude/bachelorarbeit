@@ -1,0 +1,24 @@
+# LaTeX source files
+**/*.tex
+**/*.sty
+**/*.cls
+**/*.bib
+
+# LaTeX build artifacts
+**/*.aux
+**/*.bbl
+**/*.bcf
+**/*.blg
+**/*.fls
+**/*.fdb_latexmk
+**/*.lof
+**/*.log
+**/*.lot
+**/*.nav
+**/*.out
+**/*.run.xml
+**/*.snm
+**/*.synctex.gz
+**/*.toc
+**/*.vrb
+**/*.xdv
