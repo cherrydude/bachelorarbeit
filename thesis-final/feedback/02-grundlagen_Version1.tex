@@ -205,7 +205,7 @@ Round Robin verwendet eine zyklische Bereitschaftswarteschlange und ein festgele
 
 Ein kleines Quantum verbessert typischerweise die Reaktionsfähigkeit, erzeugt aber mehr Kontextwechsel. Ein großes Quantum reduziert den Verwaltungsaufwand und kann das Verhalten in Richtung FCFS verschieben.
 
-Im Beispielszenario wird zunächst $P1$ ausgeführt. Nach Ablauf des Quantums werden die bereiten Tasks entsprechend der Warteschlangenreihenfolge berücksichtigt. Die Visualisierung muss deshalb insbesondere den Quantumablauf, die Wiedereinreihung und den Wechsel des laufenden Tasks sichtbar machen.
+Im Beispielszenario wird zunächst $P1$ ausgeführt. Nach Ablauf des Quantums werden bereite Tasks in Warteschlangenreihenfolge berücksichtigt. Die Visualisierung muss deshalb Quantumablauf, Wiedereinreihung und Taskwechsel sichtbar machen.
 
 \subsection{Last-Come, First-Served}
 
@@ -231,14 +231,14 @@ Im Visualizer wird MLFQ durch mehrere Ebenen, Segmentpositionen, Quantumabläufe
 
 \section{Vergleich der theoretischen Perspektiven}
 
-Stallings sowie Tanenbaum und Bos behandeln beide Betriebssysteme, Prozesse und Scheduling, setzen jedoch unterschiedliche Akzente. Die Werke werden in dieser Arbeit nicht als widersprüchliche Theorien gegenübergestellt, sondern als sich ergänzende Zugänge verwendet.
+Stallings sowie Tanenbaum und Bos behandeln Betriebssysteme, Prozesse und Scheduling, setzen aber unterschiedliche Akzente. Die Werke werden in dieser Arbeit nicht als widersprüchliche Theorien gegenübergestellt, sondern als sich ergänzende Zugänge verwendet.
 
 \begin{table}[H]
 \centering
 \caption{Ergänzende Perspektiven der verwendeten Betriebssystemliteratur.}
 \label{tab:buchvergleich}
 \small
-\begin{tabularx}{\textwidth}{p{0.22\textwidth}X X}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
 \textbf{Aspekt} & \textbf{Stallings} & \textbf{Tanenbaum und Bos} \\
 \hline
 Grundperspektive & Systematische Betrachtung von Betriebssystemaufgaben, Ressourcen und Verwaltungszielen. & Konzeptionelle Betrachtung von Betriebssystemstrukturen, Prozessen, Threads und Abläufen. \\
