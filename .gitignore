@@ -1,0 +1,28 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.fdb_latexmk
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Generated thesis PDFs
+thesis-final/main.pdf
+thesis-starter/main.pdf
+thesis-zwei/main.pdf
+
+# Editor and temporary files
+*~
+*.bak
+.DS_Store
