@@ -16,6 +16,8 @@ Die Anwendung soll insbesondere dabei unterstützen, die Auswirkungen verschiede
 
 Die Anwendung muss die präemptiven Scheduling-Verfahren Round Robin, LCFS, Strict Priority und Multilevel Feedback Queue (MLFQ) simulieren. Die Verfahren müssen auf derselben grundlegenden Task- und Ereignisstruktur arbeiten, damit ihre Abläufe und Kennzahlen miteinander verglichen werden können.
 
+Die Anwendung unterstützt neben der direkten Bearbeitung auch die persistente Speicherung sowie den JSON-basierten Import und Export von Szenarien. Ein Szenario kann zusammen mit den zugehörigen Simulationsläufen exportiert werden. Beim Import werden sowohl die Task-Daten und Verfahrensparameter als auch die gespeicherten Runs wiederhergestellt.
+
 Im Simulationsmodell bezeichnet der Begriff \textit{Task} eine abstrahierte schedulierbare Ausführungseinheit. Ein Task besitzt mindestens eine eindeutige Kennung, eine Ankunftszeit, eine benötigte Ausführungszeit und eine Priorität. Zusätzlich können eine Bezeichnung, eine Farbe und eine Gruppenzugehörigkeit hinterlegt werden.
 
 Die Anwendung muss folgende fachliche Anforderungen erfüllen:
@@ -81,6 +83,8 @@ Die Anwendung muss die Ergebnisse eines Simulationslaufs in mehreren miteinander
     \item \textbf{FR-09:} Relevante Ereignisse wie Ankunft, Dispatch, Start, Präemption, Quantumablauf, Kontextwechsel und Abschluss müssen in einer Ereignisliste nachvollziehbar sein.
     \item \textbf{FR-10:} Die aktuellen Zustände der Tasks müssen während des Ablaufs sichtbar sein.
     \item \textbf{FR-11:} Die Anwendung muss zentrale Kennzahlen pro Simulationslauf berechnen und anzeigen.
+    \item \textbf{FR-12:} Ein Szenario muss zusammen mit den zugehörigen Simulationsläufen in einem JSON-basierten Format exportiert werden können.
+    \item \textbf{FR-13:} Exportierte Szenarien einschließlich ihrer Simulationsläufe müssen wieder importiert werden können.
 \end{itemize}
 
 Für einen Simulationslauf werden insbesondere folgende Kennzahlen bereitgestellt:
@@ -142,7 +146,7 @@ Daraus ergeben sich folgende Anforderungen:
     \item \textbf{UX-09:} Die Bedienlogik darf die fachliche Analyse nicht durch unnötige Interaktionsschritte überlagern.
 \end{itemize}
 
-Ein Export der Ergebnisse ist nicht Bestandteil des festgelegten Funktionsumfangs.
+Szenarien und die dazugehörigen Simulationsläufe müssen als JSON-Datei exportiert und zu einem späteren Zeitpunkt wieder importiert werden können. Der Export dient dadurch nicht nur der Speicherung der Eingabedaten, sondern auch der Sicherung und Weitergabe bereits durchgeführter Simulationen.
 
 \section{Vergleich mehrerer Simulationsläufe}
 
@@ -203,6 +207,8 @@ Die Anwendung soll modular, deterministisch, testbar und erweiterbar aufgebaut s
 
 Diese Qualitätsziele sichern sowohl die Wartbarkeit der Anwendung als auch ihre fachliche Verlässlichkeit im Lehrbetrieb.
 
+Die folgenden Listen fassen die zuvor hergeleiteten Anforderungen für die weitere Rückverfolgbarkeit im Systementwurf und in der Qualitätssicherung zusammen.
+
 \section{Abgeleitete funktionale und nicht-funktionale Anforderungen}
 
 Die Anforderungen lassen sich abschließend in funktionale und nicht-funktionale Kernanforderungen zusammenfassen.
@@ -220,7 +226,9 @@ Die Anforderungen lassen sich abschließend in funktionale und nicht-funktionale
     \item \textbf{FR-08:} Vergleich mehrerer Läufe auf identischer Szenariobasis.
     \item \textbf{FR-09:} Gewichteter Vergleich anhand verschiedener Anwendungsfälle.
     \item \textbf{FR-10:} Interaktive Ablaufsteuerung mit Start, Pause, Fortsetzen, Schrittmodus, Zeitsprung und Zurücksetzen.
-    \item \textbf{FR-11:} Speichern und Laden von Szenarien.
+    \item \textbf{FR-11:} Speichern und Laden von Szenarien innerhalb der Anwendung.
+    \item \textbf{FR-12:} Export eines Szenarios einschließlich der zugehörigen Simulationsläufe als JSON-Datei.
+    \item \textbf{FR-13:} Import zuvor exportierter Szenarien einschließlich ihrer Simulationsläufe.
 \end{itemize}
 
 \subsection{Nicht-funktionale Anforderungen}
